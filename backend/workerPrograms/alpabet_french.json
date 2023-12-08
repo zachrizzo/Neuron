@@ -1,0 +1,339 @@
+{
+  "task": "Interactive Alphabet Practice",
+  "description": "This exercise combines pronunciation of letters with associated words. After hearing the letter and a corresponding word, the learner repeats both. Points are awarded for correct pronunciation.",
+  "totalTasks": 26,
+  "exercises": [
+    {
+      "letter": "A",
+      "text": "amour",
+      "translation": "love",
+      "audioClipLetter": "path/to/audio/A.mp3",
+      "audioClipWord": "path/to/audio/amour.mp3",
+      "points": 10
+    },
+    {
+      "letter": "B",
+      "text": "bonjour",
+      "translation": "Good morning",
+      "audioClipLetter": "path/to/audio/B.mp3",
+      "audioClipWord": "path/to/audio/bonjour.mp3",
+      "points": 10
+    },
+
+    {
+       "letter": "C",
+        "text": "le chat",
+        "translation": "cat",
+        "audioClipLetter": "path/to/audio/C.mp3",
+        "audioClipWord": "path/to/audio/chat.mp3",
+        "points": 10
+    },
+
+    {
+      "letter": "D",
+      "text": "dormir",
+      "translation": "to sleep",
+      "audioClipLetter": "path/to/audio/D.mp3",
+      "audioClipWord": "path/to/audio/dormir.mp3",
+      "points": 10
+    },
+    {
+      "letter": "E",
+      "text": "école",
+      "translation": "school",
+      "audioClipLetter": "path/to/audio/E.mp3",
+      "audioClipWord": "path/to/audio/école.mp3",
+      "points": 10
+    },
+    {
+      "letter": "F",
+      "text": "fleur",
+      "translation": "flower",
+      "audioClipLetter": "path/to/audio/F.mp3",
+      "audioClipWord": "path/to/audio/fleur.mp3",
+      "points": 10
+    },
+    {
+      "letter": "G",
+      "text": "gâteau",
+      "translation": "cake",
+      "audioClipLetter": "path/to/audio/G.mp3",
+      "audioClipWord": "path/to/audio/gâteau.mp3",
+      "points": 10
+    },
+    {
+      "letter": "H",
+      "text": "hôtel",
+      "translation": "hotel",
+      "audioClipLetter": "path/to/audio/H.mp3",
+      "audioClipWord": "path/to/audio/hôtel.mp3",
+      "points": 10
+    },
+    {
+      "letter": "I",
+      "text": "île",
+      "translation": "island",
+      "audioClipLetter": "path/to/audio/I.mp3",
+      "audioClipWord": "path/to/audio/île.mp3",
+      "points": 10
+    },
+    {
+      "letter": "J",
+      "text": "jardin",
+      "translation": "garden",
+      "audioClipLetter": "path/to/audio/J.mp3",
+      "audioClipWord": "path/to/audio/jardin.mp3",
+      "points": 10
+    },
+    {
+      "letter": "K",
+      "text": "kangourou",
+      "translation": "kangaroo",
+      "audioClipLetter": "path/to/audio/K.mp3",
+      "audioClipWord": "path/to/audio/kangourou.mp3",
+      "points": 10
+    },
+    {
+      "letter": "L",
+      "text": "lune",
+      "translation": "moon",
+      "audioClipLetter": "path/to/audio/L.mp3",
+      "audioClipWord": "path/to/audio/lune.mp3",
+      "points": 10
+    },
+    {
+      "letter": "M",
+      "text": "maman",
+      "translation": "mom",
+      "audioClipLetter": "path/to/audio/M.mp3",
+      "audioClipWord": "path/to/audio/maman.mp3",
+      "points": 10
+    },
+    {
+      "letter": "N",
+      "text": "neige",
+      "translation": "snow",
+      "audioClipLetter": "path/to/audio/N.mp3",
+      "audioClipWord": "path/to/audio/neige.mp3",
+      "points": 10
+    },
+    {
+      "letter": "O",
+      "text": "oiseau",
+      "translation": "bird",
+      "audioClipLetter": "path/to/audio/O.mp3",
+      "audioClipWord": "path/to/audio/oiseau.mp3",
+      "points": 10
+    },
+    {
+      "letter": "P",
+      "text": "papa",
+      "translation": "dad",
+      "audioClipLetter": "path/to/audio/P.mp3",
+      "audioClipWord": "path/to/audio/papa.mp3",
+      "points": 10
+    },
+    {
+      "letter": "Q",
+      "text": "quatre",
+      "translation": "four",
+      "audioClipLetter": "path/to/audio/Q.mp3",
+      "audioClipWord": "path/to/audio/quatre.mp3",
+      "points": 10
+    },
+    {
+      "letter": "R",
+      "text": "rose",
+      "translation": "rose",
+      "audioClipLetter": "path/to/audio/R.mp3",
+      "audioClipWord": "path/to/audio/rose.mp3",
+      "points": 10
+    },
+    {
+      "letter": "S",
+      "text": "soleil",
+      "translation": "sun",
+      "audioClipLetter": "path/to/audio/S.mp3",
+      "audioClipWord": "path/to/audio/soleil.mp3",
+      "points": 10
+    },
+    {
+      "letter": "T",
+      "text": "tortue",
+      "translation": "turtle",
+      "audioClipLetter": "path/to/audio/T.mp3",
+      "audioClipWord": "path/to/audio/tortue.mp3",
+      "points": 10
+    },
+    {
+      "letter": "U",
+      "text": "uniforme",
+      "translation": "uniform",
+      "audioClipLetter": "path/to/audio/U.mp3",
+      "audioClipWord": "path/to/audio/uniforme.mp3",
+      "points": 10
+    },
+    {
+      "letter": "V",
+      "text": "voiture",
+      "translation": "car",
+      "audioClipLetter": "path/to/audio/V.mp3",
+      "audioClipWord": "path/to/audio/voiture.mp3",
+      "points": 10
+    },
+    {
+      "letter": "W",
+      "text": "wagon",
+      "translation": "wagon",
+      "audioClipLetter": "path/to/audio/W.mp3",
+      "audioClipWord": "path/to/audio/wagon.mp3",
+      "points": 10
+    },
+    {
+      "letter": "X",
+      "text": "xylophone",
+      "translation": "xylophone",
+      "audioClipLetter": "path/to/audio/X.mp3",
+      "audioClipWord": "path/to/audio/xylophone.mp3",
+      "points": 10
+    },
+    {
+      "letter": "Y",
+      "text": "yaourt",
+      "translation": "yogurt",
+      "audioClipLetter": "path/to/audio/Y.mp3",
+      "audioClipWord": "path/to/audio/yaourt.mp3",
+      "points": 10
+    },
+
+    {
+      "letter": "Z",
+      "text": "zèbre",
+      "translation": "zebra",
+      "audioClipLetter": "path/to/audio/Z.mp3",
+      "audioClipWord": "path/to/audio/zèbre.mp3",
+      "points": 10
+    },
+
+ {
+      "letter": "À",
+      "text": "à l'heure",
+      "translation": "on time",
+      "audioClipLetter": "path/to/audio/À.mp3",
+      "audioClipWord": "path/to/audio/a_lheure.mp3",
+      "points": 10
+    },
+    {
+      "letter": "Â",
+      "text": "âne",
+      "translation": "donkey",
+      "audioClipLetter": "  path/to/audio/Â.mp3",
+      "audioClipWord": "path/to/audio/ane.mp3",
+      "points": 10
+    },
+    {
+      "letter": "Ç",
+      "text": "ça va",
+      "translation": "how are you",
+      "audioClipLetter": "path/to/audio/Ç.mp3",
+      "audioClipWord": "path/to/audio/ca_va.mp3",
+      "points": 10
+    },
+    {
+      "letter": "É",
+      "text": "école",
+      "translation": "school",
+      "audioClipLetter": "path/to/audio/É.mp3",
+      "audioClipWord": "path/to/audio/ecole.mp3",
+      "points": 10
+    },
+    {
+      "letter": "È",
+      "text": "frère",
+      "translation": "brother",
+      "audioClipLetter": "path/to/audio/È.mp3",
+      "audioClipWord": "path/to/audio/frere.mp3",
+      "points": 10
+    },
+    {
+      "letter": "Ê",
+      "text": "forêt",
+      "translation": "forest",
+      "audioClipLetter": "path/to/audio/Ê.mp3",
+      "audioClipWord": "path/to/audio/foret.mp3",
+      "points": 10
+    },
+    {
+      "letter": "Ë",
+      "text": "Noël",
+      "translation": "Christmas",
+      "audioClipLetter": "path/to/audio/Ë.mp3",
+      "audioClipWord": "path/to/audio/noel.mp3",
+      "points": 10
+    },
+    {
+      "letter": "Î",
+      "text": "île",
+      "translation": "island",
+      "audioClipLetter": "path/to/audio/Î.mp3",
+      "audioClipWord": "path/to/audio/ile.mp3",
+      "points": 10
+    },
+    {
+      "letter": "Ï",
+      "text": "maïs",
+      "translation": "corn",
+      "audioClipLetter": "path/to/audio/Ï.mp3",
+      "audioClipWord": "path/to/audio/mais.mp3",
+      "points": 10
+    },
+    {
+      "letter": "Ô",
+      "text": "hôpital",
+      "translation": "hospital",
+      "audioClipLetter": "path/to/audio/Ô.mp3",
+      "audioClipWord": "path/to/audio/hopital.mp3",
+      "points": 10
+    },
+    {
+      "letter": "Œ",
+      "text": "œuf",
+      "translation": "egg",
+      "audioClipLetter": "path/to/audio/Œ.mp3",
+      "audioClipWord": "path/to/audio/oeuf.mp3",
+      "points": 10
+    },
+    {
+      "letter": "Ù",
+      "text": "où",
+      "translation": "where",
+      "audioClipLetter": "path/to/audio/Ù.mp3",
+      "audioClipWord": "path/to/audio/ou.mp3",
+      "points": 10
+    },
+    {
+      "letter": "Û",
+      "text": "goûter",
+      "translation": "snack",
+      "audioClipLetter": "path/to/audio/Û.mp3",
+      "audioClipWord": "path/to/audio/gouter.mp3",
+      "points": 10
+    },
+    {
+      "letter": "Ü",
+      "text": "aiguë",
+      "translation": "acute",
+      "audioClipLetter": "path/to/audio/Ü.mp3",
+      "audioClipWord": "path/to/audio/aigue.mp3",
+      "points": 10
+    },
+    {
+      "letter": "Ÿ",
+      "text": "aÿ",
+      "translation": "ay",
+      "audioClipLetter": "path/to/audio/Ÿ.mp3",
+      "audioClipWord": "path/to/audio/ay.mp3",
+      "points": 10
+    }
+  ]
+}

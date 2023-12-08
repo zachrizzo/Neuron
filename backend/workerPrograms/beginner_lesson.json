@@ -1,0 +1,282 @@
+{
+    "lessonTitle": "French Beginner - First Lesson",
+    "skillLevel": "Beginner",
+    "focusArea": "Basic Greetings and Common Phrases",
+    "totalTasks": 35,
+    "exercises": [
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Repeat the greeting 'Bonjour' (Hello)",
+            "text": "Bonjour",
+            "translation": "Hello",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Bonjour.mp3/Bonjour.mp3?Expires=1702000562&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=jEDmVjqJX3bUoketn0YklzWNVwZletYpdyQ0vtHZH22Sut1gdRZR477OQr%2F%2BuegfJgBJVbUNIZOikvFj4DQb%2FNktczbhVEb2Lp3ZjqGZAQJWF5ibTvq%2FK4VNTK%2B0NbdfiWyHj0wGWfpZXsXpee2IdGffjmioyO2H2FRUBvmY0Hgl29aTV1%2FwLI8aUPkumpVY7QVGbTH1AzBaxzzVARo1km87VG3Dnkmb09v%2Be4lhwiFN%2BkPjVA7jhWF6zyVJlwnBNwzoElPlOTiBLIzTelgT1Y07XL16Gs7L2wU9Ex0uyWILTPiY51uL1nvkaCMSwSuMe2mTKBz6MFt8fdmPaeU5fA%3D%3D",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Repeat 'Comment \u00e7a va?' (How are you?)",
+            "text": "Comment \u00e7a va?",
+            "translation": "How are you?",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Comment%20%C3%A7a%20va%3F.mp3/Comment%20%C3%A7a%20va%3F.mp3?Expires=1702000559&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=J2D%2BCq3WSn21pIJzLDNrK%2BcwJtNblCrGm2GcAoKostqMSfotJ3WlQMZ7MAxwgLcApVMogw9%2FeS0SoVagPz647CjRFh7jVHUsWN%2BMtD7Dbd5fr2mCCugL8hSuhanrqkAL4ZX5%2FFE0hoK2GZc1txBYuu84YTmJB8eW3NxIgJLHj7nthD2LBg6sTMciQbwDvIRMvgij2vWbi7BxMQNx9OaWgCDkwkCO4EBSzi%2BxoETNIYog6o5MFiiHR2eaWq5Se7tiSaaTQngVGSlyHBXqdjMVLUEXJFBH3%2FCZaufdXN%2BI7djDYI1Vcw063xs%2BZUlq6cz3lmUcKYWFto8G%2BDV3oCgF0A%3D%3D",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'Je m'appelle John' (My name is John)",
+            "text": "Je m'appelle John",
+            "translation": "My name is John",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Je%20m%27appelle%20John.mp3/Je%20m%27appelle%20John.mp3?Expires=1702000561&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=FRObzyuGCvd%2FGk5OVfkW6YkJDa%2BTshHKWdzAmizYPj6RuwiY47LKu96iUPr96CqyKEihB23JJPMn2n5CtRpuD4wWxM%2BlJbnN1KVXIGo21x99Ed0%2FsOEJipngw21JYAq7VY6NZA6oS4SzKioY8VP626SN9ft7dA4Fl%2FeYVPaPwge11bMzQgCbuRFgQpwwH8PfIozW2Axkh%2BV0eXF3wTnB84POCUDe%2Bf5FPpLRaKh7hR2kIH6VcSlS8mb0rOG5%2BecGkSQyy%2FaI8Qz3h1LzScnD2%2BNOfUgYU9bQTT3QT%2FFAV5S1DfM%2F0zV57vdPZHjoK96b%2BJF765Tzz1uTdBxuHDuSCg%3D%3D",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Repeat 'Merci' (Thank you)",
+            "text": "Merci",
+            "translation": "Thank you",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Merci.mp3/Merci.mp3?Expires=1702000557&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=WsY5raDFFtk1z%2FHneCY4NagJg6LwldO1ds9tGIADec6UsCS4l8vJr86f79RF06jglIKvW1yVLAOiqa%2Fk6dUkJTS%2FwHU6qWMgDsdO%2Fwlsdr5UkjxP8t9jjutuSZ%2BFV6cZmycLLAoyuDVm5tpNhuOnpxbirn0ajzORgiCeUysIZuspBf0vEbCHTnPChJlu4EQmzPgLT%2BGawcxYFD966siB2v5%2BqMnDi8KjwNMm%2BZuS7CXKLqNwrVsjD2xDNmnkjg%2B%2FwJOHEaFxtpRY%2Fg%2Ff0sUlP7gFLgJSykKVjclvVQtlkvba4qBatzXNiH012F%2BGV%2BjVVoXncLU5kAXtKoNioa6N%2BA%3D%3D",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Repeat 'S'il vous pla\u00eet' (Please)",
+            "text": "S'il vous pla\u00eet",
+            "translation": "Please",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/S%27il%20vous%20pla%C3%AEt.mp3/S%27il%20vous%20pla%C3%AEt.mp3?Expires=1702000562&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=D%2BjWrrxDnyH6dyN%2BwPHLuwuNnEnRpvN75d73esxnWrWr9glQsmD9TmJO7PAchNKSE64uwe2EtlvDT5M%2BFBCHSqnEtDlEcdEblTXORzWP57JZMdT9OBfR3ke7nXaFvHb9K1mQaFDhzSJWwmupRDNBXe%2B0Ey7JQ%2BQdwEAE5MlPF3u44UQfMRr9m4e9%2Fs9YHVuaI3ZgMMK3pHkbpqkSG5ZceoMtk9xN69dMKG9VVw5tGCim9DNKe9ZMm%2FlVPs0mkOBJOk2baPHRw6wJCrrcuCzQo8iE6HhxwvtrNRU2nHLbcgiXsmEC6yPNt7YcREqcgMm0s2d3p9zhF%2F0Y2V2cAZwiNw%3D%3D",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Repeat 'Au revoir' (Goodbye)",
+            "text": "Au revoir",
+            "translation": "Goodbye",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Au%20revoir.mp3/Au%20revoir.mp3?Expires=1702000566&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=K0BHLdPL3sMGtVNHyahvXwkGZ6aLPNhWbKY4P9hjD5JKfG%2Fu%2FVeN1iZ4vbJKho0qKkKTRzrMEefSdGLeSURNYXFugB%2F9Iqx7HY2cXSEZ5d73Xmj8fHYaior2loFjyJaaH4mLmf%2BTF%2FiWSwrja8ZNhxRlsa4umxmn4bgGwqkXrKWfD4E0l8LRPTVEP7Vr5YxGMDxNKfc6R6ReDVXua6OISxGnmDKmnVIWO92ao%2BzqBuyrn03efcowG10C2ImzpVBzoL90Y7RUrxzAhZN2Aw%2BXrt%2BHVCiXZsNc8Wo1OhueGUCXF%2F4a9tq9zlw4T2LA7pP5tgI252k7kADm5V4I4huWhQ%3D%3D",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'Je suis d\u00e9sol\u00e9(e)' (I am sorry)",
+            "text": "Je suis d\u00e9sol\u00e9(e)",
+            "translation": "I am sorry",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Je%20suis%20d%C3%A9sol%C3%A9%28e%29.mp3/Je%20suis%20d%C3%A9sol%C3%A9%28e%29.mp3?Expires=1702000567&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=lCz6R1AX8vovrPfiw%2BjZd%2BPUEywG3wBBkooxzd6WnRxvy7O9XxB47vJJhkETtCsgSubwCABL7%2FL%2BW%2BuxCjyxNB71%2FsOUaQfMRVZkCUEbUlkNeOiJN0ITR8RxVq50Jc2HfIdrZTZRhv8wKMYGTiZZd79P3IBZpq95zvegjj1x3he2SL43E1z7QuJt10Y6ck%2B2TLk%2B0tdZenJc6mjBpsj7QNJ0brwyaXGukJi3r42sGVyJ63fMbvmWqkBAjxqHMiYlRF15jCFtWNpYutvIYlWRGZQsgK%2F9%2BVlghb0RGMr96yYt6wYUWJvfakUJT0ZjMPDB6lrjeTHtfUzYQxuaZ9GMRA%3D%3D",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Repeat 'Pouvez-vous m'aider?' (Can you help me?)",
+            "text": "Pouvez-vous m'aider?",
+            "translation": "Can you help me?",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Pouvez-vous%20m%27aider%3F.mp3/Pouvez-vous%20m%27aider%3F.mp3?Expires=1702000557&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=IC0NOXwKQkkXPGQbDYNLhr%2Bm5GTR4IBCflqT%2BKXgIP%2FZGAizofwzGTea1T2%2Fio6b%2FWeYAl%2FykntkhmcG3TV0y%2Bv5XJKCLcv%2FHUsiGWEENCnW2OijV7X8nAPgUo7Ltv%2BvpMCSGdNGXAT%2FpxOrdn2HENQ4VnuenYRMvS13ijQ3MU6VGqBh69g2Gq%2FUmvC1BBh3v1K8fdyKfbNNQcgYxkjm4Ven0A25X1XTh1RTouU9TXxW4kiik4kMjb%2B6lr8NaGF8KQev5yrD%2FBwmLdozX1J1W5sYZ%2B%2BTlyUF6IaVEi2A0kZIWb7FI6zGzirlguG%2BKDr06kCwIbhtaxu8I1kyztrgZA%3D%3D",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'Oui' (Yes)",
+            "text": "Oui",
+            "translation": "Yes",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Oui.mp3/Oui.mp3?Expires=1702000560&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=L6D%2FhXUBflzzQ%2FnS5U11LWscmuhsOwaYUbXVCn4QqmaGmvtIXVItulX4xTI%2BTdDl1xnSmaMVw%2Fp3j82GP4Iww%2FchfYeZqkFKrUi5oUzp5z1a5XLbSzmtwnaSV25RRWtr9U%2BJ3oyQTnlRnvJuLORRevv%2F%2BDzliV%2FwN%2FR0E9KfrEFcb4t2DC4kSAyoWcNHsRu%2BWR%2B8wKimtLbpZy5T7ytSPkhnWwXayudnk14SH5xkYLRJpPIz2ZZizCXRqWXjnYvQfj4LCfpKuuf3pgh%2F6PO4IFjZJ4NZ8dhb3ymBB1%2FAnyXXrHuk8T%2FjoaPdItlKpuCjWkY3cD8q5Jtm05k5%2BMYUTQ%3D%3D",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'Non' (No)",
+            "text": "Non",
+            "translation": "No",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Non.mp3/Non.mp3?Expires=1702000565&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=GmuE4Nei8f9pr7Ql7gWUGWVDGVbwCD2DQq2eYsLTkbtJUB0d2VVN%2Fyyg9fGOPau8viyA7Mgr96TssVK9HpBqfUA2eNf6xzo%2FG%2FDKlHiFc%2Ft0gBZF%2BRIkuWLNdZ8nCBXApu1Bm3pp4AU0Yh80ox4kt9lOgbsId%2BWdGNh4YBnWCHT4CduljEwuOR%2BctakLUBpYXFldKseHnVAoeoFWCunPTwDtescMZq7c1TsYJ6%2BIllLHgHKTUL0gspyP4EKRKm5Qivf%2Ffofv225vJ3jmCw%2BEhiBmroqHfEds55fmFKU0w6L9iW15V7bxkD6XIA1qnPPuNvtrD7OH%2FwVUCohheREPMQ%3D%3D",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Repeat 'Comment vous appelez-vous?' (What is your name?)",
+            "text": "Comment vous appelez-vous?",
+            "translation": "What is your name?",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Comment%20vous%20appelez-vous%3F.mp3/Comment%20vous%20appelez-vous%3F.mp3?Expires=1702000564&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=ghHe4zqfdm8Pmxri62j6GZgbVKsSGyjHGMeEpoAP37ae43x7qJttI7OtuZnDtRU%2FtyTIL0jvNcXNAj%2FBwcXX%2BQqeXB%2FlP%2FjqBfzy2uxhsobdpaVBWpd5fHNSdtydYscyYizP4AIOpobB1c8Zynfy9%2BTjayfCYxB%2Bh8F4C%2FWOSMC9D0oK9l8RXJgT4jB6%2BBUQGWf8nX%2FJ6CBgwmCMJXBbQZ36AuRxbJuNvChm044%2F4eiABPE4Lk67j1q60f9c4VOG3Ph2IrH8I7GYqndXYwcSDTPaW19PU%2Fsn%2BU4u9Q0XuI9NXkv6wirlmel5i9M5sVWmEr7112eU%2BZTCq542q0bbTg%3D%3D",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'Je ne comprends pas' (I do not understand)",
+            "text": "Je ne comprends pas",
+            "translation": "I do not understand",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Je%20ne%20comprends%20pas.mp3/Je%20ne%20comprends%20pas.mp3?Expires=1702000560&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=LqeKstEA%2FQF3sMYebWS86iHJ41OOwzwNYvjLiazqDYqS26%2FAfwwGhOO6CCmjmGixQTA0zjYWbmq3SORoY4uDwdDA9ACvty1PLQMfAYU6ZJC7jUE%2FuQcDRuhHnpdbI0S50L70GqfbgmFjLgzjt0HgM9gX3Nzmb6OXCCHHCzM9l17AxIa7ozGUX5uZ%2BexDdYmdb5fHQhwbr8RkP5xJgp7wtbzwLIpL%2FQi8pYC%2BnlbRGz8HFbCAwXFWZq7XQ1V2b29spdlbQzIV15JAbSDVL3da83gUEPSiLUgduvDC8JKsxPEdZV5IAUAZQE1H4pQxjTiHuvXeImYdVFBBulD4ZSaZwQ%3D%3D",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Repeat 'Parlez-vous anglais?' (Do you speak English?)",
+            "text": "Parlez-vous anglais?",
+            "translation": "Do you speak English?",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Parlez-vous%20anglais%3F.mp3/Parlez-vous%20anglais%3F.mp3?Expires=1702000565&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=J44FU2%2BFRhbRs8fV691%2FZI7W1AOaaBeUaGSHupwk3VeIim%2FIkpN1p1YUOh80FkTOJydh5pPBB2tsR%2FVnZrWtLzOm5HWPYGpSh8R7uE3t2dbx%2BmtSXPKkHClGggu2MtUkVTg%2FInFsWw87P8bTEqalVHyoW37SGfIJOX%2BEXDZHtQi1IvpWRiJ3tgHFL9PE1kwg1uQkkel155vjnjxC5%2F5j1im6dqq5VxnV3gBSFfOHMPg0AaIb2njinnPMb5g7zSEKfxj49vhu8AecPobKqYEZ9oJR9r%2BW5wurawWNQNy9ER2elPukDAgszhiri%2F8e8yNgVPNeK2xSqIHiicFdkv9mVg%3D%3D",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'Je voudrais de l'eau, s'il vous pla\u00eet' (I would like some water, please)",
+            "text": "Je voudrais de l'eau, s'il vous pla\u00eet",
+            "translation": "I would like some water, please",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Je%20voudrais%20de%20l%27eau%2C%20s%27il%20vous%20pla%C3%AEt.mp3/Je%20voudrais%20de%20l%27eau%2C%20s%27il%20vous%20pla%C3%AEt.mp3?Expires=1702000566&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=X1vT4sK3UMviGsc2JTiKU1DOwJqtg1J61QQ%2FZIwE08eGkrtsoeZlnHgCdbNq%2BQrqVWFkc2NX2S1nwrfTur9lvNCSlumJf3x%2BpgvqcysbDhImECkqagKBaf531AGkdcaEG0BfRXeoVrugrZ%2BNK1nHZIqowzj%2FqxKXvIvqTF4wwMDDK9YqWSvxSk2S9l%2FjD8wQWp%2BRw12qO0N65RBa1MN3jf8Sk9u47blmDDneOpyMpoCv%2Fu%2BLyThK3F9Ss038OjXEExXtxjujLmlN4rH4juLxyM4tZmPUS5yoa6WagJvNB%2FjjnYsw%2B9IV%2Frv%2F5ug47NN6rdU4cg7CnnTYnt9xI9JSBg%3D%3D",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Repeat 'O\u00f9 est l'h\u00f4tel?' (Where is the hotel?)",
+            "text": "O\u00f9 est l'h\u00f4tel?",
+            "translation": "Where is the hotel?",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/O%C3%B9%20est%20l%27h%C3%B4tel%3F.mp3/O%C3%B9%20est%20l%27h%C3%B4tel%3F.mp3?Expires=1702000563&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=fOx4jtq1pM4FIK0wnTzo%2Fc57nki0TQInpJrfNX5xcY1OBQzUs3%2BUBDY6AdVqt6dy9zinfm1x%2FFmgl%2FxGoOP1LImgI3urYUbYsHcPO7Nd2rN4uD2hneN0uMxF8gi9SMtK%2Bsz9%2FNCSqWJZhhsWmpiiiAwcZmoUsY0OyFXRC%2FQeX7m1T1jXyMZCijtt%2Fq7PO2fvGq8NQ4rnJT%2FbzfP8x%2B24ZfqR60Xas0DcoAjP8DvJjasKEYztx5F599v%2F791So3%2BND5%2FmkOJj11rBnia4uBIp28hfH8R2GofbOpK4OHwCPbhk%2BmSbB7NQy7i1cwsKKBvq2hGt5bSmxdteUFYCCldmwg%3D%3D",
+            "points": 5
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate 'O\u00f9 sont les toilettes?' into English",
+            "text": "O\u00f9 sont les toilettes?",
+            "translation": "Where is the bathroom?",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/O%C3%B9%20sont%20les%20toilettes%3F.mp3/O%C3%B9%20sont%20les%20toilettes%3F.mp3?Expires=1702000563&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=KFA0e6bP81bVM7x4Qn54djjLkenDJu6f3WwztFb3xBHEdbp2hqqIXP01bVWM0%2ByhP%2F9z8Wxz3nlxLwBVI6pWJcd6I1thRoWJLXbXTPo9Dh6hhVN%2BawXLx6w2YdN%2FMW7d6G6IAiwUjg2YA4EdaZg36dFwWPAlfCHvHB6uujzJmb9tdoJS72VRkuFl8xJx1Kq3vhaKCVJQZbAVnHxRzd5C4ZWdtzeMTgiIYskCdAcctBmRJLxUfe21HJEVYimzM5bDlyRMk9jqAzSpfjkZeVhybd2k2CmWeJ%2F5TOGDABg5yrw1RCSXPm7H1SwnVfSUKOyPepE9gDm5rBgKNJpxT8Q%2BUg%3D%3D",
+            "points": 7
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate 'Je voudrais un caf\u00e9, s'il vous pla\u00eet' into English",
+            "text": "Je voudrais un caf\u00e9, s'il vous pla\u00eet",
+            "translation": "I would like a coffee, please",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Je%20voudrais%20un%20caf%C3%A9%2C%20s%27il%20vous%20pla%C3%AEt.mp3/Je%20voudrais%20un%20caf%C3%A9%2C%20s%27il%20vous%20pla%C3%AEt.mp3?Expires=1702000559&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=dMn3hAux%2BzSm0VHZlCLFrbIb3Y4517kUtwKif8OvZbMmTtn6puRvsw%2ByptyFtjSOldXmaYybEUsvPERKTHci97Hd2JZnIzwQYUpWoX6AVGYeFlo%2BVtdqN1aj8ZRSNbhi58mYeYpxWQXxybNhHffH8A%2Fdgbsj38JQ8TVLSUEhKhGKcOs1ctF0hXHffnKnHNUUf%2F0ppPK15lT2nyU0nZb2kBZCnuJvjcWsylDyWrzsmvd6JPlLnfDmCh452qKeFTCUfHjxr6puFRa0c27l5YJ2HTObSMHAltk7hwOM4c9jA6E%2FaOh1u0VZ8G0o7WsguEhYqjb4lizxwl2QVavpf%2F5ARw%3D%3D",
+            "points": 7
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Write 'Good morning' in French",
+            "text": "Bon matin",
+            "correctAnswer": "Bonjour",
+            "points": 10,
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Bon%20matin.mp3/Bon%20matin.mp3?Expires=1702000561&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=LTOUj6%2FLAccyC6ZyekLIcztyl%2BLHvwgoCndvrt%2FPgTrM6PTx89YAr2vxmRAqYs0o0PlVJ05mD9B%2FAeaDqzQYqNFCL6VqGAiaZqI8b%2BE6dSukk0PThkGl4phBsoh7nYmvNeF0DqRKc3a2OD8rk6MZ8Ie6Ut6GFfSN%2FlGP5olQMQh1wL0%2BHWncmievcgfT5BySeEt4ZV0d0TqGmO3ghTysrZq9qgKea%2FNYL50BpmJVqq4zOhmtIdXjbu2PinBazyvodJgP81J8ASd140t3rN6ydsKjVpZo6v6Bz%2B37UHNYindU%2BHKlnHCbvTthcE3xDKX6mGvsr4KsWMghQtd1MvCUBQ%3D%3D"
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Write 'See you later' in French",
+            "text": "Voir vous plus tard",
+            "correctAnswer": "\u00c0 plus tard",
+            "points": 10,
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Voir%20vous%20plus%20tard.mp3/Voir%20vous%20plus%20tard.mp3?Expires=1702000556&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=A8r9tg7G36wmnmXSKqCtgcSdeKWOyh1AlrKz%2Fz%2BOytCR1nl41qoRDzF3pLdVo4himqvNuKqddiX98zoV%2BpXz5LjsEiOsHyd3NCZ96JMgqeLkwSWiFUry7aAT40TneE34EIBoFnQBo9k%2FPh1AnwqKtNVMapS56M9ZuRx%2BIZ5HciEm1yEJRHcv%2Fg53ndQ5dOKjc6Pqrj0PBML9FO7JUpBqrI5Uy6Lo%2BKjGGGmxp4WvWlQIU2e3xvi7XpeR%2FXjNmu2os35KGC1YrymFCqLYj1btHbZZitYy8GmIolQFBtmQ73SePs2lxYsbHcPNF%2BK%2FNygxNoM9gJ13MADHx%2B%2BAHugLaA%3D%3D"
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate 'C'est un livre' into English",
+            "text": "C'est un livre",
+            "translation": "It is a book",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/C%27est%20un%20livre.mp3/C%27est%20un%20livre.mp3?Expires=1702000558&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=Le8K%2F8bCUWUbKaVEG%2FqtKIdnIk%2Bsz7rwMeBlgUvFtfrkKgNL17nMbpOB2N7%2FbtrpfdnlMuymGq7Kxv7BFyBVIRtyfJ31JdeQWEbaF3ouJPAC47R%2FBOtgOBU5h4uUuX%2Bn060QbzVh0xWLaYBi0kQNHalAhMKqQBcSZ3hWQb7pjP5nc55hEYh8OriHe%2B51%2Bclzkf8WTjUdxUVNIA59B1PMZasqxG2IajgxbJ%2FhNbiscG4Zu%2FFa4rj%2Bmvw7vIeIJoFnhkk3q0qHDys2hrHdq2ZigwDbqrGz1dHkI5R7RggvHcihiiH6lVpWCWShq61htArEOynODuNYNNkYXy3t%2F9NnUQ%3D%3D",
+            "points": 7
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate 'Je veux de l'eau' into English",
+            "text": "Je veux de l'eau",
+            "translation": "I want some water",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Je%20veux%20de%20l%27eau.mp3/Je%20veux%20de%20l%27eau.mp3?Expires=1702000558&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=Nbb9a7jXPQSSUO99G4eoRBAHG4%2F%2BSV7YiGdb0VcPSO%2BBJiXLt%2Budv4vTo%2FViBXs3tWr1nBgc%2BKlYOihwTrhjK4CZT%2FnpABuueOF3plFIdquWrF5%2FuK5DHi%2BPYGdJWvC9Al6iasBn0pm6Dc%2Bi%2FJSbYhpA9V0BQmiqKPV0nIvJE76cBG60AZNQPwO9hJcUy1w%2B4W6xngAffKAGvmHOcQeYkd1A4T%2BwnWH7bRgv%2FvznhlIFXBhq7vshiXVqGDp9bjHfiFDHTJWxGGAAefKHyijIWrXAu27kOarQvz%2BUEAhDhFwG4q5LAWHmnQrNLHBAn6uohc3FYYqq8DfDMTomSK8YFQ%3D%3D",
+            "points": 7
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate 'O\u00f9 est la gare?' into English",
+            "text": "O\u00f9 est la gare?",
+            "translation": "Where is the train station?",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/O%C3%B9%20est%20la%20gare%3F.mp3/O%C3%B9%20est%20la%20gare%3F.mp3?Expires=1702000556&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=A8v7f6U8kZ1Xr5W1P320TGB8iX4KpLJGnCFnMlgNRIglYTq5scsNypQKb5ap1UNA8jftbTsOKp6FQ6M2ODvg1XAApXaFv6Z7Ks1wVdLTe7rc3WmOydHhz9cOrxAwyVjN7YzoBgTSkw1iyt3JtNPHJnMCSC03WcYk5BGR6fD2AFrhFY2Rdc%2F5MFGH3LbCmsupPdykXVVI22qjS7ShxsrJAjdc1cY9tyrmZJ6eXjr1eqC260OtUMh8ZhuRrzXf4WYGNrVoQqWO%2FjklziSvhsAsGRziTxvaufdoU3yf%2FDM8NVCB9LahIRYBDHIbcGrucpdnlcNaeshZgq1AqE%2BRovwvxw%3D%3D",
+            "points": 7
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate 'Je ne comprends pas' into English",
+            "text": "Je ne comprends pas",
+            "translation": "I do not understand",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Je%20ne%20comprends%20pas.mp3/Je%20ne%20comprends%20pas.mp3?Expires=1702000560&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=LqeKstEA%2FQF3sMYebWS86iHJ41OOwzwNYvjLiazqDYqS26%2FAfwwGhOO6CCmjmGixQTA0zjYWbmq3SORoY4uDwdDA9ACvty1PLQMfAYU6ZJC7jUE%2FuQcDRuhHnpdbI0S50L70GqfbgmFjLgzjt0HgM9gX3Nzmb6OXCCHHCzM9l17AxIa7ozGUX5uZ%2BexDdYmdb5fHQhwbr8RkP5xJgp7wtbzwLIpL%2FQi8pYC%2BnlbRGz8HFbCAwXFWZq7XQ1V2b29spdlbQzIV15JAbSDVL3da83gUEPSiLUgduvDC8JKsxPEdZV5IAUAZQE1H4pQxjTiHuvXeImYdVFBBulD4ZSaZwQ%3D%3D",
+            "points": 7
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate 'Quelle heure est-il?' into English",
+            "text": "Quelle heure est-il?",
+            "translation": "What time is it?",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Quelle%20heure%20est-il%3F.mp3/Quelle%20heure%20est-il%3F.mp3?Expires=1702000563&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=YA3Q0SZarqA2JUN73lbHHPIDzzmK5DbIVQSNiwiSPDEwBbJKTsVdKzthxxjOFdNyFn7zDB2D%2BN%2BW5wKJ3ZweYHUNEGqGdOl4IrDb2BrV6ILuk6sh27ldzXn6XVvfOiTgqDaBM5Rq73wGcclezVJIXEJxEGkp%2B733Q6KOM3P2cnB9%2Fdbe2Ev4pjCezXLnej5PC5%2FANoYlFJWFtIj5UToruLFV7zvGDJtY3MijLVpQScxhQjuUWnltK7AjHK1TLe0YRPLKBQ1%2FS3T9jOJZfxCUdeEFxDiGwXyveipkAHDHil83Wsx5hcWrxdf1OsslOaxkChjxpZIOuL7Z9wUYc1B88w%3D%3D",
+            "points": 7
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate 'Nous aimons la musique' into English",
+            "text": "Nous aimons la musique",
+            "translation": "We like music",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Nous%20aimons%20la%20musique.mp3/Nous%20aimons%20la%20musique.mp3?Expires=1702000565&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=J1Skutnp1FqrpAuvR7CMxBmuhKcqD89zdP3D0NqxIZPG05jtFe4W3WuWKt1qZKSWVbwxzyQONCF8AeGiTTLmMnUYJRbXogcNJqZAViXxLd0222fF0wHJ2EdMX0TyBR3FGqKQT53Itud0zWSZKbBADkL3x73Cu%2F4GOW8zD5HvJ3%2Bh3ouP9vmfbiHEbBQqMXteRHenKLsKwxyQ%2BZy4RKQ5ICDzjNXZ%2FkKnwt6UpR873mnTFFSWSSDpoOmdM8kJlr1K0iYw6LkWEWcamydYb%2Fqbb0lzHiu%2F7NFc1zJFLpIcOVXN6bNUyH%2BjXs4%2BOO4W0bUAHpRulTP1dBPX9WgdlY954A%3D%3D",
+            "points": 7
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate 'Elle a un chat' into English",
+            "text": "Elle a un chat",
+            "translation": "She has a cat",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Elle%20a%20un%20chat.mp3/Elle%20a%20un%20chat.mp3?Expires=1702000560&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=bzuv7ilPXg1%2F1t%2F2R4WeH4eWrQo324ktfpaRMz6pDVqAahBtabFC8SqSewVOhIEOyghoZifTj2cH8BqVUxximjJaaqQgFDEuzE3ny0BrQ2KQ8lGIxEsNBmTTf0lF4Z13NG8hFRuwJxdC7yLmbsyB3fpUgW%2BCzt4ua6Ywz%2FJyDXNeQpwoZHaVee3lzKyFe0CW2k84PtEkL6EOfnToQ5BY7iCcepF%2FJUDwVpEuPSQrBtVN9Ruy1XqmUKB1ICyqvvPN4zzsCM8QnLq9fiqnBf38C0PnYgRE8joQKF9Xob3mW8TvDo%2B7sBz941WhLoY%2B9E4EAmUPjPnqSkg0m7gV8o84ow%3D%3D",
+            "points": 7
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate 'Le soleil est jaune' into English",
+            "text": "Le soleil est jaune",
+            "translation": "The sun is yellow",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Le%20soleil%20est%20jaune.mp3/Le%20soleil%20est%20jaune.mp3?Expires=1702000567&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=MyO3rDbFn%2FxhRdUy083imJAldps%2Bhi3TwK8MYjgbsZwBbv342GeucfTjX9p8GOVC9oT0n7rIZTlsxeUSUiGOhv1MUXIY1z2KcwuarTHsMKidmuJzW9QYeurMvj8oYIi7PPXyaf%2BSBJq2Ms2uQrZ5oQ%2FoSBVlHqutTjU74MIusbsJSj3xBLws%2Buz9Q%2BMlKrywTmLP%2BWOjs14Vfpwr8yo5mAi3P0p3hT3PjrZDCC0Was2SViec1qluC5HbdIzjDlkSVx%2FtkmbBMKozwnw%2BiI1GwF0l%2FPBnOC0kpKo%2FCVYClk3bc9m%2F9i%2FZ%2B5mlC1X%2BH42qv%2Fa1q64RGLZsmePyaVYHwQ%3D%3D",
+            "points": 7
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate 'J'ai deux fr\u00e8res' into English",
+            "text": "J'ai deux fr\u00e8res",
+            "translation": "I have two brothers",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/J%27ai%20deux%20fr%C3%A8res.mp3/J%27ai%20deux%20fr%C3%A8res.mp3?Expires=1702000568&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=gjj2dZ%2F9RyrpaaSHAeP%2FPBasGKSyzsiTfofC4W1VF8Vd%2B%2Bib0UnzgHUHhnNtk2uX5PgmtlO%2FKLo27P5OBXDT%2BouADSMj38ubmSoNcAH2NZRejzpUOZIyvYNUvRUUhVynhawTBOv4YvQvVV%2Bwb7xY%2B1x07hARZGj3CsQpD3T3X6Jlp%2BnSUMePVNSwtGID7Eeh20pTT9roiZn4c92QZEyEq0qSvv5UmY0I2IEt6msIHz8S6RJGQtXT0Ikq1twWxwWjZ2%2Fkh1Mh82nljQq%2Bp%2BV4y1inOoi2zVsvKSpcFNsisZa1IpXBf9H4mIvebNJhrx3AMjgvxYYhzDuu7wri6fksqA%3D%3D",
+            "points": 7
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate 'Elle parle anglais et fran\u00e7ais' into English",
+            "text": "Elle parle anglais et fran\u00e7ais",
+            "translation": "She speaks English and French",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lessons/French%20Beginner%20-%20First%20Lesson/Elle%20parle%20anglais%20et%20fran%C3%A7ais.mp3/Elle%20parle%20anglais%20et%20fran%C3%A7ais.mp3?Expires=1702000555&GoogleAccessId=firebase-adminsdk-h6lgl%40lang-learning-app-gpt.iam.gserviceaccount.com&Signature=heaPJFiW7s7EKj73AGVQxZXTLA9Y%2B9ysEwwNqEMcDVjQEQSBsoV%2BKDvpwIzlZqcaVvfduYijmOdQl%2FcjKiQlKOGUMvYQwfC%2BgIpDeDo%2Fi4NigPBYcXkRSqgt7gKwjl%2B89jWavjJdYjnnCHlMv0Ecq6njO%2BQ%2BB5GaN%2B2QbvLOiq78I2L92LIYiSNhWh8uN5Zb0eT2105zid4l8Pt3U33lOnS%2Fz3NwwaJxrJ0hIAJAkFB3p3SOvSgHRFXYQ7zjm%2F%2BSv9N9HWAIu01J4O5xdlzrPvTkFipMse5CFYVcxc4ZRQjF5v5r%2FvVn4%2F%2Bg1BTWknkN82BYT5mhxwDLJfUsNynvDw%3D%3D",
+            "points": 7
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Write 'I am happy' in French",
+            "text": "I am happy",
+            "correctAnswer": "Je suis heureux (masculine) / heureuse (feminine)",
+            "points": 10
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Write 'She eats an apple' in French",
+            "text": "She eats an apple",
+            "correctAnswer": "Elle mange une pomme",
+            "points": 10
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Write 'The sky is blue' in French",
+            "text": "The sky is blue",
+            "correctAnswer": "Le ciel est bleu",
+            "points": 10
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Write 'We are friends' in French",
+            "text": "We are friends",
+            "correctAnswer": "Nous sommes amis",
+            "points": 10
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Write 'I have a book' in French",
+            "text": "I have a book",
+            "correctAnswer": "J'ai un livre",
+            "points": 10
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Write 'Where is the hotel?' in French",
+            "text": "Where is the hotel?",
+            "correctAnswer": "O\u00f9 est l'h\u00f4tel?",
+            "points": 10
+        }
+    ]
+}
