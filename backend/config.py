@@ -1,10 +1,10 @@
 from openai import OpenAI
 from pathlib import Path
 from firebase_admin import credentials, firestore, initialize_app
-
+import os
 
 client = OpenAI(
-    api_key='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'
+    api_key=os.environ.get("OPENAI_SECERT"),
 
     # Defaults to os.environ.get("OPENAI_API_KEY")
     # Otherwise use: api_key="Your_API_Key",
