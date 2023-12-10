@@ -2,13 +2,19 @@ from openai import OpenAI
 from pathlib import Path
 from firebase_admin import credentials, firestore, initialize_app
 import os
+from dotenv import load_dotenv
+# Load .env file
+load_dotenv()
 
+
+# get secert key from .env
+client_secret = os.getenv("OPENAI_SECERT")
+
+print(client_secret)
 client = OpenAI(
-    api_key=os.environ.get("OPENAI_SECERT"),
-
-    # Defaults to os.environ.get("OPENAI_API_KEY")
-    # Otherwise use: api_key="Your_API_Key",
+    api_key=client_secret,
 )
+print(client.api_key)
 
 # Define the directory for audio files
 AUDIO_FILES_DIRECTORY = Path(__file__).parent / "audio_files"

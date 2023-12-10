@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, TouchableOpacity, ActivityIndicator } from "react-native";
-import { Animated } from "react-native";
+import {
+  StyleSheet,
+  TouchableOpacity,
+  ActivityIndicator,
+  Animated,
+} from "react-native";
 
 const RoundButton = ({
   icon,
@@ -15,31 +19,45 @@ const RoundButton = ({
   disabled,
   loading,
   pulse,
+  volume, // Default volume value if not provided
 }) => {
-  const buttonSize = size || 50; // Default size if not specified
-  const buttonColor = color || "#007bff"; // Default color if not specified
+  const buttonSize = size || 50;
+  const buttonColor = color || "#007bff";
   const [pulseAnim] = useState(new Animated.Value(1));
+  const [volumeAnim] = useState(new Animated.Value(1)); // New Animated.Value for volume
 
-  useEffect(() => {
-    if (pulse) {
-      Animated.loop(
-        Animated.sequence([
-          Animated.timing(pulseAnim, {
-            toValue: 1.2,
-            duration: 500,
-            useNativeDriver: true,
-          }),
-          Animated.timing(pulseAnim, {
-            toValue: 1,
-            duration: 500,
-            useNativeDriver: true,
-          }),
-        ])
-      ).start();
-    } else {
-      pulseAnim.setValue(1);
-    }
-  }, [pulse, pulseAnim]);
+  // useEffect(() => {
+  //   if (pulse) {
+  //     Animated.loop(
+  //       Animated.sequence([
+  //         Animated.timing(pulseAnim, {
+  //           toValue: 1.2,
+  //           duration: 500,
+  //           useNativeDriver: true,
+  //         }),
+  //         Animated.timing(pulseAnim, {
+  //           toValue: 1,
+  //           duration: 500,
+  //           useNativeDriver: true,
+  //         }),
+  //       ])
+  //     ).start();
+  //   } else {
+  //     pulseAnim.setValue(1);
+  //   }
+  // }, [pulse, pulseAnim]);
+
+  // useEffect(() => {
+  //   // Ensure volume is a number and within range
+  //   const validVolume =
+  //     !isNaN(volume) && volume >= 0 && volume <= 1 ? volume : 0;
+
+  //   Animated.timing(volumeAnim, {
+  //     toValue: 0.5 + 0.5 * validVolume, // This assumes volume is between 0 and 1
+  //     duration: 100,
+  //     useNativeDriver: true,
+  //   }).start();
+  // }, [volume, volumeAnim]);
 
   return (
     <TouchableOpacity
@@ -61,12 +79,21 @@ const RoundButton = ({
       ]}
     >
       <Animated.View
-        style={{
-          transform: [{ scale: pulseAnim }],
-        }}
-      >
-        {loading ? <ActivityIndicator size="small" color="white" /> : icon}
-      </Animated.View>
+        style={[
+          styles.volumeView,
+          {
+            width: volume > 0 ? volume * 30 : 0,
+            height: volume > 0 ? volume * 30 : 0,
+          },
+
+          // styles.volumeView,
+          // {
+          //   transform: [{ scale: volumeAnim }],
+          // },
+        ]}
+      />
+
+      {loading ? <ActivityIndicator size="small" color="white" /> : icon}
     </TouchableOpacity>
   );
 };
@@ -77,11 +104,15 @@ const styles = StyleSheet.create({
   button: {
     justifyContent: "center",
     alignItems: "center",
-    elevation: 2, // Shadow for Android
-    // shadowColor: "#000", // Shadow for iOS
-    // shadowOffset: { width: 0, height: 2 },
-    // shadowOpacity: 0.25,
-    // shadowRadius: 3.84,
+    elevation: 2,
     padding: 5,
+  },
+  volumeView: {
+    position: "absolute",
+    backgroundColor: "#FFFFFF",
+    width: "100%",
+    height: "100%",
+    borderRadius: 100,
+    opacity: 0.5,
   },
 });

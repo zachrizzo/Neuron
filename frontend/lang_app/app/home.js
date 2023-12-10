@@ -78,7 +78,7 @@ export default function App() {
   const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false);
   const [startingPrompt, setStartingPrompt] = useState(
-    mainChatPrompt(user.language)
+    mainChatPrompt(user?.language)
   );
   const [loadingUpdateMessage, setLoadingUpdateMessage] = useState(false);
 

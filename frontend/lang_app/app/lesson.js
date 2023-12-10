@@ -35,7 +35,7 @@ const Lesson = () => {
 
   const handleContinue = () => {
     // Notify the user
-    Alert.alert("Good Job!", "You have completed the exercise.");
+    // Alert.alert("Good Job!", "You have completed the exercise.");
 
     // Move to the next exercise or finish the lesson
     if (currentExerciseIndex < exercises.length - 1) {
@@ -63,6 +63,7 @@ const Lesson = () => {
           <SpeakingLesson
             text={exercises[currentExerciseIndex]?.text}
             translationText={exercises[currentExerciseIndex]?.translation}
+            audioUrl={exercises[currentExerciseIndex]?.audioFilePath}
           />
         )}
         {exercises[currentExerciseIndex]?.taskType == "Writing" && (
