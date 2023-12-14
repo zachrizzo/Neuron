@@ -93,16 +93,17 @@ export const addMessageWithVoiceReply = async (thread_id, message) => {
     console.error("Error in adding message with voice reply", error);
   }
 };
-
 export const addMessageWithVoiceReplyNoAssistant = async (messages) => {
   try {
+    console.log("Sending request with payload:", messages); // Log the request payload
     const response = await axios.post(
       `${API_URL}/add_message_with_voice_reply_no_assistant`,
       messages
     );
-    return response.data; // This will contain both the messages and audio URL
+    return response.data;
   } catch (error) {
     console.error("Error in adding message with voice reply", error);
+    console.log("Failed request payload:", messages); // Log the failed payload
   }
 };
 

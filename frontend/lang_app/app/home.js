@@ -92,6 +92,7 @@ export default function App() {
   //track user token usage
   //keep track of user message number
   //create a beta sign up key
+  //fix goodbye in french
 
   useEffect(() => {
     if (messages.length > 0) {

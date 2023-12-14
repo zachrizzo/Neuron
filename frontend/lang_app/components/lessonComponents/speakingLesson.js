@@ -14,7 +14,12 @@ import { PermissionsAndroid } from "react-native";
 import { playSpeech } from "../../helperFunctions/audioHelpers";
 import { TextInput } from "react-native-gesture-handler";
 
-const SpeakingLesson = ({ text, translationText, audioUrl }) => {
+const SpeakingLesson = ({
+  text,
+  translationText,
+  audioUrl,
+  setMissedQuestions,
+}) => {
   const [recording, setRecording] = useState(false);
   const user = useSelector(selectUser);
   const lang = user?.language;
@@ -25,6 +30,8 @@ const SpeakingLesson = ({ text, translationText, audioUrl }) => {
   const [isSoundLoading, setIsSoundLoading] = useState(false);
   const [lastSpokenText, setLastSpokenText] = useState("");
   const [isCorrect, setIsCorrect] = useState(false);
+  const [volumeHistory, setVolumeHistory] = useState([]);
+  const [fluencyScore, setFluencyScore] = useState(0);
 
   // Normalize text and remove punctuation
   const normalizeText = (inputText) => {
@@ -80,32 +87,51 @@ const SpeakingLesson = ({ text, translationText, audioUrl }) => {
     console.log("speech: ", cleanedSpeech);
     console.log("partialSpeech: ", cleanedPartialSpeech);
 
-    if (cleanedSpeech === cleanedText || cleanedPartialSpeech === cleanedText) {
+    if (
+      combinedSpeech.has(cleanedText) ||
+      cleanedSpeech === cleanedText ||
+      (cleanedPartialSpeech === cleanedText && fluencyScore < 1)
+    ) {
+      // User completed the task and got it correct
       setRecording(false);
       Voice.stop();
       setIsCorrect(true);
       console.log("Correct");
 
+      // Now use the volumeHistory to calculate fluency
+      const fluencyScore = calculateFluency(
+        recognizedSpeech,
+        partialRecognizedSpeech,
+        text,
+        volumeHistory
+      );
+      console.log(`Fluency Score: ${fluencyScore}`);
+
+      // Reset states
       setVolume(0);
+      setVolumeHistory([]);
+      if (fluencyScore) {
+        setFluencyScore(fluencyScore);
+      }
     }
   }, [recognizedSpeech, partialRecognizedSpeech, text]);
 
   useEffect(() => {
-    if (lastSpokenText !== text) {
-      setRecognizedSpeech("");
-      setPartialRecognizedSpeech("");
-      return async () => {
-        await playSpeech(
-          audioUrl,
-          null,
-          null,
-          null,
-          setPlayingSound,
-          setIsSoundLoading
-        );
-        setLastSpokenText(text);
-      };
-    }
+    // if (lastSpokenText !== text) {
+    setRecognizedSpeech("");
+    setPartialRecognizedSpeech("");
+    return async () => {
+      await playSpeech(
+        audioUrl,
+        null,
+        null,
+        null,
+        setPlayingSound,
+        setIsSoundLoading
+      );
+      setLastSpokenText(text);
+    };
+    // }
   }, [text]);
 
   useEffect(() => {
@@ -150,6 +176,50 @@ const SpeakingLesson = ({ text, translationText, audioUrl }) => {
 
   const onSpeechVolumeChanged = (e) => {
     setVolume(e.value);
+    setVolumeHistory((currentHistory) => [...currentHistory, e.value]);
+    console.log("onSpeechVolumeChanged: ", e);
+  };
+
+  const calculateFluency = (
+    recognizedSpeech,
+    partialRecognizedSpeech,
+    expectedText,
+    volumeHistory,
+    volumeThreshold = 1.5 // Define a suitable threshold for your volume data
+  ) => {
+    // Normalize and split texts into words
+    const normalize = (text) =>
+      text.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\_`~()?]/g, "");
+    const expectedWords = normalize(expectedText).split(" ");
+    const recognizedWords = normalize(recognizedSpeech || "").split(" ");
+    const partialWords = normalize(partialRecognizedSpeech || "").split(" ");
+
+    // Calculate word accuracy
+    const correctWords = recognizedWords.filter((word) =>
+      expectedWords.includes(word)
+    ).length;
+    const wordAccuracy = correctWords / expectedWords.length;
+
+    // Estimate pauses based on volume, starting after the first speech
+    let hasStartedSpeaking = false;
+    let pauses = 0;
+    let speakingMoments = 0;
+    volumeHistory.forEach((volume) => {
+      if (volume >= volumeThreshold) {
+        hasStartedSpeaking = true;
+        speakingMoments++;
+      } else if (hasStartedSpeaking) {
+        pauses++;
+      }
+    });
+
+    // Calculate speech continuity as the ratio of speaking moments to total moments
+    const speechContinuity = speakingMoments / (speakingMoments + pauses);
+    console.log(`Speech continuity: ${speechContinuity}`);
+    console.log(`Word accuracy: ${wordAccuracy}`);
+    // Combine metrics into a fluency score
+    const fluencyScore = (wordAccuracy + speechContinuity) / 2;
+    return fluencyScore;
   };
 
   const requestMicrophonePermission = async () => {
@@ -220,6 +290,7 @@ const SpeakingLesson = ({ text, translationText, audioUrl }) => {
           }}
         />
       )}
+      <Text style={{ color: "#FFFFFF", fontSize: 20 }}>{fluencyScore}</Text>
       <RoundButton
         icon={
           <MaterialCommunityIcons
@@ -246,6 +317,7 @@ const SpeakingLesson = ({ text, translationText, audioUrl }) => {
             setVolume(0);
             setRecognizedSpeech("");
             setPartialRecognizedSpeech("");
+            setFluencyScore(0);
           } else {
             try {
               await Voice.start("fr-FR");
