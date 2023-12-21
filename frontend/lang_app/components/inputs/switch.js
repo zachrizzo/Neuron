@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Switch as RNSwitch } from "react-native";
+import { colorsDark } from "../../utility/color";
 
 const SwitchComponent = ({ setIsEnabled, isEnabled }) => {
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   return (
     <RNSwitch
-      trackColor={{ false: "#767577", true: "#00FF73" }}
-      thumbColor={isEnabled ? "#FFFFFF" : "#000000"}
-      ios_backgroundColor="#A1A1A1"
+      trackColor={{ false: "#767577", true: colorsDark.brightGreen }}
+      thumbColor={isEnabled ? "#FFFFFF" : colorsDark.mainBackground}
+      ios_backgroundColor={colorsDark.accent}
       onValueChange={toggleSwitch}
       value={isEnabled}
     />

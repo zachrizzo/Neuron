@@ -2,6 +2,7 @@ import React from "react";
 import { Pressable, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 import { CheckMark } from "../icons/lineIcons";
+import { colorsDark } from "../../utility/color";
 
 export function CheckBox({ testID, setChecked, checked }) {
   return (
@@ -42,6 +43,6 @@ const styles = StyleSheet.create({
     borderRadius: 4, // 'rounded-md' in Tailwind
   },
   checked: {
-    backgroundColor: "#007AFF", // Replace with your main blue color
+    backgroundColor: colorsDark.blue, // Replace with your main blue color
   },
 });

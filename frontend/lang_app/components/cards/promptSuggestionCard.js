@@ -22,6 +22,7 @@ import {
 } from "../../redux/slices/userSlice";
 import LessonCard from "./lessonCard";
 import { getAllLessons } from "../../firebase/lessons/lesson";
+import { colorsDark } from "../../utility/color";
 
 const PromptSuggestionCard = ({
   startRecording,
@@ -45,8 +46,6 @@ const PromptSuggestionCard = ({
   useEffect(() => {
     getAllLessons(setLessons);
   }, []);
-
-
 
   useEffect(() => {
     // Check if conditions are met and the effect hasn't run yet
@@ -74,7 +73,7 @@ const PromptSuggestionCard = ({
 
   return (
     <View style={styles.card}>
-      <Text
+      {/* <Text
         style={{
           color: "#FFFFFFC4",
           marginVertical: 10,
@@ -83,7 +82,7 @@ const PromptSuggestionCard = ({
         }}
       >
         Lesson Plan
-      </Text>
+      </Text> */}
       <FlatList
         data={lessons}
         renderItem={({ item }) => {
@@ -147,8 +146,8 @@ export default PromptSuggestionCard;
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "#A3A3A34F", // backgroundColor: "#000000E7",
-    width: "60%",
+    // backgroundColor: colorsDark.mainBackground, // backgroundColor: "#000000E7",
+    width: "10a0%",
     borderRadius: 15,
     color: "#FFFFFF",
     marginBottom: 20,

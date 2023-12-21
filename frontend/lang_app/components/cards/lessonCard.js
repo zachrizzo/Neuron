@@ -14,6 +14,7 @@ import {
   setCurrentLesson,
 } from "../../redux/slices/userSlice";
 import { router } from "expo-router";
+import { colorsDark } from "../../utility/color";
 
 const LessonCard = ({
   lesson,
@@ -97,8 +98,8 @@ const LessonCard = ({
             size={80}
             strokeWidth={10}
             progress={70}
-            color={"#00FF33"}
-            backGroundColor={"#FFFFFF00"}
+            color={colorsDark.green}
+            backGroundColor={colorsDark.secondary}
             label={"Correct"}
             progressTextLeft={40}
             progressTextTop={75}
@@ -108,9 +109,9 @@ const LessonCard = ({
             size={80}
             strokeWidth={10}
             progress={10}
-            color={"#FF4124C6"}
+            color={colorsDark.red}
             label={"Mistakes"}
-            backGroundColor={"#FFFFFF00"}
+            backGroundColor={colorsDark.secondary}
             progressTextLeft={40}
             progressTextTop={75}
           />
@@ -125,8 +126,8 @@ const LessonCard = ({
           <HorizontalProgressBar
             progress={20}
             height={15}
-            backgroundColor="#8E8E8E"
-            progressColor="#FFFFFF"
+            backgroundColor={colorsDark.secondary}
+            progressColor={colorsDark.yellow}
             width={"80%"}
             margin={5}
             label={"Fluency"}
@@ -149,15 +150,15 @@ const styles = {
     marginBottom: 10,
   },
   promptCard: {
-    backgroundColor: "#A3A3A34F", // backgroundColor: "#000000E7",
+    backgroundColor: colorsDark.accent, // backgroundColor: "#000000E7",
     width: "60%",
     borderRadius: 15,
 
     color: "#FFFFFF",
     marginBottom: 20,
     marginHorizontal: 20,
-    width: 200,
-    padding: 10,
+    width: 220,
+    padding: 15,
     height: "90%",
   },
 };

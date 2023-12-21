@@ -59,6 +59,7 @@ import { playSpeech, stopPlaying } from "../helperFunctions/audioHelpers";
 import MessageModal from "../components/layout/messageModal";
 import { mainChatPrompt } from "../chats_config";
 import LoadingComponent from "../components/layout/loadingComponent";
+import { colorsDark } from "../utility/color";
 
 export default function App() {
   const [inputMessage, setInputMessage] = useState("");
@@ -81,6 +82,7 @@ export default function App() {
     mainChatPrompt(user?.language)
   );
   const [loadingUpdateMessage, setLoadingUpdateMessage] = useState(false);
+  const [isKeyBoardInFocus, setIsKeyBoardInFocus] = useState(false);
 
   ///////more fine tuning
   //fix first sound
@@ -93,6 +95,9 @@ export default function App() {
   //keep track of user message number
   //create a beta sign up key
   //fix goodbye in french
+
+  //in lessons add what the user wrote
+  //add different fonts
 
   useEffect(() => {
     if (messages.length > 0) {
@@ -226,7 +231,7 @@ export default function App() {
 
       const transcribedText = await transcribeAudio(
         formData,
-        selectLang(user.language)
+        selectLang(user?.language)
       );
       console.log("Transcribed text:", transcribedText);
       const userMessage = {
@@ -416,11 +421,19 @@ export default function App() {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={Platform.OS === "ios" ? 95 : 0} // Adjust the value here
+      keyboardVerticalOffset={
+        Platform.OS === "ios" ? (isKeyBoardInFocus ? 95 : 0) : 0
+      } // Adjust the value here
       style={{ flex: 1, justifyContent: "center", backgroundColor: "#ffffff" }}
     >
       <Stack.Screen
         options={{
+          headerStyle: {
+            backgroundColor:
+              showPromptPanel && !loading
+                ? colorsDark.mainBackground
+                : colorsDark.secondary,
+          },
           title: "Chat",
           headerBackVisible: false,
           headerLeft: () => {
@@ -474,7 +487,15 @@ export default function App() {
         }}
       />
       <View
-        style={[styles.container, { width: "100%", backgroundColor: "black" }]}
+        style={[
+          styles.container,
+          {
+            width: "100%",
+            backgroundColor: showPromptPanel
+              ? colorsDark.secondary
+              : colorsDark.mainBackground,
+          },
+        ]}
       >
         <StatusBar barStyle="light-content" />
         <MessageModal
@@ -483,7 +504,7 @@ export default function App() {
         />
 
         <View style={styles.messageContainer}>
-          {!loading && user.language ? (
+          {!loading && user?.language ? (
             showPromptPanel ? (
               <PromptSuggestionCard
                 loading={loading}
@@ -530,7 +551,9 @@ export default function App() {
             style={{
               flexDirection: "row",
               flex: 0.1,
-              backgroundColor: "#000000",
+              backgroundColor: showPromptPanel
+                ? colorsDark.secondary
+                : colorsDark.mainBackground,
               paddingTop: 10,
               paddingBottom: 10,
               justifyContent: "space-between",
@@ -545,7 +568,7 @@ export default function App() {
                 />
               }
               size={50}
-              color={recording ? "red" : "#007bff"}
+              color={recording ? "red" : colorsDark.blue}
               onPress={recording ? stopRecording : startRecording}
               disabled={loading}
             />
@@ -557,6 +580,9 @@ export default function App() {
               width={"60%"}
               height={50}
               borderRadius={25}
+              onFocus={() => {
+                setIsKeyBoardInFocus(true);
+              }}
             />
 
             <RoundButton
@@ -599,7 +625,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colorsDark.secondary,
     alignItems: "center",
     justifyContent: "center",
   },

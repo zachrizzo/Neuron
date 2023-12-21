@@ -21,6 +21,7 @@ import {
 } from "../../redux/slices/userSlice";
 import { playSpeech, stopPlaying } from "../../helperFunctions/audioHelpers";
 import MessageModal from "../layout/messageModal";
+import { colorsDark } from "../../utility/color";
 const MessageThread = ({
   messages,
   // setMessages,
@@ -157,7 +158,9 @@ const MessageThread = ({
                           name="thumbs-down"
                           size={20}
                           color={
-                            item.chatQuality == "bad" ? "#FF0000" : "#FFFFFFA3"
+                            item.chatQuality == "bad"
+                              ? colorsDark.red
+                              : "#FFFFFFA3"
                           }
                         />
                       }
@@ -179,7 +182,9 @@ const MessageThread = ({
                           name="thumbs-up"
                           size={20}
                           color={
-                            item.chatQuality == "good" ? "#00FF1A" : "#FFFFFFA3"
+                            item.chatQuality == "good"
+                              ? colorsDark.green
+                              : "#FFFFFFA3"
                           }
                         />
                       }
@@ -254,7 +259,7 @@ const styles = StyleSheet.create({
   },
   sentMessage: {
     alignSelf: "flex-end",
-    backgroundColor: "#007BFF",
+    backgroundColor: colorsDark.blue,
     borderRadius: 20,
     padding: 10,
     margin: 5,
@@ -262,7 +267,7 @@ const styles = StyleSheet.create({
   },
   receivedMessage: {
     alignSelf: "flex-start",
-    backgroundColor: "#FFFFFF68",
+    backgroundColor: colorsDark.accent,
     borderRadius: 20,
     padding: 10,
     margin: 5,

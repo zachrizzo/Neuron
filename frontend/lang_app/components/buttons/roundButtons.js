@@ -5,6 +5,7 @@ import {
   ActivityIndicator,
   Animated,
 } from "react-native";
+import { colorsDark } from "../../utility/color";
 
 const RoundButton = ({
   icon,
@@ -22,7 +23,7 @@ const RoundButton = ({
   volume, // Default volume value if not provided
 }) => {
   const buttonSize = size || 50;
-  const buttonColor = color || "#007bff";
+  const buttonColor = color || colorsDark.blue;
   const [pulseAnim] = useState(new Animated.Value(1));
   const [volumeAnim] = useState(new Animated.Value(1)); // New Animated.Value for volume
 

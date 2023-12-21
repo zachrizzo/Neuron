@@ -12,6 +12,7 @@ import { setUser, setUserLanguage } from "../redux/slices/userSlice";
 import { updateUser } from "../firebase/users/user";
 import { createPertainingData } from "../api/messaging/assistant";
 import SwitchWithLabel from "../components/inputs/switchWithLabel";
+import { colorsDark } from "../utility/color";
 
 const settings = () => {
   const [language, setLanguage] = useState([]);
@@ -120,7 +121,7 @@ export default settings;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000000E7",
+    backgroundColor: colorsDark.mainBackground,
     alignItems: "center",
     // justifyContent: "center",
   },

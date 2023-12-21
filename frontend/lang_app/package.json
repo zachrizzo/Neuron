@@ -1,6 +1,6 @@
 {
   "name": "lang_app",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start --dev-client",
@@ -38,7 +38,9 @@
     "redux": "^4.2.1",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
-    "expo-splash-screen": "~0.20.5"
+    "expo-splash-screen": "~0.20.5",
+    "expo-updates": "~0.18.18",
+    "@expo/config-plugins": "~7.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

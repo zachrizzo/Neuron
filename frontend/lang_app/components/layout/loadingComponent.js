@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
 import React from "react";
 import MorphingBall from "../morphingBall";
+import { colorsDark } from "../../utility/color";
 
 const LoadingComponent = ({ textUpdateState }) => {
   return (
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     zIndex: 0,
   },
   textBoxView: {
-    backgroundColor: "#757575A8",
+    backgroundColor: colorsDark.accentLowOpacity,
     fontSize: 20,
     justifyContent: "center",
     alignItems: "center",

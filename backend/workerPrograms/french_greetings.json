@@ -1,0 +1,223 @@
+{
+    "lessonTitle": "French Beginner - Greetings and Gender Distinction",
+    "skillLevel": "Beginner",
+    "focusArea": "Using basic phrases to greet people and understanding gender distinctions in nouns",
+    "totalTasks": 16,
+    "exercises": [
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Introduce yourself using a masculine form in French.",
+            "text": "Je suis un homme.",
+            "translation": "I am a man.",
+            "gender": "Masculine",
+            "audioFilePath": "path/to/je_suis_un_homme.mp3",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Introduce yourself using a feminine form in French.",
+            "text": "Je suis une femme.",
+            "translation": "I am a woman.",
+            "gender": "Feminine",
+            "audioFilePath": "path/to/je_suis_une_femme.mp3",
+            "points": 5
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the greeting and select the correct translation.",
+            "text": "Bonjour, comment allez-vous?",
+            "translation": "Good morning, how are you?",
+            "gender": "N/A",
+            "audioFilePath": "path/to/bonjour_comment_allez_vous.mp3",
+            "points": 5
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Identify if the speaker is using a masculine or feminine form.",
+            "text": "Je suis étudiant / Je suis étudiante.",
+            "translation": "I am a student (male/female).",
+            "gender": "Masculine / Feminine",
+            "audioFilePath": "path/to/je_suis_etudiant_etudiante.mp3",
+            "points": 5
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Write 'He is a student' in French.",
+            "text": "He is a student",
+            "gender": "Masculine",
+            "correctAnswer": "Il est étudiant",
+            "points": 10
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Write 'She is a student' in French.",
+            "text": "She is a student",
+            "gender": "Feminine",
+            "correctAnswer": "Elle est étudiante",
+            "points": 10
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate 'Il est actif' (He is active - masculine) into English.",
+            "text": "Il est actif",
+            "gender": "Masculine",
+            "translation": "He is active",
+            "audioFilePath": "path/to/il_est_actif.mp3",
+            "points": 7
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate 'Elle est active' (She is active - feminine) into English.",
+            "text": "Elle est active",
+            "gender": "Feminine",
+            "translation": "She is active",
+            "audioFilePath": "path/to/elle_est_active.mp3",
+            "points": 7
+        },
+        {
+            "taskType": "Grammar",
+            "taskDescription": "Understand the use of indefinite articles in French for masculine and feminine nouns.",
+            "text": "un garçon (a boy), une fille (a girl)",
+            "gender": "Masculine / Feminine",
+            "translation": "a boy / a girl",
+            "audioFilePath": "path/to/indefinite_articles.mp3",
+            "points": 7
+        },
+        {
+            "taskType": "Grammar",
+            "taskDescription": "Learn the masculine and feminine forms of 'a friend' in French.",
+            "text": "un ami (a male friend), une amie (a female friend)",
+            "gender": "Masculine / Feminine",
+            "translation": "a male friend / a female friend",
+            "audioFilePath": "path/to/ami_amie.mp3",
+            "points": 7
+        },
+        {
+            "taskType": "Culture",
+            "taskDescription": "Understand the importance of gender in French occupations.",
+            "text": "un professeur (a male teacher), une professeure (a female teacher)",
+            "gender": "Masculine / Feminine",
+            "translation": "a male teacher / a female teacher",
+            "audioFilePath": "path/to/professeur_professeure.mp3",
+            "points": 5
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to a conversation and determine whether the speakers use formal or informal language.",
+            "text": "Dialogue between two speakers using 'tu' and 'vous'.",
+            "translation": "Dialogue using informal and formal 'you'.",
+            "gender": "N/A",
+            "audioFilePath": "path/to/dialogue_tu_vous.mp3",
+            "points": 7
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to a series of phrases and identify whether they are masculine or feminine.",
+            "text": "A series of nouns with 'un' or 'une'.",
+            "translation": "A series of nouns with 'a' (masculine) or 'an' (feminine).",
+            "gender": "Masculine / Feminine",
+            "audioFilePath": "path/to/series_of_nouns.mp3",
+            "points": 7
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask for someone's name using the formal 'you' in French.",
+            "text": "Comment vous appelez-vous?",
+            "translation": "What is your name? (formal)",
+            "gender": "N/A",
+            "audioFilePath": "path/to/comment_vous_appelez_vous.mp3",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Express a polite request for water in French.",
+            "text": "Pourrais-je avoir de l'eau, s'il vous plaît?",
+            "translation": "Could I have some water, please?",
+            "gender": "N/A",
+            "audioFilePath": "path/to/pourrais_je_avoir_de_leau.mp3",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "State that you are learning French and ask for patience.",
+            "text": "J'apprends le français, soyez patient s'il vous plaît.",
+            "translation": "I am learning French, please be patient.",
+            "gender": "N/A",
+            "audioFilePath": "path/to/japprends_le_francais.mp3",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Express understanding in French.",
+            "text": "Je comprends.",
+            "translation": "I understand.",
+            "gender": "N/A",
+            "audioFilePath": "path/to/je_comprends.mp3",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Politely ask where the bathroom is in French.",
+            "text": "Où sont les toilettes, s'il vous plaît?",
+            "translation": "Where is the bathroom, please?",
+            "gender": "N/A",
+            "audioFilePath": "path/to/ou_sont_les_toilettes.mp3",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask for directions to the train station in French.",
+            "text": "Comment aller à la gare, s'il vous plaît?",
+            "translation": "How do I get to the train station, please?",
+            "gender": "N/A",
+            "audioFilePath": "path/to/comment_aller_a_la_gare.mp3",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Inquire if someone speaks English.",
+            "text": "Parlez-vous anglais?",
+            "translation": "Do you speak English?",
+            "gender": "N/A",
+            "audioFilePath": "path/to/parlez_vous_anglais.mp3",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Offer a greeting suitable for the evening.",
+            "text": "Bonsoir, comment ça va?",
+            "translation": "Good evening, how are you?",
+            "gender": "N/A",
+            "audioFilePath": "path/to/bonsoir_comment_ca_va.mp3",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Express gratitude and wish someone a good day.",
+            "text": "Merci beaucoup, passez une bonne journée.",
+            "translation": "Thank you very much, have a good day.",
+            "gender": "N/A",
+            "audioFilePath": "path/to/merci_beaucoup_bonne_journee.mp3",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask a friend if they are coming with you.",
+            "text": "Tu viens avec moi?",
+            "translation": "Are you coming with me?",
+            "gender": "N/A",
+            "audioFilePath": "path/to/tu_viens_avec_moi.mp3",
+            "points": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say goodbye informally in French.",
+            "text": "Salut, à bientôt!",
+            "translation": "Bye, see you soon!",
+            "gender": "N/A",
+            "audioFilePath": "path/to/salut_a_bientot.mp3",
+            "points": 5
+        }
+
+    ]
+}

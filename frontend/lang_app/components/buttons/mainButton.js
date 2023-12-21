@@ -6,6 +6,7 @@ import {
   View,
   ActivityIndicator,
 } from "react-native";
+import { colorsDark } from "../../utility/color";
 
 const MainButton = ({
   onPress,
@@ -19,6 +20,7 @@ const MainButton = ({
   shadow,
   borderRadius,
   disabled,
+  backgroundColor,
 }) => {
   return (
     <TouchableOpacity
@@ -31,6 +33,12 @@ const MainButton = ({
           marginHorizontal: marginHorizontal,
           marginBottom: marginBottom,
           marginTop: marginTop,
+          backgroundColor: disabled
+            ? "#797878E5"
+            : backgroundColor
+            ? backgroundColor
+            : // : "#007bff",
+              colorsDark.blue,
         },
         shadow && {
           shadowColor: "#00000090",
@@ -55,7 +63,6 @@ export default MainButton;
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#007bff", // A nice shade of blue
     padding: 15,
     alignItems: "center",
     justifyContent: "center",

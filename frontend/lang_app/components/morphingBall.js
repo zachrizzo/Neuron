@@ -7,6 +7,7 @@ import {
   withTiming,
   useAnimatedReaction,
 } from "react-native-reanimated";
+import { colorsDark } from "../utility/color";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -148,7 +149,7 @@ const MorphingBall = () => {
     <Canvas
       style={{
         width: width,
-        backgroundColor: "#000000",
+        backgroundColor: colorsDark.mainBackground,
         height: height,
         zIndex: 0,
       }}

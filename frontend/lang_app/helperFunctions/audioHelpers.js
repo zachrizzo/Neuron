@@ -2,10 +2,10 @@ import { Audio } from "expo-av";
 
 export const playSpeech = async (
   audioUrl,
-  index,
-  playingMessageIndex,
-  setPlayingMessageIndex,
-  setPlayingSound,
+  index = null,
+  playingMessageIndex = null,
+  setPlayingMessageIndex = null,
+  setPlayingSound = null,
   setIsSoundLoading
 ) => {
   setIsSoundLoading(true);
@@ -16,13 +16,19 @@ export const playSpeech = async (
       playsInSilentModeIOS: true,
     });
 
-    const { sound } = await Audio.Sound.createAsync({ uri: audioUrl });
-    setPlayingSound(sound);
-    // setPlayingMessageIndex(index);
+    const { sound } = await Audio.Sound.createAsync(
+      { uri: audioUrl },
+      { shouldPlay: true }
+    );
 
-    sound.setProgressUpdateIntervalAsync(100);
+    if (!sound) {
+      throw new Error("Failed to create sound object");
+    }
 
-    // Set the playback status update listener
+    if (setPlayingSound) {
+      setPlayingSound(sound);
+    }
+
     sound.setOnPlaybackStatusUpdate((playbackStatus) => {
       if (playbackStatus.didJustFinish) {
         console.log("Finished playing");
@@ -31,31 +37,31 @@ export const playSpeech = async (
     });
 
     setIsSoundLoading(false);
-
     await sound.playAsync();
   } catch (error) {
     console.error("Error playing speech", error);
     setIsSoundLoading(false);
-    stopPlaying(setPlayingSound, setPlayingMessageIndex);
+    if (setPlayingSound && typeof setPlayingSound === "function") {
+      setPlayingSound(null);
+    }
   }
 };
 
 export const stopPlaying = async (
   playingSound,
   setPlayingSound,
-  setPlayingMessageIndex
+  setPlayingMessageIndex = null
 ) => {
   if (playingSound) {
     await playingSound.unloadAsync();
-    setPlayingSound(null);
-    setPlayingMessageIndex(null);
-  } else {
-    setPlayingSound((sound) => {
-      if (sound) {
-        sound.unloadAsync();
-      }
-      return null;
-    });
-    setPlayingMessageIndex(null);
+    if (setPlayingSound != null && typeof setPlayingSound === "function") {
+      setPlayingSound(null);
+    }
+    if (
+      setPlayingMessageIndex != null &&
+      typeof setPlayingMessageIndex === "function"
+    ) {
+      setPlayingMessageIndex(null);
+    }
   }
 };
