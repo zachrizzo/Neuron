@@ -97,7 +97,7 @@ const Lesson = () => {
         options={{
           title: currentLesson?.lessonTitle.split(" ").slice(0, 2).join(" "),
           headerRight: () => (
-            <LifeIndicator currentLives={livesLeft} totalLives={10} />
+            <LifseIndicator currentLives={livesLeft} totalLives={10} />
           ),
         }}
       />

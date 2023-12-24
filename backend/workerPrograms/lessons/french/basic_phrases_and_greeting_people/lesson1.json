@@ -1,0 +1,2440 @@
+{
+    "lessonTitle": "French Beginner",
+    "skillLevel": "Beginner",
+    "focusArea": "Basic Greetings and Common Phrases",
+    "totalTasks": 35,
+    "exercises": [
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Greet someone in French.",
+            "text": "Bonjour",
+            "translation": "Hello/ Good Morning",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 1
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Introduce yourself in French.",
+            "text": "Je m'appelle Xavier.",
+            "translation": "My name is Xavier.",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 2
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask how someone is doing in French.",
+            "text": "Comment ça va?",
+            "translation": "How are you?",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 3
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Respond to 'Comment ça va?' in French.",
+            "text": "Ça va bien, merci.",
+            "translation": "I'm fine, thank you.",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 4
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'Please' in French.",
+            "text": "S'il vous plaît",
+            "translation": "Please",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 5
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Thank someone in French.",
+            "text": "Merci",
+            "translation": "Thank you",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 6
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'Goodbye' in French.",
+            "text": "Au revoir",
+            "translation": "Goodbye",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 7
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask for someone's name in a casual setting in French.",
+            "text": "Comment tu t'appelles?",
+            "translation": "What's your name? (informal)",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 8
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Express that you don't understand in French.",
+            "text": "Je ne comprends pas",
+            "translation": "I don't understand",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 9
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask 'Where is the bathroom?' in French.",
+            "text": "Où sont les toilettes?",
+            "translation": "Where is the bathroom?",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 10
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'Yes' in French.",
+            "text": "Oui",
+            "translation": "Yes",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 11
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'No' in French.",
+            "text": "Non",
+            "translation": "No",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 12
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask 'Can you help me?' in French.",
+            "text": "Pouvez-vous m'aider?",
+            "translation": "Can you help me?",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 13
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'I like it' in French.",
+            "text": "Ça me plaît",
+            "translation": "I like it",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 14
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask 'Where are you from?' in French.",
+            "text": "D'où venez-vous?",
+            "translation": "Where are you from? (formal)",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 15
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'I am from [your country]' in French.",
+            "text": "Je viens de France",
+            "translation": "I am from France",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 16
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Express confusion politely in French.",
+            "text": "Excusez-moi, je suis perdu(e)",
+            "translation": "Excuse me, I am lost",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 17
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'I don't speak French very well' in French.",
+            "text": "Je ne parle pas très bien français",
+            "translation": "I don't speak French very well",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 18
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask 'What time is it?' in French.",
+            "text": "Quelle heure est-il?",
+            "translation": "What time is it?",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 19
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'I would like a coffee' in French.",
+            "text": "Je voudrais un café",
+            "translation": "I would like a coffee",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 20
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask 'Do you speak English?' in French.",
+            "text": "Parlez-vous anglais?",
+            "translation": "Do you speak English?",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 21
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'I'm learning French' in French.",
+            "text": "J'apprends le français",
+            "translation": "I'm learning French",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 22
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask 'Where is the train station?' in French.",
+            "text": "Où est la gare?",
+            "translation": "Where is the train station?",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 23
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'I'm sorry' in French.",
+            "text": "Je suis désolé(e)",
+            "translation": "I'm sorry",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 24
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask 'Can I have the menu, please?' in French.",
+            "text": "Puis-je avoir le menu, s'il vous plaît?",
+            "translation": "Can I have the menu, please?",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 25
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'I don't know' in French.",
+            "text": "Je ne sais pas",
+            "translation": "I don't know",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 26
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'It's nice to meet you' in French.",
+            "text": "Enchanté(e) de vous rencontrer",
+            "translation": "It's nice to meet you",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 27
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask 'Can you repeat that, please?' in French.",
+            "text": "Pouvez-vous répéter ça, s'il vous plaît?",
+            "translation": "Can you repeat that, please?",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 28
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'I'm hungry' in French.",
+            "text": "J'ai faim",
+            "translation": "I'm hungry",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 29
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'I'm thirsty' in French.",
+            "text": "J'ai soif",
+            "translation": "I'm thirsty",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 30
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Express enjoyment in French by saying 'I'm having a good time.'",
+            "text": "Je passe un bon moment",
+            "translation": "I'm having a good time",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 31
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask 'How much does it cost?' in French.",
+            "text": "Combien ça coûte?",
+            "translation": "How much does it cost?",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 32
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'I'm lost' in French.",
+            "text": "Je suis perdu(e)",
+            "translation": "I'm lost",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 33
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask for directions to the hotel in French.",
+            "text": "Pourriez-vous m'indiquer le chemin vers l'hôtel?",
+            "translation": "Could you direct me to the hotel?",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 34
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Express liking for something in French by saying 'I like this.'",
+            "text": "J'aime ça",
+            "translation": "I like this",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 35
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'I need help' in French.",
+            "text": "J'ai besoin d'aide",
+            "translation": "I need help",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 36
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask 'Where can I find a taxi?' in French.",
+            "text": "Où puis-je trouver un taxi?",
+            "translation": "Where can I find a taxi?",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 37
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'Excuse me' to get someone's attention in French.",
+            "text": "Excusez-moi",
+            "translation": "Excuse me",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 38
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Express understanding in French by saying 'I understand.'",
+            "text": "Je comprends",
+            "translation": "I understand",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 39
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'See you tomorrow' in French.",
+            "text": "À demain",
+            "translation": "See you tomorrow",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 40
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Express gratitude by saying 'Thank you very much' in French.",
+            "text": "Merci beaucoup",
+            "translation": "Thank you very much",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 41
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask someone if they can speak slower in French.",
+            "text": "Pouvez-vous parler plus lentement?",
+            "translation": "Can you speak more slowly?",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 42
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'I would like to order' when at a restaurant in French.",
+            "text": "Je voudrais commander",
+            "translation": "I would like to order",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 43
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask 'Where is the nearest ATM?' in French.",
+            "text": "Où est le distributeur automatique le plus proche?",
+            "translation": "Where is the nearest ATM?",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 44
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'I'm allergic to peanuts' in French.",
+            "text": "Je suis allergique aux arachides",
+            "translation": "I'm allergic to peanuts",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 45
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask 'Can I get a glass of water?' in French.",
+            "text": "Puis-je avoir un verre d'eau?",
+            "translation": "Can I get a glass of water?",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 46
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Express that you are tired by saying 'I'm tired' in French.",
+            "text": "Je suis fatigué(e)",
+            "translation": "I'm tired",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 47
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'I'm looking for my friend' in French.",
+            "text": "Je cherche mon ami(e)",
+            "translation": "I'm looking for my friend",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 48
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Ask 'Is this the right way to the museum?' in French.",
+            "text": "Est-ce le bon chemin pour aller au musée?",
+            "translation": "Is this the right way to the museum?",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 49
+        },
+        {
+            "taskType": "Speaking",
+            "taskDescription": "Say 'It's cold today' to comment on the weather in French.",
+            "text": "Il fait froid aujourd'hui",
+            "translation": "It's cold today",
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 50
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the audio and select the correct English translation for the French greeting.",
+            "text": "Bonjour!",
+            "translation": "Hello!",
+            "options": {
+                "French": [
+                    "Bonjour",
+                    "Bonsoir",
+                    "Merci",
+                    "Au revoir"
+                ],
+                "English": [
+                    "Hello",
+                    "Good evening",
+                    "Thank you",
+                    "Goodbye"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 51
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the audio and choose the correct English translation for this common French phrase.",
+            "text": "Comment ça va?",
+            "translation": "How are you?",
+            "options": {
+                "French": [
+                    "Comment ça va",
+                    "Je vais bien",
+                    "Quoi de neuf",
+                    "Bonne journée"
+                ],
+                "English": [
+                    "How are you",
+                    "I am fine",
+                    "What's up",
+                    "Have a good day"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 52
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the phrase and match it with the correct English translation.",
+            "text": "Merci beaucoup!",
+            "translation": "Thank you very much!",
+            "options": {
+                "French": [
+                    "Merci",
+                    "Beaucoup",
+                    "Merci beaucoup",
+                    "De rien"
+                ],
+                "English": [
+                    "Thank you",
+                    "A lot",
+                    "Thank you very much",
+                    "You're welcome"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 53
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the audio and identify the correct English translation for this French farewell.",
+            "text": "Au revoir!",
+            "translation": "Goodbye!",
+            "options": {
+                "French": [
+                    "Bonjour",
+                    "Au revoir",
+                    "Bonsoir",
+                    "Salut"
+                ],
+                "English": [
+                    "Hello",
+                    "Goodbye",
+                    "Good evening",
+                    "Hi"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 54
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the greeting and select the correct English translation.",
+            "text": "Salut!",
+            "translation": "Hi!",
+            "options": {
+                "French": [
+                    "Salut",
+                    "Bonjour",
+                    "Bonsoir",
+                    "Merci"
+                ],
+                "English": [
+                    "Hi",
+                    "Hello",
+                    "Good evening",
+                    "Thank you"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 55
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the audio and choose the correct English translation for this polite French phrase.",
+            "text": "S'il vous plaît.",
+            "translation": "Please.",
+            "options": {
+                "French": [
+                    "S'il vous plaît",
+                    "Merci",
+                    "Excusez-moi",
+                    "De rien"
+                ],
+                "English": [
+                    "Please",
+                    "Thank you",
+                    "Excuse me",
+                    "You're welcome"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 56
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the audio and identify the correct English equivalent of this French phrase.",
+            "text": "Je m'appelle...",
+            "translation": "My name is...",
+            "options": {
+                "French": [
+                    "Je suis",
+                    "Je m'appelle",
+                    "J'ai",
+                    "Il y a"
+                ],
+                "English": [
+                    "I am",
+                    "My name is",
+                    "I have",
+                    "There is"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 57
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the phrase and match it with its English translation.",
+            "text": "Excusez-moi.",
+            "translation": "Excuse me.",
+            "options": {
+                "French": [
+                    "Excusez-moi",
+                    "S'il vous plaît",
+                    "Merci",
+                    "Au revoir"
+                ],
+                "English": [
+                    "Excuse me",
+                    "Please",
+                    "Thank you",
+                    "Goodbye"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 58
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the audio and choose the correct English translation for this polite phrase.",
+            "text": "De rien.",
+            "translation": "You're welcome.",
+            "options": {
+                "French": [
+                    "Merci",
+                    "De rien",
+                    "S'il vous plaît",
+                    "Excusez-moi"
+                ],
+                "English": [
+                    "Thank you",
+                    "You're welcome",
+                    "Please",
+                    "Excuse me"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 59
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the audio and select the correct English translation for this French phrase.",
+            "text": "Ça va?",
+            "translation": "Are you okay?",
+            "options": {
+                "French": [
+                    "Ça va",
+                    "Comment ça va",
+                    "Je vais bien",
+                    "Merci"
+                ],
+                "English": [
+                    "Are you okay",
+                    "How are you",
+                    "I am fine",
+                    "Thank you"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 60
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the audio and select the correct English translation for the French question.",
+            "text": "Où est la salle de bain?",
+            "translation": "Where is the bathroom?",
+            "options": {
+                "French": [
+                    "Où est la salle de bain",
+                    "Quelle heure est-il",
+                    "Combien ça coûte",
+                    "Pouvez-vous m'aider"
+                ],
+                "English": [
+                    "Where is the bathroom",
+                    "What time is it",
+                    "How much does it cost",
+                    "Can you help me"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 61
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the audio and choose the correct English translation for this French inquiry.",
+            "text": "Quelle heure est-il?",
+            "translation": "What time is it?",
+            "options": {
+                "French": [
+                    "Quelle heure est-il",
+                    "Où est la salle de bain",
+                    "Je suis perdu",
+                    "J'ai faim"
+                ],
+                "English": [
+                    "What time is it",
+                    "Where is the bathroom",
+                    "I am lost",
+                    "I am hungry"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 62
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the phrase and match it with the correct English translation.",
+            "text": "Je suis perdu.",
+            "translation": "I am lost.",
+            "options": {
+                "French": [
+                    "Je suis perdu",
+                    "J'ai faim",
+                    "Je suis fatigué",
+                    "Je suis désolé"
+                ],
+                "English": [
+                    "I am lost",
+                    "I am hungry",
+                    "I am tired",
+                    "I am sorry"
+                ]
+            },
+            "gender": "Masculine",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 63
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the audio and identify the correct English translation for this French phrase.",
+            "text": "Je suis désolé.",
+            "translation": "I am sorry.",
+            "options": {
+                "French": [
+                    "Je suis désolé",
+                    "Je vous en prie",
+                    "J'ai faim",
+                    "Je suis fatigué"
+                ],
+                "English": [
+                    "I am sorry",
+                    "You're welcome",
+                    "I am hungry",
+                    "I am tired"
+                ]
+            },
+            "gender": "Masculine",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 64
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the audio and choose the correct English translation for this French phrase.",
+            "text": "J'ai faim.",
+            "translation": "I am hungry.",
+            "options": {
+                "French": [
+                    "J'ai faim",
+                    "J'ai soif",
+                    "Je suis fatigué",
+                    "Je suis perdu"
+                ],
+                "English": [
+                    "I am hungry",
+                    "I am thirsty",
+                    "I am tired",
+                    "I am lost"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 65
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the phrase and match it with its English translation.",
+            "text": "J'ai soif.",
+            "translation": "I am thirsty.",
+            "options": {
+                "French": [
+                    "J'ai soif",
+                    "J'ai faim",
+                    "Je suis fatigué",
+                    "Je suis perdu"
+                ],
+                "English": [
+                    "I am thirsty",
+                    "I am hungry",
+                    "I am tired",
+                    "I am lost"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 66
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the audio and identify the correct English equivalent of this French phrase.",
+            "text": "Je suis fatigué.",
+            "translation": "I am tired.",
+            "options": {
+                "French": [
+                    "Je suis fatigué",
+                    "Je suis perdu",
+                    "J'ai faim",
+                    "J'ai soif"
+                ],
+                "English": [
+                    "I am tired",
+                    "I am lost",
+                    "I am hungry",
+                    "I am thirsty"
+                ]
+            },
+            "gender": "Masculine",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 67
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the audio and choose the correct English translation for this French question.",
+            "text": "Parlez-vous anglais?",
+            "translation": "Do you speak English?",
+            "options": {
+                "French": [
+                    "Parlez-vous anglais",
+                    "Où est la salle de bain",
+                    "Quelle heure est-il",
+                    "Je suis perdu"
+                ],
+                "English": [
+                    "Do you speak English",
+                    "Where is the bathroom",
+                    "What time is it",
+                    "I am lost"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 68
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the phrase and match it with its English translation.",
+            "text": "Combien ça coûte?",
+            "translation": "How much does it cost?",
+            "options": {
+                "French": [
+                    "Combien ça coûte",
+                    "Quelle heure est-il",
+                    "Où est la salle de bain",
+                    "Je suis perdu"
+                ],
+                "English": [
+                    "How much does it cost",
+                    "What time is it",
+                    "Where is the bathroom",
+                    "I am lost"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 69
+        },
+        {
+            "taskType": "Listening",
+            "taskDescription": "Listen to the audio and select the correct English translation for this French phrase.",
+            "text": "Pouvez-vous m'aider?",
+            "translation": "Can you help me?",
+            "options": {
+                "French": [
+                    "Pouvez-vous m'aider",
+                    "Je suis perdu",
+                    "Quelle heure est-il",
+                    "J'ai faim"
+                ],
+                "English": [
+                    "Can you help me",
+                    "I am lost",
+                    "What time is it",
+                    "I am hungry"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "points": 5,
+            "exerciseID": 70
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate the French greeting into English.",
+            "text": "Bonjour, comment ça va?",
+            "translation": "Hello, how are you?",
+            "translationOptions": {
+                "French": [
+                    "Bonjour",
+                    "comment",
+                    "ça",
+                    "va",
+                    "au",
+                    "revoir",
+                    "merci"
+                ],
+                "English": [
+                    "Hello",
+                    "how",
+                    "are",
+                    "you",
+                    "goodbye",
+                    "thanks"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 71
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Match the French phrase with its English equivalent.",
+            "text": "Au revoir!",
+            "translation": "Goodbye!",
+            "translationOptions": {
+                "French": [
+                    "Au",
+                    "revoir",
+                    "Bonjour",
+                    "Merci"
+                ],
+                "English": [
+                    "Goodbye",
+                    "Hello",
+                    "Thank",
+                    "you"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 72
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Select the correct English translation for the French sentence.",
+            "text": "Je m'appelle Marie.",
+            "translation": "My name is Marie.",
+            "translationOptions": {
+                "French": [
+                    "Je",
+                    "m'appelle",
+                    "Marie",
+                    "Pierre",
+                    "Le",
+                    "chat"
+                ],
+                "English": [
+                    "My",
+                    "name",
+                    "is",
+                    "Marie",
+                    "Peter",
+                    "The",
+                    "cat"
+                ]
+            },
+            "gender": "Feminine",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 73
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Choose the English words that best translate the French phrase.",
+            "text": "Merci beaucoup!",
+            "translation": "Thank you very much!",
+            "translationOptions": {
+                "French": [
+                    "Merci",
+                    "beaucoup",
+                    "Bonjour",
+                    "Au",
+                    "revoir"
+                ],
+                "English": [
+                    "Thank",
+                    "you",
+                    "very",
+                    "much",
+                    "Hello",
+                    "Goodbye"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 74
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Identify the correct English translation for this French sentence.",
+            "text": "Comment vous appelez-vous?",
+            "translation": "What is your name?",
+            "translationOptions": {
+                "French": [
+                    "Comment",
+                    "vous",
+                    "appelez-vous",
+                    "Merci",
+                    "Bonjour"
+                ],
+                "English": [
+                    "What",
+                    "is",
+                    "your",
+                    "name",
+                    "Thank",
+                    "Hello"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 75
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Choose the English translation of the French greeting.",
+            "text": "Salut, ça va?",
+            "translation": "Hi, how are you?",
+            "translationOptions": {
+                "French": [
+                    "Salut",
+                    "ça",
+                    "va",
+                    "Bonjour",
+                    "Merci"
+                ],
+                "English": [
+                    "Hi",
+                    "how",
+                    "are",
+                    "you",
+                    "Hello",
+                    "Thank",
+                    "you"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 76
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Match the French farewell with its English equivalent.",
+            "text": "Bonne nuit!",
+            "translation": "Good night!",
+            "translationOptions": {
+                "French": [
+                    "Bonne",
+                    "nuit",
+                    "Jour",
+                    "Merci"
+                ],
+                "English": [
+                    "Good",
+                    "night",
+                    "Day",
+                    "Thank",
+                    "you"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 77
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Find the correct English translation for the French sentence.",
+            "text": "Enchanté de vous rencontrer.",
+            "translation": "Pleased to meet you.",
+            "translationOptions": {
+                "French": [
+                    "Enchanté",
+                    "de",
+                    "vous",
+                    "rencontrer",
+                    "Bonjour"
+                ],
+                "English": [
+                    "Pleased",
+                    "to",
+                    "meet",
+                    "you",
+                    "Hello"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 78
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate the following French phrase into English.",
+            "text": "Comment allez-vous?",
+            "translation": "How are you?",
+            "translationOptions": {
+                "French": [
+                    "Comment",
+                    "allez-vous",
+                    "ça",
+                    "va",
+                    "Merci"
+                ],
+                "English": [
+                    "How",
+                    "are",
+                    "you",
+                    "doing",
+                    "Thank",
+                    "you"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 79
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Identify the English equivalent of this French greeting.",
+            "text": "Bienvenue!",
+            "translation": "Welcome!",
+            "translationOptions": {
+                "French": [
+                    "Bienvenue",
+                    "Merci",
+                    "Bonjour",
+                    "Au",
+                    "revoir"
+                ],
+                "English": [
+                    "Welcome",
+                    "Thank",
+                    "you",
+                    "Hello",
+                    "Goodbye"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 80
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate this French greeting into English.",
+            "text": "Ça va bien, merci.",
+            "translation": "I'm fine, thank you.",
+            "translationOptions": {
+                "French": [
+                    "Ça",
+                    "va",
+                    "bien",
+                    "merci",
+                    "mal"
+                ],
+                "English": [
+                    "I'm",
+                    "fine",
+                    "thank",
+                    "you",
+                    "bad"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 81
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Choose the correct English translation for this French phrase.",
+            "text": "Je suis désolé(e).",
+            "translation": "I am sorry.",
+            "translationOptions": {
+                "French": [
+                    "Je",
+                    "suis",
+                    "désolé(e)",
+                    "heureux(se)",
+                    "merci"
+                ],
+                "English": [
+                    "I",
+                    "am",
+                    "sorry",
+                    "happy",
+                    "thank"
+                ]
+            },
+            "gender": "Masculine / Feminine",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 82
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Match the French farewell with its English equivalent.",
+            "text": "À demain.",
+            "translation": "See you tomorrow.",
+            "translationOptions": {
+                "French": [
+                    "À",
+                    "demain",
+                    "aujourd'hui",
+                    "merci"
+                ],
+                "English": [
+                    "See",
+                    "you",
+                    "tomorrow",
+                    "today",
+                    "thanks"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 83
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate the French phrase into English.",
+            "text": "À tout à l'heure!",
+            "translation": "See you later!",
+            "translationOptions": {
+                "French": [
+                    "À",
+                    "tout",
+                    "à",
+                    "l'heure",
+                    "demain"
+                ],
+                "English": [
+                    "See",
+                    "you",
+                    "later",
+                    "tomorrow"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 84
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Find the correct English translation for this French greeting.",
+            "text": "Comment se passe ta journée?",
+            "translation": "How is your day going?",
+            "translationOptions": {
+                "French": [
+                    "Comment",
+                    "se",
+                    "passe",
+                    "ta",
+                    "journée",
+                    "nuit"
+                ],
+                "English": [
+                    "How",
+                    "is",
+                    "your",
+                    "day",
+                    "going",
+                    "night"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 85
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Select the correct English words to translate the French sentence.",
+            "text": "Pouvez-vous m'aider, s'il vous plaît?",
+            "translation": "Can you help me, please?",
+            "translationOptions": {
+                "French": [
+                    "Pouvez-vous",
+                    "m'aider",
+                    "s'il",
+                    "vous",
+                    "plaît",
+                    "merci"
+                ],
+                "English": [
+                    "Can",
+                    "you",
+                    "help",
+                    "me",
+                    "please",
+                    "thanks"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 86
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate this French phrase into English.",
+            "text": "Je ne comprends pas.",
+            "translation": "I do not understand.",
+            "translationOptions": {
+                "French": [
+                    "Je",
+                    "ne",
+                    "comprends",
+                    "pas",
+                    "s'il",
+                    "vous",
+                    "plaît"
+                ],
+                "English": [
+                    "I",
+                    "do",
+                    "not",
+                    "understand",
+                    "please"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 87
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Match the French sentence with its English translation.",
+            "text": "Où sont les toilettes, s'il vous plaît?",
+            "translation": "Where is the bathroom, please?",
+            "translationOptions": {
+                "French": [
+                    "Où",
+                    "sont",
+                    "les",
+                    "toilettes",
+                    "la",
+                    "cuisine"
+                ],
+                "English": [
+                    "Where",
+                    "is",
+                    "the",
+                    "bathroom",
+                    "kitchen"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 88
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Identify the English equivalent of this French phrase.",
+            "text": "Quelle heure est-il?",
+            "translation": "What time is it?",
+            "translationOptions": {
+                "French": [
+                    "Quelle",
+                    "heure",
+                    "est-il",
+                    "jour",
+                    "nuit"
+                ],
+                "English": [
+                    "What",
+                    "time",
+                    "is",
+                    "it",
+                    "day",
+                    "night"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 89
+        },
+        {
+            "taskType": "Reading",
+            "taskDescription": "Translate the following French greeting into English.",
+            "text": "C'est un plaisir de vous rencontrer.",
+            "translation": "It's a pleasure to meet you.",
+            "translationOptions": {
+                "French": [
+                    "C'est",
+                    "un",
+                    "plaisir",
+                    "de",
+                    "vous",
+                    "rencontrer"
+                ],
+                "English": [
+                    "It's",
+                    "a",
+                    "pleasure",
+                    "to",
+                    "meet",
+                    "you"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "points": 5,
+            "exerciseID": 90
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Translate the following English sentence into French: 'Hello, how are you?'",
+            "text": "Hello, how are you?",
+            "hints": "The French equivalent for 'Hello' is 'Bonjour', and 'how are you?' is 'comment ça va?'",
+            "gender": "N/A",
+            "translation": "Bonjour, comment ça va?",
+            "points": 5,
+            "exerciseID": 91
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Translate the following English sentence into French: 'Good morning, I hope you are doing well.'",
+            "text": "Good morning, I hope you are doing well.",
+            "hints": "In French, 'Good morning' is 'Bonjour' and 'I hope you are doing well' can be translated as 'j'espère que tu vas bien.'",
+            "gender": "N/A",
+            "translation": "Bonjour, j'espère que tu vas bien.",
+            "points": 5,
+            "exerciseID": 92
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Translate the following English sentence into French: 'Good evening, it's nice to meet you.'",
+            "text": "Good evening, it's nice to meet you.",
+            "hints": "The French for 'Good evening' is 'Bonsoir', and 'it's nice to meet you' is 'enchanté(e) de vous rencontrer.' Use 'enchanté' if the speaker is male and 'enchantée' if the speaker is female.",
+            "gender": "N/A",
+            "translation": "Bonsoir, enchanté(e) de vous rencontrer.",
+            "points": 5,
+            "exerciseID": 93
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Translate the following English sentence into French: 'See you tomorrow!'",
+            "text": "See you tomorrow!",
+            "hints": "The phrase 'See you tomorrow' in French can be translated as 'À demain'.",
+            "gender": "N/A",
+            "translation": "À demain!",
+            "points": 5,
+            "exerciseID": 94
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Translate the following English sentence into French: 'Goodbye, have a nice day.'",
+            "text": "Goodbye, have a nice day.",
+            "hints": "'Goodbye' in French is 'Au revoir', and 'have a nice day' is 'passez une bonne journée.'",
+            "gender": "N/A",
+            "translation": "Au revoir, passez une bonne journée.",
+            "points": 5,
+            "exerciseID": 95
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Translate the following English sentence into French: 'Can you help me, please?'",
+            "text": "Can you help me, please?",
+            "hints": "In French, 'Can you help me' is 'Pouvez-vous m'aider', and 'please' is 's'il vous plaît.'",
+            "gender": "N/A",
+            "translation": "Pouvez-vous m'aider, s'il vous plaît?",
+            "points": 5,
+            "exerciseID": 96
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Translate the following English sentence into French: 'Thank you very much.'",
+            "text": "Thank you very much.",
+            "hints": "The phrase 'Thank you very much' in French is 'Merci beaucoup.'",
+            "gender": "N/A",
+            "translation": "Merci beaucoup.",
+            "points": 5,
+            "exerciseID": 97
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Translate the following English sentence into French: 'Excuse me, where is the bathroom?'",
+            "text": "Excuse me, where is the bathroom?",
+            "hints": "In French, 'Excuse me' is 'Excusez-moi', and 'where is the bathroom?' is 'où sont les toilettes?'",
+            "gender": "N/A",
+            "translation": "Excusez-moi, où sont les toilettes?",
+            "points": 5,
+            "exerciseID": 98
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Translate the following English sentence into French: 'I'm sorry, I don't understand.'",
+            "text": "I'm sorry, I don't understand.",
+            "hints": "'I'm sorry' in French is 'Je suis désolé(e)', use 'désolé' for a male speaker and 'désolée' for a female speaker. 'I don't understand' is 'je ne comprends pas.'",
+            "gender": "N/A",
+            "translation": "Je suis désolé(e), je ne comprends pas.",
+            "points": 5,
+            "exerciseID": 99
+        },
+        {
+            "taskType": "Writing",
+            "taskDescription": "Translate the following English sentence into French: 'Yes, I would like some coffee, please.'",
+            "text": "Yes, I would like some coffee, please.",
+            "hints": "In French, 'Yes' is 'Oui', 'I would like' is 'je voudrais', 'some coffee' is 'du café', and 'please' is 's'il vous plaît.'",
+            "gender": "N/A",
+            "translation": "Oui, je voudrais du café, s'il vous plaît.",
+            "points": 5,
+            "exerciseID": 100
+        },
+        {
+            "taskType": "Grammar",
+            "taskDescription": "Choose the correct formal way to say 'How are you?' in French.",
+            "text": "Comment ____-vous?",
+            "correctAnswer": "allez",
+            "hints": [
+                "The verb 'to go' in French is 'aller'. Use the correct form for 'vous'."
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 102
+        },
+        {
+            "taskType": "Grammar",
+            "taskDescription": "Fill in the blank with the correct French word for 'goodbye'.",
+            "text": "____",
+            "correctAnswer": "Au revoir",
+            "hints": [
+                "This phrase is used when parting."
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 103
+        },
+        {
+            "taskType": "Grammar",
+            "taskDescription": "Fill in the blank with the informal French word for 'Hi'.",
+            "text": "____",
+            "correctAnswer": "Salut",
+            "hints": [
+                "This is a casual greeting."
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 104
+        },
+        {
+            "taskType": "Grammar",
+            "taskDescription": "Choose the correct way to say 'My name is' in French.",
+            "text": "____ nom est",
+            "correctAnswer": "Mon",
+            "hints": [
+                "The word 'my' in French changes depending on the gender of the noun it describes. 'Name' is masculine."
+            ],
+            "gender": "Masculine",
+            "points": 5,
+            "exerciseID": 105
+        },
+        {
+            "taskType": "Translation",
+            "taskDescription": "Translate 'Nice to meet you' into French.",
+            "text": "Nice to meet you",
+            "correctAnswer": "Enchanté(e)",
+            "hints": [
+                "This phrase is often used after meeting someone for the first time. Add 'e' at the end for feminine."
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 106
+        },
+        {
+            "taskType": "Grammar",
+            "taskDescription": "Fill in the blank to say 'I am...' in French.",
+            "text": "Je ____",
+            "correctAnswer": "suis",
+            "hints": [
+                "The verb 'to be' in French is 'être'. Use the first person singular present tense form."
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 107
+        },
+        {
+            "taskType": "Vocabulary",
+            "taskDescription": "Match the French phrase with its English translation.",
+            "options": {
+                "French": [
+                    "Bonjour",
+                    "Au revoir",
+                    "Merci",
+                    "S'il vous plaît",
+                    "Comment ça va?",
+                    "Je vais bien",
+                    "Et toi?",
+                    "Bienvenue",
+                    "Pardon",
+                    "Bonne nuit"
+                ],
+                "English": [
+                    "Hello",
+                    "Goodbye",
+                    "Thank you",
+                    "Please",
+                    "How are you?",
+                    "I am fine",
+                    "And you?",
+                    "Welcome",
+                    "Excuse me",
+                    "Good night"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePaths": {
+                "Bonjour": "path/to/bonjour.mp3",
+                "Au revoir": "path/to/aurevoir.mp3",
+                "Merci": "path/to/merci.mp3",
+                "S'il vous plaît": "path/to/silvousplait.mp3",
+                "Comment ça va?": "path/to/commentcava.mp3",
+                "Je vais bien": "path/to/jevaisbien.mp3",
+                "Et toi?": "path/to/ettoit.mp3",
+                "Bienvenue": "path/to/bienvenue.mp3",
+                "Pardon": "path/to/pardon.mp3",
+                "Bonne nuit": "path/to/bonnenuit.mp3"
+            },
+            "points": 5,
+            "exerciseID": 108
+        },
+        {
+            "taskType": "Vocabulary",
+            "taskDescription": "Identify the meaning of these common French greetings and phrases.",
+            "options": {
+                "French": [
+                    "Ça va?",
+                    "Comment vas-tu?",
+                    "Quoi de neuf?",
+                    "Ravi de vous rencontrer",
+                    "Comment s'est passée ta journée?",
+                    "A demain",
+                    "Bonne journée",
+                    "Je suis désolé",
+                    "Je ne comprends pas",
+                    "Parlez-vous anglais?"
+                ],
+                "English": [
+                    "How's it going?",
+                    "How are you?",
+                    "What's new?",
+                    "Pleased to meet you",
+                    "How was your day?",
+                    "See you tomorrow",
+                    "Have a good day",
+                    "I am sorry",
+                    "I don't understand",
+                    "Do you speak English?"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePaths": {
+                "Ça va?": "path/to/cava.mp3",
+                "Comment vas-tu?": "path/to/commentvastu.mp3",
+                "Quoi de neuf?": "path/to/quoinedneuf.mp3",
+                "Ravi de vous rencontrer": "path/to/ravidevousrencontrer.mp3",
+                "Comment s'est passée ta journée?": "path/to/commentsestpasseetajournee.mp3",
+                "A demain": "path/to/ademain.mp3",
+                "Bonne journée": "path/to/bonnejournee.mp3",
+                "Je suis désolé": "path/to/jesuisdesole.mp3",
+                "Je ne comprends pas": "path/to/jene comprendspas.mp3",
+                "Parlez-vous anglais?": "path/to/parlezvousanglais.mp3"
+            },
+            "points": 5,
+            "exerciseID": 109
+        },
+        {
+            "taskType": "Vocabulary",
+            "taskDescription": "Choose the correct English translation for each French greeting.",
+            "options": {
+                "French": [
+                    "Salut",
+                    "Bonne soirée",
+                    "À bientôt",
+                    "Enchanté",
+                    "Comment allez-vous?",
+                    "Je suis fatigué",
+                    "Tu me manques",
+                    "C'est gentil",
+                    "Quelle heure est-il?",
+                    "Où sont les toilettes?"
+                ],
+                "English": [
+                    "Hi",
+                    "Good evening",
+                    "See you soon",
+                    "Nice to meet you",
+                    "How do you do?",
+                    "I am tired",
+                    "I miss you",
+                    "That's kind",
+                    "What time is it?",
+                    "Where is the bathroom?"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePaths": {
+                "Salut": "path/to/salut.mp3",
+                "Bonne soirée": "path/to/bonnesoiree.mp3",
+                "À bientôt": "path/to/abientot.mp3",
+                "Enchanté": "path/to/enchante.mp3",
+                "Comment allez-vous?": "path/to/commentallezvous.mp3",
+                "Je suis fatigué": "path/to/jesuisfatigue.mp3",
+                "Tu me manques": "path/to/tumemanques.mp3",
+                "C'est gentil": "path/to/cestgentil.mp3",
+                "Quelle heure est-il?": "path/to/quelleheureestil.mp3",
+                "Où sont les toilettes?": "path/to/ousontlestoilettes.mp3"
+            },
+            "points": 5,
+            "exerciseID": 110
+        },
+        {
+            "taskType": "Vocabulary",
+            "taskDescription": "Match each French phrase with its correct English equivalent.",
+            "options": {
+                "French": [
+                    "Tout va bien?",
+                    "Je vous en prie",
+                    "À plus tard",
+                    "Bonne chance",
+                    "Félicitations",
+                    "C'est dommage",
+                    "Avez-vous besoin d'aide?",
+                    "Je suis perdu",
+                    "Pouvez-vous répéter, s'il vous plaît?",
+                    "Je suis heureux de vous voir"
+                ],
+                "English": [
+                    "Is everything alright?",
+                    "You're welcome",
+                    "See you later",
+                    "Good luck",
+                    "Congratulations",
+                    "That's a pity",
+                    "Do you need help?",
+                    "I am lost",
+                    "Can you repeat, please?",
+                    "I am happy to see you"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePaths": {
+                "Tout va bien?": "path/to/toutvabien.mp3",
+                "Je vous en prie": "path/to/jevousenprie.mp3",
+                "À plus tard": "path/to/aplustard.mp3",
+                "Bonne chance": "path/to/bonnechance.mp3",
+                "Félicitations": "path/to/felicitations.mp3",
+                "C'est dommage": "path/to/cestdommage.mp3",
+                "Avez-vous besoin d'aide?": "path/to/avezvousbesoind'aide.mp3",
+                "Je suis perdu": "path/to/jesuisperdu.mp3",
+                "Pouvez-vous répéter, s'il vous plaît?": "path/to/pouvezvousrepter.mp3",
+                "Je suis heureux de vous voir": "path/to/jesuisheureuxdevousvoir.mp3"
+            },
+            "points": 5,
+            "exerciseID": 111
+        },
+        {
+            "taskType": "Vocabulary",
+            "taskDescription": "Select the English translation for these basic French expressions.",
+            "options": {
+                "French": [
+                    "J'ai faim",
+                    "J'ai soif",
+                    "Je suis malade",
+                    "Je t'aime",
+                    "À votre santé",
+                    "Joyeux anniversaire",
+                    "Bonne chance",
+                    "Je ne sais pas",
+                    "Je suis désolé",
+                    "Je suis occupé"
+                ],
+                "English": [
+                    "I am hungry",
+                    "I am thirsty",
+                    "I am sick",
+                    "I love you",
+                    "Cheers",
+                    "Happy birthday",
+                    "Good luck",
+                    "I don't know",
+                    "I am sorry",
+                    "I am busy"
+                ]
+            },
+            "gender": "N/A",
+            "audioFilePaths": {
+                "J'ai faim": "path/to/jaifaim.mp3",
+                "J'ai soif": "path/to/jaisoif.mp3",
+                "Je suis malade": "path/to/jesuismalade.mp3",
+                "Je t'aime": "path/to/jetaime.mp3",
+                "À votre santé": "path/to/avotresante.mp3",
+                "Joyeux anniversaire": "path/to/joyeuxanniversaire.mp3",
+                "Bonne chance": "path/to/bonnechance2.mp3",
+                "Je ne sais pas": "path/to/jenesaispas.mp3",
+                "Je suis désolé": "path/to/jesuisdesole2.mp3",
+                "Je suis occupé": "path/to/jesuisoccupe.mp3"
+            },
+            "points": 5,
+            "exerciseID": 112
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Learn basic French greetings. Practice saying hello and asking how someone is.",
+            "conversationSteps": [
+                {
+                    "question": "Bonjour, comment vas-tu?",
+                    "questionTranlation": "Hello, how are you?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20vastu.mp3",
+                    "expectedResponse": "Ça va bien, merci. Et toi?",
+                    "responseTranslation": "I'm fine, thank you. And you?",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/%C3%A7a%20va%20bien%20merci%20et%20toi.mp3"
+                },
+                {
+                    "question": "Salut, ça va?",
+                    "questionTranlation": "Hi, how are you?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/salut%20%C3%A7a%20va.mp3",
+                    "expectedResponse": "Oui, ça va bien. Merci!",
+                    "responseTranslation": "Yes, I'm fine. Thank you!",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/oui%20%C3%A7a%20va%20bien%20merci.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 113
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Introduce yourself in French. Learn to say your name and ask others for theirs.",
+            "conversationSteps": [
+                {
+                    "question": "Bonjour, je m'appelle Marie. Et toi, comment tu t'appelles?",
+                    "questionTranlation": "Hello, my name is Marie. And you, what's your name?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20je%20mappelle%20marie%20et%20toi%20comment%20tu%20tappelles.mp3",
+                    "expectedResponse": "Salut, je m'appelle Louise.",
+                    "responseTranslation": "Hi, my name is Louise.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/salut%20je%20mappelle%20louise.mp3"
+                },
+                {
+                    "question": "Enchanté(e), Louise. Tu viens d'où?",
+                    "questionTranlation": "Nice to meet you, Louise. Where are you from?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/enchant%C3%A9e%20louise%20tu%20viens%20do%C3%B9.mp3",
+                    "expectedResponse": "Je viens de America.",
+                    "responseTranslation": "I'm from America.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20viens%20de%20america.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 114
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Practice polite phrases in French, like saying please and thank you.",
+            "conversationSteps": [
+                {
+                    "question": "Pouvez-vous m'aider, s'il vous plaît?",
+                    "questionTranlation": "Can you help me, please?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/pouvezvous%20maider%20sil%20vous%20pla%C3%AEt.mp3",
+                    "expectedResponse": "Bien sûr, avec plaisir.",
+                    "responseTranslation": "Of course, with pleasure.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bien%20s%C3%BBr%20avec%20plaisir.mp3"
+                },
+                {
+                    "question": "Merci beaucoup pour votre aide.",
+                    "questionTranlation": "Thank you very much for your help.",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/merci%20beaucoup%20pour%20votre%20aide.mp3",
+                    "expectedResponse": "Bien sûr, avec plaisir.",
+                    "responseTranslation": "Of course, with pleasure.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bien%20s%C3%BBr%20avec%20plaisir.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 115
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Learn to ask someone about their day in French.",
+            "conversationSteps": [
+                {
+                    "question": "Salut, comment s'est passée ta journée?",
+                    "questionTranlation": "Hi, how was your day?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/salut%20comment%20sest%20pass%C3%A9e%20ta%20journ%C3%A9e.mp3",
+                    "expectedResponse": "Ça s'est bien passé, merci. Et la tienne?",
+                    "responseTranslation": "It went well, thank you. And yours?",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/%C3%A7a%20sest%20bien%20pass%C3%A9%20merci%20et%20la%20tienne.mp3"
+                },
+                {
+                    "question": "Ma journée était très bonne, merci!",
+                    "questionTranlation": "My day was very good, thank you!",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/ma%20journ%C3%A9e%20%C3%A9tait%20tr%C3%A8s%20bonne%20merci.mp3",
+                    "expectedResponse": "C'est super! Qu'as-tu fait de spécial?",
+                    "responseTranslation": "That's great! What did you do today?",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/cest%20super%20quastu%20fait%20de%20sp%C3%A9cial.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 116
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Learn to ask and answer about hobbies in French.",
+            "conversationSteps": [
+                {
+                    "question": "Quels sont tes passe-temps favoris?",
+                    "questionTranlation": "What are your favorite hobbies?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/quels%20sont%20tes%20passetemps%20favoris.mp3",
+                    "expectedResponse": "J'aime lire et faire du vélo. Et toi?",
+                    "responseTranslation": "I like reading and biking. And you?",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/jaime%20lire%20et%20faire%20du%20v%C3%A9lo%20et%20toi.mp3"
+                },
+                {
+                    "question": "Moi, j'adore jouer au football et cuisiner.",
+                    "questionTranlation": "I love playing football and cooking.",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/moi%20jadore%20jouer%20au%20football%20et%20cuisiner.mp3",
+                    "expectedResponse": "C'est intéressant! Tu cuisines quoi généralement?",
+                    "responseTranslation": "That's interesting! What do you usually cook?",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/cest%20int%C3%A9ressant%20tu%20cuisines%20quoi%20g%C3%A9n%C3%A9ralement.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 117
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Learn to express likes and dislikes in French.",
+            "conversationSteps": [
+                {
+                    "question": "Est-ce que tu aimes la musique classique?",
+                    "questionTranlation": "Do you like classical music?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/estce%20que%20tu%20aimes%20la%20musique%20classique.mp3",
+                    "expectedResponse": "Oui, j'aime beaucoup. Et toi?",
+                    "responseTranslation": "Yes, I like it a lot. And you?",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/oui%20jaime%20beaucoup%20et%20toi.mp3"
+                },
+                {
+                    "question": "Non, je préfère le rock. Et les films, tu aimes?",
+                    "questionTranlation": "No, I prefer rock. And movies, do you like them?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/non%20je%20pr%C3%A9f%C3%A8re%20le%20rock%20et%20les%20films%20tu%20aimes.mp3",
+                    "expectedResponse": "Oui, j'adore les films d'aventure!",
+                    "responseTranslation": "Yes, I love adventure movies!",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/oui%20jadore%20les%20films%20daventure.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 118
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Learn to talk about the weather in French.",
+            "conversationSteps": [
+                {
+                    "question": "Quel temps fait-il aujourd'hui?",
+                    "questionTranlation": "What's the weather like today?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/quel%20temps%20faitil%20aujourdhui.mp3",
+                    "expectedResponse": "Il fait beau. Et chez toi?",
+                    "responseTranslation": "It's nice. And where you are?",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/il%20fait%20beau%20et%20chez%20toi.mp3"
+                },
+                {
+                    "question": "Il fait froid et il pleut.",
+                    "questionTranlation": "It's cold and it's raining.",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/il%20fait%20froid%20et%20il%20pleut.mp3",
+                    "expectedResponse": "Oh non! J'espère que ça va s'améliorer.",
+                    "responseTranslation": "Oh no! I hope it gets better.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/oh%20non%20jesp%C3%A8re%20que%20%C3%A7a%20va%20sam%C3%A9liorer.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 119
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Practice asking for directions in French.",
+            "conversationSteps": [
+                {
+                    "question": "Excusez-moi, pourriez-vous me dire où se trouve la gare?",
+                    "questionTranlation": "Excuse me, could you tell me where the train station is?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/excusezmoi%20pourriezvous%20me%20dire%20o%C3%B9%20se%20trouve%20la%20gare.mp3",
+                    "expectedResponse": "Bien sûr, continuez tout droit puis tournez à gauche.",
+                    "responseTranslation": "Of course, go straight and then turn left.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bien%20s%C3%BBr%20continuez%20tout%20droit%20puis%20tournez%20%C3%A0%20gauche.mp3"
+                },
+                {
+                    "question": "Merci beaucoup. Est-ce que c'est loin d'ici?",
+                    "questionTranlation": "Thank you very much. Is it far from here?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/merci%20beaucoup%20estce%20que%20cest%20loin%20dici.mp3",
+                    "expectedResponse": "Non, c'est à environ dix minutes à pied.",
+                    "responseTranslation": "No, it's about a ten minute walk.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/non%20cest%20%C3%A0%20environ%20dix%20minutes%20%C3%A0%20pied.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 120
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Learn to ask about someone's family in French.",
+            "conversationSteps": [
+                {
+                    "question": "Tu as des frères ou des sœurs?",
+                    "questionTranlation": "Do you have any brothers or sisters?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/tu%20as%20des%20fr%C3%A8res%20ou%20des%20s%C5%93urs.mp3",
+                    "expectedResponse": "Oui, j'ai un frère et une sœur.",
+                    "responseTranslation": "Yes, I have a brother and a sister.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/oui%20jai%20un%20fr%C3%A8re%20et%20une%20s%C5%93ur.mp3"
+                },
+                {
+                    "question": "C'est sympa ça! Ils sont plus âgés ou plus jeunes?",
+                    "questionTranlation": "That's nice! Are they older or younger?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/cest%20sympa%20%C3%A7a%20ils%20sont%20plus%20%C3%A2g%C3%A9s%20ou%20plus%20jeunes.mp3",
+                    "expectedResponse": "Mon frère est plus âgé et ma sœur est plus jeune.",
+                    "responseTranslation": "My brother is older and my sister is younger.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/mon%20fr%C3%A8re%20est%20plus%20%C3%A2g%C3%A9%20et%20ma%20s%C5%93ur%20est%20plus%20jeune.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 121
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Practice asking and talking about someone's job in French.",
+            "conversationSteps": [
+                {
+                    "question": "Tu travailles dans quoi?",
+                    "questionTranlation": "What do you do for work?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/tu%20travailles%20dans%20quoi.mp3",
+                    "expectedResponse": "Je suis enseignant(e). Et toi, tu fais quoi?",
+                    "responseTranslation": "I'm a teacher. And you, what do you do?",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20suis%20enseignante%20et%20toi%20tu%20fais%20quoi.mp3"
+                },
+                {
+                    "question": "Je travaille en tant qu'ingénieur(e).",
+                    "questionTranlation": "I work as an engineer.",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20travaille%20en%20tant%20quing%C3%A9nieure.mp3",
+                    "expectedResponse": "C'est intéressant. Tu travailles sur quels types de projets?",
+                    "responseTranslation": "That's interesting. What types of projects do you work on?",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/cest%20int%C3%A9ressant%20tu%20travailles%20sur%20quels%20types%20de%20projets.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 122
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Learn how to express feelings in French.",
+            "conversationSteps": [
+                {
+                    "question": "Comment te sens-tu aujourd'hui?",
+                    "questionTranlation": "How are you feeling today?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/comment%20te%20senstu%20aujourdhui.mp3",
+                    "expectedResponse": "Je me sens bien, merci. Et toi?",
+                    "responseTranslation": "I'm feeling good, thank you. And you?",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20me%20sens%20bien%20merci%20et%20toi.mp3"
+                },
+                {
+                    "question": "Moi aussi, je suis de bonne humeur!",
+                    "questionTranlation": "Me too, I'm in a good mood!",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/moi%20aussi%20je%20suis%20de%20bonne%20humeur.mp3",
+                    "expectedResponse": "C'est super. Tu as des plans pour ce soir?",
+                    "responseTranslation": "That's great. Do you have any plans for tonight?",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/cest%20super%20tu%20as%20des%20plans%20pour%20ce%20soir.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 123
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Learn to discuss weekend plans in French.",
+            "conversationSteps": [
+                {
+                    "question": "Quels sont tes plans pour le week-end?",
+                    "questionTranlation": "What are your plans for the weekend?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/quels%20sont%20tes%20plans%20pour%20le%20weekend.mp3",
+                    "expectedResponse": "Je vais aller au cinéma. Et toi?",
+                    "responseTranslation": "I'm going to the movies. And you?",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20vais%20aller%20au%20cin%C3%A9ma%20et%20toi.mp3"
+                },
+                {
+                    "question": "Je pense faire une randonnée. Tu aimes randonner?",
+                    "questionTranlation": "I'm thinking of going hiking. Do you like hiking?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20pense%20faire%20une%20randonn%C3%A9e%20tu%20aimes%20randonner.mp3",
+                    "expectedResponse": "Oui, j'adore ça! C'est très relaxant.",
+                    "responseTranslation": "Yes, I love it! It's very relaxing.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/oui%20jadore%20%C3%A7a%20cest%20tr%C3%A8s%20relaxant.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 124
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Learn to ask for and give opinions in French.",
+            "conversationSteps": [
+                {
+                    "question": "Que penses-tu du nouveau restaurant en ville?",
+                    "questionTranlation": "What do you think of the new restaurant in town?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/que%20pensestu%20du%20nouveau%20restaurant%20en%20ville.mp3",
+                    "expectedResponse": "Je le trouve excellent. Tu l'as essayé?",
+                    "responseTranslation": "I think it's excellent. Have you tried it?",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20le%20trouve%20excellent%20tu%20las%20essay%C3%A9.mp3"
+                },
+                {
+                    "question": "Pas encore, mais j'ai hâte d'y aller.",
+                    "questionTranlation": "Not yet, but I can't wait to go.",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/pas%20encore%20mais%20jai%20h%C3%A2te%20dy%20aller.mp3",
+                    "expectedResponse": "Tu devrais, leur cuisine est délicieuse.",
+                    "responseTranslation": "You should, their food is delicious.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/tu%20devrais%20leur%20cuisine%20est%20d%C3%A9licieuse.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 125
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Practice talking about your favorite foods in French.",
+            "conversationSteps": [
+                {
+                    "question": "Quel est ton plat préféré?",
+                    "questionTranlation": "What's your favorite food?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/quel%20est%20ton%20plat%20pr%C3%A9f%C3%A9r%C3%A9.mp3",
+                    "expectedResponse": "J'adore la pizza. Et toi?",
+                    "responseTranslation": "I love pizza. And you?",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/jadore%20la%20pizza%20et%20toi.mp3"
+                },
+                {
+                    "question": "Moi, je préfère les sushis. Tu aimes les sushis?",
+                    "questionTranlation": "I prefer sushi. Do you like sushi?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/moi%20je%20pr%C3%A9f%C3%A8re%20les%20sushis%20tu%20aimes%20les%20sushis.mp3",
+                    "expectedResponse": "Oui, c'est délicieux!",
+                    "responseTranslation": "Yes, it's delicious!",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/oui%20cest%20d%C3%A9licieux.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 126
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Learn to talk about your daily routine in French.",
+            "conversationSteps": [
+                {
+                    "question": "Comment est ta routine quotidienne?",
+                    "questionTranlation": "What's your daily routine like?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/comment%20est%20ta%20routine%20quotidienne.mp3",
+                    "expectedResponse": "Je me lève tôt et je vais courir. Et toi?",
+                    "responseTranslation": "I get up early and go for a run. And you?",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20me%20l%C3%A8ve%20t%C3%B4t%20et%20je%20vais%20courir%20et%20toi.mp3"
+                },
+                {
+                    "question": "Moi, je commence ma journée avec un bon café.",
+                    "questionTranlation": "I start my day with a good coffee.",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/moi%20je%20commence%20ma%20journ%C3%A9e%20avec%20un%20bon%20caf%C3%A9.mp3",
+                    "expectedResponse": "C'est une bonne manière de commencer la journée!",
+                    "responseTranslation": "That's a good way to start the day!",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/cest%20une%20bonne%20mani%C3%A8re%20de%20commencer%20la%20journ%C3%A9e.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 127
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Learn to express gratitude and respond to thanks in French.",
+            "conversationSteps": [
+                {
+                    "question": "Merci pour ton aide!",
+                    "questionTranlation": "Thank you for your help!",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/merci%20pour%20ton%20aide.mp3",
+                    "expectedResponse": "De rien, c'était un plaisir.",
+                    "responseTranslation": "You're welcome, it was a pleasure.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/de%20rien%20c%C3%A9tait%20un%20plaisir.mp3"
+                },
+                {
+                    "question": "C'est gentil de ta part.",
+                    "questionTranlation": "That's kind of you.",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/cest%20gentil%20de%20ta%20part.mp3",
+                    "expectedResponse": "Tu ferais la même chose pour moi.",
+                    "responseTranslation": "You would do the same for me.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/tu%20ferais%20la%20m%C3%AAme%20chose%20pour%20moi.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 128
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Learn basic French greetings and responses.",
+            "conversationSteps": [
+                {
+                    "question": "Bonjour, comment ça va?",
+                    "questionTranlation": "Hello, how are you?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+                    "expectedResponse": "Ça va bien, merci. Et vous?",
+                    "responseTranslation": "I'm fine, thank you. And you?",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/%C3%A7a%20va%20bien%20merci%20et%20vous.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 129
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Practice introducing yourself in French.",
+            "conversationSteps": [
+                {
+                    "question": "Comment vous appelez-vous?",
+                    "questionTranlation": "What's your name?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/comment%20vous%20appelezvous.mp3",
+                    "expectedResponse": "Je m'appelle Mari.",
+                    "responseTranslation": "My name is Mari.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20mappelle%20mari.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 130
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Learn to ask and answer about one's well-being.",
+            "conversationSteps": [
+                {
+                    "question": "Ça va?",
+                    "questionTranlation": "How are you?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/%C3%A7a%20va.mp3",
+                    "expectedResponse": "Oui, ça va. Merci.",
+                    "responseTranslation": "Yes, I'm fine. Thank you.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/oui%20%C3%A7a%20va%20merci.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 131
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Understand how to ask someone's name informally.",
+            "conversationSteps": [
+                {
+                    "question": "Tu t'appelles comment?",
+                    "questionTranlation": "What's your name?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/tu%20tappelles%20comment.mp3",
+                    "expectedResponse": "Je m'appelle Mari.",
+                    "responseTranslation": "My name is Mari.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20mappelle%20mari.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 132
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Learn to ask about others in a polite manner.",
+            "conversationSteps": [
+                {
+                    "question": "Comment va votre famille?",
+                    "questionTranlation": "How is your family?",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/comment%20va%20votre%20famille.mp3",
+                    "expectedResponse": "Ils vont bien, merci.",
+                    "responseTranslation": "They are fine, thank you.",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/ils%20vont%20bien%20merci.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 133
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Practice saying goodbye in a formal context.",
+            "conversationSteps": [
+                {
+                    "question": "Au revoir, bonne journée!",
+                    "questionTranlation": "Goodbye, have a good day!",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/au%20revoir%20bonne%20journ%C3%A9e.mp3",
+                    "expectedResponse": "Merci, vous aussi!",
+                    "responseTranslation": "Thank you, you too!",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/merci%20vous%20aussi.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 134
+        },
+        {
+            "taskType": "Conversation",
+            "taskDescription": "Learn to express gratitude and respond to it.",
+            "conversationSteps": [
+                {
+                    "question": "Merci beaucoup!",
+                    "questionTranlation": "Thank you very much!",
+                    "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/merci%20beaucoup.mp3",
+                    "expectedResponse": "De rien!",
+                    "responseTranslation": "You're welcome!",
+                    "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/de%20rien.mp3"
+                }
+            ],
+            "gender": "N/A",
+            "points": 5,
+            "exerciseID": 135
+        }
+    ]
+}

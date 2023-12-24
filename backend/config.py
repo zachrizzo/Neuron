@@ -22,5 +22,5 @@ AUDIO_FILES_DIRECTORY.mkdir(exist_ok=True)
 
 # Initialize Firebase
 cred = credentials.Certificate('./lang-learning-app-gpt-firebase-adminsdk-h6lgl-379786af55.json')
-initialize_app(cred)
+app = initialize_app(cred)
 db = firestore.client()
