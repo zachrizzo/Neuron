@@ -1,3 +1,5 @@
+
+
 {
     "lessonTitle": "French Beginner",
     "skillLevel": "Beginner",
@@ -20,7 +22,7 @@
             "text": "Je m'appelle Xavier.",
             "translation": "My name is Xavier.",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20mappelle%20xavier.mp3",
             "points": 5,
             "exerciseID": 2
         },
@@ -30,7 +32,7 @@
             "text": "Comment ça va?",
             "translation": "How are you?",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/comment%20%C3%A7a%20va.mp3",
             "points": 5,
             "exerciseID": 3
         },
@@ -40,7 +42,7 @@
             "text": "Ça va bien, merci.",
             "translation": "I'm fine, thank you.",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/%C3%A7a%20va%20bien%20merci.mp3",
             "points": 5,
             "exerciseID": 4
         },
@@ -50,7 +52,7 @@
             "text": "S'il vous plaît",
             "translation": "Please",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/sil%20vous%20pla%C3%AEt.mp3",
             "points": 5,
             "exerciseID": 5
         },
@@ -60,7 +62,7 @@
             "text": "Merci",
             "translation": "Thank you",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/merci.mp3",
             "points": 5,
             "exerciseID": 6
         },
@@ -70,7 +72,7 @@
             "text": "Au revoir",
             "translation": "Goodbye",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/au%20revoir.mp3",
             "points": 5,
             "exerciseID": 7
         },
@@ -80,7 +82,7 @@
             "text": "Comment tu t'appelles?",
             "translation": "What's your name? (informal)",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/comment%20tu%20tappelles.mp3",
             "points": 5,
             "exerciseID": 8
         },
@@ -90,7 +92,7 @@
             "text": "Je ne comprends pas",
             "translation": "I don't understand",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20ne%20comprends%20pas.mp3",
             "points": 5,
             "exerciseID": 9
         },
@@ -100,7 +102,7 @@
             "text": "Où sont les toilettes?",
             "translation": "Where is the bathroom?",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/o%C3%B9%20sont%20les%20toilettes.mp3",
             "points": 5,
             "exerciseID": 10
         },
@@ -110,7 +112,7 @@
             "text": "Oui",
             "translation": "Yes",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/oui.mp3",
             "points": 5,
             "exerciseID": 11
         },
@@ -120,7 +122,7 @@
             "text": "Non",
             "translation": "No",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/non.mp3",
             "points": 5,
             "exerciseID": 12
         },
@@ -130,7 +132,7 @@
             "text": "Pouvez-vous m'aider?",
             "translation": "Can you help me?",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/pouvezvous%20maider.mp3",
             "points": 5,
             "exerciseID": 13
         },
@@ -140,7 +142,7 @@
             "text": "Ça me plaît",
             "translation": "I like it",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/%C3%A7a%20me%20pla%C3%AEt.mp3",
             "points": 5,
             "exerciseID": 14
         },
@@ -150,7 +152,7 @@
             "text": "D'où venez-vous?",
             "translation": "Where are you from? (formal)",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/do%C3%B9%20venezvous.mp3",
             "points": 5,
             "exerciseID": 15
         },
@@ -160,7 +162,7 @@
             "text": "Je viens de France",
             "translation": "I am from France",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20viens%20de%20france.mp3",
             "points": 5,
             "exerciseID": 16
         },
@@ -170,7 +172,7 @@
             "text": "Excusez-moi, je suis perdu(e)",
             "translation": "Excuse me, I am lost",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/excusezmoi%20je%20suis%20perdue.mp3",
             "points": 5,
             "exerciseID": 17
         },
@@ -180,7 +182,7 @@
             "text": "Je ne parle pas très bien français",
             "translation": "I don't speak French very well",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20ne%20parle%20pas%20tr%C3%A8s%20bien%20fran%C3%A7ais.mp3",
             "points": 5,
             "exerciseID": 18
         },
@@ -190,7 +192,7 @@
             "text": "Quelle heure est-il?",
             "translation": "What time is it?",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/quelle%20heure%20estil.mp3",
             "points": 5,
             "exerciseID": 19
         },
@@ -200,7 +202,7 @@
             "text": "Je voudrais un café",
             "translation": "I would like a coffee",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20voudrais%20un%20caf%C3%A9.mp3",
             "points": 5,
             "exerciseID": 20
         },
@@ -210,7 +212,7 @@
             "text": "Parlez-vous anglais?",
             "translation": "Do you speak English?",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/parlezvous%20anglais.mp3",
             "points": 5,
             "exerciseID": 21
         },
@@ -220,7 +222,7 @@
             "text": "J'apprends le français",
             "translation": "I'm learning French",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/japprends%20le%20fran%C3%A7ais.mp3",
             "points": 5,
             "exerciseID": 22
         },
@@ -230,7 +232,7 @@
             "text": "Où est la gare?",
             "translation": "Where is the train station?",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/o%C3%B9%20est%20la%20gare.mp3",
             "points": 5,
             "exerciseID": 23
         },
@@ -240,7 +242,7 @@
             "text": "Je suis désolé(e)",
             "translation": "I'm sorry",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20suis%20d%C3%A9sol%C3%A9e.mp3",
             "points": 5,
             "exerciseID": 24
         },
@@ -250,7 +252,7 @@
             "text": "Puis-je avoir le menu, s'il vous plaît?",
             "translation": "Can I have the menu, please?",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/puisje%20avoir%20le%20menu%20sil%20vous%20pla%C3%AEt.mp3",
             "points": 5,
             "exerciseID": 25
         },
@@ -260,7 +262,7 @@
             "text": "Je ne sais pas",
             "translation": "I don't know",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20ne%20sais%20pas.mp3",
             "points": 5,
             "exerciseID": 26
         },
@@ -270,7 +272,7 @@
             "text": "Enchanté(e) de vous rencontrer",
             "translation": "It's nice to meet you",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/enchant%C3%A9e%20de%20vous%20rencontrer.mp3",
             "points": 5,
             "exerciseID": 27
         },
@@ -280,7 +282,7 @@
             "text": "Pouvez-vous répéter ça, s'il vous plaît?",
             "translation": "Can you repeat that, please?",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/pouvezvous%20r%C3%A9p%C3%A9ter%20%C3%A7a%20sil%20vous%20pla%C3%AEt.mp3",
             "points": 5,
             "exerciseID": 28
         },
@@ -290,7 +292,7 @@
             "text": "J'ai faim",
             "translation": "I'm hungry",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/jai%20faim.mp3",
             "points": 5,
             "exerciseID": 29
         },
@@ -300,7 +302,7 @@
             "text": "J'ai soif",
             "translation": "I'm thirsty",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/jai%20soif.mp3",
             "points": 5,
             "exerciseID": 30
         },
@@ -310,7 +312,7 @@
             "text": "Je passe un bon moment",
             "translation": "I'm having a good time",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20passe%20un%20bon%20moment.mp3",
             "points": 5,
             "exerciseID": 31
         },
@@ -320,7 +322,7 @@
             "text": "Combien ça coûte?",
             "translation": "How much does it cost?",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/combien%20%C3%A7a%20co%C3%BBte.mp3",
             "points": 5,
             "exerciseID": 32
         },
@@ -330,7 +332,7 @@
             "text": "Je suis perdu(e)",
             "translation": "I'm lost",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20suis%20perdue.mp3",
             "points": 5,
             "exerciseID": 33
         },
@@ -340,7 +342,7 @@
             "text": "Pourriez-vous m'indiquer le chemin vers l'hôtel?",
             "translation": "Could you direct me to the hotel?",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/pourriezvous%20mindiquer%20le%20chemin%20vers%20lh%C3%B4tel.mp3",
             "points": 5,
             "exerciseID": 34
         },
@@ -350,7 +352,7 @@
             "text": "J'aime ça",
             "translation": "I like this",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/jaime%20%C3%A7a.mp3",
             "points": 5,
             "exerciseID": 35
         },
@@ -360,7 +362,7 @@
             "text": "J'ai besoin d'aide",
             "translation": "I need help",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/jai%20besoin%20daide.mp3",
             "points": 5,
             "exerciseID": 36
         },
@@ -370,7 +372,7 @@
             "text": "Où puis-je trouver un taxi?",
             "translation": "Where can I find a taxi?",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/o%C3%B9%20puisje%20trouver%20un%20taxi.mp3",
             "points": 5,
             "exerciseID": 37
         },
@@ -380,7 +382,7 @@
             "text": "Excusez-moi",
             "translation": "Excuse me",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/excusezmoi.mp3",
             "points": 5,
             "exerciseID": 38
         },
@@ -390,7 +392,7 @@
             "text": "Je comprends",
             "translation": "I understand",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20comprends.mp3",
             "points": 5,
             "exerciseID": 39
         },
@@ -400,7 +402,7 @@
             "text": "À demain",
             "translation": "See you tomorrow",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/%C3%A0%20demain.mp3",
             "points": 5,
             "exerciseID": 40
         },
@@ -410,7 +412,7 @@
             "text": "Merci beaucoup",
             "translation": "Thank you very much",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/merci%20beaucoup.mp3",
             "points": 5,
             "exerciseID": 41
         },
@@ -420,7 +422,7 @@
             "text": "Pouvez-vous parler plus lentement?",
             "translation": "Can you speak more slowly?",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/pouvezvous%20parler%20plus%20lentement.mp3",
             "points": 5,
             "exerciseID": 42
         },
@@ -430,7 +432,7 @@
             "text": "Je voudrais commander",
             "translation": "I would like to order",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20voudrais%20commander.mp3",
             "points": 5,
             "exerciseID": 43
         },
@@ -440,7 +442,7 @@
             "text": "Où est le distributeur automatique le plus proche?",
             "translation": "Where is the nearest ATM?",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/o%C3%B9%20est%20le%20distributeur%20automatique%20le%20plus%20proche.mp3",
             "points": 5,
             "exerciseID": 44
         },
@@ -450,7 +452,7 @@
             "text": "Je suis allergique aux arachides",
             "translation": "I'm allergic to peanuts",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20suis%20allergique%20aux%20arachides.mp3",
             "points": 5,
             "exerciseID": 45
         },
@@ -460,7 +462,7 @@
             "text": "Puis-je avoir un verre d'eau?",
             "translation": "Can I get a glass of water?",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/puisje%20avoir%20un%20verre%20deau.mp3",
             "points": 5,
             "exerciseID": 46
         },
@@ -470,7 +472,7 @@
             "text": "Je suis fatigué(e)",
             "translation": "I'm tired",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20suis%20fatigu%C3%A9e.mp3",
             "points": 5,
             "exerciseID": 47
         },
@@ -480,7 +482,7 @@
             "text": "Je cherche mon ami(e)",
             "translation": "I'm looking for my friend",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20cherche%20mon%20amie.mp3",
             "points": 5,
             "exerciseID": 48
         },
@@ -490,7 +492,7 @@
             "text": "Est-ce le bon chemin pour aller au musée?",
             "translation": "Is this the right way to the museum?",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/estce%20le%20bon%20chemin%20pour%20aller%20au%20mus%C3%A9e.mp3",
             "points": 5,
             "exerciseID": 49
         },
@@ -500,7 +502,7 @@
             "text": "Il fait froid aujourd'hui",
             "translation": "It's cold today",
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/il%20fait%20froid%20aujourdhui.mp3",
             "points": 5,
             "exerciseID": 50
         },
@@ -548,7 +550,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/comment%20%C3%A7a%20va.mp3",
             "points": 5,
             "exerciseID": 52
         },
@@ -572,7 +574,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/merci%20beaucoup.mp3",
             "points": 5,
             "exerciseID": 53
         },
@@ -596,7 +598,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/au%20revoir.mp3",
             "points": 5,
             "exerciseID": 54
         },
@@ -620,7 +622,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/salut.mp3",
             "points": 5,
             "exerciseID": 55
         },
@@ -644,7 +646,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/sil%20vous%20pla%C3%AEt.mp3",
             "points": 5,
             "exerciseID": 56
         },
@@ -668,7 +670,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20mappelle.mp3",
             "points": 5,
             "exerciseID": 57
         },
@@ -692,7 +694,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/excusezmoi.mp3",
             "points": 5,
             "exerciseID": 58
         },
@@ -716,7 +718,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/de%20rien.mp3",
             "points": 5,
             "exerciseID": 59
         },
@@ -740,7 +742,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/%C3%A7a%20va.mp3",
             "points": 5,
             "exerciseID": 60
         },
@@ -764,7 +766,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/o%C3%B9%20est%20la%20salle%20de%20bain.mp3",
             "points": 5,
             "exerciseID": 61
         },
@@ -788,7 +790,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/quelle%20heure%20estil.mp3",
             "points": 5,
             "exerciseID": 62
         },
@@ -812,7 +814,7 @@
                 ]
             },
             "gender": "Masculine",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20suis%20perdu.mp3",
             "points": 5,
             "exerciseID": 63
         },
@@ -836,7 +838,7 @@
                 ]
             },
             "gender": "Masculine",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20suis%20d%C3%A9sol%C3%A9.mp3",
             "points": 5,
             "exerciseID": 64
         },
@@ -860,7 +862,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/jai%20faim.mp3",
             "points": 5,
             "exerciseID": 65
         },
@@ -884,7 +886,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/jai%20soif.mp3",
             "points": 5,
             "exerciseID": 66
         },
@@ -908,7 +910,7 @@
                 ]
             },
             "gender": "Masculine",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20suis%20fatigu%C3%A9.mp3",
             "points": 5,
             "exerciseID": 67
         },
@@ -932,7 +934,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/parlezvous%20anglais.mp3",
             "points": 5,
             "exerciseID": 68
         },
@@ -956,7 +958,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/combien%20%C3%A7a%20co%C3%BBte.mp3",
             "points": 5,
             "exerciseID": 69
         },
@@ -980,7 +982,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/pouvezvous%20maider.mp3",
             "points": 5,
             "exerciseID": 70
         },
@@ -1033,7 +1035,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/au%20revoir.mp3",
             "points": 5,
             "exerciseID": 72
         },
@@ -1062,7 +1064,7 @@
                 ]
             },
             "gender": "Feminine",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20mappelle%20marie.mp3",
             "points": 5,
             "exerciseID": 73
         },
@@ -1089,7 +1091,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/merci%20beaucoup.mp3",
             "points": 5,
             "exerciseID": 74
         },
@@ -1116,7 +1118,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/comment%20vous%20appelezvous.mp3",
             "points": 5,
             "exerciseID": 75
         },
@@ -1144,7 +1146,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/salut%20%C3%A7a%20va.mp3",
             "points": 5,
             "exerciseID": 76
         },
@@ -1169,7 +1171,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonne%20nuit.mp3",
             "points": 5,
             "exerciseID": 77
         },
@@ -1195,7 +1197,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/enchant%C3%A9%20de%20vous%20rencontrer.mp3",
             "points": 5,
             "exerciseID": 78
         },
@@ -1222,7 +1224,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/comment%20allezvous.mp3",
             "points": 5,
             "exerciseID": 79
         },
@@ -1248,7 +1250,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bienvenue.mp3",
             "points": 5,
             "exerciseID": 80
         },
@@ -1274,7 +1276,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/%C3%A7a%20va%20bien%20merci.mp3",
             "points": 5,
             "exerciseID": 81
         },
@@ -1300,7 +1302,7 @@
                 ]
             },
             "gender": "Masculine / Feminine",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20suis%20d%C3%A9sol%C3%A9e.mp3",
             "points": 5,
             "exerciseID": 82
         },
@@ -1325,7 +1327,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/%C3%A0%20demain.mp3",
             "points": 5,
             "exerciseID": 83
         },
@@ -1350,7 +1352,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/%C3%A0%20tout%20%C3%A0%20lheure.mp3",
             "points": 5,
             "exerciseID": 84
         },
@@ -1378,7 +1380,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/comment%20se%20passe%20ta%20journ%C3%A9e.mp3",
             "points": 5,
             "exerciseID": 85
         },
@@ -1406,7 +1408,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/pouvezvous%20maider%20sil%20vous%20pla%C3%AEt.mp3",
             "points": 5,
             "exerciseID": 86
         },
@@ -1434,7 +1436,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20ne%20comprends%20pas.mp3",
             "points": 5,
             "exerciseID": 87
         },
@@ -1461,7 +1463,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/o%C3%B9%20sont%20les%20toilettes%20sil%20vous%20pla%C3%AEt.mp3",
             "points": 5,
             "exerciseID": 88
         },
@@ -1488,7 +1490,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/quelle%20heure%20estil.mp3",
             "points": 5,
             "exerciseID": 89
         },
@@ -1516,7 +1518,7 @@
                 ]
             },
             "gender": "N/A",
-            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
+            "audioFilePath": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/cest%20un%20plaisir%20de%20vous%20rencontrer.mp3",
             "points": 5,
             "exerciseID": 90
         },
@@ -1667,18 +1669,6 @@
             "gender": "Masculine",
             "points": 5,
             "exerciseID": 105
-        },
-        {
-            "taskType": "Translation",
-            "taskDescription": "Translate 'Nice to meet you' into French.",
-            "text": "Nice to meet you",
-            "correctAnswer": "Enchanté(e)",
-            "hints": [
-                "This phrase is often used after meeting someone for the first time. Add 'e' at the end for feminine."
-            ],
-            "gender": "N/A",
-            "points": 5,
-            "exerciseID": 106
         },
         {
             "taskType": "Grammar",
@@ -1923,7 +1913,7 @@
             "conversationSteps": [
                 {
                     "question": "Bonjour, comment vas-tu?",
-                    "questionTranlation": "Hello, how are you?",
+                    "questionTranslation": "Hello, how are you?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20vastu.mp3",
                     "expectedResponse": "Ça va bien, merci. Et toi?",
                     "responseTranslation": "I'm fine, thank you. And you?",
@@ -1931,7 +1921,7 @@
                 },
                 {
                     "question": "Salut, ça va?",
-                    "questionTranlation": "Hi, how are you?",
+                    "questionTranslation": "Hi, how are you?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/salut%20%C3%A7a%20va.mp3",
                     "expectedResponse": "Oui, ça va bien. Merci!",
                     "responseTranslation": "Yes, I'm fine. Thank you!",
@@ -1948,7 +1938,7 @@
             "conversationSteps": [
                 {
                     "question": "Bonjour, je m'appelle Marie. Et toi, comment tu t'appelles?",
-                    "questionTranlation": "Hello, my name is Marie. And you, what's your name?",
+                    "questionTranslation": "Hello, my name is Marie. And you, what's your name?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20je%20mappelle%20marie%20et%20toi%20comment%20tu%20tappelles.mp3",
                     "expectedResponse": "Salut, je m'appelle Louise.",
                     "responseTranslation": "Hi, my name is Louise.",
@@ -1956,7 +1946,7 @@
                 },
                 {
                     "question": "Enchanté(e), Louise. Tu viens d'où?",
-                    "questionTranlation": "Nice to meet you, Louise. Where are you from?",
+                    "questionTranslation": "Nice to meet you, Louise. Where are you from?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/enchant%C3%A9e%20louise%20tu%20viens%20do%C3%B9.mp3",
                     "expectedResponse": "Je viens de America.",
                     "responseTranslation": "I'm from America.",
@@ -1973,7 +1963,7 @@
             "conversationSteps": [
                 {
                     "question": "Pouvez-vous m'aider, s'il vous plaît?",
-                    "questionTranlation": "Can you help me, please?",
+                    "questionTranslation": "Can you help me, please?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/pouvezvous%20maider%20sil%20vous%20pla%C3%AEt.mp3",
                     "expectedResponse": "Bien sûr, avec plaisir.",
                     "responseTranslation": "Of course, with pleasure.",
@@ -1981,7 +1971,7 @@
                 },
                 {
                     "question": "Merci beaucoup pour votre aide.",
-                    "questionTranlation": "Thank you very much for your help.",
+                    "questionTranslation": "Thank you very much for your help.",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/merci%20beaucoup%20pour%20votre%20aide.mp3",
                     "expectedResponse": "Bien sûr, avec plaisir.",
                     "responseTranslation": "Of course, with pleasure.",
@@ -1998,7 +1988,7 @@
             "conversationSteps": [
                 {
                     "question": "Salut, comment s'est passée ta journée?",
-                    "questionTranlation": "Hi, how was your day?",
+                    "questionTranslation": "Hi, how was your day?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/salut%20comment%20sest%20pass%C3%A9e%20ta%20journ%C3%A9e.mp3",
                     "expectedResponse": "Ça s'est bien passé, merci. Et la tienne?",
                     "responseTranslation": "It went well, thank you. And yours?",
@@ -2006,7 +1996,7 @@
                 },
                 {
                     "question": "Ma journée était très bonne, merci!",
-                    "questionTranlation": "My day was very good, thank you!",
+                    "questionTranslation": "My day was very good, thank you!",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/ma%20journ%C3%A9e%20%C3%A9tait%20tr%C3%A8s%20bonne%20merci.mp3",
                     "expectedResponse": "C'est super! Qu'as-tu fait de spécial?",
                     "responseTranslation": "That's great! What did you do today?",
@@ -2023,7 +2013,7 @@
             "conversationSteps": [
                 {
                     "question": "Quels sont tes passe-temps favoris?",
-                    "questionTranlation": "What are your favorite hobbies?",
+                    "questionTranslation": "What are your favorite hobbies?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/quels%20sont%20tes%20passetemps%20favoris.mp3",
                     "expectedResponse": "J'aime lire et faire du vélo. Et toi?",
                     "responseTranslation": "I like reading and biking. And you?",
@@ -2031,7 +2021,7 @@
                 },
                 {
                     "question": "Moi, j'adore jouer au football et cuisiner.",
-                    "questionTranlation": "I love playing football and cooking.",
+                    "questionTranslation": "I love playing football and cooking.",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/moi%20jadore%20jouer%20au%20football%20et%20cuisiner.mp3",
                     "expectedResponse": "C'est intéressant! Tu cuisines quoi généralement?",
                     "responseTranslation": "That's interesting! What do you usually cook?",
@@ -2048,7 +2038,7 @@
             "conversationSteps": [
                 {
                     "question": "Est-ce que tu aimes la musique classique?",
-                    "questionTranlation": "Do you like classical music?",
+                    "questionTranslation": "Do you like classical music?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/estce%20que%20tu%20aimes%20la%20musique%20classique.mp3",
                     "expectedResponse": "Oui, j'aime beaucoup. Et toi?",
                     "responseTranslation": "Yes, I like it a lot. And you?",
@@ -2056,7 +2046,7 @@
                 },
                 {
                     "question": "Non, je préfère le rock. Et les films, tu aimes?",
-                    "questionTranlation": "No, I prefer rock. And movies, do you like them?",
+                    "questionTranslation": "No, I prefer rock. And movies, do you like them?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/non%20je%20pr%C3%A9f%C3%A8re%20le%20rock%20et%20les%20films%20tu%20aimes.mp3",
                     "expectedResponse": "Oui, j'adore les films d'aventure!",
                     "responseTranslation": "Yes, I love adventure movies!",
@@ -2073,7 +2063,7 @@
             "conversationSteps": [
                 {
                     "question": "Quel temps fait-il aujourd'hui?",
-                    "questionTranlation": "What's the weather like today?",
+                    "questionTranslation": "What's the weather like today?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/quel%20temps%20faitil%20aujourdhui.mp3",
                     "expectedResponse": "Il fait beau. Et chez toi?",
                     "responseTranslation": "It's nice. And where you are?",
@@ -2081,7 +2071,7 @@
                 },
                 {
                     "question": "Il fait froid et il pleut.",
-                    "questionTranlation": "It's cold and it's raining.",
+                    "questionTranslation": "It's cold and it's raining.",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/il%20fait%20froid%20et%20il%20pleut.mp3",
                     "expectedResponse": "Oh non! J'espère que ça va s'améliorer.",
                     "responseTranslation": "Oh no! I hope it gets better.",
@@ -2098,7 +2088,7 @@
             "conversationSteps": [
                 {
                     "question": "Excusez-moi, pourriez-vous me dire où se trouve la gare?",
-                    "questionTranlation": "Excuse me, could you tell me where the train station is?",
+                    "questionTranslation": "Excuse me, could you tell me where the train station is?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/excusezmoi%20pourriezvous%20me%20dire%20o%C3%B9%20se%20trouve%20la%20gare.mp3",
                     "expectedResponse": "Bien sûr, continuez tout droit puis tournez à gauche.",
                     "responseTranslation": "Of course, go straight and then turn left.",
@@ -2106,7 +2096,7 @@
                 },
                 {
                     "question": "Merci beaucoup. Est-ce que c'est loin d'ici?",
-                    "questionTranlation": "Thank you very much. Is it far from here?",
+                    "questionTranslation": "Thank you very much. Is it far from here?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/merci%20beaucoup%20estce%20que%20cest%20loin%20dici.mp3",
                     "expectedResponse": "Non, c'est à environ dix minutes à pied.",
                     "responseTranslation": "No, it's about a ten minute walk.",
@@ -2123,7 +2113,7 @@
             "conversationSteps": [
                 {
                     "question": "Tu as des frères ou des sœurs?",
-                    "questionTranlation": "Do you have any brothers or sisters?",
+                    "questionTranslation": "Do you have any brothers or sisters?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/tu%20as%20des%20fr%C3%A8res%20ou%20des%20s%C5%93urs.mp3",
                     "expectedResponse": "Oui, j'ai un frère et une sœur.",
                     "responseTranslation": "Yes, I have a brother and a sister.",
@@ -2131,7 +2121,7 @@
                 },
                 {
                     "question": "C'est sympa ça! Ils sont plus âgés ou plus jeunes?",
-                    "questionTranlation": "That's nice! Are they older or younger?",
+                    "questionTranslation": "That's nice! Are they older or younger?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/cest%20sympa%20%C3%A7a%20ils%20sont%20plus%20%C3%A2g%C3%A9s%20ou%20plus%20jeunes.mp3",
                     "expectedResponse": "Mon frère est plus âgé et ma sœur est plus jeune.",
                     "responseTranslation": "My brother is older and my sister is younger.",
@@ -2148,7 +2138,7 @@
             "conversationSteps": [
                 {
                     "question": "Tu travailles dans quoi?",
-                    "questionTranlation": "What do you do for work?",
+                    "questionTranslation": "What do you do for work?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/tu%20travailles%20dans%20quoi.mp3",
                     "expectedResponse": "Je suis enseignant(e). Et toi, tu fais quoi?",
                     "responseTranslation": "I'm a teacher. And you, what do you do?",
@@ -2156,7 +2146,7 @@
                 },
                 {
                     "question": "Je travaille en tant qu'ingénieur(e).",
-                    "questionTranlation": "I work as an engineer.",
+                    "questionTranslation": "I work as an engineer.",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20travaille%20en%20tant%20quing%C3%A9nieure.mp3",
                     "expectedResponse": "C'est intéressant. Tu travailles sur quels types de projets?",
                     "responseTranslation": "That's interesting. What types of projects do you work on?",
@@ -2173,7 +2163,7 @@
             "conversationSteps": [
                 {
                     "question": "Comment te sens-tu aujourd'hui?",
-                    "questionTranlation": "How are you feeling today?",
+                    "questionTranslation": "How are you feeling today?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/comment%20te%20senstu%20aujourdhui.mp3",
                     "expectedResponse": "Je me sens bien, merci. Et toi?",
                     "responseTranslation": "I'm feeling good, thank you. And you?",
@@ -2181,7 +2171,7 @@
                 },
                 {
                     "question": "Moi aussi, je suis de bonne humeur!",
-                    "questionTranlation": "Me too, I'm in a good mood!",
+                    "questionTranslation": "Me too, I'm in a good mood!",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/moi%20aussi%20je%20suis%20de%20bonne%20humeur.mp3",
                     "expectedResponse": "C'est super. Tu as des plans pour ce soir?",
                     "responseTranslation": "That's great. Do you have any plans for tonight?",
@@ -2198,7 +2188,7 @@
             "conversationSteps": [
                 {
                     "question": "Quels sont tes plans pour le week-end?",
-                    "questionTranlation": "What are your plans for the weekend?",
+                    "questionTranslation": "What are your plans for the weekend?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/quels%20sont%20tes%20plans%20pour%20le%20weekend.mp3",
                     "expectedResponse": "Je vais aller au cinéma. Et toi?",
                     "responseTranslation": "I'm going to the movies. And you?",
@@ -2206,7 +2196,7 @@
                 },
                 {
                     "question": "Je pense faire une randonnée. Tu aimes randonner?",
-                    "questionTranlation": "I'm thinking of going hiking. Do you like hiking?",
+                    "questionTranslation": "I'm thinking of going hiking. Do you like hiking?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20pense%20faire%20une%20randonn%C3%A9e%20tu%20aimes%20randonner.mp3",
                     "expectedResponse": "Oui, j'adore ça! C'est très relaxant.",
                     "responseTranslation": "Yes, I love it! It's very relaxing.",
@@ -2223,7 +2213,7 @@
             "conversationSteps": [
                 {
                     "question": "Que penses-tu du nouveau restaurant en ville?",
-                    "questionTranlation": "What do you think of the new restaurant in town?",
+                    "questionTranslation": "What do you think of the new restaurant in town?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/que%20pensestu%20du%20nouveau%20restaurant%20en%20ville.mp3",
                     "expectedResponse": "Je le trouve excellent. Tu l'as essayé?",
                     "responseTranslation": "I think it's excellent. Have you tried it?",
@@ -2231,7 +2221,7 @@
                 },
                 {
                     "question": "Pas encore, mais j'ai hâte d'y aller.",
-                    "questionTranlation": "Not yet, but I can't wait to go.",
+                    "questionTranslation": "Not yet, but I can't wait to go.",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/pas%20encore%20mais%20jai%20h%C3%A2te%20dy%20aller.mp3",
                     "expectedResponse": "Tu devrais, leur cuisine est délicieuse.",
                     "responseTranslation": "You should, their food is delicious.",
@@ -2248,7 +2238,7 @@
             "conversationSteps": [
                 {
                     "question": "Quel est ton plat préféré?",
-                    "questionTranlation": "What's your favorite food?",
+                    "questionTranslation": "What's your favorite food?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/quel%20est%20ton%20plat%20pr%C3%A9f%C3%A9r%C3%A9.mp3",
                     "expectedResponse": "J'adore la pizza. Et toi?",
                     "responseTranslation": "I love pizza. And you?",
@@ -2256,7 +2246,7 @@
                 },
                 {
                     "question": "Moi, je préfère les sushis. Tu aimes les sushis?",
-                    "questionTranlation": "I prefer sushi. Do you like sushi?",
+                    "questionTranslation": "I prefer sushi. Do you like sushi?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/moi%20je%20pr%C3%A9f%C3%A8re%20les%20sushis%20tu%20aimes%20les%20sushis.mp3",
                     "expectedResponse": "Oui, c'est délicieux!",
                     "responseTranslation": "Yes, it's delicious!",
@@ -2273,7 +2263,7 @@
             "conversationSteps": [
                 {
                     "question": "Comment est ta routine quotidienne?",
-                    "questionTranlation": "What's your daily routine like?",
+                    "questionTranslation": "What's your daily routine like?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/comment%20est%20ta%20routine%20quotidienne.mp3",
                     "expectedResponse": "Je me lève tôt et je vais courir. Et toi?",
                     "responseTranslation": "I get up early and go for a run. And you?",
@@ -2281,7 +2271,7 @@
                 },
                 {
                     "question": "Moi, je commence ma journée avec un bon café.",
-                    "questionTranlation": "I start my day with a good coffee.",
+                    "questionTranslation": "I start my day with a good coffee.",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/moi%20je%20commence%20ma%20journ%C3%A9e%20avec%20un%20bon%20caf%C3%A9.mp3",
                     "expectedResponse": "C'est une bonne manière de commencer la journée!",
                     "responseTranslation": "That's a good way to start the day!",
@@ -2298,7 +2288,7 @@
             "conversationSteps": [
                 {
                     "question": "Merci pour ton aide!",
-                    "questionTranlation": "Thank you for your help!",
+                    "questionTranslation": "Thank you for your help!",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/merci%20pour%20ton%20aide.mp3",
                     "expectedResponse": "De rien, c'était un plaisir.",
                     "responseTranslation": "You're welcome, it was a pleasure.",
@@ -2306,7 +2296,7 @@
                 },
                 {
                     "question": "C'est gentil de ta part.",
-                    "questionTranlation": "That's kind of you.",
+                    "questionTranslation": "That's kind of you.",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/cest%20gentil%20de%20ta%20part.mp3",
                     "expectedResponse": "Tu ferais la même chose pour moi.",
                     "responseTranslation": "You would do the same for me.",
@@ -2323,7 +2313,7 @@
             "conversationSteps": [
                 {
                     "question": "Bonjour, comment ça va?",
-                    "questionTranlation": "Hello, how are you?",
+                    "questionTranslation": "Hello, how are you?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/bonjour%20comment%20%C3%A7a%20va.mp3",
                     "expectedResponse": "Ça va bien, merci. Et vous?",
                     "responseTranslation": "I'm fine, thank you. And you?",
@@ -2340,10 +2330,10 @@
             "conversationSteps": [
                 {
                     "question": "Comment vous appelez-vous?",
-                    "questionTranlation": "What's your name?",
+                    "questionTranslation": "What's your name?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/comment%20vous%20appelezvous.mp3",
-                    "expectedResponse": "Je m'appelle Mari.",
-                    "responseTranslation": "My name is Mari.",
+                    "expectedResponse": "Je m'appelle Marie.",
+                    "responseTranslation": "My name is Marie.",
                     "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20mappelle%20mari.mp3"
                 }
             ],
@@ -2357,7 +2347,7 @@
             "conversationSteps": [
                 {
                     "question": "Ça va?",
-                    "questionTranlation": "How are you?",
+                    "questionTranslation": "How are you?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/%C3%A7a%20va.mp3",
                     "expectedResponse": "Oui, ça va. Merci.",
                     "responseTranslation": "Yes, I'm fine. Thank you.",
@@ -2374,10 +2364,10 @@
             "conversationSteps": [
                 {
                     "question": "Tu t'appelles comment?",
-                    "questionTranlation": "What's your name?",
+                    "questionTranslation": "What's your name?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/tu%20tappelles%20comment.mp3",
-                    "expectedResponse": "Je m'appelle Mari.",
-                    "responseTranslation": "My name is Mari.",
+                    "expectedResponse": "Je m'appelle Marie.",
+                    "responseTranslation": "My name is Marie.",
                     "audioFilePathResponse": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/je%20mappelle%20mari.mp3"
                 }
             ],
@@ -2391,7 +2381,7 @@
             "conversationSteps": [
                 {
                     "question": "Comment va votre famille?",
-                    "questionTranlation": "How is your family?",
+                    "questionTranslation": "How is your family?",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/comment%20va%20votre%20famille.mp3",
                     "expectedResponse": "Ils vont bien, merci.",
                     "responseTranslation": "They are fine, thank you.",
@@ -2408,7 +2398,7 @@
             "conversationSteps": [
                 {
                     "question": "Au revoir, bonne journée!",
-                    "questionTranlation": "Goodbye, have a good day!",
+                    "questionTranslation": "Goodbye, have a good day!",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/au%20revoir%20bonne%20journ%C3%A9e.mp3",
                     "expectedResponse": "Merci, vous aussi!",
                     "responseTranslation": "Thank you, you too!",
@@ -2425,7 +2415,7 @@
             "conversationSteps": [
                 {
                     "question": "Merci beaucoup!",
-                    "questionTranlation": "Thank you very much!",
+                    "questionTranslation": "Thank you very much!",
                     "audioFilePathQuestion": "https://storage.googleapis.com/lang-learning-app-gpt.appspot.com/lesson_audio/french/merci%20beaucoup.mp3",
                     "expectedResponse": "De rien!",
                     "responseTranslation": "You're welcome!",

@@ -13,15 +13,20 @@ import Voice, {
 import { PermissionsAndroid } from "react-native";
 import { playSpeech } from "../../helperFunctions/audioHelpers";
 import { TextInput } from "react-native-gesture-handler";
+import { colorsDark } from "../../utility/color";
+import SelectableText from "../text/selectableText";
+import FluencyCalculator from "../../helperFunctions/fluency";
+
 // 00008130-000415DE1E30001C
 const SpeakingLesson = ({
   text,
   translationText,
   audioUrl,
-  setMissedQuestions,
   setIsCorrect,
   setFluencyScore,
   fluencyScore,
+  taskDescription,
+  gender,
 }) => {
   const [recording, setRecording] = useState(false);
   const user = useSelector(selectUser);
@@ -32,9 +37,14 @@ const SpeakingLesson = ({
   const [playingSound, setPlayingSound] = useState();
   const [isSoundLoading, setIsSoundLoading] = useState(false);
   const [lastSpokenText, setLastSpokenText] = useState("");
+  const [volumeTimer, setVolumeTimer] = useState(null);
 
   const [volumeHistory, setVolumeHistory] = useState([]);
-  // const [fluencyScore, setFluencyScore] = useState(0);
+
+  const volumeInterval = 1; //milliseconds
+
+  // Create an instance of FluencyCalculator
+  const fluencyCalculator = new FluencyCalculator(volumeInterval);
 
   // Normalize text and remove punctuation
   const normalizeText = (inputText) => {
@@ -67,7 +77,7 @@ const SpeakingLesson = ({
   const normalizedCombinedSpeech = new Set(
     Array.from(combinedSpeech).filter(Boolean).map(normalizeText)
   );
-  console.log("combinedSpeech: ", combinedSpeech);
+  // console.log("combinedSpeech: ", combinedSpeech);
 
   useEffect(() => {
     // Function to clean text for comparison
@@ -100,7 +110,7 @@ const SpeakingLesson = ({
       console.log("All words are present, regardless of order. Correct!");
 
       // Calculate the fluency score
-      const newFluencyScore = calculateFluency(
+      const newFluencyScore = fluencyCalculator.calculateFluency(
         recognizedSpeech,
         partialRecognizedSpeech,
         text,
@@ -127,7 +137,7 @@ const SpeakingLesson = ({
       const play = async () => {
         await playSpeech(
           audioUrl,
-          null,
+          1,
           null,
           null,
           setPlayingSound,
@@ -138,6 +148,34 @@ const SpeakingLesson = ({
       play();
     }
   }, [text, audioUrl]); // Depend on both text and audioUrl
+
+  useEffect(() => {
+    // Function to start the volume recording at regular intervals
+    const startVolumeRecording = () => {
+      const timer = setInterval(() => {
+        setVolumeHistory((currentHistory) => [...currentHistory, volume]);
+      }, volumeInterval); // Adjust the interval as needed (1000ms = 1 second)
+      setVolumeTimer(timer);
+    };
+
+    // Function to stop the volume recording
+    const stopVolumeRecording = () => {
+      if (volumeTimer) {
+        clearInterval(volumeTimer);
+        setVolumeTimer(null);
+      }
+    };
+
+    if (recording) {
+      startVolumeRecording();
+    } else {
+      stopVolumeRecording();
+    }
+
+    return () => {
+      stopVolumeRecording();
+    };
+  }, [recording, volume]);
 
   useEffect(() => {
     Voice.onSpeechStart = onSpeechStart;
@@ -181,117 +219,9 @@ const SpeakingLesson = ({
 
   const onSpeechVolumeChanged = (e) => {
     setVolume(e.value);
-    setVolumeHistory((currentHistory) => [...currentHistory, e.value]);
+    // setVolumeHistory((currentHistory) => [...currentHistory, e.value]);
     console.log("onSpeechVolumeChanged: ", e);
   };
-  const calculateFluency = (
-    recognizedSpeech,
-    partialRecognizedSpeech,
-    expectedText,
-    volumeHistory,
-    volumeThreshold = 1.5
-  ) => {
-    // Normalize and split texts into words
-    const normalize = (text) =>
-      text.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\_`~()?]/g, "");
-    const expectedWords = normalize(expectedText).split(" ");
-    const recognizedWords = normalize(recognizedSpeech || "").split(" ");
-    const partialWords = normalize(partialRecognizedSpeech || "").split(" ");
-
-    // Calculate word accuracy
-    const recognizedWordSet = new Set(recognizedWords.concat(partialWords));
-    const expectedWordSet = new Set(expectedWords);
-
-    // Calculate number of correct words, regardless of order
-    const correctWords = Array.from(recognizedWordSet).filter((word) =>
-      expectedWordSet.has(word)
-    ).length;
-    const wordAccuracy = correctWords / expectedWords.length;
-
-    // Calculate order metric more accurately
-    let correctOrderScore = 0;
-    let recognizedWordsInOrder = recognizedWords
-      .concat(partialWords)
-      .filter((word) => expectedWordSet.has(word));
-    for (let i = 0; i < recognizedWordsInOrder.length; i++) {
-      if (recognizedWordsInOrder[i] === expectedWords[i]) {
-        correctOrderScore++;
-      }
-    }
-    const orderMetric = correctOrderScore / expectedWords.length;
-
-    // Trim volumeHistory to start from the first instance of speaking
-    const startIndex = volumeHistory.findIndex(
-      (volume) => volume >= volumeThreshold
-    );
-    const trimmedVolumeHistory =
-      startIndex !== -1 ? volumeHistory.slice(startIndex) : [];
-
-    // Improved speech continuity calculation using trimmedVolumeHistory
-    let totalMoments = trimmedVolumeHistory.length;
-    let speakingMoments = trimmedVolumeHistory.filter(
-      (volume) => volume >= volumeThreshold
-    ).length;
-    const speechContinuity =
-      totalMoments > 0 ? speakingMoments / totalMoments : 0;
-
-    // Calculate edit distance for a rough measure of overall accuracy
-    const editDistance = getEditDistance(
-      normalize(recognizedSpeech || ""),
-      normalize(expectedText)
-    );
-    const editDistanceScore =
-      (expectedText.length - editDistance) / expectedText.length;
-
-    // Combine metrics into a fluency score
-    const fluencyScore =
-      (wordAccuracy + speechContinuity + orderMetric + editDistanceScore) / 4;
-    console.log("wordAccuracy: ", wordAccuracy);
-    console.log("speechContinuity: ", speechContinuity);
-    console.log("orderMetric: ", orderMetric);
-    console.log("editDistanceScore: ", editDistanceScore);
-    console.log("fluencyScore: ", fluencyScore);
-    // Convert the score to a percentage
-    const fluencyPercentage = Math.round(fluencyScore * 100);
-    return fluencyPercentage <= 100 ? fluencyPercentage : 100;
-  };
-
-  // Placeholder function for edit distance (Levenshtein Distance)
-  function getEditDistance(a, b) {
-    // Implementation of the Levenshtein distance
-    if (a.length === 0) return b.length;
-    if (b.length === 0) return a.length;
-    let matrix = [];
-
-    // Increment along the first column of each row
-    for (let i = 0; i <= b.length; i++) {
-      matrix[i] = [i];
-    }
-
-    // Increment each column in the first row
-    for (let j = 0; j <= a.length; j++) {
-      matrix[0][j] = j;
-    }
-
-    // Fill in the rest of the matrix
-    for (let i = 1; i <= b.length; i++) {
-      for (let j = 1; j <= a.length; j++) {
-        if (b.charAt(i - 1) === a.charAt(j - 1)) {
-          matrix[i][j] = matrix[i - 1][j - 1];
-        } else {
-          matrix[i][j] = Math.min(
-            matrix[i - 1][j - 1] + 1, // substitution
-            Math.min(
-              matrix[i][j - 1] + 1, // insertion
-              matrix[i - 1][j] + 1
-            )
-          ); // deletion
-        }
-      }
-    }
-
-    return matrix[b.length][a.length];
-  }
 
   const requestMicrophonePermission = async () => {
     try {
@@ -315,15 +245,14 @@ const SpeakingLesson = ({
 
   return (
     <View style={styles.mainContainer}>
+      <Text style={styles.taskDescriptionText}>{taskDescription}</Text>
+
       <View style={styles.textView}>
-        <TextInput
-          multiline={true}
-          scrollEnabled={false}
-          editable={false}
+        <SelectableText
           style={styles.text}
-        >
-          {renderTextWithHighlight(text, normalizedCombinedSpeech)}
-        </TextInput>
+          text={renderTextWithHighlight(text, normalizedCombinedSpeech)}
+        />
+
         <Text style={styles.translationText}>{translationText}</Text>
       </View>
       {audioUrl && (
@@ -336,7 +265,7 @@ const SpeakingLesson = ({
             <AntDesign
               name="sound"
               size={25}
-              color={playingSound ? "#FFFFFF91" : "#FFFFFF"}
+              color={playingSound ? colorsDark.disabledGrey : colorsDark.white}
             />
           }
           size={40}
@@ -352,7 +281,7 @@ const SpeakingLesson = ({
             } else {
               await playSpeech(
                 audioUrl,
-                null,
+                1,
                 null,
                 null,
                 setPlayingSound,
@@ -362,7 +291,7 @@ const SpeakingLesson = ({
           }}
         />
       )}
-      <Text style={{ color: "#FFFFFF", fontSize: 20 }}>{fluencyScore}</Text>
+
       <RoundButton
         icon={
           <MaterialCommunityIcons
@@ -374,7 +303,8 @@ const SpeakingLesson = ({
         volume={volume}
         disabled={playingSound}
         size={70}
-        color={recording ? "red" : "#007bff"}
+        marginVertical={50}
+        color={recording ? colorsDark.red : colorsDark.blue}
         onPress={async () => {
           if (!playingSound) {
             if (
@@ -425,23 +355,30 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: "#FFFFFF",
-    fontSize: 50,
+    color: colorsDark.white,
+    fontSize: 25,
     textAlign: "center",
-    marginHorizontal: 20,
+    marginHorizontal: 12,
   },
   recognizedWord: {
-    color: "green",
-    fontSize: 50, // You can adjust the font size
+    color: colorsDark.green,
+    fontSize: 45, // You can adjust the font size
   },
   normalWord: {
-    color: "#FFFFFF",
-    fontSize: 50, // You can adjust the font size
+    color: colorsDark.white,
+    fontSize: 45, // You can adjust the font size
   },
   translationText: {
-    color: "#CCCCCCC3",
-    fontSize: 25,
+    color: colorsDark.secondaryTextGrey,
+    fontSize: 20,
     marginTop: 20,
     marginBottom: 100,
+  },
+  taskDescriptionText: {
+    color: colorsDark.blue,
+    marginTop: 20,
+    marginHorizontal: 40,
+    fontSize: 18,
+    fontStyle: "italic",
   },
 });

@@ -16,6 +16,7 @@ const InputBox = ({
   backgroundColor,
   placeholderTextColor,
   onFocus,
+  autoCapitalize = "none",
 }) => {
   const inputType = keyboardType || "default";
   return (
@@ -46,6 +47,7 @@ const InputBox = ({
         placeholderTextColor ? placeholderTextColor : "#FFFFFF8D"
       }
       onFocus={onFocus}
+      autoCapitalize={autoCapitalize}
     />
   );
 };

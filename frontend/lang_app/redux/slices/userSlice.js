@@ -10,6 +10,7 @@ export const userSlice = createSlice({
     fineTuneRating: null,
     isCurrentChatALesson: false,
     currentLesson: null,
+    allLessons: [],
   },
 
   reducers: {
@@ -52,6 +53,9 @@ export const userSlice = createSlice({
     setCurrentLesson: (state, action) => {
       state.currentLesson = action.payload;
     },
+    setAllLessons: (state, action) => {
+      state.allLessons = action.payload;
+    },
   },
 });
 
@@ -67,6 +71,7 @@ export const {
   setFineTuneRating,
   setIsCurrentChatALesson,
   setCurrentLesson,
+  setAllLessons,
 } = userSlice.actions;
 
 export const selectUser = (state) => state.userSlice.user;
@@ -78,5 +83,6 @@ export const selectFineTuneRating = (state) => state.userSlice.fineTuneRating;
 export const selectIsCurrentChatALesson = (state) =>
   state.userSlice.isCurrentChatALesson;
 export const selectCurrentLesson = (state) => state.userSlice.currentLesson;
+export const selectAllLessons = (state) => state.userSlice.allLessons;
 
 export default userSlice.reducer;

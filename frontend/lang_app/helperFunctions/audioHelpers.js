@@ -3,7 +3,7 @@ import { Audio } from "expo-av";
 export const playSpeech = async (
   audioUrl,
   index = null,
-  playingMessageIndex = null,
+  // playingMessageIndex = null,
   setPlayingMessageIndex = null,
   setPlayingSound = null,
   setIsSoundLoading
@@ -25,16 +25,36 @@ export const playSpeech = async (
       throw new Error("Failed to create sound object");
     }
 
-    if (setPlayingSound) {
+    // Define a playback status update callback
+    const playbackStatusUpdateCallback = (playbackStatus) => {
+      if (playbackStatus.didJustFinish) {
+        // console.log("Finished playing");
+        stopPlaying(sound, setPlayingSound, setPlayingMessageIndex);
+      }
+    };
+
+    // console.log(
+    //   "Sound object properties:",
+    //   Object.getOwnPropertyDescriptors(sound)
+    // );
+
+    // try {
+    sound.setOnPlaybackStatusUpdate(playbackStatusUpdateCallback);
+    // } catch (error) {
+    //   console.error("Failed to set playback status update callback:", error);
+    // }
+
+    if (setPlayingSound && typeof setPlayingSound === "function") {
       setPlayingSound(sound);
     }
 
-    sound.setOnPlaybackStatusUpdate((playbackStatus) => {
-      if (playbackStatus.didJustFinish) {
-        console.log("Finished playing");
-        stopPlaying(sound, setPlayingSound, setPlayingMessageIndex);
-      }
-    });
+    if (
+      setPlayingMessageIndex &&
+      typeof setPlayingMessageIndex === "function" &&
+      index !== null
+    ) {
+      setPlayingMessageIndex(index);
+    }
 
     setIsSoundLoading(false);
     await sound.playAsync();
@@ -54,11 +74,11 @@ export const stopPlaying = async (
 ) => {
   if (playingSound) {
     await playingSound.unloadAsync();
-    if (setPlayingSound != null && typeof setPlayingSound === "function") {
+    if (setPlayingSound && typeof setPlayingSound === "function") {
       setPlayingSound(null);
     }
     if (
-      setPlayingMessageIndex != null &&
+      setPlayingMessageIndex &&
       typeof setPlayingMessageIndex === "function"
     ) {
       setPlayingMessageIndex(null);

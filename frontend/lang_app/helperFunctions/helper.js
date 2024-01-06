@@ -23,3 +23,7 @@ export const selectLang = (lang, addToDb) => {
 
   return language;
 };
+
+export function removePunctuation(string) {
+  return string.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ");
+}

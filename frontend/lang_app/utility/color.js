@@ -9,11 +9,15 @@ export const colorsDark = {
   secondaryText: "#0E0E0E8D",
   red: "#FF4A6B",
   green: "#01E59D",
+  greenLowOpacity: "#01E59D77",
   brightGreen: "#00FF73",
   purple: "#7554FA",
   blue: "#1E8DFE",
+  brightBlue: "#007bff",
   yellow: "#FDE03E",
   white: "#ffffff",
+  disabledGrey: "#FFFFFF91",
+  secondaryTextGrey: "#CCCCCCC3",
 };
 
 export const colorsLight = {

@@ -4,83 +4,85 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Alert,
   Dimensions,
 } from "react-native";
 import MainButton from "../buttons/mainButton";
 import { colorsDark } from "../../utility/color";
 import { TextInput } from "react-native-gesture-handler";
+import { removePunctuation } from "../../helperFunctions/helper";
 
 const ReadingLesson = ({
   text,
   translationText,
+  taskDescription,
   audioUrl,
-  setMissedQuestions,
   setIsCorrect,
+  translationOptions,
+  setGivenAnswer,
+  setCorrectAnswer,
 }) => {
   const [displayedText, setDisplayedText] = useState("");
   const [wordChoices, setWordChoices] = useState([]);
   const [selectedWords, setSelectedWords] = useState([]);
-  // Fisher-Yates shuffle algorithm
-  const shuffleArray = (array) => {
-    let currentIndex = array.length,
-      randomIndex;
-
-    // While there remain elements to shuffle...
-    while (currentIndex !== 0) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex],
-        array[currentIndex],
-      ];
-    }
-
-    return array;
-  };
 
   useEffect(() => {
-    // Randomly decide to show text or translation
+    // Determine the language of the displayed text and set word choices accordingly
+    // Determine the language of the displayed text and set word choices accordingly
     if (Math.random() < 0.5) {
       setDisplayedText(text);
-      setWordChoices(shuffleArray(translationText.split(" ")));
+      setWordChoices(shuffleArray(translationOptions.English)); // Shuffle English options
+      setCorrectAnswer(translationText);
     } else {
       setDisplayedText(translationText);
-      setWordChoices(shuffleArray(text.split(" ")));
+      setWordChoices(shuffleArray(translationOptions.French)); // Shuffle French options
+      setCorrectAnswer(text);
     }
-  }, [text, translationText]);
+  }, [text, translationText, translationOptions]);
 
   const handleWordSelection = (word) => {
     setSelectedWords([...selectedWords, word]);
-    // Remove the selected word from wordChoices
-    setWordChoices(wordChoices.filter((w) => w !== word));
   };
 
   const handleSelectedWordTap = (index) => {
-    // Remove the word from selectedWords and put it back in wordChoices
     let newSelectedWords = [...selectedWords];
     newSelectedWords.splice(index, 1);
     setSelectedWords(newSelectedWords);
-    setWordChoices([...wordChoices, selectedWords[index]]);
   };
+  const shuffleArray = (array) => {
+    let shuffled = array.slice(); // Copy the array
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1)); // Random index
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap elements
+    }
+    return shuffled;
+  };
+
   const checkTranslation = () => {
-    const userTranslation = selectedWords.join(" ");
-    if (displayedText === text && userTranslation === translationText) {
-      setIsCorrect(true);
-    } else if (displayedText === translationText && userTranslation === text) {
+    // Concatenate selected words and remove punctuation for user's translation
+    const userTranslation = removePunctuation(
+      selectedWords.join(" ").toLowerCase()
+    );
+
+    // Determine the correct translation based on the displayed text and remove punctuation
+    const correctTranslation = removePunctuation(
+      displayedText === text
+        ? translationText.toLowerCase()
+        : text.toLowerCase()
+    );
+
+    // Check if the user's translation matches the correct translation
+    if (userTranslation === correctTranslation) {
       setIsCorrect(true);
     } else {
       setIsCorrect(false);
-      setMissedQuestions((questions) => [...questions, displayedText]);
+      setGivenAnswer(userTranslation);
     }
     setSelectedWords([]);
   };
 
   return (
     <View style={styles.container}>
+      <Text style={styles.taskDescriptionText}>{taskDescription}</Text>
       <TextInput
         multiline={true}
         scrollEnabled={false}
@@ -104,7 +106,11 @@ const ReadingLesson = ({
         {wordChoices.map((word, index) => (
           <TouchableOpacity
             key={index}
-            style={styles.wordButton}
+            style={
+              selectedWords.includes(word)
+                ? styles.wordButtonSelected
+                : styles.wordButton
+            }
             onPress={() => handleWordSelection(word)}
           >
             <Text style={styles.wordButtonText}>{word}</Text>
@@ -140,12 +146,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginBottom: 20,
   },
+
   wordButton: {
-    backgroundColor: "#FFF",
+    backgroundColor: colorsDark.white,
     padding: 10,
     margin: 10,
     borderRadius: 10,
   },
+
+  wordButtonSelected: {
+    backgroundColor: colorsDark.oldBackgroundColor,
+    padding: 10,
+    margin: 10,
+    borderRadius: 10,
+  },
+
   wordButtonText: {
     color: "#000",
     fontSize: 16,
@@ -182,5 +197,13 @@ const styles = StyleSheet.create({
   selectedWordButtonText: {
     color: "#FFF",
     fontSize: 16,
+  },
+  taskDescriptionText: {
+    color: colorsDark.blue,
+    marginVertical: 20,
+    marginHorizontal: 40,
+    fontSize: 18,
+    fontStyle: "italic",
+    textAlign: "center",
   },
 });

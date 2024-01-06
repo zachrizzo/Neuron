@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, Text, View, FlatList, Dimensions } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import RoundButton from "../buttons/roundButtons";
 import { playSpeech, stopPlaying } from "../../helperFunctions/audioHelpers";
@@ -24,27 +24,29 @@ const ConversationLesson = ({
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [isRecording, setIsRecording] = useState(false);
   const [isResponseVisible, setIsResponseVisible] = useState(false);
-  const [recognizedResponse, setRecognizedResponse] = useState("");
+  const [speechResults, setSpeechResults] = useState("");
   const [volume, setVolume] = useState(0);
-  const [recording, setRecording] = useState(false);
-  const [lastSpokenText, setLastSpokenText] = useState("");
   const [volumeHistory, setVolumeHistory] = useState([]);
   const [partialRecognizedSpeech, setPartialRecognizedSpeech] = useState();
   const [recognizedSpeech, setRecognizedSpeech] = useState();
   const [currentExpectedResponse, setCurrentExpectedResponse] = useState("");
   const [totalFluencyScore, setTotalFluencyScore] = useState(0);
-  const [numberOfFluencyScores, setNumberOfFluencyScores] = useState(0);
+  const [numberOfFluencyScores, setNumberOfFluencyScores] = useState(1);
   const [visibleMessages, setVisibleMessages] = useState([]);
+  const [IsLastMessageOfConvo, setIsLastMessageOfConvo] = useState(false);
+  const [speechFinished, setSpeechFinished] = useState(false);
+  const [volumeTimer, setVolumeTimer] = useState(null);
+
+  const volumeInterval = 1;
 
   // Create an instance of FluencyCalculator
-  const fluencyCalculator = new FluencyCalculator();
+  const fluencyCalculator = new FluencyCalculator(volumeInterval);
 
   // Normalize text and remove punctuation
   const normalizeText = (inputText) => {
     return inputText?.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\_`~()?]/g, "");
   };
 
-  // Function to clean text for comparison
   const cleanTextForComparison = (text) => {
     return text
       .toLowerCase()
@@ -84,36 +86,73 @@ const ConversationLesson = ({
     };
   }, []);
 
-  // Function to render text with highlighted recognized words
-  const renderTextWithHighlight = (text, recognizedWordsSet) => {
-    return text.split(" ").map((word, index) => {
-      const cleanWord = normalizeText(word);
-      const isRecognized = recognizedWordsSet.has(cleanWord);
+  useEffect(() => {
+    // Function to start the volume recording at regular intervals
+    const startVolumeRecording = () => {
+      const timer = setInterval(() => {
+        setVolumeHistory((currentHistory) => [...currentHistory, volume]);
+      }, volumeInterval); // Adjust the interval as needed (1000ms = 1 second)
+      setVolumeTimer(timer);
+    };
+
+    // Function to stop the volume recording
+    const stopVolumeRecording = () => {
+      if (volumeTimer) {
+        clearInterval(volumeTimer);
+        setVolumeTimer(null);
+      }
+    };
+
+    if (isRecording) {
+      startVolumeRecording();
+    } else {
+      stopVolumeRecording();
+    }
+
+    return () => {
+      stopVolumeRecording();
+    };
+  }, [isRecording, volume]);
+
+  const renderTextWithHighlight = (text, recognizedWordsSet, messageIndex) => {
+    const isWholeMessageRecognized =
+      visibleMessages[messageIndex]?.isResponseSpeechCorrect;
+
+    if (isWholeMessageRecognized) {
       return (
-        <Text
-          key={index}
-          style={isRecognized ? styles.recognizedWord : styles.messageText}
-        >
-          {word + (index < text.split(" ").length - 1 ? " " : "")}
+        <Text key={messageIndex} style={styles.recognizedWord}>
+          {text}
         </Text>
       );
-    });
+    } else {
+      return text.split(" ").map((word, index) => {
+        const cleanWord = normalizeText(word);
+        const isRecognized = recognizedWordsSet.has(cleanWord);
+
+        return (
+          <Text
+            key={`${messageIndex}-${index}`}
+            style={isRecognized ? styles.recognizedWord : styles.messageText}
+          >
+            {word + (index < text.split(" ").length - 1 ? " " : "")}
+          </Text>
+        );
+      });
+    }
   };
 
   useEffect(() => {
     // Initialize the visible messages with the first step
     setVisibleMessages((prevMessages) => [
       ...prevMessages,
-      { convo: conversationSteps[0], showResponse: false },
+      {
+        convo: conversationSteps[0],
+        showResponse: false,
+        isResponseSpeechCorrect: false,
+      },
     ]);
     // Play the first audio file on render
     playStepAudio(conversationSteps[0].audioFilePathQuestion);
-
-    Voice.onSpeechResults = onSpeechResults;
-
-    return () => {
-      Voice.destroy().then(Voice.removeAllListeners);
-    };
   }, []);
 
   //get metadata from audio file
@@ -135,67 +174,29 @@ const ConversationLesson = ({
       setIsSoundLoading
     );
     //get metadata from audio file
+    console.log("-----------------------------");
 
     // Reveal the response after the audio is done playing
     setTimeout(() => {
       setIsResponseVisible(true);
+
       //update the last step showResponse to true
       setVisibleMessages((prevMessages) => {
         const updatedMessages = [...prevMessages];
         updatedMessages[updatedMessages.length - 1].showResponse = true;
+
+        updatedMessages[
+          updatedMessages.length - 1
+        ].isResponseSpeechCorrect = false;
         return updatedMessages;
       });
     }, 1000); // Adjust this delay based on the audio duration
   };
 
-  const startRecording = async () => {
-    setIsRecording(true);
-    try {
-      await Voice.start("en-US");
-    } catch (e) {
-      console.error("Error starting voice recognition: ", e);
-    }
-  };
-
   const onSpeechResults = (e) => {
-    console.log("User said: ", e.value);
-    setRecognizedResponse(e.value[0]);
-    setIsRecording(false);
-
-    // Check if user's speech matches the expected response
-    if (
-      (e.value[0].toLowerCase() ===
-        normalizeText(conversationSteps[currentStepIndex].expectedResponse) ||
-        recognizedSpeech ||
-        partialRecognizedSpeech) &&
-      allWordsPresent
-    ) {
-      //   setIsCorrect(true); // User's response is correct
-      // if (currentStepIndex < conversationSteps.length - 1) {
-      //   setCurrentStepIndex(currentStepIndex + 1);
-      //   setIsResponseVisible(false);
-      //   setVisibleMessages((prevMessages) => [
-      //     ...prevMessages,
-      //     {
-      //       convo: conversationSteps[currentStepIndex + 1],
-      //       showResponse: false,
-      //     },
-      //   ]);
-      //   playStepAudio(
-      //     conversationSteps[currentStepIndex + 1].audioFilePathQuestion
-      //   );
-      //   setRecognizedSpeech("");
-      //   setPartialRecognizedSpeech("");
-      //   setVolume(0);
-      //   setVolumeHistory([]);
-      // } else {
-      //   // Calculate average fluency score
-      //   const averageFluencyScore = totalFluencyScore / numberOfFluencyScores;
-      //   setFluencyScore(averageFluencyScore);
-      //   setIsCorrect(true);
-      //   console.log("averageFluencyScore", averageFluencyScore);
-      // }
-    }
+    // console.log("User said: ", e.value);
+    setSpeechResults(e.value[0]);
+    // setIsRecording(false);
   };
 
   const onSpeechStart = (e) => {
@@ -208,6 +209,7 @@ const ConversationLesson = ({
 
   const onSpeechEnd = (e) => {
     // console.log("onSpeechEnd: ", e);
+    setSpeechFinished(!speechFinished);
   };
 
   const onSpeechError = (e) => {
@@ -221,7 +223,11 @@ const ConversationLesson = ({
   };
   const onSpeechPartialResults = (e) => {
     // console.log("onSpeechPartialResults: ", e);
-    setPartialRecognizedSpeech(e.value[0]);
+    try {
+      setPartialRecognizedSpeech(e.value[0]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Combine recognized and partial recognized speech and remove duplicates
@@ -236,84 +242,84 @@ const ConversationLesson = ({
   );
 
   useEffect(() => {
-    // // Function to clean text for comparison
-    // const cleanTextForComparison = (text) => {
-    //   return text
-    //     .toLowerCase()
-    //     .replace(/\(.*?\)/g, "") // Remove text within parentheses
-    //     .replace(/[.,\/#!$%\^&\*;:{}=\_`~()?]/g, "") // Remove specified punctuation
-    //     .split(" ") // Split into words
-    //     .filter(Boolean); // Remove any empty strings
-    // };
+    if ((recognizedWords || partialWords) && allWordsPresent) {
+      Voice.stop();
+      console.log("stopped  recording");
+      setIsRecording(false);
+    }
+  }, [recognizedSpeech, partialRecognizedSpeech, volumeHistory]);
 
-    // // Clean the expected text, recognized speech, and partial recognized speech
-    // const cleanedTextWords = new Set(
-    //   cleanTextForComparison(currentExpectedResponse)
-    // );
-    // const recognizedWords = new Set(
-    //   cleanTextForComparison(recognizedSpeech || "")
-    // );
-    // const partialWords = new Set(
-    //   cleanTextForComparison(partialRecognizedSpeech || "")
-    // );
-
-    // // Check if all words in the cleaned text are present in the recognized or partial words
-    // const allWordsPresent = [...cleanedTextWords].every(
-    //   (word) => recognizedWords.has(word) || partialWords.has(word)
-    // );
-
-    // Proceed only if there's recognized or partially recognized speech
-    if ((recognizedSpeech || partialRecognizedSpeech) && allWordsPresent) {
-      /////// this but for all areas
-      //   setIsCorrect(true); // All expected words are present in the recognized speech
-      console.log("All words are present, regardless of order. Correct!");
-
+  useEffect(() => {
+    if (
+      (recognizedWords || partialWords) &&
+      allWordsPresent &&
+      speechFinished
+    ) {
       const newFluencyScore = fluencyCalculator.calculateFluency(
         recognizedSpeech,
         partialRecognizedSpeech,
         currentExpectedResponse,
         volumeHistory
       );
-      // //   console.log(`Fluency score: ${newFluencyScore}`);
-      // setTotalFluencyScore(totalFluencyScore + newFluencyScore);
-      // setNumberOfFluencyScores(numberOfFluencyScores + 1);
+
+      //   console.log(`Fluency score: ${newFluencyScore}`);
+      setTotalFluencyScore(totalFluencyScore + newFluencyScore);
+      setNumberOfFluencyScores(numberOfFluencyScores + 1);
+      setVisibleMessages((prevMessages) => {
+        const updatedMessages = [...prevMessages];
+        updatedMessages[updatedMessages.length - 1].showResponse = true;
+        //set the last message to correct speaking
+        updatedMessages[
+          updatedMessages.length - 1
+        ].isResponseSpeechCorrect = true;
+        return updatedMessages;
+      });
+      // Voice.stop();
+      setRecognizedSpeech("");
+      setPartialRecognizedSpeech("");
+      setSpeechResults("");
+      // setIsRecording(false);
+      setVolume(0);
+      setVolumeHistory([]);
 
       if (currentStepIndex < conversationSteps.length - 1) {
-        setCurrentStepIndex(currentStepIndex + 1);
-        setIsResponseVisible(false);
+        console.log("currentStepIndex has been increased");
+        setVisibleMessages((prevMessages) => {
+          const updatedMessages = [...prevMessages];
+          updatedMessages[currentStepIndex].showResponse = true;
+          //set the last message to correct speaking
+          updatedMessages[currentStepIndex].isResponseSpeechCorrect = true;
+          return updatedMessages;
+        });
+        //Add the next step to the visible messages
         setVisibleMessages((prevMessages) => [
           ...prevMessages,
           {
             convo: conversationSteps[currentStepIndex + 1],
             showResponse: false,
+            isResponseSpeechCorrect: false,
           },
         ]);
-
         playStepAudio(
           conversationSteps[currentStepIndex + 1].audioFilePathQuestion
         );
-
-        setRecognizedSpeech("");
-        setPartialRecognizedSpeech("");
-
-        setVolume(0);
-        setVolumeHistory([]);
+        setCurrentStepIndex(currentStepIndex + 1);
+        setIsResponseVisible(false);
+        console.log("currentStepIndex has been increased");
       } else {
+        console.log("All steps have been completed");
         // Calculate average fluency score
-        //   console.log(`Fluency score: ${newFluencyScore}`);
+        console.log(`Fluency score: ${newFluencyScore}`);
         setTotalFluencyScore(totalFluencyScore + newFluencyScore);
         setNumberOfFluencyScores(numberOfFluencyScores + 1);
         const averageFluencyScore = totalFluencyScore / numberOfFluencyScores;
-        setFluencyScore(averageFluencyScore);
-        // setIsCorrect(true);
-        console.log("averageFluencyScore", averageFluencyScore);
+        setFluencyScore(`${averageFluencyScore}`);
+        setIsRecording(false);
+        setIsCorrect(true);
+        setIsLastMessageOfConvo(true);
       }
     }
-
-    // Reset volume and volume history for the next attempt
-    setVolume(0);
-    setVolumeHistory([]);
-  }, [recognizedSpeech, partialRecognizedSpeech, conversationSteps]);
+  }, [speechFinished, isRecording]);
 
   const requestMicrophonePermission = async () => {
     try {
@@ -383,7 +389,8 @@ const ConversationLesson = ({
                   // text={item.expectedResponse}
                   text={renderTextWithHighlight(
                     item.convo.expectedResponse,
-                    normalizedCombinedSpeech
+                    normalizedCombinedSpeech,
+                    index
                   )}
                 />
                 <Text
@@ -417,67 +424,69 @@ const ConversationLesson = ({
         </View>
       );
     },
-    [
-      currentStepIndex,
-      isResponseVisible,
-      normalizedCombinedSpeech,
-      playStepAudio,
-    ]
+    [currentStepIndex, normalizedCombinedSpeech, playStepAudio]
   );
 
   return (
     <View style={styles.container}>
-      <Text style={styles.taskDescriptionText}>{taskDescription}</Text>
-      <DividerLine color={"#FFFFFFB6"} marginVertical={30} />
-      <FlatList
-        data={visibleMessages}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={renderItem}
-        style={{ width: "100%" }}
-      />
-      {isResponseVisible && (
-        <RoundButton
-          icon={
-            <MaterialCommunityIcons
-              name="microphone-outline"
-              size={24}
-              color="white"
-            />
-          }
-          volume={volume}
-          disabled={playingSound}
-          size={70}
-          color={recording ? colorsDark.red : colorsDark.blue}
-          onPress={async () => {
-            if (!playingSound) {
-              if (
-                Platform.OS === "android" &&
-                !(await requestMicrophonePermission())
-              ) {
-                console.log("Microphone permission denied");
-                return;
-              }
-
-              if (recording) {
-                await Voice.stop();
-                setRecording(false);
-                setVolume(0);
-                setRecognizedSpeech("");
-                setPartialRecognizedSpeech("");
-                setFluencyScore(0);
-              } else {
-                try {
-                  await Voice.start("fr-FR");
-                  setRecording(true);
-                  console.log("Started recording");
-                } catch (e) {
-                  console.error("Error starting voice recognition: ", e);
-                }
-              }
-            }
-          }}
+      <View style={styles.container}>
+        <Text style={styles.taskDescriptionText}>{taskDescription}</Text>
+        <DividerLine color={"#FFFFFF5E"} marginVertical={30} />
+        <FlatList
+          data={visibleMessages}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={renderItem}
+          style={{ width: "100%" }}
         />
-      )}
+
+        {isResponseVisible && (
+          <RoundButton
+            icon={
+              <MaterialCommunityIcons
+                name="microphone-outline"
+                size={24}
+                color="white"
+              />
+            }
+            volume={isRecording ? volume : 0}
+            disabled={playingSound}
+            size={70}
+            marginVertical={60}
+            color={isRecording ? colorsDark.red : colorsDark.blue}
+            onPress={async () => {
+              if (!playingSound) {
+                if (
+                  Platform.OS === "android" &&
+                  !(await requestMicrophonePermission())
+                ) {
+                  console.log("Microphone permission denied");
+                  return;
+                }
+
+                if (isRecording) {
+                  await Voice.stop();
+                  setIsRecording(false);
+                  console.log("Stopped recording");
+                  // setVolume(0);
+                  // setRecognizedSpeech("");
+                  // setPartialRecognizedSpeech("");
+                  // setFluencyScore(0);
+                } else {
+                  try {
+                    await Voice.start("fr-FR");
+                    setIsRecording(true);
+                    console.log("Started recording");
+                  } catch (e) {
+                    console.error("Error starting voice recognition: ", e);
+                  }
+                }
+              } else {
+                console.log("audio is playing");
+              }
+            }}
+          />
+        )}
+      </View>
     </View>
   );
 };
@@ -487,11 +496,12 @@ export default ConversationLesson;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
     backgroundColor: colorsDark.mainBackground,
     justifyContent: "center",
     alignItems: "center",
+    width: "100%",
   },
+
   taskDescriptionText: {
     color: colorsDark.blue,
     fontSize: 18,

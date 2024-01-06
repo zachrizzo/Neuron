@@ -87,17 +87,21 @@ export default function App() {
   ///////more fine tuning
   //fix first sound
   //// disable auto speaking --done
-  //x button to cancel the recording
-  //re - gen audio button
-  //make sure in the lesson chat the fine tuning is separate from the main chat --done
-  //fix where the audios are saved and how the replays are done.
-  //track user token usage
-  //keep track of user message number
-  //create a beta sign up key
-  //fix goodbye in french
+  // x button to cancel the recording
+  // re - gen audio button
+  // make sure in the lesson chat the fine tuning is separate from the main chat --done
+  // fix where the audios are saved and how the replays are done.
+  // track user token usage
+  // keep track of user message number
+  // create a beta sign up key
+  // fix goodbye in french --done i think
+  // add a privacy policy
+  // add a way to opt out of data collection if thats the only legal route
 
   //in lessons add what the user wrote
   //add different fonts
+  //add a setting to turn not show translation
+  //add a translation button when word is highlighted
 
   useEffect(() => {
     if (messages.length > 0) {

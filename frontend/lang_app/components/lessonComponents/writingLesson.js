@@ -2,28 +2,32 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import InputBox from "../inputs/inputBox"; // Ensure this is the correct path
 import MainButton from "../buttons/mainButton";
+import { colorsDark } from "../../utility/color";
+import { removePunctuation } from "../../helperFunctions/helper";
 
 const WritingLesson = ({
   text,
+  translation,
+  gender,
   taskDescription,
   setIsCorrect,
-  correctAnswer,
   setCorrectAnswer,
+  setGivenAnswer,
 }) => {
   const [userTranslation, setUserTranslation] = useState("");
 
   const handleSubmit = () => {
-    setIsCorrect(
-      userTranslation.toLowerCase().trim() ===
-        correctAnswer.toLowerCase().trim()
-    );
     // Example check - you might want to handle this differently
-    if (userTranslation.toLowerCase() === correctAnswer.toLowerCase()) {
+    if (
+      removePunctuation(userTranslation.toLowerCase().trim()) ===
+      removePunctuation(translation.toLowerCase().trim())
+    ) {
       setIsCorrect(true);
+    } else {
+      setCorrectAnswer(translation);
+      setIsCorrect(false);
+      setGivenAnswer(userTranslation);
     }
-    //  else {
-    //   setCorrectAnswer(correctAnswer);
-    // }
 
     setUserTranslation(""); // Reset input after submission
   };
@@ -32,16 +36,19 @@ const WritingLesson = ({
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{taskDescription}</Text>
-      <InputBox
-        value={userTranslation}
-        onChangeText={setUserTranslation}
-        placeholder="Type your translation here"
-        // width={"80%"}
-        height={50}
-      />
+      <Text style={styles.taskDescriptionText}>{taskDescription}</Text>
+      <View style={styles.container2}>
+        <Text style={styles.text}>{text}</Text>
+        <InputBox
+          value={userTranslation}
+          onChangeText={setUserTranslation}
+          placeholder="Write the translation here"
+          // width={"80%"}
+          height={50}
+        />
 
-      <MainButton onPress={handleSubmit} title={"Submit"} borderRadius={15} />
+        <MainButton onPress={handleSubmit} title={"Submit"} borderRadius={15} />
+      </View>
     </View>
   );
 };
@@ -57,16 +64,26 @@ const styles = StyleSheet.create({
     // backgroundColor: "#fff",
     width: "100%",
   },
+  container2: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 20,
+    // backgroundColor: "#fff",
+    width: "100%",
+  },
+
   text: {
     fontSize: 18,
     marginBottom: 20,
     color: "white",
   },
-  inputBox: {
-    width: "100%",
-    padding: 10,
-    borderColor: "gray",
-    borderWidth: 1,
+
+  taskDescriptionText: {
+    color: colorsDark.blue,
+    fontSize: 18,
+    fontStyle: "italic",
     marginBottom: 20,
+    textAlign: "center",
   },
 });

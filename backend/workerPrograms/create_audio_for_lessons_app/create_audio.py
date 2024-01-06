@@ -29,7 +29,7 @@ class Create_audio:
         client_secret = os.getenv("OPENAI_SECRET2")
         print(client_secret)
 
-        self.client = OpenAI(api_key='')
+
 
 
         self.db = firestore.client(app=app)
@@ -197,14 +197,14 @@ class Create_audio:
                         existing_lesson['audioFilePaths'][french_phrase] = url
 
             elif existing_lesson['taskType'] == 'Grammar':
-                for sentence_index, sentence in enumerate(lesson_update['sentences']):
+                for sentence_index, sentence in enumerate(existing_lesson['sentences']):
                     sentence_text = self.remove_punctuation(sentence['sentence']).lower() + ".mp3"
                     if file == sentence_text:
                         print(f"Updating audio file path for sentence in index {sentence_index}")
                         existing_lesson['sentences'][sentence_index]['audioFilePath'] = url
 
             elif existing_lesson['taskType'] in ['Reading', 'Speaking', 'Listening']:
-                lesson_audio = self.remove_punctuation(lesson_update['text']).lower() + ".mp3"
+                lesson_audio = self.remove_punctuation(existing_lesson['text']).lower() + ".mp3"
                 if file == lesson_audio:
                     print("Updating audio file path for task type:", existing_lesson['taskType'])
                     existing_lesson['audioFilePath'] = url

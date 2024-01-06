@@ -11,14 +11,13 @@ import {
   addDoc,
 } from "firebase/firestore";
 
-export function getAllLessons(setLessons) {
+export function getAllLessons(dispatch, setAllLessons) {
   onSnapshot(query(collection(db, "lessons")), (snapshot) => {
     const lessons = [];
     snapshot.forEach((doc) => {
       lessons.push({ id: doc.id, ...doc.data() });
     });
-    setLessons(lessons);
-    return lessons;
+    dispatch(setAllLessons(lessons));
   });
 }
 

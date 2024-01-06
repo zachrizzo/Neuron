@@ -6,6 +6,7 @@ import {
   withRepeat,
   withTiming,
   useAnimatedReaction,
+  cancelAnimation,
 } from "react-native-reanimated";
 import { colorsDark } from "../utility/color";
 
@@ -23,7 +24,7 @@ const distance = (x1, y1, x2, y2) => {
   return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 };
 
-const MorphingBall = () => {
+const MorphingBall = ({ pulseRed = false }) => {
   // Create an array to hold the balls
   const balls = [];
   const [connections, setConnections] = useState([]);
@@ -37,6 +38,21 @@ const MorphingBall = () => {
       vy: useSharedValue((Math.random() * 2 - 1) * initialVelocity),
     });
   }
+
+  const pulseValue = useSharedValue(0);
+
+  useEffect(() => {
+    if (pulseRed) {
+      pulseValue.value = withRepeat(
+        withTiming(1, { duration: 1000 }),
+        -1,
+        true
+      );
+    } else {
+      cancelAnimation(pulseValue);
+      pulseValue.value = 0;
+    }
+  }, [pulseRed]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -160,7 +176,7 @@ const MorphingBall = () => {
           cx={ball.x}
           cy={ball.y}
           r={ballRadius}
-          color="white"
+          color={pulseRed ? `rgba(255, 0, 0, ${pulseValue.value})` : "white"}
         />
       ))}
       {connections.map((connection, index) => {
@@ -202,7 +218,9 @@ const MorphingBall = () => {
               //       connectionDistance
               //   )
               // }, 1)`}
-              color={"white"}
+              color={
+                pulseRed ? `rgba(255, 0, 0, ${pulseValue.value})` : "white"
+              }
               p1={{ x: startBall.x.value, y: startBall.y.value }}
               p2={{ x: endBall.x.value, y: endBall.y.value }}
               //interpulate the opacity based on the distance between the two balls (closer = more opaque)starting at 50

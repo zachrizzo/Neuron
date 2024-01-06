@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Alert } from "react-native";
+import { StyleSheet, Text, View, Alert, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectCurrentLesson } from "../redux/slices/userSlice";
@@ -11,6 +11,11 @@ import ExerciseNotification from "../components/notification/exerciseNotificatio
 import { colorsDark } from "../utility/color";
 import HorizontalProgressBar from "../components/charts/horizontalProgressBar";
 import LifeIndicator from "../components/gamification/lifeIndicator";
+import ListeningLesson from "../components/lessonComponents/listeningLesson";
+import ConversationLesson from "../components/lessonComponents/conversationLesson";
+import GrammarLesson from "../components/lessonComponents/grammarLesson";
+import VocabularyLesson from "../components/lessonComponents/vocabularyLesson";
+import CortexCredits from "../components/gamification/cortexCredits";
 
 const Lesson = () => {
   const [loading, setLoading] = useState(false);
@@ -26,12 +31,28 @@ const Lesson = () => {
   const [fluencyScore, setFluencyScore] = useState(null);
   const [fluencyHistory, setFluencyHistory] = useState([]);
   const [livesLeft, setLivesLeft] = useState(10);
+  const [givenAnswer, setGivenAnswer] = useState(null);
+  // const [first, setfirst] = useState(second);
+
+  const currentExercise = exercises[currentExerciseIndex];
+  const exerciseText = currentExercise?.text;
+  const exerciseGender = currentExercise?.gender;
+  const exerciseTaskDescription = currentExercise?.taskDescription;
+  const exerciseTranslation = currentExercise?.translation;
+  const exerciserAudioFilePath = currentExercise?.audioFilePath;
 
   useEffect(() => {
     // Randomize exercises array when component mounts
     if (currentLesson?.exercises) {
       setExercises(shuffleArray([...currentLesson.exercises]));
     }
+    // Randomize conversation exercises array when component mounts
+    // if (currentLesson?.exercises) {
+    //   const conversationExercises = currentLesson.exercises.filter(
+    //     (exercise) => exercise.type === "conversation"
+    //   );
+    //   setExercises(shuffleArray([...conversationExercises]));
+    // }
   }, [currentLesson]);
 
   const shuffleArray = (array) => {
@@ -78,6 +99,7 @@ const Lesson = () => {
       } else {
         setMissedQuestions([...missedQuestions, currentExerciseIndex]);
         setLivesLeft(livesLeft - 1);
+        setCorrectAnswer("");
       }
     } else {
       // Increment completed lessons count
@@ -86,7 +108,6 @@ const Lesson = () => {
       // Reset for next lesson or handle the end of lessons
       Alert.alert("Lesson Complete", "You have finished all exercises!");
       setCurrentExerciseIndex(0);
-      // Additional logic for completing the lesson
     }
     setIsCorrect(null);
   };
@@ -97,76 +118,140 @@ const Lesson = () => {
         options={{
           title: currentLesson?.lessonTitle.split(" ").slice(0, 2).join(" "),
           headerRight: () => (
-            <LifseIndicator currentLives={livesLeft} totalLives={10} />
+            <View style={{ flexDirection: "row" }}>
+              <CortexCredits isGold={true} />
+
+              <LifeIndicator currentLives={livesLeft} totalLives={10} />
+            </View>
           ),
         }}
       />
-      <HorizontalProgressBar
-        progress={
-          completedLessons > 0 && exercises
-            ? Math.round((completedLessons.length / exercises.length) * 100)
-            : 0
-        }
-        height={15}
-        backgroundColor={colorsDark.secondary}
-        progressColor={colorsDark.purple}
-        width={"80%"}
-        margin={5}
-        label={""}
-      />
 
-      <View style={styles.lessonView}>
-        {isCorrect === null ? (
-          <>
-            {exercises[currentExerciseIndex]?.taskType == "Speaking" && (
-              <SpeakingLesson
-                text={exercises[currentExerciseIndex]?.text}
-                translationText={exercises[currentExerciseIndex]?.translation}
-                audioUrl={exercises[currentExerciseIndex]?.audioFilePath}
-                setIsCorrect={setIsCorrect}
-                setFluencyScore={setFluencyScore}
-                fluencyScore={fluencyScore}
-              />
-            )}
-            {exercises[currentExerciseIndex]?.taskType == "Writing" && (
-              <WritingLesson
-                text={exercises[currentExerciseIndex]?.text}
-                taskDescription={
-                  exercises[currentExerciseIndex]?.taskDescription
+      <FlatList
+        data={[1]}
+        style={{ width: "100%" }}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => {
+          console.log(currentExercise?.taskType);
+          return (
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <HorizontalProgressBar
+                progress={
+                  completedLessons > 0 && exercises
+                    ? Math.round(
+                        (completedLessons.length / exercises.length) * 100
+                      )
+                    : 0
                 }
-                correctAnswer={exercises[currentExerciseIndex]?.correctAnswer}
-                setIsCorrect={setIsCorrect}
-                setMissedQuestions={setMissedQuestions}
+                height={15}
+                backgroundColor={colorsDark.secondary}
+                progressColor={colorsDark.purple}
+                width={"80%"}
+                margin={5}
+                label={""}
               />
-            )}
-            {exercises[currentExerciseIndex]?.taskType == "Reading" && (
-              <ReadingLesson
-                text={exercises[currentExerciseIndex]?.text}
-                translationText={exercises[currentExerciseIndex]?.translation}
-                audioUrl={exercises[currentExerciseIndex]?.audioFilePath}
-                setIsCorrect={setIsCorrect}
-                setMissedQuestions={setMissedQuestions}
-              />
-            )}
-          </>
-        ) : isCorrect ? (
-          <ExerciseNotification
-            isCorrect={isCorrect}
-            message={"Correct!"}
-            handleContinue={handleContinue}
-            fluencyScore={fluencyScore}
-          />
-        ) : (
-          <ExerciseNotification
-            message={"Incorrect!"}
-            correctAnswer={exercises[currentExerciseIndex]?.correctAnswer}
-            handleContinue={handleContinue}
-            isCorrect={isCorrect}
-            setCorrectAnswer={setCorrectAnswer}
-          />
-        )}
-        {/* add listening */}
-      </View>
+
+              <View style={styles.lessonView}>
+                {isCorrect === null ? (
+                  <>
+                    {currentExercise?.taskType == "Speaking" && (
+                      <SpeakingLesson
+                        text={exerciseText}
+                        translationText={exerciseTranslation}
+                        audioUrl={exerciserAudioFilePath}
+                        taskDescription={exerciseTaskDescription}
+                        setIsCorrect={setIsCorrect}
+                        setFluencyScore={setFluencyScore}
+                        fluencyScore={fluencyScore}
+                      />
+                    )}
+                    {currentExercise?.taskType == "Writing" && (
+                      <WritingLesson
+                        text={exerciseText}
+                        taskDescription={exerciseTaskDescription}
+                        translation={exerciseTranslation}
+                        setIsCorrect={setIsCorrect}
+                        setCorrectAnswer={setCorrectAnswer}
+                        gender={exerciseGender}
+                        setGivenAnswer={setGivenAnswer}
+                      />
+                    )}
+                    {currentExercise?.taskType == "Reading" && (
+                      <ReadingLesson
+                        text={exerciseText}
+                        translationText={exerciseTranslation}
+                        taskDescription={exerciseTaskDescription}
+                        audioUrl={exerciserAudioFilePath}
+                        setIsCorrect={setIsCorrect}
+                        translationOptions={currentExercise?.translationOptions}
+                        setGivenAnswer={setGivenAnswer}
+                        setCorrectAnswer={setCorrectAnswer}
+                      />
+                    )}
+                    {currentExercise?.taskType == "Listening" && (
+                      <ListeningLesson
+                        translation={exerciseTranslation}
+                        text={exerciseText}
+                        taskDescription={exerciseTaskDescription}
+                        options={currentExercise?.options}
+                        audioUrl={exerciserAudioFilePath}
+                        setIsCorrect={setIsCorrect}
+                        setGivenAnswer={setGivenAnswer}
+                        setCorrectAnswer={setCorrectAnswer}
+                      />
+                    )}
+                    {currentExercise?.taskType == "Conversation" && (
+                      <ConversationLesson
+                        taskDescription={exerciseTaskDescription}
+                        conversationSteps={currentExercise?.conversationSteps}
+                        setIsCorrect={setIsCorrect}
+                        setFluencyScore={setFluencyScore}
+                      />
+                    )}
+                    {currentExercise?.taskType == "Vocabulary" && (
+                      <VocabularyLesson
+                        taskDescription={exerciseTaskDescription}
+                        options={currentExercise?.options}
+                        setIsCorrect={setIsCorrect}
+                        targetLanguage={"French"}
+                      />
+                    )}
+                    {currentExercise?.taskType == "Grammar" && (
+                      <GrammarLesson
+                        taskDescription={exerciseTaskDescription}
+                        text={exerciseText}
+                        correctAnswer={currentExercise?.correctAnswer}
+                        hints={currentExercise?.hints}
+                        setIsCorrect={setIsCorrect}
+                        setCorrectAnswer={setCorrectAnswer}
+                        setGivenAnswer={setGivenAnswer}
+                      />
+                    )}
+                  </>
+                ) : isCorrect ? (
+                  <ExerciseNotification
+                    isCorrect={isCorrect}
+                    message={"Correct!"}
+                    handleContinue={handleContinue}
+                    fluencyScore={fluencyScore}
+                  />
+                ) : (
+                  <ExerciseNotification
+                    message={"Incorrect!"}
+                    correctAnswer={correctAnswer}
+                    handleContinue={handleContinue}
+                    isCorrect={isCorrect}
+                    givenAnswer={givenAnswer}
+                  />
+                )}
+              </View>
+              <View>
+                <Text style={{ color: "white" }}>rating</Text>
+              </View>
+            </View>
+          );
+        }}
+      />
     </View>
   );
 };
@@ -180,7 +265,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   lessonView: {
-    flex: 0.75,
+    flex: 0.99,
     alignItems: "center",
     width: "100%",
   },

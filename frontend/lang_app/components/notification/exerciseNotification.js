@@ -3,6 +3,7 @@ import React from "react";
 import Confetti from "./confetti";
 import MainButton from "../buttons/mainButton"; // Assuming MainButton is imported from the correct path
 import { colorsDark } from "../../utility/color";
+import MorphingBall from "../morphingBall";
 
 const ExerciseNotification = ({
   message,
@@ -10,10 +11,11 @@ const ExerciseNotification = ({
   handleContinue,
   correctAnswer,
   fluencyScore,
+  givenAnswer,
 }) => {
   return (
     <View style={styles.container}>
-      {isCorrect && <Confetti />}
+      {isCorrect ? <Confetti /> : <MorphingBall pulseRed={true} />}
       <View style={styles.messageView}>
         <Text
           style={[
@@ -28,7 +30,8 @@ const ExerciseNotification = ({
         {fluencyScore && (
           <Text
             style={{
-              color: fluencyScore > 70 ? colorsDark.green : colorsDark.green,
+              color:
+                parseInt(fluencyScore) > 70 ? colorsDark.green : colorsDark.red,
               fontWeight: "bold",
             }}
           >
@@ -36,12 +39,18 @@ const ExerciseNotification = ({
           </Text>
         )}
         {message === "Incorrect!" && (
-          <Text style={styles.correctAnswerText}>
-            The correct answer is:{" "}
-            <Text style={{ color: "blue", fontWeight: "bold" }}>
+          <>
+            <Text style={styles.correctAnswerText}>
+              The correct answer is:{" "}
+            </Text>
+            <Text style={{ color: colorsDark.blue, fontWeight: "bold" }}>
               {correctAnswer}
             </Text>
-          </Text>
+            <Text style={styles.correctAnswerText}>You answered: </Text>
+            <Text style={{ color: colorsDark.red, fontWeight: "bold" }}>
+              {givenAnswer}
+            </Text>
+          </>
         )}
       </View>
       <View style={styles.buttonView}>
@@ -67,7 +76,7 @@ const styles = StyleSheet.create({
   messageView: {
     position: "absolute",
     top: "30%", // Adjust positioning as needed
-    backgroundColor: "#FFFFFF",
+    backgroundColor: colorsDark.white,
     padding: 30,
     borderRadius: 30,
     alignItems: "center",
@@ -86,6 +95,7 @@ const styles = StyleSheet.create({
   correctAnswerText: {
     fontSize: 15,
     fontWeight: "bold",
-    color: "#303030AF",
+    color: colorsDark.accentLowOpacity,
+    marginTop: 15,
   },
 });

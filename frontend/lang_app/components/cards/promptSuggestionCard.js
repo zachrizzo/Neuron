@@ -19,6 +19,8 @@ import {
   selectUser,
   setIsCurrentChatALesson,
   selectIsCurrentChatALesson,
+  setAllLessons,
+  selectAllLessons,
 } from "../../redux/slices/userSlice";
 import LessonCard from "./lessonCard";
 import { getAllLessons } from "../../firebase/lessons/lesson";
@@ -35,17 +37,20 @@ const PromptSuggestionCard = ({
   handleSendMessage,
   setLoading,
 }) => {
-  const [lessons, setLessons] = useState([]);
+  // const [lessons, setLessons] = useState([]);
   const [recording, setRecording] = useState(false);
   const dispatch = useDispatch();
   const isCurrentChatALesson = useSelector(selectIsCurrentChatALesson);
   const thread_id = useSelector(selectThreadID);
   const hasEffectRun = useRef(false);
   const messages = useSelector(selectMessages);
+  const lessons = useSelector(selectAllLessons);
 
   useEffect(() => {
-    getAllLessons(setLessons);
+    getAllLessons(dispatch, setAllLessons);
   }, []);
+
+  // console.log(lessons);
 
   useEffect(() => {
     // Check if conditions are met and the effect hasn't run yet
@@ -104,7 +109,7 @@ const PromptSuggestionCard = ({
       <DividerLine color={"#FFFFFFB6"} marginVertical={30} />
       <Text
         style={{
-          color: "#FFFFFF",
+          color: colorsDark.white,
           marginVertical: 10,
           fontSize: 18,
           fontWeight: "bold",
