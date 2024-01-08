@@ -15,7 +15,7 @@ import ListeningLesson from "../components/lessonComponents/listeningLesson";
 import ConversationLesson from "../components/lessonComponents/conversationLesson";
 import GrammarLesson from "../components/lessonComponents/grammarLesson";
 import VocabularyLesson from "../components/lessonComponents/vocabularyLesson";
-import CortexCredits from "../components/gamification/cortexCredits";
+import CortexCoins from "../components/gamification/cortexCredits";
 
 const Lesson = () => {
   const [loading, setLoading] = useState(false);
@@ -32,8 +32,7 @@ const Lesson = () => {
   const [fluencyHistory, setFluencyHistory] = useState([]);
   const [livesLeft, setLivesLeft] = useState(10);
   const [givenAnswer, setGivenAnswer] = useState(null);
-  // const [first, setfirst] = useState(second);
-
+  const [cortexCoins, setCortexCoins] = useState(0);
   const currentExercise = exercises[currentExerciseIndex];
   const exerciseText = currentExercise?.text;
   const exerciseGender = currentExercise?.gender;
@@ -95,6 +94,7 @@ const Lesson = () => {
       if (isCorrect) {
         setCorrectQuestions([...correctQuestions, currentExerciseIndex]);
         setCompletedLessons(completedLessons + 1);
+        setCortexCoins(cortexCoins + currentExercise?.points);
         // remove the lesson form the lis or append missing to try again
       } else {
         setMissedQuestions([...missedQuestions, currentExerciseIndex]);
@@ -119,7 +119,11 @@ const Lesson = () => {
           title: currentLesson?.lessonTitle.split(" ").slice(0, 2).join(" "),
           headerRight: () => (
             <View style={{ flexDirection: "row" }}>
-              <CortexCredits isGold={true} />
+              <CortexCoins
+                isGold={true}
+                cortexCoins={cortexCoins.toString()}
+                showAmountChange={true}
+              />
 
               <LifeIndicator currentLives={livesLeft} totalLives={10} />
             </View>
