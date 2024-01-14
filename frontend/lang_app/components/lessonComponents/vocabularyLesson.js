@@ -8,6 +8,7 @@ import {
   FlatList,
 } from "react-native";
 import { colorsDark } from "../../utility/color";
+import * as Haptics from "expo-haptics";
 
 const VocabLesson = ({
   taskDescription,
@@ -62,6 +63,7 @@ const VocabLesson = ({
   };
 
   const handleSelectTargetPhrase = (phrase) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setSelectedTargetPhrase(phrase);
     setIncorrectMatch(false);
     if (selectedEnglishPhrase) {
@@ -70,6 +72,7 @@ const VocabLesson = ({
   };
 
   const handleSelectEnglish = (phrase) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setSelectedEnglishPhrase(phrase);
     setIncorrectMatch(false);
     if (selectedTargetPhrase) {
@@ -82,11 +85,13 @@ const VocabLesson = ({
     const englishIndex = options.English.indexOf(englishPhrase);
 
     if (targetIndex === englishIndex) {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       setCorrectMatches([...correctMatches, targetPhrase]);
       // Alert.alert("Correct!", "You've made a correct match.", [{ text: "OK" }]);
       setSelectedTargetPhrase(null);
       setSelectedEnglishPhrase(null);
     } else {
+      // Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
       setIncorrectMatch(true);
       setTimeout(() => {
         setIncorrectMatch(false);
@@ -179,7 +184,7 @@ const styles = StyleSheet.create({
     color: colorsDark.blue,
     fontSize: 18,
     fontStyle: "italic",
-    marginBottom: 20,
+    marginBottom: 30,
     textAlign: "center",
   },
   phraseListsContainer: {

@@ -4,7 +4,8 @@
     "lessonTitle": "French Beginner",
     "skillLevel": "Beginner",
     "focusArea": "Basic Greetings and Common Phrases",
-    "totalTasks": 35,
+    "totalTasks": 135,
+    "id": 1,
     "exercises": [
         {
             "taskType": "Speaking",

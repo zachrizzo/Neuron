@@ -63,7 +63,18 @@ const signup = () => {
       return;
     }
 
-    const userInfo = { name, dob, email, language, autoSpeak: true };
+    const userInfo = {
+      name,
+      dob,
+      email,
+      language,
+      autoSpeak: true,
+      cortexxCoin: 0,
+      Hearts: 10,
+      heartsLastRefill: new Date(),
+      numberOfMessages: 20,
+      subscriptionStatus: "free",
+    };
     createUserEmailAndPassword(email, password, userInfo)
       .then((res) => {
         dispatch(setUser(res.userData));

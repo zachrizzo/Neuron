@@ -4,13 +4,16 @@ import { store, persistor } from "../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { Text } from "react-native";
 import { colorsDark } from "../utility/color";
+import { RevenueCatProvider } from "../providers/revenueCatProvider";
 
 export default function App() {
   return (
     <Provider store={store}>
-      <PersistGate loading={<Text>Loading...</Text>} persistor={persistor}>
-        <Layout />
-      </PersistGate>
+      <RevenueCatProvider>
+        <PersistGate loading={<Text>Loading...</Text>} persistor={persistor}>
+          <Layout />
+        </PersistGate>
+      </RevenueCatProvider>
     </Provider>
   );
 }
@@ -34,6 +37,14 @@ export function Layout() {
           // Set the presentation mode to modal for our modal route.
           presentation: "modal",
           headerTitle: "Settings",
+        }}
+      />
+      <Stack.Screen
+        name="store"
+        options={{
+          // Set the presentation mode to modal for our modal route.
+          presentation: "modal",
+          headerTitle: "Store",
         }}
       />
     </Stack>

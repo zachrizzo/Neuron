@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Alert } from "react-native";
 import MainButton from "../components/buttons/mainButton";
 import { auth } from "../firebase/firebase";
 import ProceduralCheckBox from "../components/inputs/proceduralCheckBox";
 import { selectLang } from "../helperFunctions/helper";
-import { router } from "expo-router";
+import { Stack, router } from "expo-router";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, setUserAutoSpeak } from "../redux/slices/userSlice";
 import { setUser, setUserLanguage } from "../redux/slices/userSlice";
@@ -13,6 +13,8 @@ import { updateUser } from "../firebase/users/user";
 import { createPertainingData } from "../api/messaging/assistant";
 import SwitchWithLabel from "../components/inputs/switchWithLabel";
 import { colorsDark } from "../utility/color";
+import RoundButton from "../components/buttons/roundButtons";
+import { Ionicons } from "@expo/vector-icons";
 
 const settings = () => {
   const [language, setLanguage] = useState([]);
@@ -42,11 +44,49 @@ const settings = () => {
 
   return (
     <View style={styles.container}>
+      <Stack.Screen
+        options={{
+          headerRight: () => {
+            return (
+              <RoundButton
+                color={"#FFFFFF00"}
+                icon={
+                  <Ionicons
+                    name="arrow-down"
+                    size={24}
+                    color={colorsDark.white}
+                  />
+                }
+                onPress={() => {
+                  router.push("/home");
+                }}
+              />
+            );
+          },
+        }}
+      />
       {user && (
-        <Text style={{ color: "white", marginVertical: 15 }}>
+        <Text style={{ color: colorsDark.white, marginVertical: 15 }}>
           {/* Welcome {user?.name.toUpperCase()}! */}
         </Text>
       )}
+      <View style={styles.subSubscriptionTextView}>
+        <Text style={styles.subSubscriptionText}>
+          Your on the{" "}
+          <Text style={{ color: colorsDark.yellow }}>
+            {user?.subscriptionStatus?.identifier}
+          </Text>
+          , to upgrade see our
+        </Text>
+        <Button
+          onPress={() => {
+            router.push("/home");
+            router.push("/subscriptions");
+          }}
+          style={[styles.subSubscriptionText, {}]}
+          title="plans"
+        />
+      </View>
       <MainButton
         onPress={() => {
           auth.signOut().then(() => {
@@ -85,7 +125,6 @@ const settings = () => {
         isEnabled={autoSpeak}
         setIsEnabled={setAutoSpeak}
       />
-
       {user?.role === "owner" && (
         <MainButton
           onPress={async () => {
@@ -128,5 +167,15 @@ const styles = StyleSheet.create({
   text: {
     color: "#FFFFFF",
     fontSize: 20,
+  },
+  subSubscriptionText: {
+    color: "#FFFFFF",
+    fontSize: 15,
+    fontStyle: "italic",
+  },
+  subSubscriptionTextView: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

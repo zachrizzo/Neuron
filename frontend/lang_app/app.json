@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "The Neuron Learning App",
-    "slug": "Neuron",
+    "name": "Cortexx",
+    "slug": "Cortexx",
     "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/iconReal.png",
@@ -60,5 +60,10 @@
     "updates": {
       "url": "https://u.expo.dev/e35acbfa-99f7-46dc-bf39-ec5d11652647"
     }
+
+  },
+    "react-native-google-mobile-ads": {
+
+      "ios_app_id": "ca-app-pub-6223294263341364~1666169376"
   }
 }

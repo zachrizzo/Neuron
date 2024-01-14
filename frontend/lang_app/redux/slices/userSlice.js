@@ -11,6 +11,7 @@ export const userSlice = createSlice({
     isCurrentChatALesson: false,
     currentLesson: null,
     allLessons: [],
+    subscriptionPackages: [],
   },
 
   reducers: {
@@ -18,14 +19,28 @@ export const userSlice = createSlice({
       return { ...state, user: action.payload };
     },
     setUserLanguage: (state, action) => {
-      // Only update the language property
       state.user.language = action.payload.language;
     },
+    setUserCortexxCoins: (state, action) => {
+      state.user.cortexxCoins = action.payload.cortexxCoins;
+    },
 
+    setUserHearts: (state, action) => {
+      state.user.hearts = action.payload.hearts;
+    },
+    setUserHeartsLastRefill: (state, action) => {
+      state.user.heartsLastRefill = action.payload.heartsLastRefill;
+    },
+    setUserNumberOfMessages: (state, action) => {
+      state.user.numberOfMessages = action.payload.numberOfMessages;
+    },
     setUserAutoSpeak: (state, action) => {
-      // Only update the language property
       state.user.autoSpeak = action.payload.autoSpeak;
     },
+    setUserSubscriptionStatus: (state, action) => {
+      state.user.subscriptionStatus = action.payload.subscriptionStatus;
+    },
+
     setThreadID: (state, action) => {
       state.threadID = action.payload;
     },
@@ -56,13 +71,21 @@ export const userSlice = createSlice({
     setAllLessons: (state, action) => {
       state.allLessons = action.payload;
     },
+    setSubscriptionPackages: (state, action) => {
+      state.subscriptionPackages = action.payload;
+    },
   },
 });
 
 export const {
   setUser,
   setUserLanguage,
+  setUserCortexxCoins,
+  setUserHearts,
+  setUserHeartsLastRefill,
+  setUserNumberOfMessages,
   setUserAutoSpeak,
+  setUserSubscriptionStatus,
   setThreadID,
   setMessages,
   pushSingleMessage,
@@ -72,6 +95,7 @@ export const {
   setIsCurrentChatALesson,
   setCurrentLesson,
   setAllLessons,
+  setSubscriptionPackages,
 } = userSlice.actions;
 
 export const selectUser = (state) => state.userSlice.user;
@@ -84,5 +108,7 @@ export const selectIsCurrentChatALesson = (state) =>
   state.userSlice.isCurrentChatALesson;
 export const selectCurrentLesson = (state) => state.userSlice.currentLesson;
 export const selectAllLessons = (state) => state.userSlice.allLessons;
+export const selectSubscriptionPackages = (state) =>
+  state.userSlice.subscriptionPackages;
 
 export default userSlice.reducer;

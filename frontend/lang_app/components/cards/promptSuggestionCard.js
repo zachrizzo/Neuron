@@ -25,6 +25,7 @@ import {
 import LessonCard from "./lessonCard";
 import { getAllLessons } from "../../firebase/lessons/lesson";
 import { colorsDark } from "../../utility/color";
+import { router } from "expo-router";
 
 const PromptSuggestionCard = ({
   startRecording,
@@ -36,6 +37,7 @@ const PromptSuggestionCard = ({
   setStartingPrompt,
   handleSendMessage,
   setLoading,
+  user,
 }) => {
   // const [lessons, setLessons] = useState([]);
   const [recording, setRecording] = useState(false);
@@ -78,28 +80,26 @@ const PromptSuggestionCard = ({
 
   return (
     <View style={styles.card}>
-      {/* <Text
-        style={{
-          color: "#FFFFFFC4",
-          marginVertical: 10,
-          fontSize: 20,
-          fontWeight: "bold",
-        }}
-      >
-        Lesson Plan
-      </Text> */}
       <FlatList
         data={lessons}
-        renderItem={({ item }) => {
+        style={{ width: "100%" }}
+        renderItem={({ item, index }) => {
           return (
-            <LessonCard
-              setShowPromptPanel={setShowPromptPanel}
-              startThread={startThread}
-              lesson={item}
-              setStartingPrompt={setStartingPrompt}
-              handleSendMessage={handleSendMessage}
-              setLoading={setLoading}
-            />
+            <View
+              style={{
+                marginLeft:
+                  index == 0 ? Dimensions.get("screen").width / 5 : null,
+              }}
+            >
+              <LessonCard
+                setShowPromptPanel={setShowPromptPanel}
+                startThread={startThread}
+                lesson={item}
+                setStartingPrompt={setStartingPrompt}
+                handleSendMessage={handleSendMessage}
+                setLoading={setLoading}
+              />
+            </View>
           );
         }}
         keyExtractor={(item) => item.id.toString()}
@@ -127,17 +127,21 @@ const PromptSuggestionCard = ({
           />
         }
         size={70}
-        color={recording ? "red" : "#007bff"}
+        color={recording && user?.numberOfMessages > 0 ? "red" : "#007bff"}
         onPress={async () => {
-          if (recording) {
-            await stopRecording().then(() => {
-              setRecording(false);
-            });
+          if (user?.numberOfMessages > 0) {
+            if (recording) {
+              await stopRecording().then(() => {
+                setRecording(false);
+              });
+            } else {
+              await startThread().then(async () => {
+                await startRecording();
+                setRecording(true);
+              });
+            }
           } else {
-            await startThread().then(async () => {
-              await startRecording();
-              setRecording(true);
-            });
+            router.push("/store");
           }
         }}
         marginVertical={30}
@@ -152,13 +156,14 @@ export default PromptSuggestionCard;
 const styles = StyleSheet.create({
   card: {
     // backgroundColor: colorsDark.mainBackground, // backgroundColor: "#000000E7",
-    width: "10a0%",
+    width: "100%",
+
     borderRadius: 15,
     color: "#FFFFFF",
     marginBottom: 20,
-    marginHorizontal: 10,
+    // marginHorizontal: 10,
     height: Dimensions.get("screen").height / 1.5,
-    width: Dimensions.get("screen").width / 1.2,
+    width: Dimensions.get("screen").width,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 40,

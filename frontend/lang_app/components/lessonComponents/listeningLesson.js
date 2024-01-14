@@ -14,6 +14,7 @@ import { BlurView } from "expo-blur";
 import RoundButton from "../buttons/roundButtons";
 import { AntDesign } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import * as Haptics from "expo-haptics";
 
 const sanitizeWord = (word) => {
   return word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "").toLowerCase();
@@ -55,6 +56,7 @@ const ListeningLesson = ({
   }, [translation, options]);
 
   const handleWordSelection = (word, index) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     const selection = { word, index };
     if (!selectedWords.some((sw) => sw.word === word && sw.index === index)) {
       setSelectedWords([...selectedWords, selection]);
@@ -62,6 +64,7 @@ const ListeningLesson = ({
   };
 
   const handleSelectedWordTap = (index) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     let newSelectedWords = [...selectedWords];
     newSelectedWords.splice(index, 1);
     setSelectedWords(newSelectedWords);

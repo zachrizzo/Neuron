@@ -34,7 +34,8 @@ async def transcribe_audio(lang: Optional[str] = "en", file: UploadFile = File(.
             transcript = client.audio.transcriptions.create(
                 model="whisper-1",
                 file=audio_file,
-                language=lang
+                language=lang,
+                prompt='Reply in french if the user is speaking french',
             )
         print("Transcription successful")
     except Exception as e:

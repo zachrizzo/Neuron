@@ -11,14 +11,19 @@ import {
   Use,
 } from "react-native-svg";
 import { colorsDark } from "../../utility/color";
+import * as Haptics from "expo-haptics";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/slices/userSlice";
 
 const CortexCoins = ({
   size = "45",
   isGold = false,
   cortexCoins = 0,
   showAmountChange = false,
+  showAmount = true,
 }) => {
-  const [currentCoins, setCurrentCoins] = useState(0);
+  const user = useSelector(selectUser);
+  const [currentCoins, setCurrentCoins] = useState(user?.cortexxCoins || 0);
   const [coinChange, setCoinChange] = useState(0);
   const [isAddition, setIsAddition] = useState(true);
   const scaleAnim = useRef(new Animated.Value(1)).current;
@@ -44,6 +49,9 @@ const CortexCoins = ({
   };
 
   useEffect(() => {
+    if (!showAmount) {
+      return;
+    }
     const coinDifference = cortexCoins - currentCoins;
     if (coinDifference !== 0) {
       setIsAddition(coinDifference > 0);
@@ -52,6 +60,7 @@ const CortexCoins = ({
       const intervalId = setInterval(() => {
         if (currentCoins !== cortexCoins) {
           animateCoin(currentCoins + (coinDifference > 0 ? 1 : -1));
+          Haptics.notificationAsync(Haptics.NotificationFeedbackType.light);
         } else {
           clearInterval(intervalId);
           setTimeout(() => setCoinChange(0), 2000); // Hide the change text after 2 seconds
@@ -139,21 +148,23 @@ const CortexCoins = ({
           </Defs>
         </Svg>
       </Animated.View>
-      <Animated.Text
-        style={{
-          color: colorsDark.white,
-          fontWeight: "bold",
-          position: "absolute",
-          textAlign: "center",
-          bottom: 15,
-          left: coinChange > 0 ? 13 : 0,
-          right: 0,
-        }}
-      >
-        {currentCoins.length > 4
-          ? currentCoins.slice(0, 2) + ".."
-          : currentCoins}
-      </Animated.Text>
+      {showAmount && (
+        <Animated.Text
+          style={{
+            color: colorsDark.white,
+            fontWeight: "bold",
+            position: "absolute",
+            textAlign: "center",
+            bottom: 15,
+            left: coinChange > 0 ? 13 : 0,
+            right: 0,
+          }}
+        >
+          {currentCoins.length > 4
+            ? currentCoins.slice(0, 2) + ".."
+            : currentCoins}
+        </Animated.Text>
+      )}
     </View>
   );
 };

@@ -28,7 +28,7 @@ import InputBox from "../components/inputs/inputBox";
 import RoundButton from "../components/buttons/roundButtons";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 import { Audio } from "expo-av";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, FontAwesome5 } from "@expo/vector-icons";
 import MorphingBall from "../components/morphingBall";
 import { Stack, router } from "expo-router";
 import { useDispatch, useSelector } from "react-redux";
@@ -40,8 +40,11 @@ import {
   setIsCurrentChatALesson,
   setMessages,
   setThreadID,
+  setUserHearts,
+  setUserHeartsLastRefill,
+  setUserNumberOfMessages,
 } from "../redux/slices/userSlice";
-import { getUser } from "../firebase/users/user";
+import { getUser, updateUser } from "../firebase/users/user";
 import { auth } from "../firebase/firebase";
 import { setUser } from "../redux/slices/userSlice";
 import PromptSuggestionCard from "../components/cards/promptSuggestionCard";
@@ -60,6 +63,8 @@ import MessageModal from "../components/layout/messageModal";
 import { mainChatPrompt } from "../chats_config";
 import LoadingComponent from "../components/layout/loadingComponent";
 import { colorsDark } from "../utility/color";
+import { BlurView } from "expo-blur";
+import CortexCoins from "../components/gamification/cortexCredits";
 
 export default function App() {
   const [inputMessage, setInputMessage] = useState("");
@@ -84,6 +89,8 @@ export default function App() {
   const [loadingUpdateMessage, setLoadingUpdateMessage] = useState(false);
   const [isKeyBoardInFocus, setIsKeyBoardInFocus] = useState(false);
 
+  const numberOfMessagesLeft = user?.numberOfMessages;
+
   ///////more fine tuning
   //fix first sound
   //// disable auto speaking --done
@@ -97,7 +104,7 @@ export default function App() {
   // fix goodbye in french --done i think
   // add a privacy policy
   // add a way to opt out of data collection if thats the only legal route
-
+  // when rating a message make the button to submit visible but disabled until a rating is selected
   //in lessons add what the user wrote
   //add different fonts
   //add a setting to turn not show translation
@@ -108,6 +115,36 @@ export default function App() {
       setLocalMessages(messages);
     }
   }, [messages]);
+
+  //update user in redux from firebase
+  useEffect(() => {
+    getUser(auth.currentUser.email).then((user) => {
+      dispatch(setUser(user.data()));
+      // console.log("user updated from firebase", user.data());
+    });
+  }, [auth.currentUser]);
+
+  useEffect(() => {
+    //check if the hearts need to be refilled
+    //refill hearts every 24 hours
+    if (user?.hearts < 10) {
+      const lastHeartRefill = new Date(user?.heartsLastRefill);
+
+      const now = new Date();
+
+      const diff = now - lastHeartRefill;
+      const diffInHours = diff / (1000 * 60 * 60);
+      console.log("diffInHours", diffInHours);
+      if (diffInHours > 24) {
+        updateUser(auth.currentUser.email, {
+          hearts: 10,
+          lastHeartRefill: new Date().toLocaleString(),
+        });
+        dispatch(setUserHearts({ hearts: 10 }));
+        dispatch(setUserHeartsLastRefill({ heartsLastRefill: new Date() }));
+      }
+    }
+  }, [user]);
 
   useEffect(() => {
     //if prompt panel is showing stop playing
@@ -124,81 +161,110 @@ export default function App() {
     }
   }, [threadID]);
 
+  const updateNumberOfMessages = async () => {
+    dispatch(
+      setUserNumberOfMessages({ numberOfMessages: numberOfMessagesLeft - 1 })
+    );
+    updateUser(auth.currentUser.email, {
+      numberOfMessages: numberOfMessagesLeft - 1,
+    });
+  };
+
   const startThread = async (promptID) => {
-    // Step 1: Create a thread
-    setLoadingUpdateMessage("Creating a new conversation...");
-    try {
-      let threadData = "";
-      if (isUsingAssistant) {
-        threadData = await createThread();
-      } else {
-        // Generate a random thread ID
-        threadData = { thread_id: uuidv4() };
-      }
-      const thread = threadData.thread_id;
-      dispatch(setThreadID(thread));
-      promptID = promptID ? promptID : 0;
+    if (numberOfMessagesLeft >= 0) {
+      // Step 1: Create a thread
+      setLoadingUpdateMessage("Creating a new conversation...");
+      try {
+        let threadData = "";
+        if (isUsingAssistant) {
+          threadData = await createThread();
+        } else {
+          // Generate a random thread ID
+          threadData = { thread_id: uuidv4() };
+        }
+        const thread = threadData.thread_id;
+        dispatch(setThreadID(thread));
+        promptID = promptID ? promptID : 0;
 
-      const systemMessage = {
-        id: "system0",
-        createdAt: new Date().toLocaleString(),
-        text: {
-          role: "system",
-          content: startingPrompt,
-        },
-        type: "received",
-      };
-
-      //create chat in firebase
-      createChat(thread, promptID, {
-        id: 1,
-        messages: [systemMessage],
-      });
-      //add to redux
-
-      dispatch(pushSingleMessage(systemMessage));
-
-      setLocalMessages([systemMessage]);
-      setLoadingUpdateMessage("Created a new conversation");
-      return thread;
-    } catch (error) {
-      console.error("Error in startThread", error);
-      setLoading(false);
-      Alert.alert(
-        "Error starting conversation",
-        "Please try again, if the problem persists please contact support.",
-        [
-          {
-            text: "OK",
-            onPress: () => console.log("OK Pressed"),
-            style: "cancel",
+        const systemMessage = {
+          id: "system0",
+          createdAt: new Date().toLocaleString(),
+          text: {
+            role: "system",
+            content: startingPrompt,
           },
-        ],
-        { cancelable: false }
-      );
+          type: "received",
+        };
+
+        //create chat in firebase
+        createChat(thread, promptID, {
+          id: 1,
+          messages: [systemMessage],
+        });
+        //add to redux
+
+        dispatch(pushSingleMessage(systemMessage));
+
+        setLocalMessages([systemMessage]);
+        setLoadingUpdateMessage("Created a new conversation");
+        return thread;
+      } catch (error) {
+        console.error("Error in startThread", error);
+        setLoading(false);
+        Alert.alert(
+          "Error starting conversation",
+          "Please try again, if the problem persists please contact support.",
+          [
+            {
+              text: "OK",
+              onPress: () => console.log("OK Pressed"),
+              style: "cancel",
+            },
+          ],
+          { cancelable: false }
+        );
+      }
     }
   };
 
   async function startRecording() {
-    try {
-      console.log("Requesting permissions..");
-      await Audio.requestPermissionsAsync();
-      await Audio.setAudioModeAsync({
-        allowsRecordingIOS: true,
-        playsInSilentModeIOS: true,
-      });
+    if (numberOfMessagesLeft >= 0) {
+      try {
+        console.log("Requesting permissions..");
+        await Audio.requestPermissionsAsync();
+        await Audio.setAudioModeAsync({
+          allowsRecordingIOS: true,
+          playsInSilentModeIOS: true,
+        });
 
-      console.log("Starting recording..");
-      const { recording } = await Audio.Recording.createAsync(
-        Audio.RecordingOptionsPresets.HIGH_QUALITY
-      );
-      setRecording(recording);
-      console.log("Recording started");
-    } catch (err) {
-      console.error("Failed to start recording", err);
+        console.log("Starting recording..");
+        const { recording } = await Audio.Recording.createAsync(
+          Audio.RecordingOptionsPresets.HIGH_QUALITY
+        );
+        setRecording(recording);
+        console.log("Recording started");
+      } catch (err) {
+        console.error("Failed to start recording", err);
+        Alert.alert(
+          "Error starting recording, make sure you have given the app permission to use your microphone and the microphone is not in use by another app.",
+          "Please try again, if the problem persists please contact support.",
+          [
+            {
+              text: "OK",
+              onPress: () => console.log("OK Pressed"),
+              style: "cancel",
+            },
+          ],
+          { cancelable: false }
+        );
+        setLoading(false);
+        setRecording(undefined);
+      }
+      updateNumberOfMessages();
+    } else {
       Alert.alert(
-        "Error starting recording, make sure you have given the app permission to use your microphone and the microphone is not in use by another app.",
-        "Please try again, if the problem persists please contact support.",
+        "Out of messages",
+        "Please purchase more messages in the settings page",
         [
           {
             text: "OK",
@@ -208,8 +274,6 @@ export default function App() {
         ],
         { cancelable: false }
       );
-      setLoading(false);
-      setRecording(undefined);
     }
   }
 
@@ -283,143 +347,145 @@ export default function App() {
     userMessage,
     model_type = "general_lang_chat"
   ) => {
-    setLoading(true);
-    setInputMessage(""); // Clear input field after sending
+    if (numberOfMessagesLeft >= 0) {
+      setLoading(true);
+      setInputMessage(""); // Clear input field after sending
 
-    if (isUsingAssistant) {
-      // try {
-      //   if (threadID.length > 0) {
-      //     const response = await addMessageWithVoiceReply(threadID, {
-      //       content: message,
-      //     });
-      //     const messagesData = response.messages;
-      //     const audioUrl = response.audio_url;
-      //     // Combine existing messages with new messages
-      //     const updatedMessages = messages.concat(
-      //       messagesData.map((msg, index) => {
-      //         let audioUrlForMessage = ""; // Initialize with no URL
-      //         // Assign the audio URL to the last message of the new data
-      //         if (index === messagesData.length - 1) {
-      //           audioUrlForMessage = audioUrl;
-      //         }
-      //         return {
-      //           id: msg.id,
-      //           createdAt: new Date(msg.created_at * 1000).toLocaleString(),
-      //           text: msg.content,
-      //           type: msg.role === "user" ? "sent" : "received",
-      //           audioUrl: audioUrlForMessage,
-      //         };
-      //       })
-      //     );
-      //     setMessages(updatedMessages);
-      //     // Play the audio response
-      //     if (audioUrl) {
-      //       const { sound } = await Audio.Sound.createAsync({ uri: audioUrl });
-      //       setSpeechSound(sound);
-      //       await sound.playAsync();
-      //     }
-      //   }
-      // } catch (error) {
-      //   console.error("Error in sending message", error);
-      // }
-    } else {
-      try {
-        if (threadID) {
-          setLoadingUpdateMessage("Generating a reply ...");
-          const openAIFormatMessages = messagesArray.map((msg) => ({
-            role: msg.text.role,
-            content: msg.text.content,
-          }));
+      if (isUsingAssistant) {
+        // try {
+        //   if (threadID.length > 0) {
+        //     const response = await addMessageWithVoiceReply(threadID, {
+        //       content: message,
+        //     });
+        //     const messagesData = response.messages;
+        //     const audioUrl = response.audio_url;
+        //     // Combine existing messages with new messages
+        //     const updatedMessages = messages.concat(
+        //       messagesData.map((msg, index) => {
+        //         let audioUrlForMessage = ""; // Initialize with no URL
+        //         // Assign the audio URL to the last message of the new data
+        //         if (index === messagesData.length - 1) {
+        //           audioUrlForMessage = audioUrl;
+        //         }
+        //         return {
+        //           id: msg.id,
+        //           createdAt: new Date(msg.created_at * 1000).toLocaleString(),
+        //           text: msg.content,
+        //           type: msg.role === "user" ? "sent" : "received",
+        //           audioUrl: audioUrlForMessage,
+        //         };
+        //       })
+        //     );
+        //     setMessages(updatedMessages);
+        //     // Play the audio response
+        //     if (audioUrl) {
+        //       const { sound } = await Audio.Sound.createAsync({ uri: audioUrl });
+        //       setSpeechSound(sound);
+        //       await sound.playAsync();
+        //     }
+        //   }
+        // } catch (error) {
+        //   console.error("Error in sending message", error);
+        // }
+      } else {
+        try {
+          if (threadID) {
+            setLoadingUpdateMessage("Generating a reply ...");
+            const openAIFormatMessages = messagesArray.map((msg) => ({
+              role: msg.text.role,
+              content: msg.text.content,
+            }));
 
-          const response = await addMessageWithVoiceReplyNoAssistant({
-            conversation: openAIFormatMessages,
-            model_type: model_type,
-          });
-          const messagesData = response.messages;
+            const response = await addMessageWithVoiceReplyNoAssistant({
+              conversation: openAIFormatMessages,
+              model_type: model_type,
+            });
+            const messagesData = response.messages;
 
-          const audioUrl = response.audio_url;
-          setLoadingUpdateMessage("Generated a Response");
+            const audioUrl = response.audio_url;
+            setLoadingUpdateMessage("Generated a Response");
 
-          const assistantReply = {
-            id: messagesData[messagesData.length - 1].id,
-            createdAt: new Date().toLocaleString(),
-            text: messagesData[messagesData.length - 1],
-            type:
-              messagesData[messagesData.length - 1].role == "user"
-                ? "sent"
-                : "received",
-            audioUrl: audioUrl,
-          };
+            const assistantReply = {
+              id: messagesData[messagesData.length - 1].id,
+              createdAt: new Date().toLocaleString(),
+              text: messagesData[messagesData.length - 1],
+              type:
+                messagesData[messagesData.length - 1].role == "user"
+                  ? "sent"
+                  : "received",
+              audioUrl: audioUrl,
+            };
 
-          dispatch(pushSingleMessage(assistantReply));
+            dispatch(pushSingleMessage(assistantReply));
 
-          setLocalMessages([...localMessages, assistantReply]); // Update the state with the new array
-          setLoading(false);
-          if (showPromptPanel === true) {
-            setShowPromptPanel(false);
-          }
-          if (user.autoSpeak == true || user.autoSpeak == undefined) {
-            setPlayingMessageIndex(messagesData.length - 2);
-            setPlayingSound();
-            await playSpeech(
-              audioUrl,
-              messagesData.length,
-              playingMessageIndex,
-              setPlayingMessageIndex,
-              setPlayingSound,
-              setIsSoundLoading
-            );
-          }
+            setLocalMessages([...localMessages, assistantReply]); // Update the state with the new array
+            setLoading(false);
+            if (showPromptPanel === true) {
+              setShowPromptPanel(false);
+            }
+            if (user.autoSpeak == true || user.autoSpeak == undefined) {
+              setPlayingMessageIndex(messagesData.length - 2);
+              setPlayingSound();
+              await playSpeech(
+                audioUrl,
+                messagesData.length,
+                playingMessageIndex,
+                setPlayingMessageIndex,
+                setPlayingSound,
+                setIsSoundLoading
+              );
+            }
 
-          let userAudioUri = "";
+            let userAudioUri = "";
 
-          if (userRecording) {
-            userAudioUri = await uploadAudioFile(userRecording, threadID);
-          }
-          //add user message
-          if (userMessage?.trim().length > 0) {
+            if (userRecording) {
+              userAudioUri = await uploadAudioFile(userRecording, threadID);
+            }
+            //add user message
+            if (userMessage?.trim().length > 0) {
+              await addMessageToChat(threadID, {
+                createdAt: new Date().toLocaleString(),
+                text: { role: "user", content: userMessage },
+                type: "sent",
+                id: `user${messages.length - 1}`,
+                audioUrl: userAudioUri,
+              });
+            }
+            //add assistant message
             await addMessageToChat(threadID, {
               createdAt: new Date().toLocaleString(),
-              text: { role: "user", content: userMessage },
-              type: "sent",
-              id: `user${messages.length - 1}`,
-              audioUrl: userAudioUri,
-            });
-          }
-          //add assistant message
-          await addMessageToChat(threadID, {
-            createdAt: new Date().toLocaleString(),
-            id: messagesData[messagesData.length - 1].id,
-            text: {
-              content: messagesData[messagesData.length - 1].content,
-              role: messagesData[messagesData.length - 1].role,
-            },
-            type:
-              messagesData[messagesData.length - 1].role === "user"
-                ? "sent"
-                : "received",
-            audioUrl: audioUrl,
-          });
-        } else {
-          Alert.alert(
-            "No conversation started",
-            "Please start a conversation by clicking the microphone button, if the problem persists please contact support.",
-            [
-              {
-                text: "OK",
-                onPress: () => console.log("OK Pressed"),
-                style: "cancel",
+              id: messagesData[messagesData.length - 1].id,
+              text: {
+                content: messagesData[messagesData.length - 1].content,
+                role: messagesData[messagesData.length - 1].role,
               },
-            ],
-            { cancelable: false }
-          );
+              type:
+                messagesData[messagesData.length - 1].role === "user"
+                  ? "sent"
+                  : "received",
+              audioUrl: audioUrl,
+            });
+          } else {
+            Alert.alert(
+              "No conversation started",
+              "Please start a conversation by clicking the microphone button, if the problem persists please contact support.",
+              [
+                {
+                  text: "OK",
+                  onPress: () => console.log("OK Pressed"),
+                  style: "cancel",
+                },
+              ],
+              { cancelable: false }
+            );
+          }
+        } catch (error) {
+          console.error("Error in sending message", error);
+          setLoading(false);
         }
-      } catch (error) {
-        console.error("Error in sending message", error);
-        setLoading(false);
       }
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -438,7 +504,7 @@ export default function App() {
                 ? colorsDark.mainBackground
                 : colorsDark.secondary,
           },
-          title: "Chat",
+          title: "Home",
           headerBackVisible: false,
           headerLeft: () => {
             return (
@@ -470,7 +536,7 @@ export default function App() {
                   }}
                 />
                 <Text style={{ color: "white", marginLeft: 20 }}>
-                  {!threadID ? " (coming soon)" : "New Convo"}
+                  {!threadID ? " (soon)" : "New Convo"}
                 </Text>
               </View>
             );
@@ -478,14 +544,26 @@ export default function App() {
 
           headerRight: () => {
             return (
-              <RoundButton
-                icon={<Ionicons name="cog-outline" size={30} color="white" />}
-                size={40}
-                color={"#FFFFFF00"}
-                onPress={() => {
-                  router.push("/settings");
-                }}
-              />
+              <View style={styles.headerRightView}>
+                <RoundButton
+                  icon={
+                    <FontAwesome5 name="store-alt" size={20} color="white" />
+                  }
+                  size={40}
+                  color={"#FFFFFF00"}
+                  onPress={() => {
+                    router.push("/store");
+                  }}
+                />
+                <RoundButton
+                  icon={<Ionicons name="cog-outline" size={30} color="white" />}
+                  size={40}
+                  color={"#FFFFFF00"}
+                  onPress={() => {
+                    router.push("/settings");
+                  }}
+                />
+              </View>
             );
           },
         }}
@@ -520,6 +598,7 @@ export default function App() {
                 setStartingPrompt={setStartingPrompt}
                 handleSendMessage={handleSendMessage}
                 setLoading={setLoading}
+                user={user}
               />
             ) : (
               <MessageThread
@@ -539,29 +618,33 @@ export default function App() {
               style={
                 {
                   // flex: 1,
-                  // justifyContent: "center",
+                  // justifyContent: "center",f
                   // alignItems: "center",
                 }
               }
             >
               <LoadingComponent textUpdateState={loadingUpdateMessage} />
-              {/* <ActivityIndicator size="large" color="#FFFFFF" /> */}
-              {/* <MorphingBall moveToCenter={true} /> */}
             </View>
           )}
         </View>
         {!showPromptPanel ? (
-          <View
+          <BlurView
             style={{
               flexDirection: "row",
               flex: 0.1,
-              backgroundColor: showPromptPanel
-                ? colorsDark.secondary
-                : colorsDark.mainBackground,
+              // backgroundColor: colorsDark.mainBackground,
               paddingTop: 10,
               paddingBottom: 10,
-              justifyContent: "space-between",
+              paddingHorizontal: 15,
+              justifyContent: "space-around",
+              width: "100%",
+              borderEndEndRadius: 20,
+              // height: 10,
+              position: "absolute",
+              bottom: 0,
             }}
+            intensity={50}
+            tint={"dark"}
           >
             <RoundButton
               icon={
@@ -619,7 +702,7 @@ export default function App() {
               }}
               disabled={loading || inputMessage?.trim().length === 0}
             />
-          </View>
+          </BlurView>
         ) : null}
       </View>
     </KeyboardAvoidingView>
@@ -632,14 +715,21 @@ const styles = StyleSheet.create({
     backgroundColor: colorsDark.secondary,
     alignItems: "center",
     justifyContent: "center",
+    position: "relative",
   },
 
   messageContainer: {
-    flex: 0.9,
+    flex: 1,
     // padding: 15,
   },
 
   messageText: {
     color: "#333",
+  },
+  headerRightView: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    width: 100,
   },
 });

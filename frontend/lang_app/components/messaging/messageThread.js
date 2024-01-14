@@ -22,6 +22,8 @@ import {
 import { playSpeech, stopPlaying } from "../../helperFunctions/audioHelpers";
 import MessageModal from "../layout/messageModal";
 import { colorsDark } from "../../utility/color";
+import Banner from "../googleAds/banner";
+
 const MessageThread = ({
   messages,
   // setMessages,
@@ -115,131 +117,140 @@ const MessageThread = ({
       }}
       renderItem={({ item, index }) => {
         return (
-          <View
-            style={
-              item.type === "sent" ? styles.sentMessage : styles.receivedMessage
-            }
-          >
-            <TextInput
-              multiline={true}
-              scrollEnabled={false}
-              editable={false}
-              style={
-                item.type === "sent"
-                  ? styles.sentMessageText
-                  : styles.receivedMessageText
-              }
-            >
-              {!isUsingAssistant ? item.text.content : item.text}
-            </TextInput>
+          <View>
+            {index % 10 === 0 && index !== 0 ? <Banner /> : null}
             <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
+              style={[
+                {
+                  marginBottom:
+                    index === recentMessages.length - 1 ? 100 : null,
+                },
+                item.type === "sent"
+                  ? styles.sentMessage
+                  : styles.receivedMessage,
+              ]}
             >
-              <View>
-                <Text style={styles.messageLabel}>
-                  {item.createdAt.split(",")[1]}
-                </Text>
-              </View>
+              <TextInput
+                multiline={true}
+                scrollEnabled={false}
+                editable={false}
+                style={
+                  item.type === "sent"
+                    ? styles.sentMessageText
+                    : styles.receivedMessageText
+                }
+              >
+                {!isUsingAssistant ? item.text.content : item.text}
+              </TextInput>
               <View
                 style={{
                   flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
                 }}
               >
-                {index === recentMessages.length - 1 || item.chatQuality ? (
-                  <View style={{ flexDirection: "row" }}>
-                    <RoundButton
-                      color={"#FFFFFF00"}
-                      icon={
-                        <Ionicons
-                          name="thumbs-down"
-                          size={20}
-                          color={
-                            item.chatQuality == "bad"
-                              ? colorsDark.red
-                              : "#FFFFFFA3"
+                <View>
+                  <Text style={styles.messageLabel}>
+                    {item.createdAt.split(",")[1]}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                  }}
+                >
+                  {index === recentMessages.length - 1 || item.chatQuality ? (
+                    <View style={{ flexDirection: "row" }}>
+                      <RoundButton
+                        color={"#FFFFFF00"}
+                        icon={
+                          <Ionicons
+                            name="thumbs-down"
+                            size={20}
+                            color={
+                              item.chatQuality == "bad"
+                                ? colorsDark.red
+                                : "#FFFFFFA3"
+                            }
+                          />
+                        }
+                        loading={rateLoading === index}
+                        size={40}
+                        marginRight={10}
+                        onPress={async () => {
+                          setRateLoading(index);
+                          if (!item.chatQuality) {
+                            await updateRating("bad", index, item);
                           }
-                        />
-                      }
-                      loading={rateLoading === index}
-                      size={40}
-                      marginRight={10}
-                      onPress={async () => {
-                        setRateLoading(index);
-                        if (!item.chatQuality) {
-                          await updateRating("bad", index, item);
-                        }
-                        setRateLoading(undefined);
-                      }}
-                    />
-                    <RoundButton
-                      color={"#FFFFFF00"}
-                      icon={
-                        <Ionicons
-                          name="thumbs-up"
-                          size={20}
-                          color={
-                            item.chatQuality == "good"
-                              ? colorsDark.green
-                              : "#FFFFFFA3"
-                          }
-                        />
-                      }
-                      size={40}
-                      loading={rateLoading === index}
-                      onPress={async () => {
-                        setRateLoading(index);
-                        if (!item.chatQuality) {
-                          await updateRating("good", index, item);
-                        }
-                        setRateLoading(undefined);
-                      }}
-                    />
-                  </View>
-                ) : null}
-                {item.audioUrl && (
-                  <RoundButton
-                    color={"#FFFFFF00"}
-                    loading={index === playingMessageIndex && isSoundLoading}
-                    pulse={index === playingMessageIndex && !isSoundLoading}
-                    icon={
-                      <AntDesign
-                        name="sound"
-                        size={25}
-                        color={
-                          playingMessageIndex === index
-                            ? "#FFFFFF91"
-                            : "#FFFFFF"
-                        }
+                          setRateLoading(undefined);
+                        }}
                       />
-                    }
-                    size={40}
-                    marginRight={5}
-                    onPress={async () => {
-                      if (playingMessageIndex === index) {
-                        await stopPlaying(
-                          playingSound,
-                          setPlayingSound,
-                          setPlayingMessageIndex
-                        );
-                        return;
-                      } else {
-                        setPlayingMessageIndex(index);
-                        await playSpeech(
-                          item.audioUrl,
-                          index,
-                          playingMessageIndex,
-                          setPlayingMessageIndex,
-                          setPlayingSound,
-                          setIsSoundLoading
-                        );
+                      <RoundButton
+                        color={"#FFFFFF00"}
+                        icon={
+                          <Ionicons
+                            name="thumbs-up"
+                            size={20}
+                            color={
+                              item.chatQuality == "good"
+                                ? colorsDark.green
+                                : "#FFFFFFA3"
+                            }
+                          />
+                        }
+                        size={40}
+                        loading={rateLoading === index}
+                        onPress={async () => {
+                          setRateLoading(index);
+                          if (!item.chatQuality) {
+                            await updateRating("good", index, item);
+                          }
+                          setRateLoading(undefined);
+                        }}
+                      />
+                    </View>
+                  ) : null}
+                  {item.audioUrl && (
+                    <RoundButton
+                      color={"#FFFFFF00"}
+                      loading={index === playingMessageIndex && isSoundLoading}
+                      pulse={index === playingMessageIndex && !isSoundLoading}
+                      icon={
+                        <AntDesign
+                          name="sound"
+                          size={25}
+                          color={
+                            playingMessageIndex === index
+                              ? "#FFFFFF91"
+                              : "#FFFFFF"
+                          }
+                        />
                       }
-                    }}
-                  />
-                )}
+                      size={40}
+                      marginRight={5}
+                      onPress={async () => {
+                        if (playingMessageIndex === index) {
+                          await stopPlaying(
+                            playingSound,
+                            setPlayingSound,
+                            setPlayingMessageIndex
+                          );
+                          return;
+                        } else {
+                          setPlayingMessageIndex(index);
+                          await playSpeech(
+                            item.audioUrl,
+                            index,
+                            playingMessageIndex,
+                            setPlayingMessageIndex,
+                            setPlayingSound,
+                            setIsSoundLoading
+                          );
+                        }
+                      }}
+                    />
+                  )}
+                </View>
               </View>
             </View>
           </View>

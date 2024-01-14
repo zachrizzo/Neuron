@@ -74,7 +74,7 @@ const Login = () => {
             marginBottom: 100,
           }}
         >
-          Neuron
+          Cortexx
         </Text>
 
         <InputBox

@@ -10,6 +10,7 @@ import MainButton from "../buttons/mainButton";
 import { colorsDark } from "../../utility/color";
 import { TextInput } from "react-native-gesture-handler";
 import { removePunctuation } from "../../helperFunctions/helper";
+import * as Haptics from "expo-haptics";
 
 const ReadingLesson = ({
   text,
@@ -40,6 +41,7 @@ const ReadingLesson = ({
   }, [text, translationText, translationOptions]);
 
   const handleWordSelection = (word) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setSelectedWords([...selectedWords, word]);
   };
 
@@ -47,6 +49,7 @@ const ReadingLesson = ({
     let newSelectedWords = [...selectedWords];
     newSelectedWords.splice(index, 1);
     setSelectedWords(newSelectedWords);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
   };
   const shuffleArray = (array) => {
     let shuffled = array.slice(); // Copy the array

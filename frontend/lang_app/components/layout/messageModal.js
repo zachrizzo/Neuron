@@ -21,7 +21,16 @@ import {
   selectIsCurrentChatALesson,
 } from "../../redux/slices/userSlice";
 import ProceduralCheckBox from "../inputs/proceduralCheckBox";
-const MessageModal = ({ visible, setModalVisible }) => {
+import { updateLesson } from "../../firebase/lessons/lesson";
+import { arrayUnion } from "firebase/firestore";
+const MessageModal = ({
+  visible,
+  setModalVisible,
+  isLesson = false,
+  lessonRating = null,
+  lessonID = null,
+  exerciseID = null,
+}) => {
   const [message, setMessage] = useState("");
   const fineTunningMessages = useSelector(selectFineTurningMessages);
   const fineTunningRating = useSelector(selectFineTuneRating);
@@ -30,20 +39,35 @@ const MessageModal = ({ visible, setModalVisible }) => {
   const setIsCurrentChatALesson = useSelector(selectIsCurrentChatALesson);
 
   const handleSubmit = async () => {
-    const collectionName = setIsCurrentChatALesson
-      ? "LessonFineTunningConversations"
-      : "fineTunningConversations";
+    if (isLesson) {
+      updateLesson(lessonID, {
+        lessonRatings: arrayUnion({
+          exerciseRating: lessonRating,
+          whatWasWrong: whatWasWrong,
+          message: message,
+          language: user.language,
+          exerciseID: exerciseID,
+        }),
+      });
+      setMessage(""); // Clear the input field after submit
+      setModalVisible(false);
+    } else {
+      const collectionName = setIsCurrentChatALesson
+        ? "LessonFineTunningConversations"
+        : "fineTunningConversations";
 
-    addFineTunningConversation(collectionName, {
-      fineTunningMessages: fineTunningMessages,
-      rating: fineTunningRating,
-      message: message,
-      whatWasWrong: whatWasWrong,
-      language: user.language,
-    });
-    setMessage(""); // Clear the input field after submit
-    setModalVisible(false);
+      addFineTunningConversation(collectionName, {
+        fineTunningMessages: fineTunningMessages,
+        rating: fineTunningRating,
+        message: message,
+        whatWasWrong: whatWasWrong,
+        language: user.language,
+      });
+      setMessage(""); // Clear the input field after submit
+      setModalVisible(false);
+    }
   };
+  console.log(lessonRating);
 
   return (
     <Modal
@@ -78,31 +102,59 @@ const MessageModal = ({ visible, setModalVisible }) => {
             >
               Thank You for Your Feedback!
             </Text>
-            <ProceduralCheckBox
-              multiSelect={true}
-              options={
-                fineTunningRating == "good"
-                  ? [
-                      "Reply was Great!",
-                      "Audio was correct",
-                      "Translation made sense",
-                      "That's what I said",
-                      "Pronunciation was good",
-                    ]
-                  : [
-                      "Reply was bad",
-                      "Audio was not correct",
-                      "Translation didn't make sense",
-                      "That's not what I said",
-                      "Pronunciation was bad",
-                    ]
-              }
-              onUpdateSelectedOptions={(selectedOptions) => {
-                setWhatWasWrong(selectedOptions);
-              }}
-              boxShadow={true}
-              textColor={"#00000089"}
-            />
+            {isLesson ? (
+              <ProceduralCheckBox
+                multiSelect={true}
+                options={
+                  lessonRating == "good"
+                    ? [
+                        "Lesson was good",
+                        "Options were engaging",
+                        "Translation was perfect",
+                        "This lesson is correct",
+                        "Pronunciation was good",
+                      ]
+                    : [
+                        "Lesson was bad/easy",
+                        "Not enough options",
+                        "Translation was bad",
+                        "This is not correct",
+                        "Pronunciation was bad",
+                      ]
+                }
+                onUpdateSelectedOptions={(selectedOptions) => {
+                  setWhatWasWrong(selectedOptions);
+                }}
+                boxShadow={true}
+                textColor={"#00000089"}
+              />
+            ) : (
+              <ProceduralCheckBox
+                multiSelect={true}
+                options={
+                  fineTunningRating == "good"
+                    ? [
+                        "Reply was Great!",
+                        "Audio was correct",
+                        "Translation made sense",
+                        "That's what I said",
+                        "Pronunciation was good",
+                      ]
+                    : [
+                        "Reply was bad",
+                        "Audio was not correct",
+                        "Translation didn't make sense",
+                        "That's not what I said",
+                        "Pronunciation was bad",
+                      ]
+                }
+                onUpdateSelectedOptions={(selectedOptions) => {
+                  setWhatWasWrong(selectedOptions);
+                }}
+                boxShadow={true}
+                textColor={"#00000089"}
+              />
+            )}
             <Text
               style={{
                 textAlign: "center",
@@ -128,16 +180,16 @@ const MessageModal = ({ visible, setModalVisible }) => {
               placeholderTextColor={"#9D9D9D8D"}
               backgroundColor={"#E7E7E79A"}
             />
-            {whatWasWrong.length > 0 && message != "" && (
-              <MainButton
-                onPress={handleSubmit}
-                title={"Submit"}
-                margin={10}
-                isLoading={false}
-                shadow={true}
-                borderRadius={10}
-              />
-            )}
+
+            <MainButton
+              onPress={handleSubmit}
+              title={"Submit"}
+              margin={10}
+              isLoading={false}
+              shadow={true}
+              borderRadius={10}
+              disabled={whatWasWrong.length == 0 || message == ""}
+            />
           </View>
         </View>
       </KeyboardAvoidingView>

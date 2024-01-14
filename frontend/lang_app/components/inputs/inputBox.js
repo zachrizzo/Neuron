@@ -24,7 +24,6 @@ const InputBox = ({
       style={[
         styles.input,
         {
-          border: 1,
           borderColor: colorsDark.accent,
           opacity: editable ? 1 : 0.5,
           width: width ? width : "80%",

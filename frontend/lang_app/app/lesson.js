@@ -1,7 +1,12 @@
 import { StyleSheet, Text, View, Alert, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { selectCurrentLesson } from "../redux/slices/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectCurrentLesson,
+  selectUser,
+  setUserCortexxCoins,
+  setUserHearts,
+} from "../redux/slices/userSlice";
 import { Stack, router } from "expo-router";
 import MainButton from "../components/buttons/mainButton";
 import SpeakingLesson from "../components/lessonComponents/speakingLesson";
@@ -16,6 +21,11 @@ import ConversationLesson from "../components/lessonComponents/conversationLesso
 import GrammarLesson from "../components/lessonComponents/grammarLesson";
 import VocabularyLesson from "../components/lessonComponents/vocabularyLesson";
 import CortexCoins from "../components/gamification/cortexCredits";
+import * as Haptics from "expo-haptics";
+import { updateUser } from "../firebase/users/user";
+import { auth } from "../firebase/firebase";
+import LessonRatingComponent from "../components/lessonComponents/lessonRatingComponent";
+import MessageModal from "../components/layout/messageModal";
 
 const Lesson = () => {
   const [loading, setLoading] = useState(false);
@@ -32,13 +42,18 @@ const Lesson = () => {
   const [fluencyHistory, setFluencyHistory] = useState([]);
   const [livesLeft, setLivesLeft] = useState(10);
   const [givenAnswer, setGivenAnswer] = useState(null);
-  const [cortexCoins, setCortexCoins] = useState(0);
+  const [lessonRating, setLessonRating] = useState(null);
+  const [showRatingModal, setShowRatingModal] = useState(false);
   const currentExercise = exercises[currentExerciseIndex];
   const exerciseText = currentExercise?.text;
   const exerciseGender = currentExercise?.gender;
   const exerciseTaskDescription = currentExercise?.taskDescription;
   const exerciseTranslation = currentExercise?.translation;
   const exerciserAudioFilePath = currentExercise?.audioFilePath;
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const cortexxCoins = user?.cortexxCoins;
+  const hearts = user?.hearts;
 
   useEffect(() => {
     // Randomize exercises array when component mounts
@@ -84,21 +99,40 @@ const Lesson = () => {
     }
   }, [currentExerciseIndex]);
 
-  const handleContinue = () => {
-    // Notify the user
-    // Alert.alert("Good Job!", "You have completed the exercise.");
+  useEffect(() => {
+    //show modal if rating is given
+    console.log("lessonRating", lessonRating);
+    if (lessonRating !== null) {
+      setShowRatingModal(true);
+    }
+  }, [lessonRating]);
 
+  const handleContinue = () => {
     // Move to the next exercise or finish the lesson
+    setLessonRating(null);
     if (currentExerciseIndex < exercises.length - 1) {
       setCurrentExerciseIndex(currentExerciseIndex + 1);
       if (isCorrect) {
         setCorrectQuestions([...correctQuestions, currentExerciseIndex]);
         setCompletedLessons(completedLessons + 1);
-        setCortexCoins(cortexCoins + currentExercise?.points);
+        let newCortexxCoins = cortexxCoins + currentExercise?.points;
+
+        dispatch(
+          setUserCortexxCoins({
+            cortexxCoins: newCortexxCoins,
+          })
+        );
+        updateUser(auth.currentUser.email, {
+          cortexxCoins: newCortexxCoins,
+        });
+
         // remove the lesson form the lis or append missing to try again
       } else {
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
         setMissedQuestions([...missedQuestions, currentExerciseIndex]);
-        setLivesLeft(livesLeft - 1);
+        let newHearts = hearts - 1;
+        dispatch(setUserHearts({ hearts: newHearts }));
+        updateUser(auth.currentUser.email, { hearts: newHearts });
         setCorrectAnswer("");
       }
     } else {
@@ -121,11 +155,11 @@ const Lesson = () => {
             <View style={{ flexDirection: "row" }}>
               <CortexCoins
                 isGold={true}
-                cortexCoins={cortexCoins.toString()}
+                cortexCoins={cortexxCoins?.toString()}
                 showAmountChange={true}
               />
 
-              <LifeIndicator currentLives={livesLeft} totalLives={10} />
+              <LifeIndicator currentLives={hearts} totalLives={10} />
             </View>
           ),
         }}
@@ -139,6 +173,14 @@ const Lesson = () => {
           console.log(currentExercise?.taskType);
           return (
             <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <MessageModal
+                visible={showRatingModal}
+                setModalVisible={setShowRatingModal}
+                isLesson={true}
+                lessonRating={lessonRating}
+                lessonID={currentLesson?.id}
+                exerciseID={currentExercise?.exerciseID}
+              />
               <HorizontalProgressBar
                 progress={
                   completedLessons > 0 && exercises
@@ -249,8 +291,11 @@ const Lesson = () => {
                   />
                 )}
               </View>
-              <View>
-                <Text style={{ color: "white" }}>rating</Text>
+              <View style={styles.lessonRatingView}>
+                <LessonRatingComponent
+                  rating={lessonRating}
+                  setRating={setLessonRating}
+                />
               </View>
             </View>
           );
@@ -272,11 +317,15 @@ const styles = StyleSheet.create({
     flex: 0.99,
     alignItems: "center",
     width: "100%",
+    justifyContent: "space-around",
   },
 
   completedLessonsText: {
     color: "#00FF00",
     fontSize: 25,
     margin: 10,
+  },
+  lessonRatingView: {
+    marginVertical: 20,
   },
 });
