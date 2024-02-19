@@ -15,7 +15,9 @@ export const colorsDark = {
   blue: "#1E8DFE",
   brightBlue: "#007bff",
   yellow: "#FDE03E",
+  orange: "#FFA500",
   white: "#ffffff",
+  whiteLowOpacity: "#FFFFFFB7",
   disabledGrey: "#FFFFFF91",
   secondaryTextGrey: "#CCCCCCC3",
 };

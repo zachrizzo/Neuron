@@ -2,8 +2,12 @@ import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
 import React from "react";
 import MorphingBall from "../morphingBall";
 import { colorsDark } from "../../utility/color";
+import Banner from "../googleAds/banner";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/slices/userSlice";
 
 const LoadingComponent = ({ textUpdateState }) => {
+  const user = useSelector(selectUser);
   return (
     <View style={styles.mainContainer}>
       <View style={styles.backGround}>
@@ -13,6 +17,11 @@ const LoadingComponent = ({ textUpdateState }) => {
         <ActivityIndicator size="large" color="#FFFFFF" />
         <Text style={styles.text}>{textUpdateState}</Text>
       </View>
+      {user?.subscriptionStatus?.identifier != "Gold Tier" && (
+        <View style={styles.googleAds}>
+          <Banner isRelativePosition={true} />
+        </View>
+      )}
     </View>
   );
 };
@@ -56,5 +65,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginVertical: 10,
+  },
+  googleAds: {
+    position: "absolute",
+    bottom: 0,
   },
 });

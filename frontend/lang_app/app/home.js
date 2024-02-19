@@ -43,6 +43,7 @@ import {
   setUserHearts,
   setUserHeartsLastRefill,
   setUserNumberOfMessages,
+  setUserNumberOfMessagesLastRefill,
 } from "../redux/slices/userSlice";
 import { getUser, updateUser } from "../firebase/users/user";
 import { auth } from "../firebase/firebase";
@@ -116,6 +117,74 @@ export default function App() {
     }
   }, [messages]);
 
+  useEffect(() => {
+    if (!user) return;
+
+    const calculateTimeDifferenceInHours = (startDate, endDate) => {
+      const msInHour = 1000 * 60 * 60;
+      return (endDate.getTime() - startDate.getTime()) / msInHour;
+    };
+    const lastMessageRefill = new Date(user.lastMessageRefill);
+    const now = new Date();
+    const diffInHours = calculateTimeDifferenceInHours(lastMessageRefill, now);
+
+    if (diffInHours > 24) {
+      const updatedData = {
+        numberOfMessages: 50,
+        lastMessageRefill: now.toISOString() ? now.toISOString() : now,
+      };
+
+      dispatch(setUserNumberOfMessages(updatedData.numberOfMessages));
+      dispatch(
+        setUserNumberOfMessagesLastRefill(updatedData.lastMessageRefill)
+      );
+      console.log("updatedData", updatedData);
+
+      updateUser(auth.currentUser.email, updatedData)
+        .then(() => console.log("User updated successfully"))
+        .catch((error) => console.error("Error updating user:", error));
+    }
+  }, [user, user?.lastMessageRefill]);
+
+  useEffect(() => {
+    // Assume `user` contains user data including streak count and last visit date
+    if (!user) return;
+
+    const now = new Date();
+    const lastVisitDate = user.lastVisit ? new Date(user.lastVisit) : null;
+    const oneDayInMs = 1000 * 60 * 60 * 24;
+    const twoDaysInMs = 1000 * 60 * 60 * 24 * 2;
+    let newStreak = user.streak || 0;
+
+    // Check if the user has visited within the last 48 hours but more than 24 hours
+    if (
+      lastVisitDate &&
+      now - lastVisitDate < twoDaysInMs &&
+      now - lastVisitDate > oneDayInMs
+    ) {
+      // Increment streak
+      newStreak++;
+    } else {
+      // Reset streak if it's been more than 48 hours or less than 24 hours
+      newStreak = 1;
+    }
+
+    // Update user data
+    const updatedUserData = {
+      ...user,
+      streak: newStreak,
+      lastVisit: now.toISOString(),
+    };
+
+    // Update user in Firebase and Redux
+    updateUser(auth.currentUser.email, updatedUserData)
+      .then(() => {
+        console.log("Streak updated successfully");
+        dispatch(setUser(updatedUserData));
+      })
+      .catch((error) => console.error("Error updating streak:", error));
+  }, []);
+
   //update user in redux from firebase
   useEffect(() => {
     getUser(auth.currentUser.email).then((user) => {
@@ -125,26 +194,32 @@ export default function App() {
   }, [auth.currentUser]);
 
   useEffect(() => {
-    //check if the hearts need to be refilled
-    //refill hearts every 24 hours
-    if (user?.hearts < 10) {
-      const lastHeartRefill = new Date(user?.heartsLastRefill);
+    if (!user || user.hearts >= 10) return;
 
-      const now = new Date();
+    const calculateTimeDifferenceInHours = (startDate, endDate) => {
+      const msInHour = 1000 * 60 * 60;
+      return (endDate.getTime() - startDate.getTime()) / msInHour;
+    };
 
-      const diff = now - lastHeartRefill;
-      const diffInHours = diff / (1000 * 60 * 60);
-      console.log("diffInHours", diffInHours);
-      if (diffInHours > 24) {
-        updateUser(auth.currentUser.email, {
-          hearts: 10,
-          lastHeartRefill: new Date().toLocaleString(),
-        });
-        dispatch(setUserHearts({ hearts: 10 }));
-        dispatch(setUserHeartsLastRefill({ heartsLastRefill: new Date() }));
-      }
+    const lastHeartRefill = new Date(user.heartsLastRefill);
+    const now = new Date();
+    const diffInHours = calculateTimeDifferenceInHours(lastHeartRefill, now);
+
+    if (diffInHours > 24) {
+      const updatedData = {
+        hearts: 10,
+        heartsLastRefill: now.toISOString(),
+      };
+
+      updateUser(auth.currentUser.email, updatedData)
+        .then(() => {
+          console.log("Hearts refilled successfully");
+          dispatch(setUserHearts({ hearts: 10 }));
+          dispatch(setUserHeartsLastRefill({ heartsLastRefill: now }));
+        })
+        .catch((error) => console.error("Error refilling hearts:", error));
     }
-  }, [user]);
+  }, [user, user?.heartsLastRefill]);
 
   useEffect(() => {
     //if prompt panel is showing stop playing
@@ -260,7 +335,6 @@ export default function App() {
         setLoading(false);
         setRecording(undefined);
       }
-      updateNumberOfMessages();
     } else {
       Alert.alert(
         "Out of messages",
@@ -350,7 +424,7 @@ export default function App() {
     if (numberOfMessagesLeft >= 0) {
       setLoading(true);
       setInputMessage(""); // Clear input field after sending
-
+      updateNumberOfMessages();
       if (isUsingAssistant) {
         // try {
         //   if (threadID.length > 0) {
@@ -488,6 +562,30 @@ export default function App() {
     }
   };
 
+  const handleSpeechInput = async () => {
+    if (user?.numberOfMessages >= 0) {
+      if (!threadID) {
+        await startThread().then(async () => {
+          if (recording) {
+            stopRecording();
+          } else {
+            startRecording();
+            updateNumberOfMessages();
+          }
+        });
+      } else {
+        if (recording) {
+          stopRecording();
+        } else {
+          startRecording();
+          updateNumberOfMessages();
+        }
+      }
+    } else {
+      router.push("/store");
+    }
+  };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -519,24 +617,35 @@ export default function App() {
                 <RoundButton
                   icon={
                     showPromptPanel || !threadID ? (
-                      <Ionicons name="language" size={20} color="grey" />
+                      <Ionicons
+                        name="flame-sharp"
+                        size={20}
+                        color={colorsDark.orange}
+                      />
                     ) : (
                       <Ionicons name="pencil-outline" size={20} color="grey" />
                     )
                   }
                   size={35}
-                  color="white"
-                  disabled={loading || showPromptPanel}
+                  color={
+                    showPromptPanel || !threadID
+                      ? "#FFFFFF00"
+                      : colorsDark.white
+                  }
+                  disabled={loading}
                   onPress={async () => {
                     setShowPromptPanel(true);
                     dispatch(setMessages([]));
                     dispatch(setThreadID(""));
                     setLocalMessages([]);
                     dispatch(setIsCurrentChatALesson(false));
+                    setThreadID("");
                   }}
                 />
-                <Text style={{ color: "white", marginLeft: 20 }}>
-                  {!threadID ? " (soon)" : "New Convo"}
+                <Text
+                  style={{ color: "white", fontWeight: "bold", marginLeft: 2 }}
+                >
+                  {!threadID ? user.streak : "New Convo"}
                 </Text>
               </View>
             );
@@ -545,24 +654,64 @@ export default function App() {
           headerRight: () => {
             return (
               <View style={styles.headerRightView}>
-                <RoundButton
-                  icon={
-                    <FontAwesome5 name="store-alt" size={20} color="white" />
-                  }
-                  size={40}
-                  color={"#FFFFFF00"}
-                  onPress={() => {
-                    router.push("/store");
-                  }}
-                />
-                <RoundButton
-                  icon={<Ionicons name="cog-outline" size={30} color="white" />}
-                  size={40}
-                  color={"#FFFFFF00"}
-                  onPress={() => {
-                    router.push("/settings");
-                  }}
-                />
+                {showPromptPanel ? (
+                  <>
+                    <RoundButton
+                      icon={
+                        <FontAwesome5
+                          name="store-alt"
+                          size={20}
+                          color="white"
+                        />
+                      }
+                      size={40}
+                      color={"#FFFFFF00"}
+                      onPress={() => {
+                        router.push("/store");
+                      }}
+                    />
+                    <RoundButton
+                      icon={
+                        <Ionicons name="cog-outline" size={30} color="white" />
+                      }
+                      size={40}
+                      color={"#FFFFFF00"}
+                      onPress={() => {
+                        router.push("/settings");
+                      }}
+                    />
+                  </>
+                ) : (
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      position: "relative",
+                    }}
+                  >
+                    <RoundButton
+                      icon={
+                        <Ionicons name="chatbubble" size={30} color="white" />
+                      }
+                      size={40}
+                      color={"#FFFFFF00"}
+                      onPress={() => {
+                        router.push("/store");
+                      }}
+                    />
+                    <Text
+                      style={{
+                        color: colorsDark.green,
+                        position: "absolute",
+                        fontWeight: "bold",
+                        fontSize: 16,
+                      }}
+                    >
+                      {user?.numberOfMessages}
+                    </Text>
+                  </View>
+                )}
               </View>
             );
           },
@@ -590,11 +739,11 @@ export default function App() {
             showPromptPanel ? (
               <PromptSuggestionCard
                 loading={loading}
-                startRecording={startRecording}
-                stopRecording={stopRecording}
+                recording={recording}
+                handleSpeechInput={handleSpeechInput}
                 startThread={startThread}
-                setShowPromptPanel={setShowPromptPanel}
                 language={user?.language ? user.language : "language"}
+                setShowPromptPanel={setShowPromptPanel}
                 setStartingPrompt={setStartingPrompt}
                 handleSendMessage={handleSendMessage}
                 setLoading={setLoading}
@@ -656,7 +805,7 @@ export default function App() {
               }
               size={50}
               color={recording ? "red" : colorsDark.blue}
-              onPress={recording ? stopRecording : startRecording}
+              onPress={handleSpeechInput}
               disabled={loading}
             />
             <InputBox
@@ -678,26 +827,30 @@ export default function App() {
               }
               size={50}
               onPress={async () => {
-                try {
-                  const userMessage = {
-                    id: `user${messages?.length}`,
-                    createdAt: new Date().toLocaleString(),
-                    text: { role: "user", content: inputMessage },
-                    type: "sent",
-                  };
-                  dispatch(pushSingleMessage(userMessage));
-                  setLocalMessages((prevMessages) => {
-                    const updatedMessages = [...prevMessages, userMessage];
-                    handleSendMessage(
-                      updatedMessages,
-                      null,
-                      inputMessage?.trim()
-                    );
+                if (numberOfMessagesLeft >= 0) {
+                  try {
+                    const userMessage = {
+                      id: `user${messages?.length}`,
+                      createdAt: new Date().toLocaleString(),
+                      text: { role: "user", content: inputMessage },
+                      type: "sent",
+                    };
+                    dispatch(pushSingleMessage(userMessage));
+                    setLocalMessages((prevMessages) => {
+                      const updatedMessages = [...prevMessages, userMessage];
+                      handleSendMessage(
+                        updatedMessages,
+                        null,
+                        inputMessage?.trim()
+                      );
 
-                    return updatedMessages;
-                  });
-                } catch (error) {
-                  console.error("Error in onPress:", error);
+                      return updatedMessages;
+                    });
+                  } catch (error) {
+                    console.error("Error in onPress:", error);
+                  }
+                } else {
+                  router.push("/store");
                 }
               }}
               disabled={loading || inputMessage?.trim().length === 0}

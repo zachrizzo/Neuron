@@ -100,7 +100,7 @@ const settings = () => {
       <View>
         <ProceduralCheckBox
           multiSelect={false}
-          options={["English", "Spanish", "French", "Portuguese"]}
+          options={["English", "Spanish", "French", "Portuguese", "Italian"]}
           onUpdateSelectedOptions={(selectedOptions) => {
             const lang = selectedOptions[0];
 

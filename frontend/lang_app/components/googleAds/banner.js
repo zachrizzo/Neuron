@@ -9,10 +9,10 @@ import {
 const adUnitId = __DEV__
   ? TestIds.ADAPTIVE_BANNER
   : "ca-app-pub-6223294263341364~1666169376";
-const Banner = () => {
+const Banner = ({ isRelativePosition }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>To Remove ads, go pro!</Text>
+    <View style={[styles.container]}>
+      <Text style={styles.text}>To Remove ads, go Gold!</Text>
       <BannerAd
         unitId={adUnitId}
         size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}

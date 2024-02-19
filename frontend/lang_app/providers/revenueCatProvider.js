@@ -37,6 +37,7 @@ export const RevenueCatProvider = ({ children }) => {
   const subscriptionStatus = user.subscriptionStatus;
   const hearts = user.hearts;
   const cortexxCoins = user.cortexxCoins;
+  const AiMessages = user.numberOfMessages;
   const subscriptionPackages = useSelector(selectSubscriptionPackages);
 
   useEffect(() => {
@@ -91,7 +92,7 @@ export const RevenueCatProvider = ({ children }) => {
       });
     }
 
-    if (customerInfo?.entitlements.active["Gold Tier"] === undefined) {
+    if (customerInfo?.entitlements.active["Gold Tier"] !== undefined) {
       dispatch(
         setUserSubscriptionStatus({
           subscriptionStatus: customerInfo?.entitlements.active["Gold Tier"],

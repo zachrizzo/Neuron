@@ -26,6 +26,9 @@ const LessonCard = ({
 }) => {
   const [promptKeys, setPromptKeys] = useState([]);
   const [shouldStartThread, setShouldStartThread] = useState(false);
+  const [correctPercentage, setCorrectPercentage] = useState(0);
+  const [mistakesPercentage, setMistakesPercentage] = useState(0);
+  const [fluencyPercentage, setFluencyPercentage] = useState(0);
 
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -35,6 +38,27 @@ const LessonCard = ({
       const keys = Object.keys(lesson.promptsMap);
       // console.log(keys);
       setPromptKeys(keys);
+    }
+    //get percentage of correct answers
+    if (lesson?.correctQuestions && lesson?.completedLessons.length > 0) {
+      setCorrectPercentage(
+        (lesson?.correctQuestions?.length / lesson?.completedLessons?.length) *
+          100
+      );
+    }
+    //get percentage of mistakes
+    if (
+      lesson?.missedQuestions?.length &&
+      lesson?.completedLessons.length > 0
+    ) {
+      setMistakesPercentage(
+        (lesson?.missedQuestions?.length / lesson?.completedLessons?.length) *
+          100
+      );
+    }
+    //get percentage of fluency
+    if (lesson?.fluency) {
+      setFluencyPercentage(lesson.fluencyScore);
     }
   }, [lesson]);
 
@@ -82,7 +106,7 @@ const LessonCard = ({
             <Text
               style={{ textAlign: "center", fontSize: 30, color: "#FFFFFFD8" }}
             >
-              2/{lesson.totalTasks}
+              {lesson?.completedLessons?.length}/{lesson?.exercises?.length}
             </Text>
           </View>
         </View>
@@ -97,7 +121,7 @@ const LessonCard = ({
           <CircularProgress
             size={80}
             strokeWidth={10}
-            progress={70}
+            progress={correctPercentage}
             color={colorsDark.green}
             backGroundColor={colorsDark.secondary}
             label={"Correct"}
@@ -108,7 +132,7 @@ const LessonCard = ({
           <CircularProgress
             size={80}
             strokeWidth={10}
-            progress={10}
+            progress={mistakesPercentage}
             color={colorsDark.red}
             label={"Mistakes"}
             backGroundColor={colorsDark.secondary}
@@ -124,7 +148,7 @@ const LessonCard = ({
           }}
         >
           <HorizontalProgressBar
-            progress={20}
+            progress={fluencyPercentage}
             height={15}
             backgroundColor={colorsDark.secondary}
             progressColor={colorsDark.yellow}

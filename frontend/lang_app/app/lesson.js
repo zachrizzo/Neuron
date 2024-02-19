@@ -26,6 +26,7 @@ import { updateUser } from "../firebase/users/user";
 import { auth } from "../firebase/firebase";
 import LessonRatingComponent from "../components/lessonComponents/lessonRatingComponent";
 import MessageModal from "../components/layout/messageModal";
+import { updateLesson } from "../firebase/lessons/lesson";
 
 const Lesson = () => {
   const [loading, setLoading] = useState(false);
@@ -82,30 +83,37 @@ const Lesson = () => {
     if (fluencyScore) {
       setFluencyHistory([...fluencyHistory, fluencyScore]);
     }
-  }, [fluencyScore]);
-
-  // Calculate average fluency score
-  useEffect(() => {
+    // Calculate average fluency score
     if (fluencyHistory.length > 0) {
       const averageFluencyScore =
         fluencyHistory.reduce((a, b) => a + b) / fluencyHistory.length;
       console.log("averageFluencyScore", averageFluencyScore);
     }
-  }, [fluencyHistory]);
 
-  useEffect(() => {
     if (fluencyHistory.length > 0) {
       setFluencyScore(null);
     }
-  }, [currentExerciseIndex]);
 
-  useEffect(() => {
-    //show modal if rating is given
-    console.log("lessonRating", lessonRating);
     if (lessonRating !== null) {
       setShowRatingModal(true);
     }
-  }, [lessonRating]);
+
+    updateLesson(currentLesson.lessonTitle, {
+      fluencyScore: fluencyScore,
+      lessonRating: lessonRating,
+      fluencyHistory: fluencyHistory,
+      completedLessons: completedLessons,
+      missedQuestions: missedQuestions,
+      correctQuestions: correctQuestions,
+    });
+  }, [
+    fluencyScore,
+    lessonRating,
+    fluencyHistory,
+    currentExerciseIndex,
+    completedLessons,
+    missedQuestions,
+  ]);
 
   const handleContinue = () => {
     // Move to the next exercise or finish the lesson

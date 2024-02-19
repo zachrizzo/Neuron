@@ -43,6 +43,7 @@ const Subscriptions = () => {
       <Stack.Screen
         options={{
           title: "Subscriptions",
+          headerBackVisible: !loading,
         }}
       />
       <FlatList
@@ -64,7 +65,7 @@ const Subscriptions = () => {
                     },
                   ]}
                 >
-                  d{item.identifier}
+                  {item.identifier}
                 </Text>
                 <DividerLine marginTop={20} />
                 <Text style={styles.subSubscriptionText}>
@@ -75,6 +76,9 @@ const Subscriptions = () => {
                 </Text>
                 <View style={styles.detailsView}>
                   <View>
+                    <Text style={styles.subscriptionFeaturesText}>
+                      {item?.identifier.includes("Gold") ? "Gold" : "Standard"}
+                    </Text>
                     {allDetails(
                       item?.identifier.includes("Gold")
                         ? "Gold Tier"
@@ -86,7 +90,11 @@ const Subscriptions = () => {
                     width={50}
                     color={colorsDark.accentLowOpacity}
                   />
-                  <View>{allDetails("Free Tier")}</View>
+
+                  <View>
+                    <Text style={styles.subscriptionFeaturesText}>Free</Text>
+                    {allDetails("Free Tier")}
+                  </View>
                 </View>
                 <MainButton
                   title={"Purchase"}
@@ -94,9 +102,14 @@ const Subscriptions = () => {
                     setLoading(true);
                     setSelectedIndex(index);
 
-                    purchasePackage(item).then(() => {
-                      setLoading(false);
-                    });
+                    purchasePackage(item)
+                      .then(() => {
+                        setLoading(false);
+                      })
+                      .catch((e) => {
+                        console.log(e);
+                        setLoading(false);
+                      });
                   }}
                   marginVertical={20}
                   marginTop={30}
@@ -133,6 +146,13 @@ const styles = StyleSheet.create({
     color: colorsDark.white,
     fontSize: 15,
     marginVertical: 10,
+  },
+  subscriptionFeaturesText: {
+    color: colorsDark.whiteLowOpacity,
+    fontSize: 15,
+    marginVertical: 10,
+    fontStyle: "italic",
+    fontFamily: "Avenir",
   },
 
   purchaseItem: {

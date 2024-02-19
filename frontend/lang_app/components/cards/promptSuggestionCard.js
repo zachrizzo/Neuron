@@ -28,9 +28,9 @@ import { colorsDark } from "../../utility/color";
 import { router } from "expo-router";
 
 const PromptSuggestionCard = ({
-  startRecording,
-  stopRecording,
   loading,
+  recording,
+  handleSpeechInput,
   startThread,
   language,
   setShowPromptPanel,
@@ -40,7 +40,6 @@ const PromptSuggestionCard = ({
   user,
 }) => {
   // const [lessons, setLessons] = useState([]);
-  const [recording, setRecording] = useState(false);
   const dispatch = useDispatch();
   const isCurrentChatALesson = useSelector(selectIsCurrentChatALesson);
   const thread_id = useSelector(selectThreadID);
@@ -129,20 +128,7 @@ const PromptSuggestionCard = ({
         size={70}
         color={recording && user?.numberOfMessages > 0 ? "red" : "#007bff"}
         onPress={async () => {
-          if (user?.numberOfMessages > 0) {
-            if (recording) {
-              await stopRecording().then(() => {
-                setRecording(false);
-              });
-            } else {
-              await startThread().then(async () => {
-                await startRecording();
-                setRecording(true);
-              });
-            }
-          } else {
-            router.push("/store");
-          }
+          handleSpeechInput();
         }}
         marginVertical={30}
         disabled={loading}

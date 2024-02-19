@@ -31,7 +31,6 @@ class Create_audio:
 
 
 
-
         self.db = firestore.client(app=app)
         self.bucket = storage.bucket(app=app)
 

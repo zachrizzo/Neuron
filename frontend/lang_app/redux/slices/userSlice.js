@@ -34,6 +34,10 @@ export const userSlice = createSlice({
     setUserNumberOfMessages: (state, action) => {
       state.user.numberOfMessages = action.payload.numberOfMessages;
     },
+    setUserStreakFreeze: (state, action) => {
+      state.user.streakFreeze = action.payload.streakFreeze;
+    },
+
     setUserAutoSpeak: (state, action) => {
       state.user.autoSpeak = action.payload.autoSpeak;
     },
@@ -47,6 +51,11 @@ export const userSlice = createSlice({
     setMessages: (state, action) => {
       state.messages = action.payload;
     },
+    setUserNumberOfMessagesLastRefill: (state, action) => {
+      state.user.numberOfMessagesLastRefill =
+        action.payload.numberOfMessagesLastRefill;
+    },
+
     pushSingleMessage: (state, action) => {
       state.messages.push(action.payload);
     },
@@ -84,6 +93,8 @@ export const {
   setUserHearts,
   setUserHeartsLastRefill,
   setUserNumberOfMessages,
+  setUserStreakFreeze,
+  setUserNumberOfMessagesLastRefill,
   setUserAutoSpeak,
   setUserSubscriptionStatus,
   setThreadID,
