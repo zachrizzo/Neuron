@@ -118,35 +118,6 @@ export default function App() {
   }, [messages]);
 
   useEffect(() => {
-    if (!user) return;
-
-    const calculateTimeDifferenceInHours = (startDate, endDate) => {
-      const msInHour = 1000 * 60 * 60;
-      return (endDate.getTime() - startDate.getTime()) / msInHour;
-    };
-    const lastMessageRefill = new Date(user.lastMessageRefill);
-    const now = new Date();
-    const diffInHours = calculateTimeDifferenceInHours(lastMessageRefill, now);
-
-    if (diffInHours > 24) {
-      const updatedData = {
-        numberOfMessages: 50,
-        lastMessageRefill: now.toISOString() ? now.toISOString() : now,
-      };
-
-      dispatch(setUserNumberOfMessages(updatedData.numberOfMessages));
-      dispatch(
-        setUserNumberOfMessagesLastRefill(updatedData.lastMessageRefill)
-      );
-      console.log("updatedData", updatedData);
-
-      updateUser(auth.currentUser.email, updatedData)
-        .then(() => console.log("User updated successfully"))
-        .catch((error) => console.error("Error updating user:", error));
-    }
-  }, [user, user?.lastMessageRefill]);
-
-  useEffect(() => {
     // Assume `user` contains user data including streak count and last visit date
     if (!user) return;
 
@@ -192,34 +163,6 @@ export default function App() {
       // console.log("user updated from firebase", user.data());
     });
   }, [auth.currentUser]);
-
-  useEffect(() => {
-    if (!user || user.hearts >= 10) return;
-
-    const calculateTimeDifferenceInHours = (startDate, endDate) => {
-      const msInHour = 1000 * 60 * 60;
-      return (endDate.getTime() - startDate.getTime()) / msInHour;
-    };
-
-    const lastHeartRefill = new Date(user.heartsLastRefill);
-    const now = new Date();
-    const diffInHours = calculateTimeDifferenceInHours(lastHeartRefill, now);
-
-    if (diffInHours > 24) {
-      const updatedData = {
-        hearts: 10,
-        heartsLastRefill: now.toISOString(),
-      };
-
-      updateUser(auth.currentUser.email, updatedData)
-        .then(() => {
-          console.log("Hearts refilled successfully");
-          dispatch(setUserHearts({ hearts: 10 }));
-          dispatch(setUserHeartsLastRefill({ heartsLastRefill: now }));
-        })
-        .catch((error) => console.error("Error refilling hearts:", error));
-    }
-  }, [user, user?.heartsLastRefill]);
 
   useEffect(() => {
     //if prompt panel is showing stop playing

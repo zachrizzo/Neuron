@@ -5,14 +5,17 @@ import { PersistGate } from "redux-persist/integration/react";
 import { Text } from "react-native";
 import { colorsDark } from "../utility/color";
 import { RevenueCatProvider } from "../providers/revenueCatProvider";
+import { UserProvider } from "../context/userContext";
 
 export default function App() {
   return (
     <Provider store={store}>
       <RevenueCatProvider>
-        <PersistGate loading={<Text>Loading...</Text>} persistor={persistor}>
-          <Layout />
-        </PersistGate>
+        <UserProvider>
+          <PersistGate loading={<Text>Loading...</Text>} persistor={persistor}>
+            <Layout />
+          </PersistGate>
+        </UserProvider>
       </RevenueCatProvider>
     </Provider>
   );

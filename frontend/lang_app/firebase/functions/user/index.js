@@ -1,97 +1,52 @@
-const functions = require("firebase-functions");
+const { onSchedule } = require("firebase-functions/v2/scheduler");
+const { logger } = require("firebase-functions");
 const admin = require("firebase-admin");
-d;
 
-exports.checkUserVisitAndUpdate = functions.firestore
-  .document("users/{userId}")
-  .onUpdate(async (change, context) => {
-    const userDataBefore = change.before.data();
-    const userDataAfter = change.after.data();
+// Optional: es6-promise-pool for handling concurrency, if needed
+const PromisePool = require("es6-promise-pool").default;
+const MAX_CONCURRENT = 3; // Adjust based on your concurrency needs
 
-    const lastVisitBefore = new Date(userDataBefore.lastVisit);
-    const lastVisitAfter = new Date(userDataAfter.lastVisit);
+exports.dailyUserRefill = onSchedule("0 0 * * *", async (context) => {
+  logger.log("Starting daily user refill at midnight...");
 
-    // Assume updates only happen if there's a significant visit (e.g., more than a few minutes)
-    // This avoids triggering on every minor document update
-    if (lastVisitAfter - lastVisitBefore < 1000 * 60 * 5) {
-      console.log("Visit update is too minor, skipping.");
-      return null;
+  const usersRef = admin.firestore().collection("users");
+  const now = new Date();
+
+  const usersSnapshot = await usersRef.get();
+  let updateUserPromises = [];
+
+  usersSnapshot.forEach((doc) => {
+    const user = doc.data();
+    const lastMessageRefill = new Date(user.lastMessageRefill);
+    const lastHeartRefill = new Date(user.heartsLastRefill);
+    let updatesNeeded = {};
+    let shouldUpdate = false;
+
+    // Refill messages if more than 24 hours have passed since the last refill
+    if (now - lastMessageRefill >= 24 * 60 * 60 * 1000) {
+      updatesNeeded.numberOfMessages = 50;
+      updatesNeeded.lastMessageRefill = now.toISOString();
+      shouldUpdate = true;
     }
 
-    // Your existing logic for calculating time differences
-    const calculateTimeDifferenceInHours = (startDate, endDate) => {
-      const msInHour = 1000 * 60 * 60;
-      return (endDate.getTime() - startDate.getTime()) / msInHour;
-    };
-
-    let updatesNeeded = false;
-    const updatedData = {};
-
-    // Check for message refill
-    const lastMessageRefill = new Date(userDataAfter.lastMessageRefill);
-    const diffInHoursMessages = calculateTimeDifferenceInHours(
-      lastMessageRefill,
-      new Date()
-    );
-    if (diffInHoursMessages > 24) {
-      updatedData.numberOfMessages = 50;
-      updatedData.lastMessageRefill = new Date().toISOString();
-      updatesNeeded = true;
+    // Refill hearts if more than 24 hours have passed since the last refill
+    if (now - lastHeartRefill >= 24 * 60 * 60 * 1000) {
+      updatesNeeded.hearts = 10;
+      updatesNeeded.heartsLastRefill = now.toISOString();
+      shouldUpdate = true;
     }
 
-    // Check for heart refill (using whichever date field is accurate for your use case)
-    const lastHeartRefill = new Date(
-      userDataAfter.heartsLastRefill || userDataAfter.lastHeartRefill
-    ); // Adjust based on your field
-    const diffInHoursHearts = calculateTimeDifferenceInHours(
-      lastHeartRefill,
-      new Date()
-    );
-
-    if (diffInHoursHearts > 24) {
-      updatedData.hearts = 10;
-      updatedData.heartsLastRefill = new Date().toISOString(); // Adjust based on your field
-      updatesNeeded = true;
+    if (shouldUpdate) {
+      updateUserPromises.push(doc.ref.update(updatesNeeded));
     }
-
-    // Streak update logic
-    const now = new Date();
-    const lastVisitDate = userDataAfter.lastVisit
-      ? new Date(userDataAfter.lastVisit)
-      : null;
-    const oneDayInMs = 1000 * 60 * 60 * 24;
-    const twoDaysInMs = oneDayInMs * 2;
-    let newStreak = userDataAfter.streak || 0;
-
-    // Check if the user has visited within the last 48 hours but more than 24 hours
-    if (
-      lastVisitDate &&
-      now - lastVisitDate < twoDaysInMs &&
-      now - lastVisitDate > oneDayInMs
-    ) {
-      // Increment streak
-      newStreak++;
-      updatedData.streak = newStreak;
-      updatesNeeded = true;
-    } else if (now - lastVisitDate >= twoDaysInMs) {
-      // Reset streak if it's been more than 48 hours
-      updatedData.streak = 1;
-      updatesNeeded = true;
-    }
-
-    // If updates are needed based on the checks above, update the Firestore document
-    if (updatesNeeded) {
-      console.log(
-        `Updating user ${context.params.userId} with data:`,
-        updatedData
-      );
-      await admin
-        .firestore()
-        .collection("users")
-        .doc(context.params.userId)
-        .update(updatedData);
-      console.log("User updated successfully");
-    }
-
-    return null;
   });
+
+  // Use a promise pool to limit the number of concurrent Firestore updates
+  const promisePool = new PromisePool(
+    () => updateUserPromises.shift(),
+    MAX_CONCURRENT
+  );
+  await promisePool.start();
+
+  logger.log("Daily user refill completed at midnight.");
+});

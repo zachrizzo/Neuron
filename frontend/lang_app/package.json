@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@shopify/react-native-skia": "0.1.196",
     "axios": "^1.6.2",
+    "es6-promise-pool": "^2.5.0",
     "expo": "~49.0.15",
     "expo-av": "~13.4.1",
     "expo-blur": "~12.4.1",
