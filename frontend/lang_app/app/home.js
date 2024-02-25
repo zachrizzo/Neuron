@@ -838,10 +838,16 @@ export default function App() {
                     dispatch(pushSingleMessage(userMessage));
                     setLocalMessages((prevMessages) => {
                       const updatedMessages = [...prevMessages, userMessage];
-                      handleSendMessage(
-                        updatedMessages,
-                        null,
-                        inputMessage?.trim()
+                      // handleSendMessage(
+                      //   updatedMessages,
+                      //   null,
+                      //   inputMessage?.trim()
+                      // );
+
+                      sendMessageWithVoiceReply(
+                        threadID,
+                        [{ text: { role: "user", content: "Hello!" } }],
+                        "general_lang_chat"
                       );
 
                       return updatedMessages;

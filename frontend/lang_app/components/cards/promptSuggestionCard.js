@@ -26,6 +26,7 @@ import LessonCard from "./lessonCard";
 import { getAllLessons } from "../../firebase/lessons/lesson";
 import { colorsDark } from "../../utility/color";
 import { router } from "expo-router";
+import { sendMessageWithVoiceReply } from "../../firebase/api/aiChat";
 
 const PromptSuggestionCard = ({
   loading,
@@ -128,7 +129,12 @@ const PromptSuggestionCard = ({
         size={70}
         color={recording && user?.numberOfMessages > 0 ? "red" : "#007bff"}
         onPress={async () => {
-          handleSpeechInput();
+          // handleSpeechInput();
+          sendMessageWithVoiceReply(
+            "1234",
+            [{ text: { role: "user", content: "Hello!" } }],
+            "general_lang_chat"
+          );
         }}
         marginVertical={30}
         disabled={loading}

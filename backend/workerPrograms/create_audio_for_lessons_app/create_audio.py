@@ -29,6 +29,7 @@ class Create_audio:
         client_secret = os.getenv("OPENAI_SECRET2")
         print(client_secret)
 
+        self.client = OpenAI(api_key='** in notes')
 
 
         self.db = firestore.client(app=app)
