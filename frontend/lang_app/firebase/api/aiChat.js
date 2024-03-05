@@ -4,7 +4,7 @@ export async function sendMessageWithVoiceReply(
   modelType
 ) {
   const functionUrl =
-    "https://us-central1-lang-learning-app-gpt.cloudfunctions.net/ai-addMessageWithVoiceReply";
+    "https://addmessagewithvoicereply-fg5stlof5q-uc.a.run.app";
 
   try {
     const response = await fetch(functionUrl, {

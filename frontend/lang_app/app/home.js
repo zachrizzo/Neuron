@@ -66,6 +66,7 @@ import LoadingComponent from "../components/layout/loadingComponent";
 import { colorsDark } from "../utility/color";
 import { BlurView } from "expo-blur";
 import CortexCoins from "../components/gamification/cortexCredits";
+import { sendMessageWithVoiceReply } from "../firebase/api/aiChat";
 
 export default function App() {
   const [inputMessage, setInputMessage] = useState("");
