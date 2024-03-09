@@ -131,8 +131,8 @@ const PromptSuggestionCard = ({
         onPress={async () => {
           // handleSpeechInput();
           sendMessageWithVoiceReply(
-            "1234",
-            [{ text: { role: "user", content: "Hello!" } }],
+            "1",
+            [{ text: { role: "user", content: "Hello, dude!" } }],
             "general_lang_chat"
           );
         }}

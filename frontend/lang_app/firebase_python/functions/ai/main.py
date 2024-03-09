@@ -5,10 +5,15 @@ import json
 from openai import OpenAI
 import time
 import asyncio  # Import asyncio for handling async operations
+from pathlib import Path  # For handling file paths
+import asyncio
 
+
+# Initialize Firebase Admin SDK
+# Make sure you've called firebase_admin.initialize_app() somewhere in your code if it's not already initialized.
 
 @https_fn.on_request(secrets=['OPENAI_KEY'])
-async def addMessageWithVoiceReply(req: https_fn.Request) -> https_fn.Response:  # Make the function async
+def addMessageWithVoiceReply(req: https_fn.Request) -> https_fn.Response:
     db = firestore.client()
 
     logger.log('This is a debug message')
@@ -39,7 +44,7 @@ async def addMessageWithVoiceReply(req: https_fn.Request) -> https_fn.Response: 
     }
 
     try:
-        response = await client.chat.completions.create(  # Use await for asynchronous call
+        response =  client.chat.completions.create(
             model=model_dict.get(modelType, "ft:gpt-3.5-turbo-1106:personal::8N8bJgSI"),
             messages=[{'role': message['text']['role'], 'content': message['text']['content']} for message in message_list],
         )
@@ -49,22 +54,23 @@ async def addMessageWithVoiceReply(req: https_fn.Request) -> https_fn.Response: 
         choice = response.choices[0]
         assistant_message = choice.message.content
 
-        audio_response = await client.audio.speech.create(  # Use await for asynchronous call
+        # Generate audio response
+        audio_response =  client.audio.speech.create(
             model="tts-1-hd",
             voice="shimmer",
             input=assistant_message
         )
 
-        logger.log("Response from OpenAI audio: " + str(audio_response))
+        # Save audio response to a temporary file
+        temp_file_path = Path("/tmp/speech.mp3")
+        audio_response.stream_to_file(temp_file_path)
 
-        audio_content = await audio_response
 
-        logger.log("Audio content: " + str(audio_content))
-
+        # Upload the audio file to Firebase Storage
         bucket = storage.bucket()
         file_name = f"voiceReplies/{int(time.time())}.mp3"
         blob = bucket.blob(file_name)
-        blob.upload_from_string(audio_content, content_type="audio/mp3")
+        blob.upload_from_filename(temp_file_path)
         blob.make_public()
         audioUrl = blob.public_url
 
@@ -81,12 +87,17 @@ async def addMessageWithVoiceReply(req: https_fn.Request) -> https_fn.Response: 
             'audioUrl': audioUrl
         }
 
+        logger.log(f"New message: {new_message},  conversationId: {conversationId}")
+
         conversation_ref = db.collection('conversations').document(conversationId)
         conversation_ref.set({
             'messages': firestore.ArrayUnion([new_message])
         }, merge=True)
 
-        return https_fn.Response("Message added successfully", status=200)
+        logger.log("Message added successfully")
+
+        return https_fn.Response(json.dumps({"message": "Message added successfully","new_message": new_message}), status=200, mimetype='application/json')
     except Exception as e:
-        https_fn._logging.error(f'Error processing request: {e}')
-        return https_fn.Response(f"Error processing request: {str(e)}", status=500)
+        logger.error(f'Error processing request: {e}')
+        return https_fn.Response(json.dumps({"error": str(e)}), status=500, mimetype='application/json')
+

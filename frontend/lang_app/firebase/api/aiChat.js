@@ -19,13 +19,17 @@ export async function sendMessageWithVoiceReply(
       }),
     });
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
+    // Check if the response is OK and content type is JSON before parsing
+    const contentType = response.headers.get("Content-Type");
+    if (
+      response.ok &&
+      contentType &&
+      contentType.includes("application/json")
+    ) {
+      const result = await response.json();
+      console.log("Success:", result);
+      return result;
     }
-
-    const result = await response.json();
-    console.log("Success:", result);
-    // Handle success, e.g., update UI or state as necessary
   } catch (error) {
     console.error("Error sending message:", error);
     // Handle error, e.g., show error message to user
