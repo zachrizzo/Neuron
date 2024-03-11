@@ -31,3 +31,21 @@ export async function sendMessageWithVoiceReply(
     // Handle error, e.g., show error message to user
   }
 }
+
+export async function addMessageFromVoiceInputWithAudioReply(formData) {
+  const response = await fetch(
+    "https://addmessagefromvoiceinputwithaudioreply-fg5stlof5q-uc.a.run.app",
+    {
+      method: "POST",
+      body: formData,
+    }
+  );
+
+  const result = await response.json();
+  if (response.ok) {
+    console.log("Success:", result);
+    return result;
+  } else {
+    throw new Error(result.error || "Unknown error");
+  }
+}

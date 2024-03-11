@@ -25,8 +25,6 @@ import { colorsDark } from "../../utility/color";
 import Banner from "../googleAds/banner";
 
 const MessageThread = ({
-  messages,
-  // setMessages,
   isUsingAssistant,
   playingSound,
   setPlayingSound,
@@ -116,6 +114,7 @@ const MessageThread = ({
         });
       }}
       renderItem={({ item, index }) => {
+        createdAt = new Date(item.createdAt).toLocaleDateString();
         return (
           <View>
             {index % 10 === 0 && index !== 0 ? <Banner /> : null}
@@ -150,9 +149,7 @@ const MessageThread = ({
                 }}
               >
                 <View>
-                  <Text style={styles.messageLabel}>
-                    {item.createdAt.split(",")[1]}
-                  </Text>
+                  <Text style={styles.messageLabel}>{createdAt}</Text>
                 </View>
                 <View
                   style={{

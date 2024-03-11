@@ -5,6 +5,8 @@
 from firebase_functions import https_fn
 from firebase_admin import initialize_app
 from ai.main import addMessageWithVoiceReply
+from ai.main import transcribe_audio
+from ai.main import addMessageFromVoiceInputWithAudioReply
 
 
 initialize_app()

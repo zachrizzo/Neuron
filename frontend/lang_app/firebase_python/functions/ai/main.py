@@ -4,9 +4,8 @@ import os
 import json
 from openai import OpenAI
 import time
-import asyncio  # Import asyncio for handling async operations
 from pathlib import Path  # For handling file paths
-import asyncio
+from tempfile import NamedTemporaryFile
 
 
 # Initialize Firebase Admin SDK
@@ -101,3 +100,154 @@ def addMessageWithVoiceReply(req: https_fn.Request) -> https_fn.Response:
         logger.error(f'Error processing request: {e}')
         return https_fn.Response(json.dumps({"error": str(e)}), status=500, mimetype='application/json')
 
+@https_fn.on_request(secrets=['OPENAI_KEY'])
+def transcribe_audio(req: https_fn.Request) -> https_fn.Response:
+
+    client = OpenAI(
+        api_key=os.environ.get('OPENAI_KEY')
+    )
+
+    if req.method != "POST":
+        return https_fn.Response("Method not allowed", status=405)
+
+
+
+    content_type = req.headers['content-type']
+    if 'multipart/form-data' not in content_type:
+        return https_fn.Response("Invalid content type", status=400)
+
+    # Assuming the file is sent as a part of multipart/form-data
+    # Adjust based on your frontend implementation
+    file = req.files['file']
+    lang = req.form.get('lang', 'en')  # Default language to English if not specified
+
+    try:
+        # Save file to a temporary location
+        with NamedTemporaryFile(delete=False, suffix=".m4a") as tmp:
+            file.save(tmp.name)
+            tmp_path = tmp.name
+
+        # Transcribe the audio file using OpenAI's Whisper model
+        transcript_response = client.audio.transcriptions.create(
+            model="whisper-1",
+            file=open(tmp_path, "rb"),
+            language=lang
+        )
+
+        transcript = transcript_response['text']
+
+        logger.log(f"Transcription successful: {transcript}")
+
+        # Cleanup: remove the temporary file after transcription
+        os.remove(tmp_path)
+
+        return https_fn.Response(json.dumps({"transcript": transcript}), status=200, mimetype='application/json')
+
+    except Exception as e:
+        logger.error(f"Error during transcription: {str(e)}")
+        # Cleanup in case of an error
+        if 'tmp_path' in locals():
+            os.remove(tmp_path)
+        return https_fn.Response(json.dumps({"error": str(e)}), status=500, mimetype='application/json')
+
+
+
+@https_fn.on_request(secrets=['OPENAI_KEY'])
+def addMessageFromVoiceInputWithAudioReply(req: https_fn.Request) -> https_fn.Response:
+    client = OpenAI(
+        api_key=os.environ.get('OPENAI_KEY')
+    )
+
+    logger.log(f"This is a debug message. Path: {req.path}, Method: {req.method}")
+
+
+
+    if req.method != "POST":
+        return https_fn.Response("Method not allowed", status=405)
+
+    content_type = req.headers['content-type']
+    if 'multipart/form-data' not in content_type:
+        return https_fn.Response("Invalid content type", status=400)
+
+    # Process uploaded file and optional language parameter
+    file = req.files['file']
+    lang = req.form.get('lang', 'en')  # Default language to English if not specified
+    conversationId = req.form['conversationId']
+
+    logger.log(f"conversationId: {conversationId}, lang: {lang}, file: {file}")
+
+    try:
+        with NamedTemporaryFile(delete=False, suffix=".m4a") as tmp:
+            file.save(tmp.name)
+            tmp_path = tmp.name
+
+        logger.log(f"File saved to: {tmp_path}")
+
+        # Transcribe the audio file
+        transcript_response = client.audio.transcriptions.create(
+            model="whisper-1",
+            file=open(tmp_path, "rb"),
+            language=lang
+        )
+
+        logger.log(f"Transcription response: {transcript_response}")
+
+        # Assuming transcript_response is an object with a 'text' attribute
+        transcript = transcript_response.text
+
+        user_message = {'content': transcript, 'role': 'user'}
+
+        # Generate a chat response
+        chat_response = client.chat.completions.create(
+            model="ft:gpt-3.5-turbo-1106:personal::8N8bJgSI",
+            messages=[{'role': 'user', 'content': transcript}],
+        )
+        assistant_message = chat_response.choices[0].message.content
+
+        # Generate audio from the chat response
+        with NamedTemporaryFile(delete=False, suffix=".mp3") as tmp_audio:
+            audio_response = client.audio.speech.create(
+                model="tts-1-hd",
+                voice="shimmer",
+                input=assistant_message
+            )
+            audio_response.stream_to_file(tmp_audio.name)
+            audio_file_name = f"voiceReplies/{int(time.time())}.mp3"
+            bucket = storage.bucket()
+            blob = bucket.blob(audio_file_name)
+            blob.upload_from_filename(tmp_audio.name)
+            blob.make_public()
+            audioUrl = blob.public_url
+            os.remove(tmp_audio.name)  # Clean up the temporary audio file
+
+        db = firestore.client()
+        conversation_ref = db.collection('chats').document(conversationId)
+
+        # Add user's transcribed message and AI's reply to Firestore
+        new_user_message = {
+            'id': f'{conversationId}_{int(time.time())}',
+            'createdAt': time.time(),
+            'text': user_message,
+            'type': 'sent',
+        }
+        new_ai_message = {
+            'id': f'{conversationId}_{int(time.time()) + 1}',
+            'createdAt': time.time(),
+            'text': {
+                'content': assistant_message,
+                'role': 'assistant'
+            },
+            'type': 'received',
+            'audioUrl': audioUrl
+        }
+
+        # Use a transaction or batched write if you need atomicity
+        conversation_ref.set({
+            'messages': firestore.ArrayUnion([new_user_message, new_ai_message])
+        }, merge=True)
+
+        return https_fn.Response(json.dumps({"message": "Messages added successfully", "user_message": new_user_message, "ai_message": new_ai_message}), status=200, mimetype='application/json')
+
+    except Exception as e:
+        logger.error(f'Error processing request: {e}')
+        return https_fn.Response(json.dumps({"error": str(e)}), status=500, mimetype='application/json')

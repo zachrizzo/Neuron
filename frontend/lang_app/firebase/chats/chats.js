@@ -14,6 +14,7 @@ import {
 } from "firebase/firestore";
 import { updateUser } from "../users/user";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { useDispatch } from "react-redux";
 
 export async function createChat(chatID, promptID, userData) {
   return setDoc(
@@ -43,6 +44,13 @@ export function getAllChats(setChats) {
     });
 
     setChats(chats);
+  });
+}
+
+export function getAllMessagesFromChat(chatID, setMessages) {
+  return onSnapshot(doc(db, "chats", chatID), (doc) => {
+    const messages = doc.data()?.messages;
+    setMessages(messages);
   });
 }
 

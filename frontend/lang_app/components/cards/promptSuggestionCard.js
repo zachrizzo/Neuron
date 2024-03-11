@@ -129,12 +129,12 @@ const PromptSuggestionCard = ({
         size={70}
         color={recording && user?.numberOfMessages > 0 ? "red" : "#007bff"}
         onPress={async () => {
-          // handleSpeechInput();
-          sendMessageWithVoiceReply(
-            "1",
-            [{ text: { role: "user", content: "Hello, dude!" } }],
-            "general_lang_chat"
-          );
+          handleSpeechInput();
+          // sendMessageWithVoiceReply(
+          //   "1",
+          //   [{ text: { role: "user", content: "Hello, dude!" } }],
+          //   "general_lang_chat"
+          // );
         }}
         marginVertical={30}
         disabled={loading}

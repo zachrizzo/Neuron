@@ -38,7 +38,7 @@ import {
   selectThreadID,
   selectUser,
   setIsCurrentChatALesson,
-  setMessages,
+  setMessages as setMessagesRedux,
   setThreadID,
   setUserHearts,
   setUserHeartsLastRefill,
@@ -55,6 +55,7 @@ import { v4 as uuidv4 } from "uuid";
 import {
   addMessageToChat,
   createChat,
+  getAllMessagesFromChat,
   updateChat,
   uploadAudioFile,
 } from "../firebase/chats/chats";
@@ -66,12 +67,17 @@ import LoadingComponent from "../components/layout/loadingComponent";
 import { colorsDark } from "../utility/color";
 import { BlurView } from "expo-blur";
 import CortexCoins from "../components/gamification/cortexCredits";
-import { sendMessageWithVoiceReply } from "../firebase/api/aiChat";
+import {
+  sendMessageWithVoiceReply,
+  addMessageFromVoiceInputWithAudioReply,
+} from "../firebase_python/api/aiChat";
 
 export default function App() {
+  const reduxMessages = useSelector(selectMessages);
+  const threadID = useSelector(selectThreadID);
+
   const [inputMessage, setInputMessage] = useState("");
-  // const [threadID, setThreadId] = useState("");
-  const [localMessages, setLocalMessages] = useState([]);
+  const [messages, setMessages] = useState(threadID ? reduxMessages || [] : []);
   const [speechSound, setSpeechSound] = useState();
   const [recording, setRecording] = useState();
   const [loading, setLoading] = useState(false);
@@ -81,8 +87,7 @@ export default function App() {
   const [playingSound, setPlayingSound] = useState();
   const [playingMessageIndex, setPlayingMessageIndex] = useState(null);
   const [isSoundLoading, setIsSoundLoading] = useState(false);
-  const threadID = useSelector(selectThreadID);
-  const messages = useSelector(selectMessages);
+
   const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false);
   const [startingPrompt, setStartingPrompt] = useState(
@@ -111,12 +116,19 @@ export default function App() {
   //add different fonts
   //add a setting to turn not show translation
   //add a translation button when word is highlighted
+  // change users to use id instead of email
 
   useEffect(() => {
-    if (messages.length > 0) {
-      setLocalMessages(messages);
+    if (threadID && threadID !== "") {
+      // Set up the listener and capture the unsubscribe function
+      const unsubscribe = getAllMessagesFromChat(threadID, (newMessages) => {
+        dispatch(setMessagesRedux(newMessages));
+        console.log("Messages updated:", newMessages);
+      });
+
+      return () => unsubscribe();
     }
-  }, [messages]);
+  }, [threadID, dispatch]);
 
   useEffect(() => {
     // Assume `user` contains user data including streak count and last visit date
@@ -157,14 +169,6 @@ export default function App() {
       .catch((error) => console.error("Error updating streak:", error));
   }, []);
 
-  //update user in redux from firebase
-  useEffect(() => {
-    getUser(auth.currentUser.email).then((user) => {
-      dispatch(setUser(user.data()));
-      // console.log("user updated from firebase", user.data());
-    });
-  }, [auth.currentUser]);
-
   useEffect(() => {
     //if prompt panel is showing stop playing
     if (showPromptPanel) {
@@ -173,10 +177,8 @@ export default function App() {
   }, [showPromptPanel]);
 
   useEffect(() => {
-    if (threadID && messages.length > 2) {
-      {
-        setShowPromptPanel(false);
-      }
+    if (threadID && messages.length > 0) {
+      setShowPromptPanel(false);
     }
   }, [threadID]);
 
@@ -224,7 +226,8 @@ export default function App() {
 
         dispatch(pushSingleMessage(systemMessage));
 
-        setLocalMessages([systemMessage]);
+        setMessages([systemMessage]);
+
         setLoadingUpdateMessage("Created a new conversation");
         return thread;
       } catch (error) {
@@ -249,19 +252,16 @@ export default function App() {
   async function startRecording() {
     if (numberOfMessagesLeft >= 0) {
       try {
-        console.log("Requesting permissions..");
         await Audio.requestPermissionsAsync();
         await Audio.setAudioModeAsync({
           allowsRecordingIOS: true,
           playsInSilentModeIOS: true,
         });
 
-        console.log("Starting recording..");
         const { recording } = await Audio.Recording.createAsync(
           Audio.RecordingOptionsPresets.HIGH_QUALITY
         );
         setRecording(recording);
-        console.log("Recording started");
       } catch (err) {
         console.error("Failed to start recording", err);
         Alert.alert(
@@ -295,69 +295,49 @@ export default function App() {
     }
   }
 
-  async function stopRecording() {
+  const stopRecording = async () => {
     setLoading(true);
-
     try {
-      console.log("Stopping recording..");
       setRecording(undefined);
       await recording.stopAndUnloadAsync();
-      await Audio.setAudioModeAsync({
-        allowsRecordingIOS: false,
-      });
       const uri = recording.getURI();
 
-      const formData = new FormData();
+      // Prepare the FormData object
+      let formData = new FormData();
       formData.append("file", {
         uri: uri,
-        type: "audio/m4a", // or the correct type of your audio file
-        name: "audiofile.m4a",
+        type: "audio/m4a", // Make sure the MIME type matches the file type
+        name: "recording.m4a",
       });
-      setLoadingUpdateMessage("Transcribing your message...");
+      // Append other fields if necessary
+      formData.append("conversationId", threadID);
 
-      const transcribedText = await transcribeAudio(
-        formData,
-        selectLang(user?.language)
-      );
-      console.log("Transcribed text:", transcribedText);
-      const userMessage = {
-        id: `user${messages?.length}`,
-        createdAt: new Date().toLocaleString(),
-        text: { role: "user", content: transcribedText },
-        type: "sent",
-      };
+      formData.append("lang", selectLang(user?.language || "en"));
 
-      dispatch(pushSingleMessage(userMessage));
-      setLocalMessages((prevMessages) => {
-        const updatedMessages = [...prevMessages, userMessage];
-        handleSendMessage(updatedMessages, uri, transcribedText);
-        return updatedMessages;
-      });
-      setLoadingUpdateMessage("Transcribed your message...");
+      response = await addMessageFromVoiceInputWithAudioReply(formData);
 
-      console.log("Sending message...");
+      const audioUrl = response.ai_message.audioUrl;
 
-      // await handleSendMessage(transcribedText, uri);
-
-      // Use the transcribed text as needed
+      if (user.autoSpeak == true || user.autoSpeak == undefined) {
+        setPlayingMessageIndex(messages.length - 2);
+        setPlayingSound();
+        await playSpeech(
+          audioUrl,
+          messages.length,
+          playingMessageIndex,
+          setPlayingMessageIndex,
+          setPlayingSound,
+          setIsSoundLoading
+        );
+      }
     } catch (error) {
-      console.error("Error in getting transcribed text", error);
-      Alert.alert(
-        "Error transcribing audio",
-        "Please try again, if the problem persists please contact support.",
-        [
-          {
-            text: "OK",
-            onPress: () => console.log("OK Pressed"),
-            style: "cancel",
-          },
-        ],
-        { cancelable: false }
-      );
+      console.error("Failed to send audio file:", error);
+      Alert.alert("Error", "Failed to send audio file. Please try again.");
+    } finally {
       setLoading(false);
-      setRecording(undefined);
+      setShowPromptPanel(false);
     }
-  }
+  };
 
   const handleSendMessage = async (
     messagesArray,
@@ -369,141 +349,104 @@ export default function App() {
       setLoading(true);
       setInputMessage(""); // Clear input field after sending
       updateNumberOfMessages();
-      if (isUsingAssistant) {
-        // try {
-        //   if (threadID.length > 0) {
-        //     const response = await addMessageWithVoiceReply(threadID, {
-        //       content: message,
-        //     });
-        //     const messagesData = response.messages;
-        //     const audioUrl = response.audio_url;
-        //     // Combine existing messages with new messages
-        //     const updatedMessages = messages.concat(
-        //       messagesData.map((msg, index) => {
-        //         let audioUrlForMessage = ""; // Initialize with no URL
-        //         // Assign the audio URL to the last message of the new data
-        //         if (index === messagesData.length - 1) {
-        //           audioUrlForMessage = audioUrl;
-        //         }
-        //         return {
-        //           id: msg.id,
-        //           createdAt: new Date(msg.created_at * 1000).toLocaleString(),
-        //           text: msg.content,
-        //           type: msg.role === "user" ? "sent" : "received",
-        //           audioUrl: audioUrlForMessage,
-        //         };
-        //       })
-        //     );
-        //     setMessages(updatedMessages);
-        //     // Play the audio response
-        //     if (audioUrl) {
-        //       const { sound } = await Audio.Sound.createAsync({ uri: audioUrl });
-        //       setSpeechSound(sound);
-        //       await sound.playAsync();
-        //     }
-        //   }
-        // } catch (error) {
-        //   console.error("Error in sending message", error);
-        // }
-      } else {
-        try {
-          if (threadID) {
-            setLoadingUpdateMessage("Generating a reply ...");
-            const openAIFormatMessages = messagesArray.map((msg) => ({
-              role: msg.text.role,
-              content: msg.text.content,
-            }));
 
-            const response = await addMessageWithVoiceReplyNoAssistant({
-              conversation: openAIFormatMessages,
-              model_type: model_type,
-            });
-            const messagesData = response.messages;
+      try {
+        if (threadID) {
+          setLoadingUpdateMessage("Generating a reply ...");
+          const openAIFormatMessages = messagesArray.map((msg) => ({
+            role: msg.text.role,
+            content: msg.text.content,
+          }));
 
-            const audioUrl = response.audio_url;
-            setLoadingUpdateMessage("Generated a Response");
+          const response = await addMessageWithVoiceReplyNoAssistant({
+            conversation: openAIFormatMessages,
+            model_type: model_type,
+          });
+          const messagesData = response.messages;
 
-            const assistantReply = {
-              id: messagesData[messagesData.length - 1].id,
-              createdAt: new Date().toLocaleString(),
-              text: messagesData[messagesData.length - 1],
-              type:
-                messagesData[messagesData.length - 1].role == "user"
-                  ? "sent"
-                  : "received",
-              audioUrl: audioUrl,
-            };
+          const audioUrl = response.audio_url;
+          setLoadingUpdateMessage("Generated a Response");
 
-            dispatch(pushSingleMessage(assistantReply));
+          const assistantReply = {
+            id: messagesData[messagesData.length - 1].id,
+            createdAt: new Date().toLocaleString(),
+            text: messagesData[messagesData.length - 1],
+            type:
+              messagesData[messagesData.length - 1].role == "user"
+                ? "sent"
+                : "received",
+            audioUrl: audioUrl,
+          };
 
-            setLocalMessages([...localMessages, assistantReply]); // Update the state with the new array
-            setLoading(false);
-            if (showPromptPanel === true) {
-              setShowPromptPanel(false);
-            }
-            if (user.autoSpeak == true || user.autoSpeak == undefined) {
-              setPlayingMessageIndex(messagesData.length - 2);
-              setPlayingSound();
-              await playSpeech(
-                audioUrl,
-                messagesData.length,
-                playingMessageIndex,
-                setPlayingMessageIndex,
-                setPlayingSound,
-                setIsSoundLoading
-              );
-            }
+          dispatch(pushSingleMessage(assistantReply));
 
-            let userAudioUri = "";
-
-            if (userRecording) {
-              userAudioUri = await uploadAudioFile(userRecording, threadID);
-            }
-            //add user message
-            if (userMessage?.trim().length > 0) {
-              await addMessageToChat(threadID, {
-                createdAt: new Date().toLocaleString(),
-                text: { role: "user", content: userMessage },
-                type: "sent",
-                id: `user${messages.length - 1}`,
-                audioUrl: userAudioUri,
-              });
-            }
-            //add assistant message
-            await addMessageToChat(threadID, {
-              createdAt: new Date().toLocaleString(),
-              id: messagesData[messagesData.length - 1].id,
-              text: {
-                content: messagesData[messagesData.length - 1].content,
-                role: messagesData[messagesData.length - 1].role,
-              },
-              type:
-                messagesData[messagesData.length - 1].role === "user"
-                  ? "sent"
-                  : "received",
-              audioUrl: audioUrl,
-            });
-          } else {
-            Alert.alert(
-              "No conversation started",
-              "Please start a conversation by clicking the microphone button, if the problem persists please contact support.",
-              [
-                {
-                  text: "OK",
-                  onPress: () => console.log("OK Pressed"),
-                  style: "cancel",
-                },
-              ],
-              { cancelable: false }
+          setMessages([...messages, assistantReply]); // Update the state with the new array
+          setLoading(false);
+          if (showPromptPanel === true) {
+            setShowPromptPanel(false);
+          }
+          if (user.autoSpeak == true || user.autoSpeak == undefined) {
+            setPlayingMessageIndex(messagesData.length - 2);
+            setPlayingSound();
+            await playSpeech(
+              audioUrl,
+              messagesData.length,
+              playingMessageIndex,
+              setPlayingMessageIndex,
+              setPlayingSound,
+              setIsSoundLoading
             );
           }
-        } catch (error) {
-          console.error("Error in sending message", error);
-          setLoading(false);
+
+          let userAudioUri = "";
+
+          if (userRecording) {
+            userAudioUri = await uploadAudioFile(userRecording, threadID);
+          }
+          //add user message
+          if (userMessage?.trim().length > 0) {
+            await addMessageToChat(threadID, {
+              createdAt: new Date().toLocaleString(),
+              text: { role: "user", content: userMessage },
+              type: "sent",
+              id: `user${messages.length - 1}`,
+              audioUrl: userAudioUri,
+            });
+          }
+          //add assistant message
+          await addMessageToChat(threadID, {
+            createdAt: new Date().toLocaleString(),
+            id: messagesData[messagesData.length - 1].id,
+            text: {
+              content: messagesData[messagesData.length - 1].content,
+              role: messagesData[messagesData.length - 1].role,
+            },
+            type:
+              messagesData[messagesData.length - 1].role === "user"
+                ? "sent"
+                : "received",
+            audioUrl: audioUrl,
+          });
+        } else {
+          Alert.alert(
+            "No conversation started",
+            "Please start a conversation by clicking the microphone button, if the problem persists please contact support.",
+            [
+              {
+                text: "OK",
+                onPress: () => console.log("OK Pressed"),
+                style: "cancel",
+              },
+            ],
+            { cancelable: false }
+          );
         }
+      } catch (error) {
+        console.error("Error in sending message", error);
+        setLoading(false);
       }
-      setLoading(false);
     }
+    setLoading(false);
   };
 
   const handleSpeechInput = async () => {
@@ -579,11 +522,10 @@ export default function App() {
                   disabled={loading}
                   onPress={async () => {
                     setShowPromptPanel(true);
-                    dispatch(setMessages([]));
+                    dispatch(setMessagesRedux([]));
                     dispatch(setThreadID(""));
-                    setLocalMessages([]);
-                    dispatch(setIsCurrentChatALesson(false));
-                    setThreadID("");
+                    setMessages([]);
+                    // dispatch(setIsCurrentChatALesson(false));
                   }}
                 />
                 <Text
@@ -695,7 +637,6 @@ export default function App() {
               />
             ) : (
               <MessageThread
-                messages={messages}
                 isUsingAssistant={isUsingAssistant}
                 isSoundLoading={isSoundLoading}
                 setIsSoundLoading={setIsSoundLoading}
@@ -780,7 +721,7 @@ export default function App() {
                       type: "sent",
                     };
                     dispatch(pushSingleMessage(userMessage));
-                    setLocalMessages((prevMessages) => {
+                    setMessages((prevMessages) => {
                       const updatedMessages = [...prevMessages, userMessage];
                       // handleSendMessage(
                       //   updatedMessages,
