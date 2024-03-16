@@ -92,7 +92,10 @@ def addMessageWithVoiceReply(req: https_fn.Request) -> https_fn.Response:
         new_user_message = {
             'id': f'{conversationId}_{len(message_list) + 1}',
             'createdAt': time.time(),
-            'text': user_message,
+            'text': {
+                'content': user_message,
+                'role': 'user'
+            },
             'type': 'sent',
         }
 
@@ -168,9 +171,6 @@ def addMessageFromVoiceInputWithAudioReply(req: https_fn.Request) -> https_fn.Re
         api_key=os.environ.get('OPENAI_KEY')
     )
 
-
-
-
     if req.method != "POST":
         return https_fn.Response("Method not allowed", status=405)
 
@@ -182,7 +182,6 @@ def addMessageFromVoiceInputWithAudioReply(req: https_fn.Request) -> https_fn.Re
     file = req.files['file']
     lang = req.form.get('lang', 'en')  # Default language to English if not specified
     messages_str = req.form.get('messages', '[]')
-    messages = messages_str
     conversationId = req.form['conversationId']
     formatted_messages = []
 
@@ -190,26 +189,27 @@ def addMessageFromVoiceInputWithAudioReply(req: https_fn.Request) -> https_fn.Re
         messages_array = json.loads(messages_str)
         for message in messages_array:
             try:
-
-
                 formatted_message = {
                     'role': message['text']['role'],
                     'content': message['text']['content']
                 }
                 formatted_messages.append(formatted_message)
-
             except json.JSONDecodeError:
                 logger.log(f"Failed to decode message: {message}")
                 continue
 
-
-
-        logger.log(f"Parsed Messages: {messages}")
-
+        # Save user's audio file to a temporary location and upload to Firebase Storage
         with NamedTemporaryFile(delete=False, suffix=".m4a") as tmp:
             file.save(tmp.name)
             tmp_path = tmp.name
 
+            # Upload user's audio file to Firebase Storage
+            bucket = storage.bucket()
+            user_audio_file_name = f"userVoiceReplies/{int(time.time())}.m4a"
+            user_audio_blob = bucket.blob(user_audio_file_name)
+            user_audio_blob.upload_from_filename(tmp.name)
+            user_audio_blob.make_public()
+            user_audio_url = user_audio_blob.public_url
 
         # Transcribe the audio file
         transcript_response = client.audio.transcriptions.create(
@@ -218,26 +218,20 @@ def addMessageFromVoiceInputWithAudioReply(req: https_fn.Request) -> https_fn.Re
             language=lang
         )
 
-
-        # Assuming transcript_response is an object with a 'text' attribute
         transcript = transcript_response.text
-
         user_message = {'content': transcript, 'role': 'user'}
-
 
         # Append the new user message to the formatted messages list
         formatted_messages.append(user_message)
 
-        logger.log(f"Formatted messages: {formatted_messages}")
-
-        # Now, use formatted_messages for the chat completion call
+        # Generate audio from the chat response
         chat_response = client.chat.completions.create(
             model="ft:gpt-3.5-turbo-1106:personal::8N8bJgSI",
             messages=formatted_messages,
         )
         assistant_message = chat_response.choices[0].message.content
 
-        # Generate audio from the chat response
+        # Generate audio for the AI's response
         with NamedTemporaryFile(delete=False, suffix=".mp3") as tmp_audio:
             audio_response = client.audio.speech.create(
                 model="tts-1-hd",
@@ -246,22 +240,18 @@ def addMessageFromVoiceInputWithAudioReply(req: https_fn.Request) -> https_fn.Re
             )
             audio_response.stream_to_file(tmp_audio.name)
             audio_file_name = f"voiceReplies/{int(time.time())}.mp3"
-            bucket = storage.bucket()
-            blob = bucket.blob(audio_file_name)
-            blob.upload_from_filename(tmp_audio.name)
-            blob.make_public()
-            audioUrl = blob.public_url
-            os.remove(tmp_audio.name)  # Clean up the temporary audio file
+            ai_audio_blob = bucket.blob(audio_file_name)
+            ai_audio_blob.upload_from_filename(tmp_audio.name)
+            ai_audio_blob.make_public()
+            ai_audio_url = ai_audio_blob.public_url
 
-        db = firestore.client()
-        conversation_ref = db.collection('chats').document(conversationId)
-
-        # Add user's transcribed message and AI's reply to Firestore
+        # Add user's transcribed message, AI's reply, and user audio URL to Firestore
         new_user_message = {
             'id': f'{conversationId}_{int(time.time())}',
             'createdAt': time.time(),
             'text': user_message,
             'type': 'sent',
+            'audioUrl': user_audio_url,  # Include user audio URL here
         }
         new_ai_message = {
             'id': f'{conversationId}_{int(time.time()) + 1}',
@@ -271,13 +261,14 @@ def addMessageFromVoiceInputWithAudioReply(req: https_fn.Request) -> https_fn.Re
                 'role': 'assistant'
             },
             'type': 'received',
-            'audioUrl': audioUrl
+            'audioUrl': ai_audio_url  # AI response audio URL
         }
 
-        # Use a transaction or batched write if you need atomicity
-        conversation_ref.set({
+        db = firestore.client()
+        conversation_ref = db.collection('chats').document(conversationId)
+        conversation_ref.update({
             'messages': firestore.ArrayUnion([new_user_message, new_ai_message])
-        }, merge=True)
+        })
 
         return https_fn.Response(json.dumps({"message": "Messages added successfully", "user_message": new_user_message, "ai_message": new_ai_message}), status=200, mimetype='application/json')
 
