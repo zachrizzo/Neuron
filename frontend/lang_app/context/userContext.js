@@ -42,6 +42,7 @@ export const UserProvider = ({ children }) => {
         const userData = docSnapshot.data();
         if (userData) {
           dispatch(setUser(userData)); // Update Redux store with the latest user data
+          console.log("User data updated in Redux store:", userData);
         }
       },
       (error) => console.error("Error listening to user data changes:", error)

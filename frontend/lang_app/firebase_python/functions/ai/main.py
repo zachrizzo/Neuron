@@ -13,57 +13,61 @@ from tempfile import NamedTemporaryFile
 
 @https_fn.on_request(secrets=['OPENAI_KEY'])
 def addMessageWithVoiceReply(req: https_fn.Request) -> https_fn.Response:
+    # Initialize Firestore client
     db = firestore.client()
 
-    logger.log('This is a debug message')
+    # Log initialization message
+    logger.log('Initializing addMessageWithVoiceReply function.')
 
-    client = OpenAI(
-        api_key=os.environ.get('OPENAI_KEY')
-    )
+    # Create OpenAI client
+    client = OpenAI(api_key=os.environ.get('OPENAI_KEY'))
 
-    logger.log('client created')
-
+    # Ensure the request method is POST
     if req.method != "POST":
         return https_fn.Response("Method not allowed", status=405)
 
-    try:
-        data = json.loads(req.get_data(as_text=True))
-    except json.JSONDecodeError as e:
-        return https_fn.Response(f"Invalid JSON: {str(e)}", status=400)
+    # Parse request data
+    data = req.get_json(silent=True)
+    if not data or 'conversationId' not in data or 'messages' not in data or 'userMessage' not in data:
+        return https_fn.Response("Invalid request: Missing required fields", status=400)
 
-    conversationId = data.get('conversationId')
-    message_list = data.get('messages', [])
-    modelType = data.get('modelType')
+    # Extract relevant data from the request
+    conversationId = data['conversationId']
+    message_list = data['messages']
+    user_message = data['userMessage']
 
-    logger.log(f"conversationId: {conversationId}, message_list: {message_list}, modelType: {modelType}")
 
+    # Check if message list is empty
+    if not message_list:
+        return https_fn.Response("Invalid request: 'messages' array is empty", status=400)
+
+    # Prepare messages for OpenAI API
+    formatted_messages = [{'role': msg['text']['role'], 'content': msg['text']['content']} for msg in message_list]
+
+
+    #KEEP JUT FOR REFERENCE BUT NOT NEEDED
     model_dict = {
         'general_lang_chat': "ft:gpt-3.5-turbo-1106:personal::8N8bJgSI",
         'fr_Lesson1_alphabet_pronunciation': 'ft:gpt-3.5-turbo-1106:personal::8RLCgNEw',
     }
 
+
+    model = "ft:gpt-3.5-turbo-1106:personal::8N8bJgSI"
+
     try:
-        response =  client.chat.completions.create(
-            model=model_dict.get(modelType, "ft:gpt-3.5-turbo-1106:personal::8N8bJgSI"),
-            messages=[{'role': message['text']['role'], 'content': message['text']['content']} for message in message_list],
-        )
+        # Generate chat completion
+        response = client.chat.completions.create(model=model, messages=formatted_messages)
 
-        logger.log("Response from OpenAI: " + str(response))
 
-        choice = response.choices[0]
-        assistant_message = choice.message.content
+
+        assistant_message = response.choices[0].message.content
 
         # Generate audio response
-        audio_response =  client.audio.speech.create(
-            model="tts-1-hd",
-            voice="shimmer",
-            input=assistant_message
-        )
+        audio_response = client.audio.speech.create(model="tts-1-hd", voice="shimmer", input=assistant_message)
 
         # Save audio response to a temporary file
         temp_file_path = Path("/tmp/speech.mp3")
         audio_response.stream_to_file(temp_file_path)
-
 
         # Upload the audio file to Firebase Storage
         bucket = storage.bucket()
@@ -73,9 +77,8 @@ def addMessageWithVoiceReply(req: https_fn.Request) -> https_fn.Response:
         blob.make_public()
         audioUrl = blob.public_url
 
-        logger.log(f"Audio URL: {audioUrl}")
-
-        new_message = {
+        # Construct new message
+        new_ai_message = {
             'id': f'{conversationId}_{len(message_list)}',
             'createdAt': time.time(),
             'text': {
@@ -86,17 +89,24 @@ def addMessageWithVoiceReply(req: https_fn.Request) -> https_fn.Response:
             'audioUrl': audioUrl
         }
 
-        logger.log(f"New message: {new_message},  conversationId: {conversationId}")
+        new_user_message = {
+            'id': f'{conversationId}_{len(message_list) + 1}',
+            'createdAt': time.time(),
+            'text': user_message,
+            'type': 'sent',
+        }
 
-        conversation_ref = db.collection('conversations').document(conversationId)
+        # Save new message to Firestore
+        conversation_ref = db.collection('chats').document(conversationId)
+
         conversation_ref.set({
-            'messages': firestore.ArrayUnion([new_message])
+            'messages': firestore.ArrayUnion([new_user_message, new_ai_message])
         }, merge=True)
 
-        logger.log("Message added successfully")
-
-        return https_fn.Response(json.dumps({"message": "Message added successfully","new_message": new_message}), status=200, mimetype='application/json')
+        # Return success response
+        return https_fn.Response(json.dumps({"message": "Messages added successfully", "user_message": new_user_message, "ai_message": new_ai_message, "audioUrl": audioUrl}), status=200, mimetype='application/json')
     except Exception as e:
+        # Log and return error
         logger.error(f'Error processing request: {e}')
         return https_fn.Response(json.dumps({"error": str(e)}), status=500, mimetype='application/json')
 
@@ -158,7 +168,6 @@ def addMessageFromVoiceInputWithAudioReply(req: https_fn.Request) -> https_fn.Re
         api_key=os.environ.get('OPENAI_KEY')
     )
 
-    logger.log(f"This is a debug message. Path: {req.path}, Method: {req.method}")
 
 
 
@@ -172,16 +181,35 @@ def addMessageFromVoiceInputWithAudioReply(req: https_fn.Request) -> https_fn.Re
     # Process uploaded file and optional language parameter
     file = req.files['file']
     lang = req.form.get('lang', 'en')  # Default language to English if not specified
+    messages_str = req.form.get('messages', '[]')
+    messages = messages_str
     conversationId = req.form['conversationId']
-
-    logger.log(f"conversationId: {conversationId}, lang: {lang}, file: {file}")
+    formatted_messages = []
 
     try:
+        messages_array = json.loads(messages_str)
+        for message in messages_array:
+            try:
+
+
+                formatted_message = {
+                    'role': message['text']['role'],
+                    'content': message['text']['content']
+                }
+                formatted_messages.append(formatted_message)
+
+            except json.JSONDecodeError:
+                logger.log(f"Failed to decode message: {message}")
+                continue
+
+
+
+        logger.log(f"Parsed Messages: {messages}")
+
         with NamedTemporaryFile(delete=False, suffix=".m4a") as tmp:
             file.save(tmp.name)
             tmp_path = tmp.name
 
-        logger.log(f"File saved to: {tmp_path}")
 
         # Transcribe the audio file
         transcript_response = client.audio.transcriptions.create(
@@ -190,17 +218,22 @@ def addMessageFromVoiceInputWithAudioReply(req: https_fn.Request) -> https_fn.Re
             language=lang
         )
 
-        logger.log(f"Transcription response: {transcript_response}")
 
         # Assuming transcript_response is an object with a 'text' attribute
         transcript = transcript_response.text
 
         user_message = {'content': transcript, 'role': 'user'}
 
-        # Generate a chat response
+
+        # Append the new user message to the formatted messages list
+        formatted_messages.append(user_message)
+
+        logger.log(f"Formatted messages: {formatted_messages}")
+
+        # Now, use formatted_messages for the chat completion call
         chat_response = client.chat.completions.create(
             model="ft:gpt-3.5-turbo-1106:personal::8N8bJgSI",
-            messages=[{'role': 'user', 'content': transcript}],
+            messages=formatted_messages,
         )
         assistant_message = chat_response.choices[0].message.content
 

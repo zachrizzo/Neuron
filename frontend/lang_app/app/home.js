@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   StyleSheet,
   Text,
@@ -160,13 +160,13 @@ export default function App() {
       lastVisit: now.toISOString(),
     };
 
-    // Update user in Firebase and Redux
-    updateUser(auth.currentUser.email, updatedUserData)
-      .then(() => {
-        console.log("Streak updated successfully");
-        dispatch(setUser(updatedUserData));
-      })
-      .catch((error) => console.error("Error updating streak:", error));
+    // // Update user in Firebase and Redux
+    // updateUser(auth.currentUser.email, updatedUserData)
+    //   .then(() => {
+    //     console.log("Streak updated successfully");
+    //     dispatch(setUser(updatedUserData));
+    //   })
+    //   .catch((error) => console.error("Error updating streak:", error));
   }, []);
 
   useEffect(() => {
@@ -177,7 +177,7 @@ export default function App() {
   }, [showPromptPanel]);
 
   useEffect(() => {
-    if (threadID && messages.length > 0) {
+    if (threadID && messages.length > 1) {
       setShowPromptPanel(false);
     }
   }, [threadID]);
@@ -309,9 +309,11 @@ export default function App() {
         type: "audio/m4a", // Make sure the MIME type matches the file type
         name: "recording.m4a",
       });
+      const messagesString = JSON.stringify(reduxMessages);
+      console.log("messagesString", messagesString);
       // Append other fields if necessary
       formData.append("conversationId", threadID);
-
+      formData.append("messages", messagesString);
       formData.append("lang", selectLang(user?.language || "en"));
 
       response = await addMessageFromVoiceInputWithAudioReply(formData);
@@ -339,94 +341,40 @@ export default function App() {
     }
   };
 
-  const handleSendMessage = async (
-    messagesArray,
-    userRecording,
-    userMessage,
-    model_type = "general_lang_chat"
-  ) => {
+  const handleSendMessage = async (model_type = "general_lang_chat") => {
     if (numberOfMessagesLeft >= 0) {
       setLoading(true);
-      setInputMessage(""); // Clear input field after sending
       updateNumberOfMessages();
 
       try {
         if (threadID) {
           setLoadingUpdateMessage("Generating a reply ...");
-          const openAIFormatMessages = messagesArray.map((msg) => ({
-            role: msg.text.role,
-            content: msg.text.content,
-          }));
+          console.log("messagesArray", messages);
+          const response = await sendMessageWithVoiceReply(threadID, messages, inputMessage);
 
-          const response = await addMessageWithVoiceReplyNoAssistant({
-            conversation: openAIFormatMessages,
-            model_type: model_type,
-          });
-          const messagesData = response.messages;
 
-          const audioUrl = response.audio_url;
+          const audioUrl = response.audioUrl;
+
+
           setLoadingUpdateMessage("Generated a Response");
-
-          const assistantReply = {
-            id: messagesData[messagesData.length - 1].id,
-            createdAt: new Date().toLocaleString(),
-            text: messagesData[messagesData.length - 1],
-            type:
-              messagesData[messagesData.length - 1].role == "user"
-                ? "sent"
-                : "received",
-            audioUrl: audioUrl,
-          };
-
-          dispatch(pushSingleMessage(assistantReply));
-
-          setMessages([...messages, assistantReply]); // Update the state with the new array
           setLoading(false);
-          if (showPromptPanel === true) {
+
+          if (showPromptPanel) {
             setShowPromptPanel(false);
           }
           if (user.autoSpeak == true || user.autoSpeak == undefined) {
-            setPlayingMessageIndex(messagesData.length - 2);
+            // Assuming you want to play the newly received message
+            setPlayingMessageIndex(messages.length); // Adjust based on how you manage indices
             setPlayingSound();
             await playSpeech(
               audioUrl,
-              messagesData.length,
+              messages.length + 1, // Assuming this is how you calculate the index
               playingMessageIndex,
               setPlayingMessageIndex,
               setPlayingSound,
               setIsSoundLoading
             );
           }
-
-          let userAudioUri = "";
-
-          if (userRecording) {
-            userAudioUri = await uploadAudioFile(userRecording, threadID);
-          }
-          //add user message
-          if (userMessage?.trim().length > 0) {
-            await addMessageToChat(threadID, {
-              createdAt: new Date().toLocaleString(),
-              text: { role: "user", content: userMessage },
-              type: "sent",
-              id: `user${messages.length - 1}`,
-              audioUrl: userAudioUri,
-            });
-          }
-          //add assistant message
-          await addMessageToChat(threadID, {
-            createdAt: new Date().toLocaleString(),
-            id: messagesData[messagesData.length - 1].id,
-            text: {
-              content: messagesData[messagesData.length - 1].content,
-              role: messagesData[messagesData.length - 1].role,
-            },
-            type:
-              messagesData[messagesData.length - 1].role === "user"
-                ? "sent"
-                : "received",
-            audioUrl: audioUrl,
-          });
         } else {
           Alert.alert(
             "No conversation started",
@@ -446,8 +394,10 @@ export default function App() {
         setLoading(false);
       }
     }
+    setInputMessage(""); // Clear input field after sending
     setLoading(false);
   };
+
 
   const handleSpeechInput = async () => {
     if (user?.numberOfMessages >= 0) {
@@ -714,29 +664,7 @@ export default function App() {
               onPress={async () => {
                 if (numberOfMessagesLeft >= 0) {
                   try {
-                    const userMessage = {
-                      id: `user${messages?.length}`,
-                      createdAt: new Date().toLocaleString(),
-                      text: { role: "user", content: inputMessage },
-                      type: "sent",
-                    };
-                    dispatch(pushSingleMessage(userMessage));
-                    setMessages((prevMessages) => {
-                      const updatedMessages = [...prevMessages, userMessage];
-                      // handleSendMessage(
-                      //   updatedMessages,
-                      //   null,
-                      //   inputMessage?.trim()
-                      // );
-
-                      sendMessageWithVoiceReply(
-                        threadID,
-                        [{ text: { role: "user", content: "Hello!" } }],
-                        "general_lang_chat"
-                      );
-
-                      return updatedMessages;
-                    });
+                    handleSendMessage(messages, null, inputMessage?.trim());
                   } catch (error) {
                     console.error("Error in onPress:", error);
                   }
