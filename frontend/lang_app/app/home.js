@@ -91,7 +91,7 @@ export default function App() {
   const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false);
   const [startingPrompt, setStartingPrompt] = useState(
-    mainChatPrompt(user?.language)
+    `What topic do you want to have a mock ${user?.language || 'en'} conversation in today?`
   );
   const [loadingUpdateMessage, setLoadingUpdateMessage] = useState(false);
   const [isKeyBoardInFocus, setIsKeyBoardInFocus] = useState(false);
@@ -123,51 +123,21 @@ export default function App() {
       // Set up the listener and capture the unsubscribe function
       const unsubscribe = getAllMessagesFromChat(threadID, (newMessages) => {
         dispatch(setMessagesRedux(newMessages));
-        console.log("Messages updated:", newMessages);
       });
 
       return () => unsubscribe();
     }
   }, [threadID, dispatch]);
 
+
+
+
+
   useEffect(() => {
-    // Assume `user` contains user data including streak count and last visit date
-    if (!user) return;
-
-    const now = new Date();
-    const lastVisitDate = user.lastVisit ? new Date(user.lastVisit) : null;
-    const oneDayInMs = 1000 * 60 * 60 * 24;
-    const twoDaysInMs = 1000 * 60 * 60 * 24 * 2;
-    let newStreak = user.streak || 0;
-
-    // Check if the user has visited within the last 48 hours but more than 24 hours
-    if (
-      lastVisitDate &&
-      now - lastVisitDate < twoDaysInMs &&
-      now - lastVisitDate > oneDayInMs
-    ) {
-      // Increment streak
-      newStreak++;
-    } else {
-      // Reset streak if it's been more than 48 hours or less than 24 hours
-      newStreak = 1;
-    }
-
-    // Update user data
-    const updatedUserData = {
-      ...user,
-      streak: newStreak,
-      lastVisit: now.toISOString(),
-    };
-
-    // // Update user in Firebase and Redux
-    // updateUser(auth.currentUser.email, updatedUserData)
-    //   .then(() => {
-    //     console.log("Streak updated successfully");
-    //     dispatch(setUser(updatedUserData));
-    //   })
-    //   .catch((error) => console.error("Error updating streak:", error));
-  }, []);
+    setStartingPrompt(
+      `What topic do you want to have a mock ${user?.language || 'en'} conversation in today?`
+    );
+  }, [user?.language]);
 
   useEffect(() => {
     //if prompt panel is showing stop playing
@@ -310,7 +280,6 @@ export default function App() {
         name: "recording.m4a",
       });
       const messagesString = JSON.stringify(reduxMessages);
-      console.log("messagesString", messagesString);
       // Append other fields if necessary
       formData.append("conversationId", threadID);
       formData.append("messages", messagesString);
@@ -341,7 +310,7 @@ export default function App() {
     }
   };
 
-  const handleSendMessage = async (model_type = "general_lang_chat") => {
+  const handleSendMessage = async () => {
     if (numberOfMessagesLeft >= 0) {
       setLoading(true);
       updateNumberOfMessages();
@@ -349,7 +318,6 @@ export default function App() {
       try {
         if (threadID) {
           setLoadingUpdateMessage("Generating a reply ...");
-          console.log("messagesArray", messages);
           const response = await sendMessageWithVoiceReply(threadID, messages, inputMessage);
 
 
@@ -579,9 +547,7 @@ export default function App() {
                 handleSpeechInput={handleSpeechInput}
                 startThread={startThread}
                 language={user?.language ? user.language : "language"}
-                setShowPromptPanel={setShowPromptPanel}
-                setStartingPrompt={setStartingPrompt}
-                handleSendMessage={handleSendMessage}
+                setShowPromptPanel={setShowPromptPanel} handleSendMessage={handleSendMessage}
                 setLoading={setLoading}
                 user={user}
               />

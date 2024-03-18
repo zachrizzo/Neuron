@@ -27,18 +27,17 @@ export function loginEmailPassword(email, password) {
     }
   );
 }
-
 export function logout() {
   return auth.signOut();
   //remove from local storage
 }
 
-export function createUserEmailAndPassword(email, password, userInfo) {
-  return createUserWithEmailAndPassword(auth, email, password)
+export async function createUserEmailAndPassword(email, password, userInfo) {
+  createUserWithEmailAndPassword(auth, email, password)
     .then(async (userCredential) => {
       // Signed in
       const user = userCredential.user;
-      await createUser(email, userInfo); // Pass userInfo to your createUser function
+      await createUser(userInfo); // Pass userInfo to your createUser function
       return { user, userData: userInfo }; // Return user data along with user object
     })
     .catch((error) => {

@@ -35,7 +35,6 @@ const PromptSuggestionCard = ({
   startThread,
   language,
   setShowPromptPanel,
-  setStartingPrompt,
   handleSendMessage,
   setLoading,
   user,
@@ -76,7 +75,7 @@ const PromptSuggestionCard = ({
     }
   }, [thread_id]); // Depend on the actual state variables
 
-  // console.log(prompts);
+
 
   return (
     <View style={styles.card}>
@@ -95,8 +94,6 @@ const PromptSuggestionCard = ({
                 setShowPromptPanel={setShowPromptPanel}
                 startThread={startThread}
                 lesson={item}
-                setStartingPrompt={setStartingPrompt}
-                handleSendMessage={handleSendMessage}
                 setLoading={setLoading}
               />
             </View>

@@ -112,7 +112,7 @@ const settings = () => {
               lang.length > 0 &&
               lang[0].length > 0
             ) {
-              dispatch(setUserLanguage({ language: lang }));
+              // dispatch(setUserLanguage({ language: lang }));
               updateUser(auth.currentUser.email, { language: lang });
             }
           }}
@@ -134,7 +134,6 @@ const settings = () => {
               if (result) {
                 // Do something with the result, e.g., display a success message
                 Alert.alert("Success", "Training data created.");
-                console.log(result);
                 // Optional: Navigate to another screen if needed
                 // router.replace("/some-other-route");
                 setLoading(false);

@@ -8,16 +8,17 @@ import {
   getDoc,
   setDoc,
   updateDoc,
+  addDoc
 } from "firebase/firestore";
 
-export function updateUser(email, userData) {
-  return setDoc(doc(db, "user", email), userData, { merge: true });
+export function updateUser(id, userData) {
+  return setDoc(doc(db, "users", id), userData, { merge: true });
 }
 
-export function getUser(email) {
-  return getDoc(doc(db, "user", email));
+export function getUser(id) {
+  return getDoc(doc(db, "users", id));
 }
 
-export function createUser(email, userData) {
-  return setDoc(doc(db, "user", email), userData);
+export function createUser(userData) {
+  return addDoc(doc(db, "users"), userData);
 }

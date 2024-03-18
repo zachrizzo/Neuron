@@ -20,9 +20,7 @@ const LessonCard = ({
   lesson,
   startThread,
   setShowPromptPanel,
-  setStartingPrompt,
-  handleSendMessage,
-  setLoading,
+
 }) => {
   const [promptKeys, setPromptKeys] = useState([]);
   const [shouldStartThread, setShouldStartThread] = useState(false);
@@ -43,7 +41,7 @@ const LessonCard = ({
     if (lesson?.correctQuestions && lesson?.completedLessons.length > 0) {
       setCorrectPercentage(
         (lesson?.correctQuestions?.length / lesson?.completedLessons?.length) *
-          100
+        100
       );
     }
     //get percentage of mistakes
@@ -53,7 +51,7 @@ const LessonCard = ({
     ) {
       setMistakesPercentage(
         (lesson?.missedQuestions?.length / lesson?.completedLessons?.length) *
-          100
+        100
       );
     }
     //get percentage of fluency

@@ -3,10 +3,24 @@ import { View, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 import { CheckBoxWithLabel } from "./checkBoxWithLabel"; // Update the import path accordingly
 
+/**
+ * Renders a procedural checkbox component.
+ *
+ * @param {Object} props - The component props.
+ * @param {Array} props.options - The array of checkbox options.
+ * @param {Function} props.onUpdateSelectedOptions - The function to update the selected options.
+ * @param {Array} [props.defaultValues=[]]  - The default selected options.
+ * @param {boolean} [props.multiSelect=false] - Indicates if multiple options can be selected.
+ * @param {boolean} [props.horizontal] - Indicates if the checkboxes should be displayed horizontally.
+ * @param {string} [props.testID] - The test ID for testing purposes.
+ * @param {string} [props.textColor] - The color of the checkbox text.
+ * @param {string} [props.boxShadow] - The CSS box shadow for the checkboxes.
+ * @returns {JSX.Element} The rendered procedural checkbox component.
+ */
 export default function ProceduralCheckBox({
   options,
   onUpdateSelectedOptions,
-  defaultValues = [],
+  defaultValues = [] || '',
   multiSelect = false,
   horizontal,
   testID,
@@ -69,7 +83,7 @@ export default function ProceduralCheckBox({
 ProceduralCheckBox.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
   onUpdateSelectedOptions: PropTypes.func.isRequired,
-  defaultValues: PropTypes.arrayOf(PropTypes.string),
+  defaultValues: PropTypes.arrayOf(PropTypes.string) || PropTypes.string,
   multiSelect: PropTypes.bool,
   horizontal: PropTypes.bool,
   testID: PropTypes.string,

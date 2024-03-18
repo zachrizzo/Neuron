@@ -1,12 +1,12 @@
-import { StyleSheet, Text, View, TextInput } from "react-native";
-import React from "react";
-import { colorsDark } from "../../utility/color";
+import React, { useState, useEffect, useRef } from 'react';
+import { StyleSheet, Text, View, TextInput, Animated } from 'react-native';
+import { colorsDark } from '../../utility/color';
 
 const InputBox = ({
   onChangeText,
   value,
   placeholder,
-  editable,
+  editable = true,
   width,
   height,
   borderRadius,
@@ -16,47 +16,124 @@ const InputBox = ({
   backgroundColor,
   placeholderTextColor,
   onFocus,
-  autoCapitalize = "none",
+  onBlur,
+  margin,
+  autoCapitalize = 'none',
+  validate,
+  formatter,
+  label,
 }) => {
-  const inputType = keyboardType || "default";
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [focus, setFocus] = useState(false);
+  const [formattedValue, setFormattedValue] = useState(value);
+  // const labelTop = useRef(new Animated.Value(0)).current;
+
+  // const handleValidation = (value) => {
+  //   if (validate && value && !focus) {
+  //     const validationResult = validate(value);
+  //     setError(!validationResult.isValid);
+  //     setErrorMessage(validationResult.message || '');
+  //   } else {
+  //     setError(false);
+  //     setErrorMessage('');
+  //   }
+  // };
+
+  // const handleInputChange = (text) => {
+  //   const rawValue = formatter ? formatter(text, true) : text;
+  //   onChangeText(rawValue);
+  // };
+  console.log('formated', formattedValue,);
+  console.log('value', value,);
+  // useEffect(() => {
+  //   setFormattedValue(formatter ? formatter(value) : value);
+
+  //   handleValidation(value);
+  // }, [value, focus]);
+
+  const handleFocus = () => {
+    // if (onFocus) onFocus();
+    // setFocus(true);
+    // Animated.timing(labelTop, {
+    //   toValue: -25,
+    //   duration: 200,
+    //   useNativeDriver: true,
+    // }).start();
+  };
+
+  const handleBlur = () => {
+    // handleValidation(value);
+    // if (onBlur) onBlur();
+    // setFocus(false);
+    // if (!value) {
+    //   Animated.timing(labelTop, {
+    //     toValue: 0,
+    //     duration: 200,
+    //     useNativeDriver: true,
+    //   }).start();
+    // }
+  };
+
+
   return (
-    <TextInput
-      style={[
-        styles.input,
-        {
-          borderColor: colorsDark.accent,
-          opacity: editable ? 1 : 0.5,
-          width: width ? width : "80%",
-          height: height ? height : 40,
-          borderRadius: borderRadius ? borderRadius : 20,
-          fontSize: fontSize ? fontSize : 16,
-          color: textColor ? textColor : "#FFFFFF",
-          backgroundColor: backgroundColor
-            ? backgroundColor
-            : colorsDark.accent,
-        },
-      ]}
-      keyboardType={inputType}
-      onChangeText={onChangeText}
-      value={value}
-      placeholder={placeholder}
-      keyboardAppearance="dark"
-      editable={editable}
-      placeholderTextColor={
-        placeholderTextColor ? placeholderTextColor : "#FFFFFF8D"
-      }
-      onFocus={onFocus}
-      autoCapitalize={autoCapitalize}
-    />
+    <View style={{ width: width || '80%', margin: margin || 10 }}>
+      <View style={styles.inputContainer}>
+
+        <TextInput
+          style={[
+            styles.input,
+            {
+              borderColor: error ? 'red' : colorsDark.accent,
+              opacity: editable ? 1 : 0.5,
+              width: '100%',
+              height: height || 40,
+              borderRadius: borderRadius || 20,
+              fontSize: fontSize || 16,
+              color: textColor || '#FFFFFF',
+              backgroundColor: backgroundColor || colorsDark.accent,
+            },
+          ]}
+          keyboardType={keyboardType || 'default'}
+          onChangeText={onChangeText}
+          value={value}
+          placeholder={placeholder}
+          keyboardAppearance="dark"
+          editable={editable}
+          placeholderTextColor={placeholderTextColor || '#FFFFFF8D'}
+          // onFocus={handleFocus}
+          // onBlur={handleBlur}
+          autoCapitalize={autoCapitalize}
+        />
+      </View>
+      {error && <Text style={styles.errorText}>{errorMessage}</Text>}
+    </View>
   );
 };
 
 export default InputBox;
 
 const styles = StyleSheet.create({
+  inputContainer: {
+    position: 'relative',
+    marginHorizontal: 10,
+  },
   input: {
     padding: 10,
+    marginBottom: 5,
+    borderWidth: 1,
+  },
+  errorText: {
+    color: 'red',
+    marginTop: 5,
     marginBottom: 20,
     marginHorizontal: 10,
+    fontSize: 12,
+    backgroundColor: 'transparent',
+  },
+  label: {
+    position: 'absolute',
+    left: 10,
+    backgroundColor: 'transparent',
   },
 });

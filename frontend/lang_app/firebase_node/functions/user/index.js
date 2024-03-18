@@ -6,8 +6,10 @@ const admin = require("firebase-admin");
 const PromisePool = require("es6-promise-pool").default;
 const MAX_CONCURRENT = 3; // Adjust based on your concurrency needs
 
-exports.dailyUserRefill = onSchedule("0 0 * * *", async (context) => {
-  logger.log("Starting daily user refill at midnight...");
+admin.initializeApp();
+
+exports.everyThreeMinutesUserRefill = onSchedule("*/3 * * * *", async (context) => {
+  logger.log("Starting user refill every 3 minutes...");
 
   const usersRef = admin.firestore().collection("users");
   const now = new Date();
@@ -17,28 +19,22 @@ exports.dailyUserRefill = onSchedule("0 0 * * *", async (context) => {
 
   usersSnapshot.forEach((doc) => {
     const user = doc.data();
-    const lastMessageRefill = new Date(user.lastMessageRefill);
-    const lastHeartRefill = new Date(user.heartsLastRefill);
-    let updatesNeeded = {};
-    let shouldUpdate = false;
+    // Since this function runs every 3 minutes, you might want to adjust the logic
+    // for when to refill hearts and messages. For simplicity, this example will
+    // just add a fixed amount every time it runs, without specific conditions.
 
-    // Refill messages if more than 24 hours have passed since the last refill
-    if (now - lastMessageRefill >= 24 * 60 * 60 * 1000) {
-      updatesNeeded.numberOfMessages = 50;
-      updatesNeeded.lastMessageRefill = now.toISOString();
-      shouldUpdate = true;
-    }
+    const updatesNeeded = {
+      // Increment numberOfMessages and hearts by a fixed amount
+      // Or set a new value based on your logic
+      numberOfMessages: (user.numberOfMessages || 0) + 5, // Example increment
+      hearts: (user.hearts || 0) + 1, // Example increment
+      // Update last refill timestamps
+      lastMessageRefill: now.toISOString(),
+      heartsLastRefill: now.toISOString(),
+    };
 
-    // Refill hearts if more than 24 hours have passed since the last refill
-    if (now - lastHeartRefill >= 24 * 60 * 60 * 1000) {
-      updatesNeeded.hearts = 10;
-      updatesNeeded.heartsLastRefill = now.toISOString();
-      shouldUpdate = true;
-    }
-
-    if (shouldUpdate) {
-      updateUserPromises.push(doc.ref.update(updatesNeeded));
-    }
+    // Always update since we're doing this every 3 minutes regardless of previous values
+    updateUserPromises.push(doc.ref.update(updatesNeeded));
   });
 
   // Use a promise pool to limit the number of concurrent Firestore updates
@@ -48,5 +44,5 @@ exports.dailyUserRefill = onSchedule("0 0 * * *", async (context) => {
   );
   await promisePool.start();
 
-  logger.log("Daily user refill completed at midnight.");
+  logger.log("User refill completed.");
 });
