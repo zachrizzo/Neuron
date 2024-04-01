@@ -87,7 +87,7 @@ export const RevenueCatProvider = ({ children }) => {
             customerInfo?.entitlements.active["Standard Tier"],
         })
       );
-      updateUser(auth.currentUser.email, {
+      updateUser(auth.currentUser.uid, {
         subscriptionStatus: customerInfo?.entitlements.active["Standard Tier"],
       });
     }
@@ -98,7 +98,7 @@ export const RevenueCatProvider = ({ children }) => {
           subscriptionStatus: customerInfo?.entitlements.active["Gold Tier"],
         })
       );
-      updateUser(auth.currentUser.email, {
+      updateUser(auth.currentUser.uid, {
         subscriptionStatus: customerInfo?.entitlements.active["Gold Tier"],
       });
     }
@@ -112,7 +112,7 @@ export const RevenueCatProvider = ({ children }) => {
       // Directly add our consumable product
       if (pack.product.identifier === "hearts_c_0") {
         dispatch(setUserHearts({ hearts: hearts + 5 }));
-        updateUser(auth.currentUser.email, { hearts: hearts + 5 });
+        updateUser(auth.currentUser.uid, { hearts: hearts + 5 });
       }
     } catch (e) {
       if (!e.userCancelled) {

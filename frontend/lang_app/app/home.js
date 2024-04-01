@@ -156,7 +156,7 @@ export default function App() {
     dispatch(
       setUserNumberOfMessages({ numberOfMessages: numberOfMessagesLeft - 1 })
     );
-    updateUser(auth.currentUser.email, {
+    updateUser(auth.currentUser.uid, {
       numberOfMessages: numberOfMessagesLeft - 1,
     });
   };

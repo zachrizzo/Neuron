@@ -33,11 +33,12 @@ export function logout() {
 }
 
 export async function createUserEmailAndPassword(email, password, userInfo) {
-  createUserWithEmailAndPassword(auth, email, password)
+  return createUserWithEmailAndPassword(auth, email, password)
     .then(async (userCredential) => {
       // Signed in
       const user = userCredential.user;
-      await createUser(userInfo); // Pass userInfo to your createUser function
+      console.log(user);
+      await createUser(userInfo, user); // Pass userInfo to your createUser function
       return { user, userData: userInfo }; // Return user data along with user object
     })
     .catch((error) => {

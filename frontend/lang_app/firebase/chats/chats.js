@@ -25,7 +25,7 @@ export async function createChat(chatID, promptID, userData) {
     serverTimestamp()
   ).then(() => {
     //add to array of chats in user
-    updateUser(auth.currentUser.email, {
+    updateUser(auth.currentUser.uid, {
       chats: arrayUnion(chatID),
       prompts: arrayUnion(promptID),
     });
@@ -94,7 +94,7 @@ export async function uploadAudioFile(audioFileUri, threadID) {
   const randomNum = Math.floor(Math.random() * 100000000);
   const storageRef = ref(
     storage,
-    `audio/${auth.currentUser.email}/${threadID}/` + `${randomNum}.m4a`
+    `audio/${auth.currentUser.uid}/${threadID}/` + `${randomNum}.m4a`
   );
   const metadata = { contentType: "audio/m4a" };
 

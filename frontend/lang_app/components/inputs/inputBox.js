@@ -22,64 +22,73 @@ const InputBox = ({
   validate,
   formatter,
   label,
+  maxLength
 }) => {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [focus, setFocus] = useState(false);
   const [formattedValue, setFormattedValue] = useState(value);
-  // const labelTop = useRef(new Animated.Value(0)).current;
+  const labelTop = useRef(new Animated.Value(0)).current;
 
-  // const handleValidation = (value) => {
-  //   if (validate && value && !focus) {
-  //     const validationResult = validate(value);
-  //     setError(!validationResult.isValid);
-  //     setErrorMessage(validationResult.message || '');
-  //   } else {
-  //     setError(false);
-  //     setErrorMessage('');
-  //   }
-  // };
+  const handleValidation = (value) => {
+    if (validate && value && !focus) {
+      const validationResult = validate(value);
+      setError(!validationResult.isValid);
+      setErrorMessage(validationResult.message || '');
+    } else {
+      setError(false);
+      setErrorMessage('');
+    }
+  };
 
-  // const handleInputChange = (text) => {
-  //   const rawValue = formatter ? formatter(text, true) : text;
-  //   onChangeText(rawValue);
-  // };
-  console.log('formated', formattedValue,);
-  console.log('value', value,);
-  // useEffect(() => {
-  //   setFormattedValue(formatter ? formatter(value) : value);
+  const handleInputChange = (text) => {
+    const rawValue = formatter ? formatter(text, true) : text;
+    onChangeText(rawValue);
+  };
 
-  //   handleValidation(value);
-  // }, [value, focus]);
+  useEffect(() => {
+    setFormattedValue(formatter ? formatter(value) : value);
+
+    handleValidation(value);
+  }, [value, focus]);
 
   const handleFocus = () => {
-    // if (onFocus) onFocus();
-    // setFocus(true);
-    // Animated.timing(labelTop, {
-    //   toValue: -25,
-    //   duration: 200,
-    //   useNativeDriver: true,
-    // }).start();
+    if (onFocus) onFocus();
+    setFocus(true);
+    Animated.timing(labelTop, {
+      toValue: -25,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
   };
 
   const handleBlur = () => {
-    // handleValidation(value);
-    // if (onBlur) onBlur();
-    // setFocus(false);
-    // if (!value) {
-    //   Animated.timing(labelTop, {
-    //     toValue: 0,
-    //     duration: 200,
-    //     useNativeDriver: true,
-    //   }).start();
-    // }
+    handleValidation(value);
+    if (onBlur) onBlur();
+    setFocus(false);
+    if (!value) {
+      Animated.timing(labelTop, {
+        toValue: 0,
+        duration: 200,
+        useNativeDriver: true,
+      }).start();
+    }
   };
 
 
   return (
     <View style={{ width: width || '80%', margin: margin || 10 }}>
       <View style={styles.inputContainer}>
-
+        {label && (
+          <Animated.Text
+            style={[
+              styles.label,
+              { transform: [{ translateY: labelTop }], fontSize: 15, color: colorsDark.accent },
+            ]}
+          >
+            {label}
+          </Animated.Text>
+        )}
         <TextInput
           style={[
             styles.input,
@@ -95,15 +104,16 @@ const InputBox = ({
             },
           ]}
           keyboardType={keyboardType || 'default'}
-          onChangeText={onChangeText}
-          value={value}
+          onChangeText={handleInputChange}
+          value={formattedValue}
           placeholder={placeholder}
           keyboardAppearance="dark"
           editable={editable}
           placeholderTextColor={placeholderTextColor || '#FFFFFF8D'}
-          // onFocus={handleFocus}
-          // onBlur={handleBlur}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           autoCapitalize={autoCapitalize}
+          maxLength={maxLength}
         />
       </View>
       {error && <Text style={styles.errorText}>{errorMessage}</Text>}

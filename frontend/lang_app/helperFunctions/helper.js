@@ -8,17 +8,19 @@ export const selectLang = (lang, addToDb) => {
     es: "Spanish",
     fr: "French",
     pt: "Portuguese",
+    it: "Italian",
     English: "en",
     Spanish: "es",
     French: "fr",
     Portuguese: "pt",
+    Italian: "it",
   };
 
   // Get the corresponding language or code
   let language = languageMap[lang];
 
   if (addToDb && language) {
-    updateUser(auth.currentUser.email, { language: language });
+    updateUser(auth.currentUser.uid, { language: language });
   }
 
   return language;

@@ -14,10 +14,10 @@ export class Validator {
         return phoneRegex.test(phoneNumber);
     }
 
-    // Validates dates (Format: YYYY-MM-DD)
+    // Validates dates (Format: xx/xx/xxxx)
     static date(date) {
-        const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-        return dateRegex.test(date) && date.length <= 10;
+        const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+        return dateRegex.test(date) && date.length === 10;
     }
 
     // Validates names (Allowing international characters)

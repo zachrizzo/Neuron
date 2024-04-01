@@ -19,6 +19,7 @@ export function getUser(id) {
   return getDoc(doc(db, "users", id));
 }
 
-export function createUser(userData) {
-  return addDoc(doc(db, "users"), userData);
+export function createUser(userData, user) {
+  const uid = user.uid;
+  return setDoc(doc(db, "users", uid), { ...userData, uid });
 }

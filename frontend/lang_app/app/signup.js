@@ -32,47 +32,47 @@ const signup = () => {
 
 
   const validateAndSubmit = () => {
-    // if (Validator.email(email) !== true) {
-    //   setLoading(false); // Stop loading on error
-    //   Alert.alert("Missing Information", "Please enter your email.");
-    //   return;
-    // }
-    // if (Validator.password(password) !== true) {
-    //   setLoading(false); // Stop loading on error
-    //   Alert.alert("Missing Information", "Please enter a password.");
-    //   return;
-    // }
-    // if (password.length < 6) {
-    //   setLoading(false); // Stop loading on error
-    //   Alert.alert(
-    //     "Invalid Password",
-    //     "Password should be at least 6 characters long."
-    //   );
-    //   return;
-    // }
-    // if (password !== confirmPassword) {
-    //   setLoading(false); // Stop loading on error
-    //   Alert.alert("Password Mismatch", "Passwords do not match.");
-    //   return;
-    // }
-    // if (Validator.name(name) !== true) {
-    //   setLoading(false); // Stop loading on error
-    //   Alert.alert("Missing Information", "Please enter your full name.");
-    //   return;
-    // }
-    // if (Validator.date(dob) == true) {
-    //   setLoading(false); // Stop loading on error
-    //   Alert.alert(
-    //     "Missing Information",
-    //     "Please check your date of birth to make sure it's valid."
-    //   );
-    //   return;
-    // }
-    // if (!language) {
-    //   setLoading(false); // Stop loading on error
-    //   Alert.alert("Missing Information", "Please select a language.");
-    //   return;
-    // }
+    if (Validator.email(email) !== true) {
+      setLoading(false); // Stop loading on error
+      Alert.alert("Missing Information", "Please enter your email.");
+      return;
+    }
+    if (Validator.password(password) !== true) {
+      setLoading(false); // Stop loading on error
+      Alert.alert("Missing Information", "Please enter a password.");
+      return;
+    }
+    if (password.length < 6) {
+      setLoading(false); // Stop loading on error
+      Alert.alert(
+        "Invalid Password",
+        "Password should be at least 6 characters long."
+      );
+      return;
+    }
+    if (password !== confirmPassword) {
+      setLoading(false); // Stop loading on error
+      Alert.alert("Password Mismatch", "Passwords do not match.");
+      return;
+    }
+    if (Validator.name(name) !== true) {
+      setLoading(false); // Stop loading on error
+      Alert.alert("Missing Information", "Please enter your full name.");
+      return;
+    }
+    if (Validator.date(dob) !== true) {
+      setLoading(false); // Stop loading on error
+      Alert.alert(
+        "Missing Information",
+        "Please check your date of birth to make sure it's valid."
+      );
+      return;
+    }
+    if (!language) {
+      setLoading(false); // Stop loading on error
+      Alert.alert("Missing Information", "Please select a language.");
+      return;
+    }
 
     const userInfo = {
       name,
@@ -81,15 +81,15 @@ const signup = () => {
       language,
       phoneNumber,
       autoSpeak: true,
-      cortexxCoin: 0,
-      Hearts: 10,
+      cortexxCoins: 0,
+      hearts: 10,
       heartsLastRefill: new Date(),
-      numberOfMessages: 20,
+      numberOfMessages: 50,
       subscriptionStatus: "free",
     };
     createUserEmailAndPassword(email, password, userInfo)
       .then((res) => {
-        if (res.userData) {
+        if (res?.userData) {
           dispatch(setUser(res.userData));
           setLoading(false);
           router.replace("/home");
@@ -186,6 +186,7 @@ const signup = () => {
                   isValid: Validator.name(value),
                   message: 'This field must be a valid name.',
                 })}
+                label={"Full Name"}
               />
               <InputBox
                 onChangeText={(text) => {
@@ -204,6 +205,8 @@ const signup = () => {
                 })
                 }
                 formatter={(value) => Formatter.formatDateNumbers(value)}
+                label={"Date of Birth"}
+                maxLength={10}
               />
               <InputBox
                 onChangeText={(text) => {
@@ -222,6 +225,8 @@ const signup = () => {
                 })
                 }
                 formatter={(value) => Formatter.formatPhoneNumber(value)}
+                label={"Phone Number"}
+                maxLength={14}
               />
 
               <Text

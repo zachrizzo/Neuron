@@ -15,7 +15,7 @@ export const UserProvider = ({ children }) => {
 
   const updateUserVisitTimeAndStreak = async () => {
     if (!auth.currentUser) return;
-    const userRef = doc(db, "users", auth.currentUser.email);
+    const userRef = doc(db, "users", auth.currentUser.uid);
     const now = new Date();
     let updatedUserData = {};
 
@@ -59,7 +59,7 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     if (!auth.currentUser) return;
 
-    const userRef = doc(db, "users", auth.currentUser.email);
+    const userRef = doc(db, "users", auth.currentUser.uid);
 
 
     onSnapshot(

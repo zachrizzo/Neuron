@@ -35,10 +35,10 @@ const settings = () => {
   useEffect(() => {
     if (autoSpeak) {
       dispatch(setUserAutoSpeak({ autoSpeak: true }));
-      updateUser(auth.currentUser.email, { autoSpeak: true });
+      updateUser(auth.currentUser.uid, { autoSpeak: true });
     } else {
       dispatch(setUserAutoSpeak({ autoSpeak: false }));
-      updateUser(auth.currentUser.email, { autoSpeak: false });
+      updateUser(auth.currentUser.uid, { autoSpeak: false });
     }
   }, [autoSpeak]);
 
@@ -113,7 +113,7 @@ const settings = () => {
               lang[0].length > 0
             ) {
               // dispatch(setUserLanguage({ language: lang }));
-              updateUser(auth.currentUser.email, { language: lang });
+              updateUser(auth.currentUser.uid, { language: lang });
             }
           }}
           textColor={"#FFFFFF"}

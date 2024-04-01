@@ -1,0 +1,844 @@
+{
+  "lessonTitle": "French Beginner",
+  "skillLevel": "Beginner",
+  "focusArea": "Basic Greetings and Common Phrases",
+  "totalTasks": 135,
+  "id": 1,
+  "exercises": [
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Greet someone in the morning in French.",
+      "text": "Bonjour.",
+      "translation": "Good morning.",
+      "gender": "N/A",
+      "audioFilePath": "path/to/bonjour.mp3",
+      "points": 5,
+      "exerciseID": 1
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Say 'Good evening' in French.",
+      "text": "Bonsoir.",
+      "translation": "Good evening.",
+      "gender": "N/A",
+      "audioFilePath": "path/to/bonsoir.mp3",
+      "points": 5,
+      "exerciseID": 2
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Ask someone how they are doing in a casual way in French.",
+      "text": "Ça va?",
+      "translation": "How's it going?",
+      "gender": "N/A",
+      "audioFilePath": "path/to/ca_va.mp3",
+      "points": 5,
+      "exerciseID": 3
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Introduce yourself in French.",
+      "text": "Je m'appelle.",
+      "translation": "My name is.",
+      "gender": "N/A",
+      "audioFilePath": "path/to/je_mappelle.mp3",
+      "points": 5,
+      "exerciseID": 4
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Ask for someone’s name in a casual context in French.",
+      "text": "Tu t'appelles comment?",
+      "translation": "What's your name? (informal)",
+      "gender": "N/A",
+      "audioFilePath": "path/to/tu_tappelles_comment.mp3",
+      "points": 5,
+      "exerciseID": 5
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Ask for someone's name using the formal 'you' in French.",
+      "text": "Comment vous appelez-vous?",
+      "translation": "What is your name? (formal)",
+      "gender": "N/A",
+      "audioFilePath": "path/to/comment_vous_appelez_vous.mp3",
+      "points": 5,
+      "exerciseID": 6
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Say 'Please' in French.",
+      "text": "S'il vous plaît.",
+      "translation": "Please.",
+      "gender": "N/A",
+      "audioFilePath": "path/to/sil_vous_plait.mp3",
+      "points": 5,
+      "exerciseID": 7
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Say 'Thank you' in French.",
+      "text": "Merci.",
+      "translation": "Thank you.",
+      "gender": "N/A",
+      "audioFilePath": "path/to/merci.mp3",
+      "points": 5,
+      "exerciseID": 8
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Respond to 'Thank you' in French.",
+      "text": "De rien.",
+      "translation": "You're welcome.",
+      "gender": "N/A",
+      "audioFilePath": "path/to/de_rien.mp3",
+      "points": 5,
+      "exerciseID": 9
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Say 'Goodbye' in French.",
+      "text": "Au revoir.",
+      "translation": "Goodbye.",
+      "gender": "N/A",
+      "audioFilePath": "path/to/au_revoir.mp3",
+      "points": 5,
+      "exerciseID": 10
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Say 'Hi' casually in French.",
+      "text": "Salut.",
+      "translation": "Hi.",
+      "gender": "N/A",
+      "audioFilePath": "path/to/salut.mp3",
+      "points": 5,
+      "exerciseID": 11
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Ask 'What’s new?' in French.",
+      "text": "Quoi de neuf?",
+      "translation": "What’s new?",
+      "gender": "N/A",
+      "audioFilePath": "path/to/quoi_de_neuf.mp3",
+      "points": 5,
+      "exerciseID": 12
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Express 'Nice to meet you' formally in French.",
+      "text": "Enchanté(e).",
+      "translation": "Nice to meet you.",
+      "gender": "Masculine/Feminine",
+      "audioFilePath": "path/to/enchante.mp3",
+      "points": 5,
+      "exerciseID": 13
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Ask 'How are you?' formally in French.",
+      "text": "Comment allez-vous?",
+      "translation": "How are you? (formal)",
+      "gender": "N/A",
+      "audioFilePath": "path/to/comment_allez_vous.mp3",
+      "points": 5,
+      "exerciseID": 14
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Say 'See you later' in French.",
+      "text": "À plus tard.",
+      "translation": "See you later.",
+      "gender": "N/A",
+      "audioFilePath": "path/to/a_plus_tard.mp3",
+      "points": 5,
+      "exerciseID": 15
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Say 'See you tomorrow' in French.",
+      "text": "À demain.",
+      "translation": "See you tomorrow.",
+      "gender": "N/A",
+      "audioFilePath": "path/to/a_demain.mp3",
+      "points": 5,
+      "exerciseID": 16
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Ask 'Can I help you?' in French.",
+      "text": "Puis-je vous aider?",
+      "translation": "Can I help you?",
+      "gender": "N/A",
+      "audioFilePath": "path/to/puis_je_vous_aider.mp3",
+      "points": 5,
+      "exerciseID": 17
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Say 'Excuse me' to get someone’s attention in French.",
+      "text": "Excusez-moi.",
+      "translation": "Excuse me.",
+      "gender": "N/A",
+      "audioFilePath": "path/to/excusez_moi.mp3",
+      "points": 5,
+      "exerciseID": 18
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Express gratitude by saying 'Thank you very much' in French.",
+      "text": "Merci beaucoup.",
+      "translation": "Thank you very much.",
+      "gender": "N/A",
+      "audioFilePath": "path/to/merci_beaucoup.mp3",
+      "points": 5,
+      "exerciseID": 19
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Say 'You're welcome' in a more informal way in French.",
+      "text": "Pas de quoi.",
+      "translation": "Don't mention it (You're welcome).",
+      "gender": "N/A",
+      "audioFilePath": "path/to/pas_de_quoi.mp3",
+      "points": 5,
+      "exerciseID": 20
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Say 'I am a student' in French.",
+      "text": "Je suis étudiant(e).",
+      "translation": "I am a student.",
+      "gender": "Masculine/Feminine",
+      "audioFilePath": "path/to/je_suis_etudiant.mp3",
+      "points": 5,
+      "exerciseID": 23
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Ask 'Do you speak English?' in French.",
+      "text": "Parlez-vous anglais?",
+      "translation": "Do you speak English?",
+      "gender": "N/A",
+      "audioFilePath": "path/to/parlez_vous_anglais.mp3",
+      "points": 5,
+      "exerciseID": 25
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Say 'I understand' in French.",
+      "text": "Je comprends.",
+      "translation": "I understand.",
+      "gender": "N/A",
+      "audioFilePath": "path/to/je_comprends.mp3",
+      "points": 5,
+      "exerciseID": 26
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Say 'I don't understand' in French.",
+      "text": "Je ne comprends pas.",
+      "translation": "I don't understand.",
+      "gender": "N/A",
+      "audioFilePath": "path/to/je_ne_comprends_pas.mp3",
+      "points": 5,
+      "exerciseID": 27
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Say 'Where are you from?' in French.",
+      "text": "D'où venez-vous?",
+      "translation": "Where are you from?",
+      "gender": "N/A",
+      "audioFilePath": "path/to/dou_venez_vous.mp3",
+      "points": 5,
+      "exerciseID": 29
+    },
+    {
+      "taskType": "Speaking",
+      "taskDescription": "Respond with 'I am from [Country]' in French.",
+      "text": "Je viens de France.",
+      "translation": "I am from France.",
+      "gender": "N/A",
+      "audioFilePath": "path/to/je_viens_de.mp3",
+      "points": 5,
+      "exerciseID": 30
+    },
+    {
+      "taskType": "Conversation",
+      "taskDescription": "Learn basic French greetings. Practice how to say hello and goodbye in a casual context.",
+      "conversationSteps": [
+        {
+          "question": "Salut, comment ça va?",
+          "questionTranlation": "Hi, how's it going?",
+          "audioFilePathQuestion": "path/to/salut_comment_ca_va.mp3",
+          "expectedResponse": "Ça va bien, merci. Et toi?",
+          "responseTranslation": "I'm doing well, thank you. And you?",
+          "audioFilePathResponse": "path/to/ca_va_bien_merci_et_toi.mp3"
+        },
+        {
+          "question": "Au revoir! À bientôt.",
+          "questionTranlation": "Goodbye! See you soon.",
+          "audioFilePathQuestion": "path/to/au_revoir_a_bientot.mp3",
+          "expectedResponse": "Oui, à bientôt!",
+          "responseTranslation": "Yes, see you soon!",
+          "audioFilePathResponse": "path/to/oui_a_bientot.mp3"
+        }
+      ],
+      "gender": "N/A",
+      "points": 5,
+      "exerciseID": 31
+    },
+    {
+      "taskType": "Conversation",
+      "taskDescription": "Practice introducing yourself and asking someone's name in a formal context.",
+      "conversationSteps": [
+        {
+          "question": "Bonjour, je m'appelle Marie. Et vous, comment vous appelez-vous?",
+          "questionTranlation": "Hello, my name is Marie. And you, what's your name?",
+          "audioFilePathQuestion": "path/to/bonjour_je_mappelle_marie.mp3",
+          "expectedResponse": "Je m'appelle Jean. Enchanté.",
+          "responseTranslation": "My name is Jean. Nice to meet you.",
+          "audioFilePathResponse": "path/to/je_mappelle_jean_enchante.mp3"
+        },
+        {
+          "question": "Comment allez-vous?",
+          "questionTranlation": "How are you?",
+          "audioFilePathQuestion": "path/to/comment_allez_vous.mp3",
+          "expectedResponse": "Je vais bien, merci. Et vous?",
+          "responseTranslation": "I'm fine, thank you. And you?",
+          "audioFilePathResponse": "path/to/je_vais_bien_merci_et_vous.mp3"
+        }
+      ],
+      "gender": "N/A",
+      "points": 5,
+      "exerciseID": 32
+    },
+    {
+      "taskType": "Conversation",
+      "taskDescription": "Learn to ask and answer about how someone is doing in a very casual way.",
+      "conversationSteps": [
+        {
+          "question": "Ça va?",
+          "questionTranlation": "You okay?",
+          "audioFilePathQuestion": "path/to/ca_va.mp3",
+          "expectedResponse": "Ouais, et toi?",
+          "responseTranslation": "Yeah, and you?",
+          "audioFilePathResponse": "path/to/ouais_et_toi.mp3"
+        },
+        {
+          "question": "Je suis fatigué. À demain.",
+          "questionTranlation": "I'm tired. See you tomorrow.",
+          "audioFilePathQuestion": "path/to/je_suis_fatigue_a_demain.mp3",
+          "expectedResponse": "D'accord, repose-toi bien.",
+          "responseTranslation": "Okay, rest well.",
+          "audioFilePathResponse": "path/to/daccord_repose_toi_bien.mp3"
+        }
+      ],
+      "gender": "N/A",
+      "points": 5,
+      "exerciseID": 33
+    },
+    {
+      "taskType": "Conversation",
+      "taskDescription": "Learn to greet and introduce yourself in a friendly manner.",
+      "conversationSteps": [
+        {
+          "question": "Salut! Moi, c'est Alex. Et toi?",
+          "questionTranlation": "Hi! I'm Alex. And you?",
+          "audioFilePathQuestion": "path/to/salut_moi_cest_alex.mp3",
+          "expectedResponse": "Je suis Max. Enchanté!",
+          "responseTranslation": "I'm Max. Pleased to meet you!",
+          "audioFilePathResponse": "path/to/je_suis_max_enchante.mp3"
+        },
+        {
+          "question": "Tu viens d'où?",
+          "questionTranlation": "Where are you from?",
+          "audioFilePathQuestion": "path/to/tu_viens_dou.mp3",
+          "expectedResponse": "Je viens de Paris. Et toi?",
+          "responseTranslation": "I'm from Paris. And you?",
+          "audioFilePathResponse": "path/to/je_viens_de_paris_et_toi.mp3"
+        }
+      ],
+      "gender": "N/A",
+      "points": 5,
+      "exerciseID": 34
+    },
+    {
+      "taskType": "Conversation",
+      "taskDescription": "Understand how to say goodbye in different situations.",
+      "conversationSteps": [
+        {
+          "question": "Bonne nuit! Fais de beaux rêves.",
+          "questionTranlation": "Good night! Sweet dreams.",
+          "audioFilePathQuestion": "path/to/bonne_nuit_fais_de_beaux_reves.mp3",
+          "expectedResponse": "Merci, toi aussi.",
+          "responseTranslation": "Thank you, you too.",
+          "audioFilePathResponse": "path/to/merci_toi_aussi.mp3"
+        },
+        {
+          "question": "Je dois y aller. À plus!",
+          "questionTranlation": "I have to go. See you later!",
+          "audioFilePathQuestion": "path/to/je_dois_y_aller_a_plus.mp3",
+          "expectedResponse": "D'accord, à plus tard.",
+          "responseTranslation": "Okay, see you later.",
+          "audioFilePathResponse": "path/to/daccord_a_plus_tard.mp3"
+        }
+      ],
+      "gender": "N/A",
+      "points": 5,
+      "exerciseID": 35
+    },
+    {
+      "taskType": "Conversation",
+      "taskDescription": "Practicing formal greetings and expressions of courtesy.",
+      "conversationSteps": [
+        {
+          "question": "Bonjour, Monsieur. Comment allez-vous aujourd'hui?",
+          "questionTranlation": "Good morning, Sir. How are you today?",
+          "audioFilePathQuestion": "path/to/bonjour_monsieur_comment_allez_vous.mp3",
+          "expectedResponse": "Je vais très bien, merci. Et vous?",
+          "responseTranslation": "I'm very well, thank you. And you?",
+          "audioFilePathResponse": "path/to/je_vais_tres_bien_merci_et_vous.mp3"
+        },
+        {
+          "question": "Merci, je vais bien. Bonne journée!",
+          "questionTranlation": "Thank you, I'm fine. Have a good day!",
+          "audioFilePathQuestion": "path/to/merci_je_vais_bien_bonne_journee.mp3",
+          "expectedResponse": "Vous aussi, merci.",
+          "responseTranslation": "You too, thank you.",
+          "audioFilePathResponse": "path/to/vous_aussi_merci.mp3"
+        }
+      ],
+      "gender": "N/A",
+      "points": 5,
+      "exerciseID": 36
+    },
+    {
+      "taskType": "Conversation",
+      "taskDescription": "Learning to ask about someone’s day in a friendly manner.",
+      "conversationSteps": [
+        {
+          "question": "Tu as passé une bonne journée?",
+          "questionTranlation": "Did you have a good day?",
+          "audioFilePathQuestion": "path/to/tu_as_passe_une_bonne_journee.mp3",
+          "expectedResponse": "Oui, très bonne. Et toi?",
+          "responseTranslation": "Yes, very good. And you?",
+          "audioFilePathResponse": "path/to/oui_tres_bonne_et_toi.mp3"
+        },
+        {
+          "question": "Pas mal, merci. Qu'as-tu fait de beau?",
+          "questionTranlation": "Not bad, thank you. What nice things did you do?",
+          "audioFilePathQuestion": "path/to/pas_mal_merci_quas_tu_fait.mp3",
+          "expectedResponse": "J'ai passé la journée avec des amis.",
+          "responseTranslation": "I spent the day with friends.",
+          "audioFilePathResponse": "path/to/jai_passe_la_journee_avec_des_amis.mp3"
+        }
+      ],
+      "gender": "N/A",
+      "points": 5,
+      "exerciseID": 37
+    },
+    {
+      "taskType": "Conversation",
+      "taskDescription": "Introducing oneself and learning to ask about hobbies in a casual setting.",
+      "conversationSteps": [
+        {
+          "question": "Salut, je m'appelle Clara. Tu aimes quoi comme loisirs?",
+          "questionTranlation": "Hi, I'm Clara. What do you like to do for fun?",
+          "audioFilePathQuestion": "path/to/salut_je_mappelle_clara.mp3",
+          "expectedResponse": "J'aime lire et faire du sport. Et toi?",
+          "responseTranslation": "I like to read and play sports. And you?",
+          "audioFilePathResponse": "path/to/jaime_lire_et_faire_du_sport.mp3"
+        },
+        {
+          "question": "Moi, j'adore voyager et cuisiner.",
+          "questionTranlation": "I love traveling and cooking.",
+          "audioFilePathQuestion": "path/to/moi_jadore_voyager_et_cuisiner.mp3",
+          "expectedResponse": "C'est génial! On a des intérêts communs.",
+          "responseTranslation": "That's awesome! We have common interests.",
+          "audioFilePathResponse": "path/to/cest_genial_on_a_des_interets_communs.mp3"
+        }
+      ],
+      "gender": "N/A",
+      "points": 5,
+      "exerciseID": 38
+    },
+    {
+      "taskType": "Conversation",
+      "taskDescription": "Practicing how to say 'thank you' and 'you're welcome' in various contexts.",
+      "conversationSteps": [
+        {
+          "question": "Merci beaucoup pour ton aide.",
+          "questionTranlation": "Thank you very much for your help.",
+          "audioFilePathQuestion": "path/to/merci_beaucoup_pour_ton_aide.mp3",
+          "expectedResponse": "De rien, ça me fait plaisir!",
+          "responseTranslation": "You're welcome, happy to help!",
+          "audioFilePathResponse": "path/to/de_rien_ca_me_fait_plaisir.mp3"
+        },
+        {
+          "question": "C'était vraiment gentil de ta part.",
+          "questionTranlation": "That was really kind of you.",
+          "audioFilePathQuestion": "path/to/cetait_vraiment_gentil_de_ta_part.mp3",
+          "expectedResponse": "Je suis toujours là pour toi.",
+          "responseTranslation": "I'm always here for you.",
+          "audioFilePathResponse": "path/to/je_suis_toujours_la_pour_toi.mp3"
+        }
+      ],
+      "gender": "N/A",
+      "points": 5,
+      "exerciseID": 39
+    },
+    {
+      "taskType": "Conversation",
+      "taskDescription": "Learning to say goodbye in a formal and polite manner.",
+      "conversationSteps": [
+        {
+          "question": "Je vous souhaite une bonne soirée.",
+          "questionTranlation": "I wish you a good evening.",
+          "audioFilePathQuestion": "path/to/je_vous_souhaite_une_bonne_soirée.mp3",
+          "expectedResponse": "Merci, vous également.",
+          "responseTranslation": "Thank you, you too.",
+          "audioFilePathResponse": "path/to/merci_vous_egalement.mp3"
+        },
+        {
+          "question": "À demain, j'espère.",
+          "questionTranlation": "See you tomorrow, I hope.",
+          "audioFilePathQuestion": "path/to/a_demain_jespere.mp3",
+          "expectedResponse": "Oui, à demain.",
+          "responseTranslation": "Yes, see you tomorrow.",
+          "audioFilePathResponse": "path/to/oui_a_demain.mp3"
+        }
+      ],
+      "gender": "N/A",
+      "points": 5,
+      "exerciseID": 40
+    },
+    {
+      "taskType": "Vocabulary",
+      "taskDescription": "Match the French phrase with its English translation.",
+      "options": {
+        "French": [
+          "Bonjour",
+          "Au revoir",
+          "Merci",
+          "S'il vous plaît",
+          "Comment ça va?",
+          "Je vais bien",
+          "Et toi?",
+          "Bienvenue",
+          "Pardon",
+          "Bonne nuit"
+        ],
+        "English": [
+          "Hello",
+          "Goodbye",
+          "Thank you",
+          "Please",
+          "How are you?",
+          "I am fine",
+          "And you?",
+          "Welcome",
+          "Excuse me",
+          "Good night"
+        ]
+      },
+      "gender": "N/A",
+      "audioFilePaths": {
+        "Bonjour": "path/to/bonjour.mp3",
+        "Au revoir": "path/to/aurevoir.mp3",
+        "Merci": "path/to/merci.mp3",
+        "S'il vous plaît": "path/to/silvousplait.mp3",
+        "Comment ça va?": "path/to/commentcava.mp3",
+        "Je vais bien": "path/to/jevaisbien.mp3",
+        "Et toi?": "path/to/ettoit.mp3",
+        "Bienvenue": "path/to/bienvenue.mp3",
+        "Pardon": "path/to/pardon.mp3",
+        "Bonne nuit": "path/to/bonnenuit.mp3"
+      },
+      "points": 5,
+      "exerciseID": 41
+    },
+    {
+      "taskType": "Vocabulary",
+      "taskDescription": "Identify the meaning of these common French greetings and phrases.",
+      "options": {
+        "French": [
+          "Ça va?",
+          "Comment vas-tu?",
+          "Quoi de neuf?",
+          "Ravi de vous rencontrer",
+          "Comment s'est passée ta journée?",
+          "A demain",
+          "Bonne journée",
+          "Je suis désolé",
+          "Je ne comprends pas",
+          "Parlez-vous anglais?"
+        ],
+        "English": [
+          "How's it going?",
+          "How are you?",
+          "What's new?",
+          "Pleased to meet you",
+          "How was your day?",
+          "See you tomorrow",
+          "Have a good day",
+          "I am sorry",
+          "I don't understand",
+          "Do you speak English?"
+        ]
+      },
+      "gender": "N/A",
+      "audioFilePaths": {
+        "Ça va?": "path/to/cava.mp3",
+        "Comment vas-tu?": "path/to/commentvastu.mp3",
+        "Quoi de neuf?": "path/to/quoinedneuf.mp3",
+        "Ravi de vous rencontrer": "path/to/ravidevousrencontrer.mp3",
+        "Comment s'est passée ta journée?": "path/to/commentsestpasseetajournee.mp3",
+        "A demain": "path/to/ademain.mp3",
+        "Bonne journée": "path/to/bonnejournee.mp3",
+        "Je suis désolé": "path/to/jesuisdesole.mp3",
+        "Je ne comprends pas": "path/to/jene comprendspas.mp3",
+        "Parlez-vous anglais?": "path/to/parlezvousanglais.mp3"
+      },
+      "points": 5,
+      "exerciseID": 42
+    },
+    {
+      "taskType": "Vocabulary",
+      "taskDescription": "Choose the correct English translation for each French greeting.",
+      "options": {
+        "French": [
+          "Salut",
+          "Bonne soirée",
+          "À bientôt",
+          "Enchanté",
+          "Comment allez-vous?",
+          "Je suis fatigué",
+          "Tu me manques",
+          "C'est gentil",
+          "Quelle heure est-il?",
+          "Où sont les toilettes?"
+        ],
+        "English": [
+          "Hi",
+          "Good evening",
+          "See you soon",
+          "Nice to meet you",
+          "How do you do?",
+          "I am tired",
+          "I miss you",
+          "That's kind",
+          "What time is it?",
+          "Where is the bathroom?"
+        ]
+      },
+      "gender": "N/A",
+      "audioFilePaths": {
+        "Salut": "path/to/salut.mp3",
+        "Bonne soirée": "path/to/bonnesoiree.mp3",
+        "À bientôt": "path/to/abientot.mp3",
+        "Enchanté": "path/to/enchante.mp3",
+        "Comment allez-vous?": "path/to/commentallezvous.mp3",
+        "Je suis fatigué": "path/to/jesuisfatigue.mp3",
+        "Tu me manques": "path/to/tumemanques.mp3",
+        "C'est gentil": "path/to/cestgentil.mp3",
+        "Quelle heure est-il?": "path/to/quelleheureestil.mp3",
+        "Où sont les toilettes?": "path/to/ousontlestoilettes.mp3"
+      },
+      "points": 5,
+      "exerciseID": 43
+    },
+    {
+      "taskType": "Vocabulary",
+      "taskDescription": "Match each French phrase with its correct English equivalent.",
+      "options": {
+        "French": [
+          "Tout va bien?",
+          "Je vous en prie",
+          "À plus tard",
+          "Bonne chance",
+          "Félicitations",
+          "C'est dommage",
+          "Avez-vous besoin d'aide?",
+          "Je suis perdu",
+          "Pouvez-vous répéter, s'il vous plaît?",
+          "Je suis heureux de vous voir"
+        ],
+        "English": [
+          "Is everything alright?",
+          "You're welcome",
+          "See you later",
+          "Good luck",
+          "Congratulations",
+          "That's a pity",
+          "Do you need help?",
+          "I am lost",
+          "Can you repeat, please?",
+          "I am happy to see you"
+        ]
+      },
+      "gender": "N/A",
+      "audioFilePaths": {
+        "Tout va bien?": "path/to/toutvabien.mp3",
+        "Je vous en prie": "path/to/jevousenprie.mp3",
+        "À plus tard": "path/to/aplustard.mp3",
+        "Bonne chance": "path/to/bonnechance.mp3",
+        "Félicitations": "path/to/felicitations.mp3",
+        "C'est dommage": "path/to/cestdommage.mp3",
+        "Avez-vous besoin d'aide?": "path/to/avezvousbesoind'aide.mp3",
+        "Je suis perdu": "path/to/jesuisperdu.mp3",
+        "Pouvez-vous répéter, s'il vous plaît?": "path/to/pouvezvousrepter.mp3",
+        "Je suis heureux de vous voir": "path/to/jesuisheureuxdevousvoir.mp3"
+      },
+      "points": 5,
+      "exerciseID": 44
+    },
+    {
+      "taskType": "Vocabulary",
+      "taskDescription": "Select the English translation for these basic French expressions.",
+      "options": {
+        "French": [
+          "J'ai faim",
+          "J'ai soif",
+          "Je suis malade",
+          "Je t'aime",
+          "À votre santé",
+          "Joyeux anniversaire",
+          "Bonne chance",
+          "Je ne sais pas",
+          "Je suis désolé",
+          "Je suis occupé"
+        ],
+        "English": [
+          "I am hungry",
+          "I am thirsty",
+          "I am sick",
+          "I love you",
+          "Cheers",
+          "Happy birthday",
+          "Good luck",
+          "I don't know",
+          "I am sorry",
+          "I am busy"
+        ]
+      },
+      "gender": "N/A",
+      "audioFilePaths": {
+        "J'ai faim": "path/to/jaifaim.mp3",
+        "J'ai soif": "path/to/jaisoif.mp3",
+        "Je suis malade": "path/to/jesuismalade.mp3",
+        "Je t'aime": "path/to/jetaime.mp3",
+        "À votre santé": "path/to/avotresante.mp3",
+        "Joyeux anniversaire": "path/to/joyeuxanniversaire.mp3",
+        "Bonne chance": "path/to/bonnechance2.mp3",
+        "Je ne sais pas": "path/to/jenesaispas.mp3",
+        "Je suis désolé": "path/to/jesuisdesole2.mp3",
+        "Je suis occupé": "path/to/jesuisoccupe.mp3"
+      },
+      "points": 5,
+      "exerciseID": 45
+    },
+    {
+      "taskType": "Grammar",
+      "taskDescription": "Choose the correct greeting for the morning in French.",
+      "text": "_______, comment ça va?",
+      "hints": "Choose between 'Bonjour' and 'Bonsoir'",
+      "gender": "N/A",
+      "correctAnswer": "Bonjour",
+      "points": 5,
+      "exerciseID": 46
+    },
+    {
+      "taskType": "Grammar",
+      "taskDescription": "Select the correct way to say 'Goodbye' in French.",
+      "text": "À _______!",
+      "hints": "Think of a word used to say goodbye in French.",
+      "gender": "N/A",
+      "correctAnswer": "bientôt",
+      "points": 5,
+      "exerciseID": 47
+    },
+    {
+      "taskType": "Grammar",
+      "taskDescription": "Fill in the blank with the correct form of 'My name is...' in French.",
+      "text": "_______ nom est Pierre.",
+      "hints": "Choose between 'Mon' (masculine) or 'Ma' (feminine)",
+      "gender": "Masculine",
+      "correctAnswer": "Mon",
+      "points": 5,
+      "exerciseID": 48
+    },
+    {
+      "taskType": "Grammar",
+      "taskDescription": "Choose the correct question for asking someone’s name in French.",
+      "text": "_______ vous appelez-vous?",
+      "hints": "Think of the formal way to ask someone’s name.",
+      "gender": "N/A",
+      "correctAnswer": "Comment",
+      "points": 5,
+      "exerciseID": 49
+    },
+    {
+      "taskType": "Grammar",
+      "taskDescription": "Fill in the blank to reply to a greeting in French.",
+      "text": "Bonjour, _______ bien, merci.",
+      "hints": "Choose the word that means 'I am' in French.",
+      "gender": "N/A",
+      "correctAnswer": "je vais",
+      "points": 5,
+      "exerciseID": 50
+    },
+    {
+      "taskType": "Writing",
+      "taskDescription": "Translate the following English sentence into French.",
+      "text": "Hello, how are you?",
+      "translation": "Bonjour, comment vas-tu ?",
+      "hints": "Use 'Bonjour' for 'Hello' and 'comment vas-tu' for 'how are you' in a more informal context.",
+      "gender": "N/A",
+      "exerciseID": 51,
+      "points": 5
+    },
+    {
+      "taskType": "Writing",
+      "taskDescription": "Translate the following English sentence into French, using the formal form.",
+      "text": "Good evening, how are you?",
+      "translation": "Bonsoir, comment allez-vous ?",
+      "hints": "Remember to use 'Bonsoir' for 'Good evening' and the formal 'comment allez-vous' for 'how are you'.",
+      "gender": "N/A",
+      "exerciseID": 52,
+      "points": 5
+    },
+    {
+      "taskType": "Writing",
+      "taskDescription": "Translate the following English sentence into French.",
+      "text": "My name is John.",
+      "translation": "Je m'appelle John.",
+      "hints": "Use 'Je m'appelle' to mean 'My name is'.",
+      "gender": "Masculine",
+      "exerciseID": 53,
+      "points": 5
+    },
+    {
+      "taskType": "Writing",
+      "taskDescription": "Translate the following English question into French.",
+      "text": "What's your name?",
+      "translation": "Comment tu t'appelles ?",
+      "hints": "Use 'Comment tu t'appelles ?' for an informal setting.",
+      "gender": "N/A",
+      "exerciseID": 54,
+      "points": 5
+    },
+    {
+      "taskType": "Writing",
+      "taskDescription": "Translate the following English farewell into French.",
+      "text": "Goodbye, see you tomorrow.",
+      "translation": "Au revoir, à demain.",
+      "hints": "Use 'Au revoir' for 'Goodbye' and 'à demain' for 'see you tomorrow'.",
+      "gender": "N/A",
+      "exerciseID": 55,
+      "points": 5
+    }
+  ]
+}

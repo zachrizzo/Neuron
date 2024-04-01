@@ -130,7 +130,7 @@ const Lesson = () => {
             cortexxCoins: newCortexxCoins,
           })
         );
-        updateUser(auth.currentUser.email, {
+        updateUser(auth.currentUser.uid, {
           cortexxCoins: newCortexxCoins,
         });
 
@@ -140,7 +140,7 @@ const Lesson = () => {
         setMissedQuestions([...missedQuestions, currentExerciseIndex]);
         let newHearts = hearts - 1;
         dispatch(setUserHearts({ hearts: newHearts }));
-        updateUser(auth.currentUser.email, { hearts: newHearts });
+        updateUser(auth.currentUser.uid, { hearts: newHearts });
         setCorrectAnswer("");
       }
     } else {
@@ -193,8 +193,8 @@ const Lesson = () => {
                 progress={
                   completedLessons > 0 && exercises
                     ? Math.round(
-                        (completedLessons.length / exercises.length) * 100
-                      )
+                      (completedLessons.length / exercises.length) * 100
+                    )
                     : 0
                 }
                 height={15}
