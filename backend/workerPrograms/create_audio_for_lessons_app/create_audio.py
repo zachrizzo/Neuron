@@ -9,7 +9,7 @@ import time
 import firebase_admin
 # from config import app
 
-cred = credentials.Certificate("lang-learning-app-gpt-firebase-adminsdk-h6lgl-379786af55.json")
+cred = credentials.Certificate("backend/workerPrograms/create_audio_for_lessons_app/lang-learning-app-gpt-firebase-adminsdk-h6lgl-379786af55.json")
 
 if not len(firebase_admin._apps):
     app = initialize_app(cred, {"storageBucket": "lang-learning-app-gpt.appspot.com"})
