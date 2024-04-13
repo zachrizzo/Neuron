@@ -159,15 +159,17 @@ class Create_audio:
         for existing_lesson in data['exercises']:
             # Find the corresponding lesson update
             lesson_update = next((l for l in lessons if l['taskType'] == existing_lesson['taskType']), None)
-            if not lesson_update:
+            if lesson_update is None:
                 continue
 
             if existing_lesson['taskType'] == 'Conversation':
                 for existing_step in existing_lesson['conversationSteps']:
                     question_text = self.remove_punctuation(existing_step['question']).lower() + ".mp3"
                     response_text = self.remove_punctuation(existing_step['expectedResponse']).lower() + ".mp3"
+
                     print("Question text:", question_text)
                     print("Response text:", response_text)
+
                     if file == question_text:
                         print("Updating audio file path for question:", question_text)
                         existing_step['audioFilePathQuestion'] = url
