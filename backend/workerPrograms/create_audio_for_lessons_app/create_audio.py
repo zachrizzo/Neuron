@@ -97,30 +97,34 @@ class Create_audio:
                 print(e)
                 print(lesson,'failed')
 
-    def add_to_firebase_storage_and_firestore(self, lessons, uploaded_file):
-        uploaded_file.seek(0)  # Move the file pointer to the beginning
-        uploaded_file_dict = json.load(uploaded_file)
+    def add_to_firebase_storage_and_firestore(self, lessons, uploaded_file_path):
+        with open(uploaded_file_path, 'r') as uploaded_file:
+            uploaded_file_dict = json.load(uploaded_file)
+
         all_lesson_audio = {}
         bucket = storage.bucket()
+        updated_count = 0
+
         for file in self.list_of_audio_files:
             if file.endswith('.mp3'):
-                # blob = bucket.blob(f'lessons/{lessons["lessonTitle"]}/{file}')
                 blob = bucket.blob(f'lesson_audio/french/{file}')
                 upload_location = f'lesson_audio/{file}'
                 blob.upload_from_filename(upload_location)
                 blob.make_public()
                 url = blob.public_url
-                self._update_JSON_file(url, lessons, file, uploaded_file_dict)
 
-                # add the url to all_lesson_audio as the key as the audio file name
+                if self._update_JSON_file(url, lessons, file, uploaded_file_dict):
+                    updated_count += 1
+
                 all_lesson_audio[file] = url
 
-        # save the all lesson audio to a json file
+        # Save the all lesson audio to a JSON file
         with open('all_lesson_audio_french.json', 'w', encoding='utf-8') as f:
             json.dump(all_lesson_audio, f, indent=4, ensure_ascii=False)
 
-
         self.add_to_fire_store(uploaded_file_dict)
+
+        return updated_count
 
     def add_to_fire_store(self, json_data):
         # Include the all_lesson_audio_french data in the Firestore document
@@ -154,8 +158,9 @@ class Create_audio:
     #         return ''.join(c for c in text if c not in punctuation)
 
     def _update_JSON_file(self, url, lessons, file, data):
-        # Iterate through each exercise in the data
+        updated = False
 
+        # Iterate through each exercise in the data
         for existing_lesson in data['exercises']:
             # Find the corresponding lesson update
             lesson_update = next((l for l in lessons if l['taskType'] == existing_lesson['taskType']), None)
@@ -167,43 +172,41 @@ class Create_audio:
                     question_text = self.remove_punctuation(existing_step['question']).lower() + ".mp3"
                     response_text = self.remove_punctuation(existing_step['expectedResponse']).lower() + ".mp3"
 
-                    print("Question text:", question_text)
-                    print("Response text:", response_text)
-
                     if file == question_text:
-                        print("Updating audio file path for question:", question_text)
                         existing_step['audioFilePathQuestion'] = url
+                        updated = True
 
                     if file == response_text:
-                        print("Updating audio file path for response:", response_text)
                         existing_step['audioFilePathResponse'] = url
+                        updated = True
 
             elif existing_lesson['taskType'] == 'Vocabulary':
                 for french_phrase in lesson_update['options']['French']:
                     phrase_audio = self.remove_punctuation(french_phrase).lower() + ".mp3"
                     if file == phrase_audio:
-                        print(f"Updating audio file path for French phrase: {french_phrase}")
                         existing_lesson['audioFilePaths'][french_phrase] = url
+                        updated = True
 
             elif existing_lesson['taskType'] == 'Grammar':
                 for sentence_index, sentence in enumerate(existing_lesson['sentences']):
                     sentence_text = self.remove_punctuation(sentence['sentence']).lower() + ".mp3"
                     if file == sentence_text:
-                        print(f"Updating audio file path for sentence in index {sentence_index}")
                         existing_lesson['sentences'][sentence_index]['audioFilePath'] = url
+                        updated = True
 
             elif existing_lesson['taskType'] in ['Reading', 'Speaking', 'Listening']:
                 lesson_audio = self.remove_punctuation(existing_lesson['text']).lower() + ".mp3"
                 if file == lesson_audio:
-                    print("Updating audio file path for task type:", existing_lesson['taskType'])
                     existing_lesson['audioFilePath'] = url
+                    updated = True
 
-        # Write the updated data back to a new file
-        updated_file_path = "updated_lesson_data.json"
-        with open(updated_file_path, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=4, ensure_ascii=False)
+        # Write the updated data back to a new file if there were updates
+        if updated:
+            updated_file_path = "updated_lesson_data.json"
+            with open(updated_file_path, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=4, ensure_ascii=False)
 
-        print("Update complete.")
+        return updated
 
 
 

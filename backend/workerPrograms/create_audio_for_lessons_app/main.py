@@ -236,5 +236,7 @@ if st.button("Add To Firebase"):
             temp_file.write(uploaded_file.getvalue())
             temp_file_path = temp_file.name
 
-        # Pass the temporary file path to the method
-        st.session_state['create_audio'].add_to_firebase_storage_and_firestore(st.session_state['all_exercises'], temp_file_path)
+        # Pass the temporary file path to the method and get the count of updated files
+        updated_count = st.session_state['create_audio'].add_to_firebase_storage_and_firestore(st.session_state['all_exercises'], temp_file_path)
+
+        st.success(f"{updated_count} files were updated and added to Firebase.")
