@@ -5,13 +5,14 @@ from create_audio import Create_audio  # Ensure this is correctly imported
 
 
 
-def get_array_from_json(json_file_path, array_key):
+
+def get_array_from_json(uploaded_file, array_key):
     try:
-        with open(json_file_path, 'r') as file:
-            data = json.load(file)
-            return data.get(array_key, None)
-    except FileNotFoundError:
-        st.error("File not found!")
+        # Read the uploaded JSON file directly
+        data = json.load(uploaded_file)
+        return data.get(array_key, None)
+    except json.JSONDecodeError:
+        st.error("Error decoding JSON file!")
         return None
 
 # [Previous helper functions: conversation_audio_exists, remove_punctuation, audio_file_exists]
@@ -57,8 +58,11 @@ if 'audio_file_path' not in st.session_state:
 if "all_exercises" not in st.session_state:
     st.session_state.all_exercises = []
 
-# JSON file path input
-json_file_path = st.text_input("Enter JSON File Path:",)
+# File uploader for JSON files
+uploaded_file = st.file_uploader("Upload JSON File", type=['json'])
+# if uploaded_file is not None:
+#     st.session_state.array_data = get_array_from_json(uploaded_file, 'exercises')
+
 
 # Voice selection
 voice_col1, voice_col2 = st.columns(2)
@@ -71,7 +75,7 @@ with voice_col2:
 selected_task_types = st.multiselect('Select Task Types', ['Speaking', 'Reading', 'Writing', 'Listening', 'Grammar', 'Vocabulary', 'Conversation'])
 
 if st.button("Fetch Exercises"):
-    st.session_state.array_data = get_array_from_json(json_file_path, 'exercises')
+    st.session_state.array_data = get_array_from_json(uploaded_file, 'exercises')
 
 # Filter and display exercises
 st.sidebar.title("Filtered Exercise Texts")
@@ -225,4 +229,4 @@ st.subheader("Add All Filtered Audio to Firebase (vocab doesn't work rn)")
 
 if st.button("Add To Firebase"):
     with st.spinner("Adding to Firebase..."):
-        st.session_state['create_audio'].add_to_firebase_storage_and_firestore(st.session_state['all_exercises'], json_file_path)
+        st.session_state['create_audio'].add_to_firebase_storage_and_firestore(st.session_state['all_exercises'], uploaded_file)
