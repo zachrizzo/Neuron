@@ -2,6 +2,7 @@ import os
 import streamlit as st
 import json
 from create_audio import Create_audio  # Ensure this is correctly imported
+import tempfile
 
 
 
@@ -230,4 +231,10 @@ st.subheader("Add All Filtered Audio to Firebase (vocab doesn't work rn)")
 
 if st.button("Add To Firebase"):
     with st.spinner("Adding to Firebase..."):
-        st.session_state['create_audio'].add_to_firebase_storage_and_firestore(st.session_state['all_exercises'], uploaded_file)
+        # Save the uploaded file to a temporary location
+        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+            temp_file.write(uploaded_file.getvalue())
+            temp_file_path = temp_file.name
+
+        # Pass the temporary file path to the method
+        st.session_state['create_audio'].add_to_firebase_storage_and_firestore(st.session_state['all_exercises'], temp_file_path)
