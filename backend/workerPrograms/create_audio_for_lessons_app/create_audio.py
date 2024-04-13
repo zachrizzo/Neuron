@@ -94,7 +94,8 @@ class Create_audio:
                 print(lesson,'failed')
 
     def add_to_firebase_storage_and_firestore(self, lessons, uploaded_file):
-        uploaded_file_json = json.load(uploaded_file)
+        uploaded_file.seek(0)  # Move the file pointer to the beginning
+        uploaded_file_dict = json.load(uploaded_file)
         all_lesson_audio = {}
         bucket = storage.bucket()
         for file in self.list_of_audio_files:
@@ -105,7 +106,7 @@ class Create_audio:
                 blob.upload_from_filename(upload_location)
                 blob.make_public()
                 url = blob.public_url
-                self._update_JSON_file(url, lessons, file, uploaded_file_json)
+                self._update_JSON_file(url, lessons, file, uploaded_file_dict)
 
                 # add the url to all_lesson_audio as the key as the audio file name
                 all_lesson_audio[file] = url
@@ -114,7 +115,7 @@ class Create_audio:
         with open('all_lesson_audio_french.json', 'w', encoding='utf-8') as f:
             json.dump(all_lesson_audio, f, indent=4, ensure_ascii=False)
 
-        self.add_to_fire_store(uploaded_file_json)
+        self.add_to_fire_store(uploaded_file_dict)
 
     def add_to_fire_store(self, json_data):
         # Include the all_lesson_audio_french data in the Firestore document
@@ -147,9 +148,7 @@ class Create_audio:
     #     else:
     #         return ''.join(c for c in text if c not in punctuation)
 
-    def _update_JSON_file(self, url, lessons, file, json_data):
-        data = json_data
-
+    def _update_JSON_file(self, url, lessons, file, data):
         # Iterate through each exercise in the data
         for existing_lesson in data['exercises']:
             # Find the corresponding lesson update
@@ -159,15 +158,8 @@ class Create_audio:
 
             if existing_lesson['taskType'] == 'Conversation':
                 for existing_step in existing_lesson['conversationSteps']:
-                    if isinstance(existing_step['question'], str):
-                        question_text = self.remove_punctuation(existing_step['question']).lower() + ".mp3"
-                    else:
-                        question_text = self.remove_punctuation(existing_step['question'].read().decode('utf-8')).lower() + ".mp3"
-
-                    if isinstance(existing_step['expectedResponse'], str):
-                        response_text = self.remove_punctuation(existing_step['expectedResponse']).lower() + ".mp3"
-                    else:
-                        response_text = self.remove_punctuation(existing_step['expectedResponse'].read().decode('utf-8')).lower() + ".mp3"
+                    question_text = self.remove_punctuation(existing_step['question']).lower() + ".mp3"
+                    response_text = self.remove_punctuation(existing_step['expectedResponse']).lower() + ".mp3"
 
                     if file == question_text:
                         print("Updating audio file path for question:", question_text)
