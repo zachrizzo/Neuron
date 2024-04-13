@@ -1,5 +1,5 @@
 openai==1.12.0
-firebase_admin==6.2.0
-google-cloud-firestore==2.13.1
-firebase-function==0.1.2
+firebase_admin
+google-cloud-firestore
+firebase-function
 streamlit==1.29.0
