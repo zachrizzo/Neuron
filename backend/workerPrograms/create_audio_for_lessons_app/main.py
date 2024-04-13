@@ -229,14 +229,26 @@ with play_audio_col2:
 st.divider()
 st.subheader("Add All Filtered Audio to Firebase (vocab doesn't work rn)")
 
+# st.json(json.load(uploaded_file), expanded=False)
+
 if st.button("Add To Firebase"):
-    with st.spinner("Adding to Firebase..."):
-        # Save the uploaded file to a temporary location
-        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
-            temp_file.write(uploaded_file.getvalue())
-            temp_file_path = temp_file.name
+    try:
+        data = json.load(uploaded_file)
+        print(data)
+    except json.JSONDecodeError as e:
+        st.error(f"Error decoding JSON file: {str(e)}")
 
-        # Pass the temporary file path to the method and get the count of updated files
-        updated_count = st.session_state['create_audio'].add_to_firebase_storage_and_firestore(st.session_state['all_exercises'], temp_file_path)
+    if data is not None:
+        with st.spinner("Adding to Firebase..."):
+            # Save the uploaded file to a temporary location
+            with tempfile.NamedTemporaryFile(delete=False, mode='w') as temp_file:
+                json.dump(data, temp_file)
+                temp_file_path = temp_file.name
 
-        st.success(f"{updated_count} files were updated and added to Firebase.")
+            # Pass the temporary file path to the method and get the count of updated files
+            updated_count = st.session_state['create_audio'].add_to_firebase_storage_and_firestore(st.session_state['all_exercises'], temp_file_path)
+
+            st.success(f"{updated_count} files were updated and added to Firebase.")
+    else:
+        st.warning("Please upload a valid JSON file.")
+
