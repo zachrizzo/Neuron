@@ -159,15 +159,15 @@ class Create_audio:
 
             if existing_lesson['taskType'] == 'Conversation':
                 for existing_step in existing_lesson['conversationSteps']:
-                    if isinstance(existing_step['question'], UploadedFile):
-                        question_text = self.remove_punctuation(existing_step['question'].read().decode('utf-8')).lower() + ".mp3"
-                    else:
+                    if isinstance(existing_step['question'], str):
                         question_text = self.remove_punctuation(existing_step['question']).lower() + ".mp3"
-
-                    if isinstance(existing_step['expectedResponse'], UploadedFile):
-                        response_text = self.remove_punctuation(existing_step['expectedResponse'].read().decode('utf-8')).lower() + ".mp3"
                     else:
+                        question_text = self.remove_punctuation(existing_step['question'].read().decode('utf-8')).lower() + ".mp3"
+
+                    if isinstance(existing_step['expectedResponse'], str):
                         response_text = self.remove_punctuation(existing_step['expectedResponse']).lower() + ".mp3"
+                    else:
+                        response_text = self.remove_punctuation(existing_step['expectedResponse'].read().decode('utf-8')).lower() + ".mp3"
 
                     if file == question_text:
                         print("Updating audio file path for question:", question_text)
