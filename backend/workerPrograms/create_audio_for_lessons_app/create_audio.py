@@ -94,7 +94,6 @@ class Create_audio:
                 print(lesson,'failed')
 
     def add_to_firebase_storage_and_firestore(self, lessons, uploaded_file):
-        uploaded_file.seek(0)  # Move the file pointer to the beginning
         uploaded_file_json = json.load(uploaded_file)
         all_lesson_audio = {}
         bucket = storage.bucket()
@@ -149,19 +148,14 @@ class Create_audio:
     #         return ''.join(c for c in text if c not in punctuation)
 
     def _update_JSON_file(self, url, lessons, file, json_data):
-    #    # Load existing JSON data from file
-    #     print("Loading data from file:", lesson_file_path)
-    #     with open(lesson_file_path, 'r', encoding='utf-8') as f:
-    #         data = json.load(f)
+        data = json_data
 
         # Iterate through each exercise in the data
-        for existing_lesson in json_data['exercises']:
+        for existing_lesson in data['exercises']:
             # Find the corresponding lesson update
             lesson_update = next((l for l in lessons if l['taskType'] == existing_lesson['taskType']), None)
             if not lesson_update:
                 continue
-
-
 
             if existing_lesson['taskType'] == 'Conversation':
                 for existing_step in existing_lesson['conversationSteps']:
@@ -196,10 +190,10 @@ class Create_audio:
                     print("Updating audio file path for task type:", existing_lesson['taskType'])
                     existing_lesson['audioFilePath'] = url
 
-        # Write the updated data back to the file
+        # Write the updated data back to a new file
         updated_file_path = "updated_lesson_data.json"
         with open(updated_file_path, 'w', encoding='utf-8') as f:
-            json.dump(json_data, f, indent=4, ensure_ascii=False)
+            json.dump(data, f, indent=4, ensure_ascii=False)
 
         print("Update complete.")
 
