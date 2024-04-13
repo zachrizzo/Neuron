@@ -8,6 +8,7 @@ from create_audio import Create_audio  # Ensure this is correctly imported
 
 def get_array_from_json(uploaded_file, array_key):
     try:
+        uploaded_file.seek(0)
         # Read the uploaded JSON file directly
         data = json.load(uploaded_file)
         return data.get(array_key, None)
