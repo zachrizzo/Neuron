@@ -11,7 +11,7 @@ import firebase_admin
 import string
 # from config import app
 
-cred = credentials.Certificate("../../lang-learning-app-gpt-firebase-adminsdk-h6lgl-379786af55.json")
+cred = credentials.Certificate("./lang-learning-app-gpt-firebase-adminsdk-h6lgl-379786af55.json")
 
 if not len(firebase_admin._apps):
     app = initialize_app(cred, {"storageBucket": "lang-learning-app-gpt.appspot.com"})
@@ -21,19 +21,16 @@ else:
 
 
 class Create_audio:
-    def __init__(self):
-        # Load .env file
-        load_dotenv('../../../backend/.env')
+    def __init__(self, openai_secret=None,):
+        # # Load .env file
+        # load_dotenv('../../../backend/.env')
 
-        # Get secret key from .env
-        client_secret = os.getenv("OPENAI_SECRET2")
-        print(client_secret)
-
-        self.client = OpenAI(api_key='** in notes')
+        self.client = OpenAI(api_key=openai_secret)
 
 
         self.db = firestore.client(app=app)
         self.bucket = storage.bucket(app=app)
+
 
         if not os.path.exists('lesson_audio'):
             os.makedirs('lesson_audio')

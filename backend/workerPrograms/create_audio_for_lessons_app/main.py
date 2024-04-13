@@ -51,7 +51,7 @@ if "array_data" not in st.session_state:
     st.session_state.array_data = None
 
 if 'create_audio' not in st.session_state:
-    st.session_state.create_audio = Create_audio()
+    st.session_state.create_audio = Create_audio( openai_secret=st.secrets["OPENAI_KEY"])
 
 if 'audio_file_path' not in st.session_state:
     st.session_state.audio_file_path = None
@@ -60,8 +60,7 @@ if "all_exercises" not in st.session_state:
     st.session_state.all_exercises = []
 
 # JSON file path input
-default_dir = '/Users/zachrizzo/programing/language_learning_app/backend/workerPrograms/lessons/french/basic_phrases_and_greeting_people/lesson1.json'
-json_file_path = st.text_input("Enter JSON File Path:", value=default_dir)
+json_file_path = st.text_input("Enter JSON File Path:",)
 
 # Voice selection
 voice_col1, voice_col2 = st.columns(2)

@@ -839,6 +839,199 @@
       "gender": "N/A",
       "exerciseID": 55,
       "points": 5
+    },
+    {
+      "taskType": "Reading",
+      "taskDescription": "Select the correct English words to translate the French sentence.",
+      "text": "Bonjour, je m'appelle Marie.",
+      "translation": "Hello, my name is Marie.",
+      "translationOptions": {
+        "French": [
+          "Bonjour",
+          "je",
+          "m'appelle",
+          "Marie",
+          "chien",
+          "rouge",
+          "courir"
+        ],
+        "English": ["Hello", "my", "name", "is", "Marie", "dog", "red", "run"]
+      },
+      "gender": "Feminine",
+      "audioFilePath": "path/to/bonjour_je_mappelle_marie.mp3",
+      "points": 5,
+      "exerciseID": 56
+    },
+    {
+      "taskType": "Reading",
+      "taskDescription": "Select the correct English words to translate the French sentence.",
+      "text": "Comment ça va?",
+      "translation": "How are you?",
+      "translationOptions": {
+        "French": ["Comment", "ça", "va", "bien", "mal", "chat"],
+        "English": ["How", "are", "you", "good", "bad", "cat"]
+      },
+      "gender": "N/A",
+      "audioFilePath": "path/to/comment_ca_va.mp3",
+      "points": 5,
+      "exerciseID": 57
+    },
+    {
+      "taskType": "Reading",
+      "taskDescription": "Select the correct English words to translate the French sentence.",
+      "text": "Je vais bien, merci.",
+      "translation": "I am well, thank you.",
+      "translationOptions": {
+        "French": ["Je", "vais", "bien", "merci", "triste", "heureux"],
+        "English": ["I", "am", "well", "thank", "you", "sad", "happy"]
+      },
+      "gender": "N/A",
+      "audioFilePath": "path/to/je_vais_bien_merci.mp3",
+      "points": 5,
+      "exerciseID": 58
+    },
+    {
+      "taskType": "Reading",
+      "taskDescription": "Select the correct English words to translate the French sentence.",
+      "text": "Et toi?",
+      "translation": "And you?",
+      "translationOptions": {
+        "French": ["Et", "toi", "moi", "eux", "elles"],
+        "English": ["And", "you", "me", "them", "they"]
+      },
+      "gender": "N/A",
+      "audioFilePath": "path/to/et_toi.mp3",
+      "points": 5,
+      "exerciseID": 59
+    },
+    {
+      "taskType": "Reading",
+      "taskDescription": "Select the correct English words to translate the French sentence.",
+      "text": "Au revoir!",
+      "translation": "Goodbye!",
+      "translationOptions": {
+        "French": ["Au", "revoir", "bonjour", "soir", "nuit"],
+        "English": ["Goodbye", "Hello", "evening", "night"]
+      },
+      "gender": "N/A",
+      "audioFilePath": "path/to/au_revoir.mp3",
+      "points": 5,
+      "exerciseID": 60
+    },
+    {
+      "taskType": "Reading",
+      "taskDescription": "Select the correct English words to translate the French sentence.",
+      "text": "C'est un plaisir de te rencontrer.",
+      "translation": "It's a pleasure to meet you.",
+      "translationOptions": {
+        "French": [
+          "C'est",
+          "un",
+          "plaisir",
+          "de",
+          "te",
+          "rencontrer",
+          "lire",
+          "écrire"
+        ],
+        "English": [
+          "It's",
+          "a",
+          "pleasure",
+          "to",
+          "meet",
+          "you",
+          "read",
+          "write"
+        ]
+      },
+      "gender": "N/A",
+      "audioFilePath": "path/to/cest_un_plaisir_de_te_rencontrer.mp3",
+      "points": 5,
+      "exerciseID": 61
+    },
+    {
+      "taskType": "Reading",
+      "taskDescription": "Select the correct English words to translate the French sentence.",
+      "text": "D'où viens-tu?",
+      "translation": "Where are you from?",
+      "translationOptions": {
+        "French": ["D'où", "viens-tu", "où", "es-tu", "aller"],
+        "English": ["Where", "are", "you", "from", "go"]
+      },
+      "gender": "N/A",
+      "audioFilePath": "path/to/dou_viens_tu.mp3",
+      "points": 5,
+      "exerciseID": 62
+    },
+    {
+      "taskType": "Reading",
+      "taskDescription": "Select the correct English words to translate the French sentence.",
+      "text": "Je viens de France.",
+      "translation": "I am from France.",
+      "translationOptions": {
+        "French": ["Je", "viens", "de", "France", "Canada", "Espagne"],
+        "English": ["I", "am", "from", "France", "Canada", "Spain"]
+      },
+      "gender": "N/A",
+      "audioFilePath": "path/to/je_viens_de_france.mp3",
+      "points": 5,
+      "exerciseID": 63
+    },
+    {
+      "taskType": "Reading",
+      "taskDescription": "Select the correct English words to translate the French sentence.",
+      "text": "Quel est ton numéro de téléphone?",
+      "translation": "What is your phone number?",
+      "translationOptions": {
+        "French": [
+          "Quel",
+          "est",
+          "ton",
+          "numéro",
+          "de",
+          "téléphone",
+          "livre",
+          "stylo"
+        ],
+        "English": ["What", "is", "your", "phone", "number", "book", "pen"]
+      },
+      "gender": "N/A",
+      "audioFilePath": "path/to/quel_est_ton_numero_de_telephone.mp3",
+      "points": 5,
+      "exerciseID": 64
+    },
+    {
+      "taskType": "Reading",
+      "taskDescription": "Select the correct English words to translate the French sentence.",
+      "text": "Je suis heureux de faire ta connaissance.",
+      "translation": "I am happy to make your acquaintance.",
+      "translationOptions": {
+        "French": [
+          "Je",
+          "suis",
+          "heureux",
+          "de",
+          "faire",
+          "ta",
+          "connaissance",
+          "triste"
+        ],
+        "English": [
+          "I",
+          "am",
+          "happy",
+          "to",
+          "make",
+          "your",
+          "acquaintance",
+          "sad"
+        ]
+      },
+      "gender": "Masculine",
+      "audioFilePath": "path/to/je_suis_heureux_de_faire_ta_connaissance.mp3",
+      "points": 5,
+      "exerciseID": 65
     }
   ]
 }
