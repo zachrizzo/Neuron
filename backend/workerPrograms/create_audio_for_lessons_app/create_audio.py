@@ -94,6 +94,7 @@ class Create_audio:
                 print(lesson,'failed')
 
     def add_to_firebase_storage_and_firestore(self, lessons, uploaded_file):
+        uploaded_file.seek(0)  # Move the file pointer to the beginning
         uploaded_file_json = json.load(uploaded_file)
         all_lesson_audio = {}
         bucket = storage.bucket()
@@ -110,23 +111,15 @@ class Create_audio:
                 # add the url to all_lesson_audio as the key as the audio file name
                 all_lesson_audio[file] = url
 
-        #save the all lesson audio to a json file
+        # save the all lesson audio to a json file
         with open('all_lesson_audio_french.json', 'w', encoding='utf-8') as f:
             json.dump(all_lesson_audio, f, indent=4, ensure_ascii=False)
 
-
-
-        # with open(json_file_path, 'w') as f:
-        #     json.dump(lessons, f, indent=4)
-
         self.add_to_fire_store(uploaded_file_json)
 
-    def add_to_fire_store(self, json_file_path):
-        # Load lesson data from the provided JSON file
-        with open(json_file_path) as f:
-            data = json.load(f)
-
-        # Load all_lesson_audio_french data
+    def add_to_fire_store(self, json_data):
+        # Include the all_lesson_audio_french data in the Firestore document
+        firestore_data = json_data
         all_lesson_audio_french_path = 'all_lesson_audio_french.json'
         try:
             with open(all_lesson_audio_french_path) as audio_f:
@@ -135,8 +128,6 @@ class Create_audio:
             print(f"File not found: {all_lesson_audio_french_path}")
             all_lesson_audio_french = {}
 
-        # Include the all_lesson_audio_french data in the Firestore document
-        firestore_data = data
         firestore_data['all_lesson_audio_french'] = all_lesson_audio_french
 
         # Add or update the Firestore document
@@ -157,14 +148,14 @@ class Create_audio:
     #     else:
     #         return ''.join(c for c in text if c not in punctuation)
 
-    def _update_JSON_file(self, url, lessons, file, lesson_file_path):
-       # Load existing JSON data from file
-        print("Loading data from file:", lesson_file_path)
-        with open(lesson_file_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+    def _update_JSON_file(self, url, lessons, file, json_data):
+    #    # Load existing JSON data from file
+    #     print("Loading data from file:", lesson_file_path)
+    #     with open(lesson_file_path, 'r', encoding='utf-8') as f:
+    #         data = json.load(f)
 
         # Iterate through each exercise in the data
-        for existing_lesson in data['exercises']:
+        for existing_lesson in json_data['exercises']:
             # Find the corresponding lesson update
             lesson_update = next((l for l in lessons if l['taskType'] == existing_lesson['taskType']), None)
             if not lesson_update:
@@ -206,9 +197,9 @@ class Create_audio:
                     existing_lesson['audioFilePath'] = url
 
         # Write the updated data back to the file
-        print(f"Writing updated data back to file: {lesson_file_path}")
-        with open(lesson_file_path, 'w',encoding='utf-8') as f:
-            json.dump(data, f, indent=4, ensure_ascii=False)
+        updated_file_path = "updated_lesson_data.json"
+        with open(updated_file_path, 'w', encoding='utf-8') as f:
+            json.dump(json_data, f, indent=4, ensure_ascii=False)
 
         print("Update complete.")
 
