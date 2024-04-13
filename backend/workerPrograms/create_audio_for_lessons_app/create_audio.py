@@ -9,7 +9,11 @@ import time
 import firebase_admin
 # from config import app
 
-cred = credentials.Certificate("backend/workerPrograms/create_audio_for_lessons_app/lang-learning-app-gpt-firebase-adminsdk-h6lgl-379786af55.json")
+#check home directory to see if the app is running locally or on the server
+if os.path.exists('/Users/zachrizzo/programing/language_learning_app/backend/workerPrograms/create_audio_for_lessons_app/lang-learning-app-gpt-firebase-adminsdk-h6lgl-379786af55.json'):
+    cred = credentials.Certificate('/Users/zachrizzo/programing/language_learning_app/backend/workerPrograms/create_audio_for_lessons_app/lang-learning-app-gpt-firebase-adminsdk-h6lgl-379786af55.json')
+else:
+    cred = credentials.Certificate("backend/workerPrograms/create_audio_for_lessons_app/lang-learning-app-gpt-firebase-adminsdk-h6lgl-379786af55.json")
 
 if not len(firebase_admin._apps):
     app = initialize_app(cred, {"storageBucket": "lang-learning-app-gpt.appspot.com"})
@@ -115,6 +119,7 @@ class Create_audio:
         with open('all_lesson_audio_french.json', 'w', encoding='utf-8') as f:
             json.dump(all_lesson_audio, f, indent=4, ensure_ascii=False)
 
+
         self.add_to_fire_store(uploaded_file_dict)
 
     def add_to_fire_store(self, json_data):
@@ -150,6 +155,7 @@ class Create_audio:
 
     def _update_JSON_file(self, url, lessons, file, data):
         # Iterate through each exercise in the data
+
         for existing_lesson in data['exercises']:
             # Find the corresponding lesson update
             lesson_update = next((l for l in lessons if l['taskType'] == existing_lesson['taskType']), None)
@@ -160,7 +166,8 @@ class Create_audio:
                 for existing_step in existing_lesson['conversationSteps']:
                     question_text = self.remove_punctuation(existing_step['question']).lower() + ".mp3"
                     response_text = self.remove_punctuation(existing_step['expectedResponse']).lower() + ".mp3"
-
+                    print("Question text:", question_text)
+                    print("Response text:", response_text)
                     if file == question_text:
                         print("Updating audio file path for question:", question_text)
                         existing_step['audioFilePathQuestion'] = url
