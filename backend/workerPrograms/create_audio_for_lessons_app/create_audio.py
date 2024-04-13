@@ -93,7 +93,7 @@ class Create_audio:
                 print(e)
                 print(lesson,'failed')
 
-    def add_to_firebase_storage_and_firestore(self, lessons, json_file_path):
+    def add_to_firebase_storage_and_firestore(self, lessons, uploaded_file):
         all_lesson_audio = {}
         bucket = storage.bucket()
         for file in self.list_of_audio_files:
@@ -104,7 +104,7 @@ class Create_audio:
                 blob.upload_from_filename(upload_location)
                 blob.make_public()
                 url = blob.public_url
-                self._update_JSON_file(url, lessons, file,json_file_path)
+                self._update_JSON_file(url, lessons, file, uploaded_file.name)
 
                 # add the url to all_lesson_audio as the key as the audio file name
                 all_lesson_audio[file] = url
