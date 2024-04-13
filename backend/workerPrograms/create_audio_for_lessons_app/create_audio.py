@@ -1,14 +1,12 @@
-import unicodedata
+
 from openai import OpenAI
 import os
-from dotenv import load_dotenv
 from firebase_admin import credentials, firestore, initialize_app
 from firebase_admin import storage
 import json
 from string import punctuation
 import time
 import firebase_admin
-import string
 # from config import app
 
 cred = credentials.Certificate("./lang-learning-app-gpt-firebase-adminsdk-h6lgl-379786af55.json")
